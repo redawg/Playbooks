@@ -6,5 +6,6 @@
      package: ""
   serial: 1
   tasks:
-    - name: Install Package
-      yum: {{package}} state=present
+    - name: Install {{package}}
+      yum: {{package}}
+         state: present
