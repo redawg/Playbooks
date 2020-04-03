@@ -1,0 +1,7 @@
+---
+   - name: Register System to Insights
+     command: insights-client --register
+     register: register_output
+   - name: Display Register
+     debug:
+       msg: "{{ register_output }}"
