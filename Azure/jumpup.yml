@@ -5,7 +5,11 @@
     gather_facts: no
     vars:
         az_server: "jumpbox"
-
+        azure:
+           client_id: '{{ lookup("env", "AZURE_CLIENT_ID") }}'
+           secret: '{{ lookup("env", "AZURE_SECRET") }}'
+           tenant: '{{ lookup("env", "AZURE_TENANT") }}'
+           subscription_id: '{{ lookup("env", "AZURE_SUBSCRIPTION_ID") }}'
     tasks:
       - name: Start virtual Jumpbox
         azure_rm_virtualmachine:
