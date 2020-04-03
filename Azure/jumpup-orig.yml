@@ -1,0 +1,22 @@
+---
+  - name: Start Azure Jumpbox VM
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+        az_server: "jumpbox"
+
+    tasks:
+      - name: Start virtual Jumpbox
+        azure_rm_virtualmachine:
+          resource_group: ansbile_workspace
+          name: "{{az_server}}"
+          allocated: yes
+      - name: Retrieving Public IP address
+        azure_rm_publicipaddress:
+          resource_group: ansbile_workspace
+          name: "{{publicip}}"
+        register: output_public_ip_address
+      - name: Display Public IP
+        debug:
+          msg: "The public IP is {{ output_public_ip_address.state.ip_address }}."

@@ -1,0 +1,14 @@
+---
+  - name: Shutdown Azure Jumpbox VM
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       az_server: "jumpbox"
+       
+    tasks:
+      - name : Stop virtual Jumpbox
+        azure_rm_virtualmachine:
+          resource_group: ansbile_workspace
+          name: {{az_server}}
+          allocated: no
