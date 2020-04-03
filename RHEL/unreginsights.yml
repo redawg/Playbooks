@@ -1,0 +1,11 @@
+---
+- name: Register System to Insights
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Running insights register
+      command: insights-client --unregister
+      register: register_output
+    - name: Display Register
+      debug:
+        msg: "{{ register_output }}"
