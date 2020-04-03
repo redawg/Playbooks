@@ -3,9 +3,9 @@
   hosts: localhost
   gather_facts: False
   vars:
-     package: ""
+
   serial: 1
   tasks:
-    - name: Install {{package}}
+    - name: Install "{{package}}"
       yum: {{package}}
          state: present
