@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+  - { role: RedHatInsights.insights-client, when: ansible_os_family == 'RedHat' }
