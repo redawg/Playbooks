@@ -1,0 +1,10 @@
+---
+- name: Installing requested package
+  hosts: localhost
+  gather_facts: False
+  vars:
+     item: ""
+  serial: 1
+  tasks:
+    - name: Install Package
+      yum: {{item}} state=present
