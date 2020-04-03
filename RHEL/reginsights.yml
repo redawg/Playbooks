@@ -1,7 +1,9 @@
 ---
-   - name: Register System to Insights
-     command: insights-client --register
-     register: register_output
-   - name: Display Register
+- name: Register System to Insights
+  hosts: all
+  gather_facts: False
+  command: insights-client --register
+  register: register_output
+- name: Display Register
      debug:
        msg: "{{ register_output }}"
