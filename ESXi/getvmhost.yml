@@ -1,6 +1,7 @@
 ---
 - name: Gather fact ESXi host
   hosts: localhost
+  gather_facts: False
   vars:
      ansible_python_interpreter: "/opt/rh/python27/root/usr/bin/python"
      esxi_server: ''
