@@ -17,4 +17,4 @@
      register: host_facts
    - name: Display Facts
      debug:
-       msg: "{{host_facts}}"
+       msg: "{{host_facts.ansible_facts.ansible_hostname}}"
