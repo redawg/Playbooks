@@ -13,5 +13,5 @@
       - name : Stop virtual Jumpbox
         azure_rm_virtualmachine:
           resource_group: ansbile_workspace
-          name: {{az_server}}
+          name: jumpbox
           allocated: no
