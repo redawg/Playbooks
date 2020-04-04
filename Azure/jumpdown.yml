@@ -5,10 +5,10 @@
     gather_facts: no
     vars:
        az_server: "jumpbox"
-       AZURE_CLIENT_ID:
-       AZURE_SECRET:
-       AZURE_SUBSCRIPTION_ID:
-       AZURE_TENANT:
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
     tasks:
       - name : Stop virtual Jumpbox
         azure_rm_virtualmachine:
