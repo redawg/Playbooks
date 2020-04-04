@@ -2,7 +2,7 @@
 - name: Gather fact ESXi host
   hosts: localhost
   vars:
-     ansible_python_interpreter: "/usr/bin/env python"
+     ansible_python_interpreter: "/opt/rh/python27/root/usr/bin/python"
      esxi_server: ''
      esxi_username: ''
      esxi_password: ''
