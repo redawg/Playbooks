@@ -3,7 +3,7 @@
   hosts: localhost
   gather_facts: False
   vars:
-     ansible_python_interpreter: "/opt/rh/python27/root/usr/bin/python"
+     ansible_python_interpreter: ''
      esxi_server: ''
      esxi_username: ''
      esxi_password: ''
