@@ -20,5 +20,5 @@
         syspurpose:
           usage: "{{usage}}"
           role: "{{systemrole}}"
-          service_level_agreement: "{{sla}"
+          service_level_agreement: "{{sla}}"
           sync: true
