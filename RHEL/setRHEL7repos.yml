@@ -10,4 +10,4 @@
         disablerepo: "*"
     - name: Enable Repos
       yum:
-         enablerepo: "rhel-7-server-extras-rpms/x86_64,rhel-7-server-rpms/7Server/x86_64,rhel-server-rhscl-7-rpms/7Server/x86_64,rhel-7-server-ansible-2.9-rpms/x86_64"
+         enablerepo: "rhel-7-server-extras-rpms,rhel-7-server-rpms,rhel-server-rhscl-7-rpms,rhel-7-server-ansible-2.9-rpms"
