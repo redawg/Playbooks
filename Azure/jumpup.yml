@@ -11,7 +11,7 @@
         AZURE_SUBSCRIPTION_ID: ''
         AZURE_TENANT: ''
     tasks:
-      - name: Start Azure server {{az_server}}
+      - name: Start Azure Server {{az_server}}
         azure_rm_virtualmachine:
           resource_group: ansbile_workspace
           name: "{{az_server}}"
