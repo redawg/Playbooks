@@ -1,6 +1,6 @@
 ---
   - name: Collect only min facts
-     setup:
+    setup:
        gather_subset:
          - '!all'
          - '!any'
