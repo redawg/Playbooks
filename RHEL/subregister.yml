@@ -21,4 +21,4 @@
           usage: "{{usage}}"
           role: "{{systemrole}}"
           service_level_agreement: "{{sla}"
-          sync: true:
+          sync: true
