@@ -1,17 +1,17 @@
 ---
-  - name: Start Azure Jumpbox VM
+  - name: Start Azure VM
     hosts: localhost
     connection: local
     gather_facts: no
     vars:
-        az_server: "jumpbox"
+        az_server: ''
         azure:
         AZURE_CLIENT_ID: ''
         AZURE_SECRET: ''
         AZURE_SUBSCRIPTION_ID: ''
         AZURE_TENANT: ''
     tasks:
-      - name: Start virtual Jumpbox
+      - name: Start Azure server {{az_server}}
         azure_rm_virtualmachine:
           resource_group: ansbile_workspace
           name: "{{az_server}}"
