@@ -1,0 +1,13 @@
+---
+- name: Set Default Repos for RHEL 7
+  hosts: all
+  gather_facts: False
+  vars:
+
+  tasks:
+    - name: Disable htb repo
+      yum:
+        disablerepo: "*"
+    - name: Enable Repos
+      yum:
+         enablerepo: "rhel-7-server-extras-rpms/x86_64,rhel-7-server-rpms/7Server/x86_64,rhel-server-rhscl-7-rpms/7Server/x86_64,rhel-7-server-ansible-2.9-rpms/x86_64"

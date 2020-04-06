@@ -6,6 +6,10 @@
      username: ''
      password: ''
      pool_id: ''
+     systemrole: "Red Hat Enterprise Server"
+     usage: "Development/Test"
+     sla: "Self-Service"
+
   tasks:
     - name: Subscribing to RHEL account now
       redhat_subscription:
@@ -13,3 +17,8 @@
         username: "{{username}}"
         password: "{{password}}"
         pool_ids: "{{pool_id}}"
+        syspurpose:
+          usage: "{{usage}}"
+          role: "{{systemrole}}"
+          service_level_agreement: "{{sla}"
+          sync: true:
