@@ -1,8 +1,11 @@
 ---
 - name: Gather IOS facts
   hosts: all
-  connection: network_cli
-  gather_facts: no
+  gather_facts: false
+    vars:
+      command: ''
+      ansible_connection: ''
+      ansible_network_os: ''
 
   tasks:
   - name: Collect facts from Cisco IOS elements
