@@ -6,6 +6,8 @@
     command: info
     ansible_connection: network_cli
     ansible_network_os: vyos
+    ansible_user: ''
+
 
   tasks:
     - name: Run {{command}} command
