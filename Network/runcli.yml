@@ -3,10 +3,10 @@
   hosts: all
   gather_facts: false
   vars:
-    command: info
-    ansible_connection: network_cli
-    ansible_network_os: vyos
-  
+    command: ''
+    ansible_connection: ''
+    ansible_network_os: ''
+
 
   tasks:
     - name: Run {{command}} command
