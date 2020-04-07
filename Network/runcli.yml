@@ -1,6 +1,6 @@
 ---
 - name: Run command and print to terminal window
-  hosts: switches
+  hosts: all
   gather_facts: false
   vars:
     command: info
