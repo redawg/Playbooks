@@ -3,6 +3,7 @@
   hosts: all
   gather_facts: false
   connection: network_cli
+  network_os: vyos
   vars:
     command: info
 
