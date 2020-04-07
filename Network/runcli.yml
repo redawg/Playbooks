@@ -1,7 +1,7 @@
 ---
 - name: Run command and print to terminal window
   hosts: all
-  gather_facts: false
+  gather_facts: true
   vars:
     command: ''
     ansible_connection: ''
