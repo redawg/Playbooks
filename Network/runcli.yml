@@ -2,12 +2,13 @@
 - name: Run command and print to terminal window
   hosts: all
   gather_facts: false
+  connection: network_cli
   vars:
     command: info
 
 
   tasks:
-    - name: Run show command
+    - name: Run {{command}} command
       cli_command:
         command: "{{command}}"
       register: command_output
