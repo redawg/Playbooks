@@ -9,11 +9,11 @@
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
-  - tasks:
-      name: Create a resource group {{az_name}}
-      azure_rm_resourcegroup:
-        name: somecarzyname
-        location: westus
-        tags:
-          testing: testing
-          delete: never
+    tasks:
+      - name: Create a resource group {{az_name}}
+        azure_rm_resourcegroup:
+          name: somecarzyname
+          location: westus
+          tags:
+            testing: testing
+            delete: never
