@@ -1,5 +1,5 @@
 ---
-  - name: Shutdown Azure VM
+  - name: Create Azure Resource Group
     hosts: localhost
     connection: local
     gather_facts: no
@@ -10,7 +10,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
 
-  - name: Create a resource group
+  - name: Create a resource group {{az_name}}
     azure_rm_resourcegroup:
        name: somecarzyname
        location: westus
