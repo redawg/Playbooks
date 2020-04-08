@@ -14,9 +14,9 @@
     tasks:
       - name: Create a resource group {{az_name}}
         azure_rm_resourcegroup:
-          name: {{az_name}}
-          location: {{location}}
+          name: "{{az_name}}"
+          location: "{{location}}"
           tags:
             created: ansbile
             delete: never
-            demo: {{customer}}
+            demo: "{{customer}}"
