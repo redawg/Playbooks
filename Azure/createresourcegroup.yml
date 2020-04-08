@@ -12,7 +12,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-      - name: Create a resource group {{az_name}}
+      - name: Create a resource group {{az_rgname}}
         azure_rm_resourcegroup:
           name: "{{az_rgname}}"
           location: "{{location}}"
