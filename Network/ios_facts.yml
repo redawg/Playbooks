@@ -9,8 +9,8 @@
   tasks:
   - name: Collect facts from Cisco IOS elements
     ios_facts:
-      gather_subset: "{{ subset }}"
       gather_network_resources: "{{ resource }}"
+      gather_subset: "{{ subset }}"
     register: facts_output
 
   - name: Print out facts
