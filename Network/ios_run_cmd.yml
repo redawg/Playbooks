@@ -1,0 +1,17 @@
+---
+- name: Show Running Configs
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    command: ''
+
+  tasks:
+    - name: Running {{command}}
+      ios_command:
+        commands: "{{command}}"
+      register: config_output
+    - name: Show {{command}} Output
+      debug:
+        var: config_output
