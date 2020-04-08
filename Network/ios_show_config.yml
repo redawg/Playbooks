@@ -10,7 +10,7 @@
   tasks:
     - name: Running {{command}}
       ios_command:
-        command: show running-command
+        commands: show running-command
       register: config_output
     - name: Show {{command}} Output
       debug:
