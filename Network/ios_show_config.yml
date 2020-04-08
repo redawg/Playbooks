@@ -6,12 +6,11 @@
     ansible_connection: ''
     ansible_network_os: ''
     command: ''
+
   tasks:
-
-  - name: Running {{command}}
-    ios_command:
-      command: {{command}}
-    register: config_output
-
-  - debug:
+    - name: Running {{command}}
+      ios_command:
+        command: "{{command}}"
+      register: config_output
+    - debug:
       var: config_output
