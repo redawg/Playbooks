@@ -13,8 +13,7 @@
   tasks:
     - name: Checking NTP configuration
       ios_ntp:
-        server: {{server}}
-        source: {{source}}
-        logging: {{logging}}
-        state: {{state}}
-      
+        server: "{{server}}"
+        source: "{{source}}"
+        logging: "{{logging}}"
+        state: "{{state}}"
