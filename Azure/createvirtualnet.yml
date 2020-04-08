@@ -1,0 +1,23 @@
+---
+  - name: Create Azure Virtual Network
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       az_name: ''
+       location: ''
+       customer: ''
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
+    tasks:
+      - name: Create a resource group {{az_name}}
+        azure_rm_virtrualnetwork:
+          resource_group: "{{az_name}}"
+          name: "{{az_name}}"
+          location: "{{location}}"
+          tags:
+            created: ansbile
+            delete: never
+            demo: "{{customer}}"
