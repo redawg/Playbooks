@@ -5,18 +5,13 @@
     gather_facts: no
     vars:
        az_name: ''
-       lcoation: ''
-       customer: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-      - name: Create a resource group {{az_name}}
+      - name: Delete resource group {{az_name}}
         azure_rm_resourcegroup:
           name: {{az_name}}
-          location: {{location}}
-          tags:
-            created: ansbile
-            delete: never
-            demo: {{customer}}
+          force_delete_nonempty: yes
+          state: absent
