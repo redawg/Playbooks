@@ -1,5 +1,5 @@
 ---
-  - name: Create Azure Resource Group
+  - name: Delete Azure Resource Group
     hosts: localhost
     connection: local
     gather_facts: no
@@ -12,6 +12,6 @@
     tasks:
       - name: Delete resource group {{az_name}}
         azure_rm_resourcegroup:
-          name: {{az_name}}
+          name: "{{az_name}}"
           force_delete_nonempty: yes
           state: absent
