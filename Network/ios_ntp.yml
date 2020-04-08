@@ -14,6 +14,6 @@
     - name: Checking NTP configuration
       ios_ntp:
         server: "{{server}}"
-        source: "{{source}}"
+        source_int: "{{source}}"
         logging: "{{logging}}"
         state: "{{state}}"
