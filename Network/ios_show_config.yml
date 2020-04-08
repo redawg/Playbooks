@@ -12,5 +12,6 @@
       ios_command:
         command: show running-command
       register: config_output
-    - debug:
-      var: config_output
+    - name: Show {{command}} Output
+      debug:
+        var: config_output
