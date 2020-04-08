@@ -5,7 +5,7 @@
     gather_facts: no
     vars:
        az_name: ''
-       lcoation: ''
+       location: ''
        customer: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
