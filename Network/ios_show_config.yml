@@ -8,7 +8,7 @@
     command: ''
   tasks:
 
-  - name: Backup the config
+  - name: Running {{command}}
     ios_command:
       commands:
         - {{command}}
