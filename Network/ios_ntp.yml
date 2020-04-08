@@ -18,5 +18,6 @@
         logging: "{{logging}}"
         state: "{{state}}"
       register: cmd_output
-      debug:
-        var: cmd_output
+    - name: Debug if enabled
+        debug:
+          var: cmd_output
