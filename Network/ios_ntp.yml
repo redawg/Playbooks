@@ -17,3 +17,6 @@
         source_int: "{{source}}"
         logging: "{{logging}}"
         state: "{{state}}"
+      register: cmd_output
+      debug:
+        var: cmd_output
