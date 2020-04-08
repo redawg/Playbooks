@@ -11,13 +11,13 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-        azure_rm_virtrualnetwork:
-          resource_group: "{{az_rgname}}"
-          name: "{{az_rgname}}{{'_net1'}}"
-          address_prefixes_cidr:
-            - "10.10.10.0/24"
-            - "10.10.100.0/24"
-          tags:
-            created: ansbile
-            delete: never
-            demo: "{{customer}}"
+       azure_rm_virtrualnetwork:
+         resource_group: "{{az_rgname}}"
+         name: "{{az_rgname}}{{'_net1'}}"
+         address_prefixes_cidr:
+           - "10.10.10.0/24"
+           - "10.10.100.0/24"
+         tags:
+           created: ansbile
+           delete: never
+           demo: "{{customer}}"
