@@ -11,7 +11,7 @@
   - name: Running {{command}}
     ios_command:
       commands:
-        - {{command}}
+        - "{{command}}"
     register: config_output
 
   - debug:
