@@ -4,7 +4,7 @@
     connection: local
     gather_facts: no
     vars:
-       az_name: ''
+       az_rgname: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
@@ -12,6 +12,6 @@
     tasks:
       - name: Delete resource group {{az_name}}
         azure_rm_resourcegroup:
-          name: "{{az_name}}"
+          name: "{{az_rgname}}"
           force_delete_nonempty: yes
           state: absent

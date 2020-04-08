@@ -4,9 +4,8 @@
     connection: local
     gather_facts: no
     vars:
-       az_name: ''
+       az_rgname: ''
        location: ''
-       customer: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
@@ -14,7 +13,7 @@
     tasks:
       - name: Create a resource group {{az_name}}
         azure_rm_virtrualnetwork:
-          resource_group: "{{az_name}}"
+          resource_group: "{{az_rgname}}"
           name: "{{az_name}}{{'_net1'}}"
           address_prefixes_cidr:
             - "10.10.10.0/24"

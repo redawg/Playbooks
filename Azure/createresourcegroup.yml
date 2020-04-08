@@ -4,7 +4,7 @@
     connection: local
     gather_facts: no
     vars:
-       az_name: ''
+       az_rgname: ''
        location: ''
        customer: ''
        AZURE_CLIENT_ID: ''
@@ -14,7 +14,7 @@
     tasks:
       - name: Create a resource group {{az_name}}
         azure_rm_resourcegroup:
-          name: "{{az_name}}"
+          name: "{{az_rgname}}"
           location: "{{location}}"
           tags:
             created: ansbile
