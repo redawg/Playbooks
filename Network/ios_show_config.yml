@@ -5,12 +5,13 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
+    command: ''
   tasks:
 
   - name: Backup the config
     ios_command:
       commands:
-        - show running-config
+        - {{command}}
     register: config_output
 
   - debug:
