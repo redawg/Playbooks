@@ -16,7 +16,9 @@
         azure_rm_virtrualnetwork:
           resource_group: "{{az_name}}"
           name: "{{az_name}}{{'_net1'}}"
-          location: "{{location}}"
+          address_prefixes_cidr:
+            - "10.10.10.0/24"
+            - "10.10.100.0/24"
           tags:
             created: ansbile
             delete: never
