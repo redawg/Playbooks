@@ -1,0 +1,20 @@
+---
+- name: Configure NTP
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    server: ''
+    source: ''
+    logging: ''
+    state: ''
+
+  tasks:
+    - name: Checking NTP configuration
+      ios_ntp:
+        server: {{server}}
+        source: {{source}}
+        logging: {{logging}}
+        state: {{state}}
+      

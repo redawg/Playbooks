@@ -1,5 +1,5 @@
 ---
-- name: Show Running Configs
+- name: Run CLI Command
   hosts: all
   gather_facts: False
   vars:
