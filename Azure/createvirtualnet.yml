@@ -11,7 +11,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-      - name: Creating Virtual Network {{az_rgname}}
+      - name: Creating Virtual Network {{az_rgname}}_net1
         azure_rm_virtualnetwork:
           resource_group: "{{az_rgname}}"
           name: "{{az_rgname}}{{'_net1'}}"
