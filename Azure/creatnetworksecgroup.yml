@@ -5,7 +5,7 @@
     gather_facts: no
     vars:
        az_rgname: ''
-       customer: ''
+       az_secgroup: "{{az_rgname}}"
        networkcidr: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
@@ -15,7 +15,7 @@
        - name: Create Network Security Group that allows SSH
          azure_rm_securitygroup:
             resource_group: "{{az_rgname}}"
-            name: "{{az_rgname}}{{'SecGrp'}}"
+            name: "{{az_secgroup}}{{'SecGrp'}}"
             rules:
               - name: SSH
                 protocol: Tcp
