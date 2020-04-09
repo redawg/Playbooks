@@ -71,7 +71,7 @@
              offer: rhel-byos
              publisher: RedHat
              sku: 'rhel-lvm77'
-             version: latest
+             version: 7.7.20190819
            network_interfaces: "{{az_vmname}}{{'nic'}}"
 
            tags:
