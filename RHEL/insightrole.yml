@@ -4,7 +4,7 @@
   tasks:
     - include_role:
         name: redhatinsights.insights-client
-        tags: ['insights']
+      tags: ['insights']
       when:
         - ansible_os_family == "RedHat"
         - ansible_distribution_major_version > "5"
