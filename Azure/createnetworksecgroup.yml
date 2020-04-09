@@ -5,7 +5,7 @@
     gather_facts: no
     vars:
        az_rgname: ''
-       az_secgroup: "{{az_rgname}}"
+       az_secgroup: ''
        networkcidr: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''

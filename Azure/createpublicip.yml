@@ -1,10 +1,25 @@
 ---
-  -  name: Creating Public Static IP for Subnet {{subnetname}}
-     azure_rm_publicipaddress:
-       resource_group: "{{az_rgname}}"
-       name: "{{az_rgname}}{{'PublicIP'}}"
-       allocation_method: static
-       tags:
-         created: ansbile
-         delete: never
-         demo: "{{customer}}"
+  ---
+    - name: Create Azure Virtual Network
+      hosts: localhost
+      connection: local
+      gather_facts: no
+      vars:
+         az_rgname: ''
+         az_vmname: ''
+         customer: ''
+         networkcidr: ''
+         AZURE_CLIENT_ID: ''
+         AZURE_SECRET: ''
+         AZURE_SUBSCRIPTION_ID: ''
+         AZURE_TENANT: ''
+      tasks:
+        -  name: Creating Public Static IP for Subnet {{subnetname}}
+           azure_rm_publicipaddress:
+             resource_group: "{{az_rgname}}"
+             name: "{{az_vmname}}{{'PublicIP'}}"
+             allocation_method: static
+             tags:
+               created: ansbile
+               delete: never
+               demo: "{{customer}}"
