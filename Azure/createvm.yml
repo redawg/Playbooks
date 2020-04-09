@@ -31,7 +31,7 @@
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
-           vm_size: Standard_
+           vm_size: Basic A1
            admin_username: "{{az_vmusername}}"
            admin_password: "{{az_vmpassword}}"
            image:
