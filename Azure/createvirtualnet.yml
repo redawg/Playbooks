@@ -12,7 +12,7 @@
        AZURE_TENANT: ''
     tasks:
       - name: Creating Virtual Network {{az_rgname}}
-        azure_rm_virturalnetwork:
+        azure_rm_virtualnetwork:
           resource_group: "{{az_rgname}}"
           name: "{{az_rgname}}{{'_net1'}}"
           address_prefixes_cidr:
