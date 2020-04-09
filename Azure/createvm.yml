@@ -7,7 +7,7 @@
        az_rgname: ''
        az_vmname: ''
        az_vmusername: ''
-       az_vmpassword: ''
+       az_vmsshpublickey: ''
        customer: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
@@ -38,7 +38,9 @@
            name: "{{az_vmname}}"
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
-           admin_password: "{{az_vmpassword}}"
+           ssh_public_keys:
+              - path: "{{'/home/'}}{{az_vmusrename}}{{'/.ssh/authorized_keys'}}"
+              key_data: "{{az_sshpublickey}}"
            image:
              offer: rhel-byos
              publisher: RedHat
