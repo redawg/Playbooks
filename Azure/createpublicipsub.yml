@@ -4,8 +4,8 @@
        resource_group: "{{az_rgname}}"
        name: "{{az_vmname}}{{'PublicIP'}}"
        allocation_method: static
-         tags:
-           created: ansbile
-           delete: never
-           demo: "{{customer}}"
-           use: SubnetIP
+       tags:
+         created: ansbile
+         delete: never
+         demo: "{{customer}}"
+         use: SubnetIP
