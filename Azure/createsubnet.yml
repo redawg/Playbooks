@@ -5,6 +5,6 @@
       name: "{{az_rgname}}{{'_net1'}}"
       address_prefix_cidr: "10.10.10.0/25"
       virtual_network_name: "{{az_rgname}}"
-  - include: createpubliip.yml
+  - include: createpublicip.yml
     vars:
       subnetname: "{{az_rgname}}{{'_net1'}}"
