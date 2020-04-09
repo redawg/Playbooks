@@ -14,9 +14,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       - include: createnetowrksecgroup.yml
-         vars:
-           az_rgname: "{{az_secgroup}}"
+       - include: createvmsecgroup.yml
 
 
        - name: Creating Vnic for {{az_vmame}}
