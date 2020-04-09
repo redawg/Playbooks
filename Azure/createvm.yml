@@ -67,6 +67,7 @@
            ssh_public_keys:
               - path: "{{'/home/'}}{{az_vmusername}}{{'/.ssh/authorized_keys'}}"
                 key_data: "{{sshpubkey}}"
+           os_type: Linux
            image:
              offer: rhel-byos
              publisher: RedHat
