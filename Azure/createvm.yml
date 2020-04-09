@@ -27,7 +27,7 @@
            security_group: "{{az_vmname}}{{'SecGrp'}}"
 
 
-       - name: Creating Virtual Machine {{az_vmname} in {{az_rgname}}_net1
+       - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
