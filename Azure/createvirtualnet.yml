@@ -6,6 +6,7 @@
     vars:
        az_rgname: ''
        customer: ''
+       networkcidr: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
