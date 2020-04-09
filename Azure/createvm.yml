@@ -17,10 +17,10 @@
        - include: createvmsecgroup.yml
 
 
-       - name: Creating Vnic for {{az_vmame}}
+       - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
            resource_group: "{{az_rgname}}"
-           name: "{{az_vname}}{{'nic'}}"
+           name: "{{az_vmname}}{{'nic'}}"
            virtual_network: "{{az_rgname}}"
            subnet: "{{az_rgname}}{{'_net1'}}"
            public_ip_name: "{{az_vmname}}{{'PublicIP'}}"
