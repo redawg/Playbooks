@@ -1,8 +1,9 @@
 ---
 - name: Assigning Insight Role to Servers
+  hosts: all
   roles:
   -  role: RedHatInsights.insights-client
      tags: ['insights']
-     when: 
+     when:
        - ansible_os_family == "RedHat"
        - ansible_distribution_major_version > "5"
