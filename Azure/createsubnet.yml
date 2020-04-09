@@ -5,7 +5,4 @@
        name: "{{az_rgname}}{{'_net1'}}"
        address_prefix_cidr: "10.10.10.0/25"
        virtual_network_name: "{{az_rgname}}"
-       tags:
-         created: ansbile
-         delete: never
-         demo: "{{customer}}"
+    
