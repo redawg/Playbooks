@@ -20,6 +20,6 @@
               - name: SSH
                 protocol: Tcp
                 destination_port_range: 22
-                Access: Allow
+                access: Allow
                 priority: 1001
                 direction: Inbound
