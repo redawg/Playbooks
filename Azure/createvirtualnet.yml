@@ -24,6 +24,4 @@
               delete: never
               demo: "{{customer}}"
       - include: createsubnet.yml
-          vars:
-            az_rgname: "az_rgname"
-            customer: "customer"
+        
