@@ -1,0 +1,28 @@
+---
+  - name: Create Azure Virtual Machine
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
+    tasks:
+       - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
+         azure_rm_virtualmachine:
+           resource_group: "Customer1"
+           name: "test"
+           vm_size: Basic_A1
+           admin_username: "{{az_vmusername}}"
+           admin_password: holyshitdidthiswork
+           ssh_password_enabled: yes
+           image:
+             offer: rhel-byos
+             publisher: RedHat
+             sku: 'rhel-lvm77'
+             version: 7.7.20190819
+           tags:
+             created: ansbile
+             delete: never
+             demo: "{{customer}}"
