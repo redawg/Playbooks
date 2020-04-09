@@ -10,3 +10,8 @@
           access: Allow
           priority: 1001
           direction: Inbound
+      tags:
+          created: ansbile
+          delete: never
+          demo: "{{customer}}"
+          use: Demo

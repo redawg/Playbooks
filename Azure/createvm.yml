@@ -64,6 +64,7 @@
            name: "{{az_vmname}}"
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
+           storage_account_name: "{{az_vmname}}"
            ssh_public_keys:
               - path: "{{'/home/'}}{{az_vmusername}}{{'/.ssh/authorized_keys'}}"
                 key_data: "{{sshpubkey}}"
