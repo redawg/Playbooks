@@ -1,0 +1,10 @@
+---
+  - name: Adding Subnet to Network {{az_rgname}}
+      azure_rm_subnet:
+        resource_group: "{{az_rgname}}"
+        address_prefixe: "10.10.10.0/25"
+        virtual_network: "{{az_rgname}}{{'_net1'}}"
+        tags:
+            created: ansbile
+            delete: never
+            demo: "{{customer}}"
