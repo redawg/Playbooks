@@ -65,7 +65,7 @@
            admin_username: "{{az_vmusername}}"
            ssh_public_keys:
               - path: "{{'/home/'}}{{az_vmusrename}}{{'/.ssh/authorized_keys'}}"
-              key_data: "{{sshpubkey}}"
+                key_data: "{{sshpubkey}}"
            image:
              offer: rhel-byos
              publisher: RedHat
