@@ -46,7 +46,7 @@
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
            resource_group: "{{az_rgname}}"
-           name: "{{az_vmname}}{{'nic'}}"
+           name: "{{az_vmname}}{{'_nic'}}"
            virtual_network: "{{az_rgname}}"
            subnet: "{{az_rgname}}{{'_net1'}}"
            public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
@@ -64,6 +64,7 @@
            name: "{{az_vmname}}"
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
+           os_type: Linux
            ssh_public_keys:
               - path: "{{'/home/'}}{{az_vmusername}}{{'/.ssh/authorized_keys'}}"
                 key_data: "{{sshpubkey}}"
