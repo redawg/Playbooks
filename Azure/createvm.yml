@@ -39,6 +39,7 @@
              publisher: RedHat
              sku: 'rhel-lvm77'
              version: latest
+           network_interfaces: "{{az_vmname}}{{'nic'}}"
 
            tags:
              created: ansbile
