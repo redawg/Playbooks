@@ -15,7 +15,7 @@
        AZURE_TENANT: ''
     tasks:
        - include: createvmsecgroup.yml
-
+       #- include: createpublicip.yml
 
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
@@ -23,8 +23,13 @@
            name: "{{az_vmname}}{{'nic'}}"
            virtual_network: "{{az_rgname}}"
            subnet: "{{az_rgname}}{{'_net1'}}"
-           public_ip_name: "{{az_vmname}}{{'PublicIP'}}"
-           security_group: "{{az_vmname}}{{'SecGrp'}}"
+           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
+           security_group: "{{az_vmname}}{{'_SecGrp'}}"
+           tags:
+             created: ansbile
+             delete: never
+             demo: "{{customer}}"
+             use: Vnic for Demo
 
 
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
