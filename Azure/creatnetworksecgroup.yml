@@ -1,0 +1,25 @@
+---
+  -  name: Creating Network Security Group
+     hosts: localhost
+     connection: local
+     gather_facts: no
+     vars:
+       az_rgname: ''
+       customer: ''
+       networkcidr: ''
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
+     tasks:
+       - name: Create Network Security Group that allows SSH
+           azure_rm_securitygroup:
+           resource_group: "{{az_rgname}}"
+           name: "{{az_rgname}}{{'SecGrp'}}"
+           rules:
+             - name: SSH
+               protocol: Tcp
+               destination_port_range: 22
+               access: Allow
+               priority: 1001
+               direction: Inbound
