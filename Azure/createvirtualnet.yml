@@ -1,9 +1,9 @@
 ---
-  -  name: Create Azure Virtual Network
-     hosts: localhost
-     connection: local
-     gather_facts: no
-     vars:
+  - name: Create Azure Virtual Network
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
        az_rgname: ''
        customer: ''
        networkcidr: ''
@@ -11,8 +11,8 @@
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
-     tasks:
-        - name: Creating Virtual Network {{az_rgname}}
+    tasks:
+      - name: Creating Virtual Network {{az_rgname}}
           azure_rm_virtualnetwork:
             resource_group: "{{az_rgname}}"
             name: "{{az_rgname}}"
