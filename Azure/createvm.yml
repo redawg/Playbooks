@@ -11,16 +11,14 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-      - name: Creating Virtual Network {{az_rgname}}
+      - name: Creating Virtual Network {{az_rgname}}_net1
         azure_rm_virtualnetwork:
           resource_group: "{{az_rgname}}"
-          name: "{{az_rgname}}"
+          name: "{{az_rgname}}{{'_net1'}}"
           address_prefixes_cidr:
-              - "10.10.10.0/16"
-              - "10.10.100.0/16"
+              - "10.10.10.0/24"
+              - "10.10.100.0/24"
           tags:
               created: ansbile
               delete: never
               demo: "{{customer}}"
-      - include: createsubnet.yml
-            
