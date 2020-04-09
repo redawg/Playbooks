@@ -1,0 +1,7 @@
+---
+  -  name: Creating Public Static IP for Subnet {{subnetname}}
+     azure_rm_publicipaddress:
+       resource_group: "{{az_rgname}}"
+       name: "{{az_rgname}}{{'PublicIP'}}"
+       allocation_method: static
+       domain_name: "customer"
