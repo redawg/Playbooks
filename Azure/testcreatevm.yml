@@ -24,3 +24,7 @@
              publisher: RedHat
              sku: 'rhel-lvm77'
              version: latest
+           plan:
+             name: RedHat Employee
+             product: rhel-byos
+             publisher: RedHat
