@@ -11,8 +11,8 @@
     tasks:
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
-           resource_group: "Customer1"
-           name: "test"
+           resource_group: Customer1
+           name: test
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
            admin_password: holyshitdidthiswork
