@@ -15,6 +15,10 @@
            name: test
            vm_size: Basic_A1
            admin_username: reddawg
+           ssh_password_enabled: false
+           ssh_public_keys:
+             - path: /home/azureuser/.ssh/authorized_keys
+               key_data: <ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkO86PY4536QRXkOWeTbT+ljQG63lgoewETmsKJAJGPxsO7CeNcmdoFITjcWzH2FKdO/evpYEN4oHj+AhxHNhhk6naCc02Qa0lGNAzfa0aNsUatRrEIzVEsmqeGqPbC/zG6s3vi/vQY2L8YttG9c0Etzc2DXE29qF30XYCXtQwiDx5ANGe9apZT3XG8pEybxlbMRfs73qGSjWjL0Et7K+rl2RalBNI1zAwLGKH4tCKCogYytOcEfRNIAXaxHZNSre6n6hvOTmnnpiqHIIuo1afhgv6Glxa95dGUdNMq0+UAcrHRlyQUyNn4aiSnvWOU4nACzx/BlJTRxaGc7KI6Rkqw== REDDAWG-SSH-KEY>
            image:
              offer: Centos
              publisher: OpenLogic
