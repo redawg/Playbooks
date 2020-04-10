@@ -9,7 +9,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
+       - name: Creating Virtual Machine 
          azure_rm_virtualmachine:
            resource_group: Customer1
            name: test
@@ -22,6 +22,3 @@
              publisher: OpenLogic
              sku: '7.5'
              version: latest
-           tags:
-             created: ansbile
-             delete: never
