@@ -14,7 +14,7 @@
            resource_group: Customer1
            name: test
            vm_size: Basic_A1
-           admin_username: redawg
+           admin_username: reddawg
            image:
              offer: Centos
              publisher: OpenLogic
