@@ -16,13 +16,12 @@
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
            admin_password: holyshitdidthiswork
-           ssh_password_enabled: yes
+           ssh_password_enabled: true
            image:
-             offer: rhel-byos
-             publisher: RedHat
-             sku: 'rhel-lvm77'
-             version: 7.7.20190819
+             offer: Centos
+             publisher: OpenLogic
+             sku: '7.5'
+             version: latest
            tags:
              created: ansbile
              delete: never
-             
