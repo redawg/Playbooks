@@ -14,7 +14,7 @@
            resource_group: Customer1
            name: test
            vm_size: Basic_A1
-           admin_username: "{{az_vmusername}}"
+           admin_username: redawg
            admin_password: holyshitdidthiswork
            ssh_password_enabled: true
            image:
