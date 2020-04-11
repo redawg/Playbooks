@@ -10,7 +10,6 @@
        customer: ''
        sshpubkey: ''
        publiciptype: ''
-       loop: {{az_vmname}}
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
@@ -41,3 +40,4 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
+           loop: {{az_vmname}}
