@@ -13,7 +13,7 @@
       - name: Creating Peering from Ansible node to {{az_rgname}} Network
         azure_rm_virtualnetworkpeering:
           resource_group: ansbileservers
-          virtual_network: ansbileservers-vnet
+          virtual_network: ansbileservers
           name: "{{'ansiblevnet_to_'}}{{az_rgname}}"
           remote_virtual_network:
             resource_group: "{{az_rgname}}"
