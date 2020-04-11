@@ -12,8 +12,8 @@
     tasks:
       - name: Creating Peering from Ansible node to {{az_rgname}} Network
         azure_rm_virtualnetworkpeering:
-          resource_group: ansbile_workspace
-          virtual_network: ansbile_workspace-vnet
+          resource_group: ansbileservers
+          virtual_network: ansbileservers-vnet
           name: "{{'ansiblevnet_to_'}}{{az_rgname}}"
           remote_virtual_network:
             resource_group: "{{az_rgname}}"
@@ -27,7 +27,7 @@
           virtual_network: "{{az_rgname}}"
           name: "{{az_rgname}}{{'_to_ansiblevnet'}}"
           remote_virtual_network:
-            resource_group: ansbile_workspace
-            name: ansbile_workspace-vnet
+            resource_group: ansibleservers
+            name: ansibleservers
           allow_virtual_network_access: true
           allow_forwarded_traffic: true
