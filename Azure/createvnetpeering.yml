@@ -11,12 +11,12 @@
        AZURE_TENANT: ''
     tasks:
       - name: Creating Peering between VNets
-      azure_rm_virtualnetworkpeering:
-        resource_group: ansible_workspace
-        virtual_network: ansible_workspace-vnet
-        name: "{{'ansiblevnet_to_'}}{{az_rgame}}"
-      remote_virtual_network:
-        resource_group: "{{az_rgname}}"
-        name: "{{az_rgame}}"
-      allow_virtual_network_access: true
-      allow_forwarded_traffic: true
+        azure_rm_virtualnetworkpeering:
+          resource_group: ansible_workspace
+          virtual_network: ansible_workspace-vnet
+          name: "{{'ansiblevnet_to_'}}{{az_rgame}}"
+          remote_virtual_network:
+            resource_group: "{{az_rgname}}"
+            name: "{{az_rgame}}"
+          allow_virtual_network_access: true
+          allow_forwarded_traffic: true
