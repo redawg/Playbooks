@@ -40,21 +40,21 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       - include: createvmsecgroup.yml
-       #- include: createpublicip.yml
-       - name: Creating Vnic for {{az_vmname}}
-         azure_rm_networkinterface:
-           resource_group: "{{az_rgname}}"
-           name: "{{az_vmname}}{{'_nic'}}"
-           virtual_network: "{{az_rgname}}"
-           subnet: "{{az_rgname}}{{'_net1'}}"
-           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
-           security_group: "{{az_vmname}}{{'_SecGrp'}}"
-           tags:
-             created: ansbile
-             delete: never
-             demo: "{{customer}}"
-             use: Demo
+#       - include: createvmsecgroup.yml
+#       - include: createpublicip.yml
+#       - name: Creating Vnic for {{az_vmname}}
+#         azure_rm_networkinterface:
+#           resource_group: "{{az_rgname}}"
+#           name: "{{az_vmname}}{{'_nic'}}"
+#           virtual_network: "{{az_rgname}}"
+#           subnet: "{{az_rgname}}{{'_net1'}}"
+#           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
+#           security_group: "{{az_vmname}}{{'_SecGrp'}}"
+#           tags:
+#             created: ansbile
+#             delete: never
+#             demo: "{{customer}}"
+#             use: Demo
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
