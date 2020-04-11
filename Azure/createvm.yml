@@ -42,7 +42,6 @@
     tasks:
        - include: createvmsecgroup.yml
        #- include: createpublicip.yml
-
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
            resource_group: "{{az_rgname}}"
@@ -56,8 +55,6 @@
              delete: never
              demo: "{{customer}}"
              use: Demo
-
-
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
@@ -77,9 +74,3 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
-           network_interfaces: "{{az_vmname}}{{'_nic'}}"
-           tags:
-             created: ansbile
-             delete: never
-             demo: "{{customer}}"
-             use: Demo
