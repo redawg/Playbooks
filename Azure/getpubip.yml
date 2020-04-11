@@ -1,7 +1,7 @@
 ---
       - name: Retrieving Public IP address
         azure_rm_publicipaddress:
-          resource_group: ansbile_workspace
+          resource_group: "{{az_rgname}}"
           name: "{{publicip}}"
         register: output_public_ip_address
       - name: Display Public IP
