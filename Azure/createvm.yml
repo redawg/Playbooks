@@ -13,6 +13,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
+<<<<<<< HEAD
        - include: createvmsecgroup.yml
        - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
@@ -28,12 +29,29 @@
              delete: never
              demo: "{{customer}}"
              use: Demo
+=======
+#       - include: createvmsecgroup.yml
+#       - include: createpublicip.yml
+#       - name: Creating Vnic for {{az_vmname}}
+#         azure_rm_networkinterface:
+#           resource_group: "{{az_rgname}}"
+#           name: "{{az_vmname}}{{'_nic'}}"
+#           virtual_network: "{{az_rgname}}"
+#           subnet: "{{az_rgname}}{{'_net1'}}"
+#           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
+#           security_group: "{{az_vmname}}{{'_SecGrp'}}"
+#           tags:
+#             created: ansbile
+#             delete: never
+#             demo: "{{customer}}"
+#             use: Demo
+>>>>>>> 77e1693671e95d87e7d2ba96009633a97a662eb9
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
            vm_size: Basic_A1
-           admin_username: "{{az_vmusername}}"
+           admin_username: reddawg
            ssh_password_enabled: false
            ssh_public_keys:
              - path: '/home/reddawg/.ssh/authorized_keys'
