@@ -77,7 +77,7 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
-           network_interfaces: "{{az_vmname}}{{'nic'}}"
+           network_interfaces: "{{az_vmname}}{{'_nic'}}"
            tags:
              created: ansbile
              delete: never
