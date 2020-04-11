@@ -1,5 +1,5 @@
 ---
-  - name: Creating Vnic for {{az_vmname}} with a Public IP
+  - name: Creating Vnic for {{az_vmname}} without a Public IP
     azure_rm_networkinterface:
       resource_group: "{{az_rgname}}"
       name: "{{az_vmname}}{{'_nic'}}"
