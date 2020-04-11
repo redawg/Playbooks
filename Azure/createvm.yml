@@ -9,7 +9,6 @@
        az_vmusername: ''
        customer: ''
        sshpubkey: ''
-       publicipwanted: ''
        publiciptype: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
