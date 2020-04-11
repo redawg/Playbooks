@@ -14,11 +14,7 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       - name: Show SSHKEY
-         debug:
-           msg: "{{sshpubkey}}"
        - include: createvmsecgroup.yml
-#       - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
            resource_group: "{{az_rgname}}"
