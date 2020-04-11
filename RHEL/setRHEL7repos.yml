@@ -5,9 +5,9 @@
   vars:
 
   tasks:
-    - name: Disable htb repo
-      yum:
-        disablerepo: "*"
-    - name: Enable Repos
-      yum:
-         enablerepo: "rhel-7-server-extras-rpms,rhel-7-server-rpms,rhel-server-rhscl-7-rpms,rhel-7-server-ansible-2.9-rpms,rhel-7-server-ansible-2-rpms"
+    - name: Disable all repo
+      yum_repository:
+        name: *
+        state: absent
+      notify: yum-clean-metadata
+      
