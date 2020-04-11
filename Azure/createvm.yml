@@ -41,6 +41,4 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
-       - include: getpubip.yml
-         vars:
-           publicip: "{{az_vmname}}{{'_PublicIP'}}"
+      

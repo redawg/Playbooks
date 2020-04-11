@@ -16,3 +16,6 @@
         delete: never
         demo: "{{customer}}"
         use: Demo
+   - include: getpubip.yml
+       vars:
+         publicip: "{{az_vmname}}{{'_PublicIP'}}"
