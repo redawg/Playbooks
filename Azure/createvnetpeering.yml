@@ -1,15 +1,15 @@
 ---
-  - name: Create Vnet Peering between Ansilbe Instance and {{az_rgname}} Vnet
-    hosts: localhost
-    connection: local
-    gather_facts: no
-    vars:
+  -  name: Create Vnet Peering between Ansilbe Instance and {{az_rgname}} Vnet
+     hosts: localhost
+     connection: local
+     gather_facts: no
+     vars:
        az_rgname: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
-    tasks:
+     tasks:
       azure_rm_virtualnetworkpeering:
            resource_group: ansible_workspace
            virtual_network: ansible_workspace-vnet
