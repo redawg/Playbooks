@@ -14,7 +14,7 @@
        AZURE_TENANT: ''
     tasks:
        - include: createvmsecgroup.yml
-       - include: createpublicip.yml
+#       - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
            resource_group: "{{az_rgname}}"
