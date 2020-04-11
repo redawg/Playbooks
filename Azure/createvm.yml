@@ -10,6 +10,7 @@
        customer: ''
        sshpubkey: ''
        publiciptype: ''
+       loop: {{az_vmname}}
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
