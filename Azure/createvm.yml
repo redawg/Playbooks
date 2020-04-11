@@ -21,7 +21,10 @@
            name: "{{az_vmname}}{{'_nic'}}"
            virtual_network: "{{az_rgname}}"
            subnet: "{{az_rgname}}{{'_net1'}}"
-           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
+           ip_configurations:
+             - name: "{{az_vmname}}{{'_int'}}"
+               public_ip_address_name: "{{az_vmname}}{{'_PublicIP'}}"
+               primary: yes
            security_group: "{{az_vmname}}{{'_SecGrp'}}"
            tags:
              created: ansbile
