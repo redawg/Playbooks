@@ -1,5 +1,5 @@
 ---
-  -  name: Creating Public Static IP for Subnet {{subnetname}}
+  -  name: Creating Public Static IP for Virtual Machince {{az_vmname}}
      azure_rm_publicipaddress:
        resource_group: "{{az_rgname}}"
        name: "{{az_vmname}}{{'_PublicIP'}}"

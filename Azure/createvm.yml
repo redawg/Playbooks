@@ -7,73 +7,36 @@
        az_rgname: ''
        az_vmname: ''
        az_vmusername: ''
-       sshpubkey: !vault |
-           $ANSIBLE_VAULT;1.1;AES256
-           32356262616165353361666538316332386435386432373766663132363366653036633336646631
-           3533396462363265353637643230636632646566333865370a663332383264613033643731343563
-           38303631366561313066316331303131383238633966343132663536323663333863326132633737
-           6139663232633465370a653530636563346435346662303638376534306464643930313930643166
-           66393639613439396564343538353537363863316630303165366463336336303466636332623131
-           35303032376666363634396562663433343832643338323435663932353239666232333435626135
-           30663736303766376137383165346332303138353233623538356265303634653636653434316530
-           62366138306232623534656337313238356264616339373937656265333364636661623534646365
-           39373238656334666661306233613539333663656332313230363266343164323232636565323835
-           65653235653861386265633837366537313431646232383066366262313939613765646138333466
-           66653335383465383365353739653165393235646439313065333966663237656536313665663334
-           37306231643466356532656333626261643365353238323833666461613330326661653632316266
-           66313837313835633635373336383763616133373862363964643564623831666362343731643365
-           33303064616363303066316530313831393733353739393162336562363235383734383638323032
-           63656563346636646130623661343336643162396233303037336533343737623435376134306132
-           37313537643337613036363335656634386639386538383764383634313534623231343936376563
-           39366363316466626630383036346130393065336434646537346437313266356632623932346232
-           39353061346438626533373731366666383063343437663961346664666331626135656563643736
-           65396536653435613639643538646439643430623139643166613736633230653961393362393161
-           37383138336337306237653232373564656566346332626537333364343363383833663838313964
-           38663363666462626562353437333031333831666137643037376661656333343664633233346662
-           39313963343431383033646530353663653430323266643063666132363939333662336263313166
-           35313434353837326538623436666339633365623130633238396233396461666538356563313536
-           34616237373033383037
-
        customer: ''
+       sshpubkey: ''
+       publiciptype: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
        - include: createvmsecgroup.yml
-       #- include: createpublicip.yml
-
-       - name: Creating Vnic for {{az_vmname}}
-         azure_rm_networkinterface:
-           resource_group: "{{az_rgname}}"
-           name: "{{az_vmname}}{{'_nic'}}"
-           virtual_network: "{{az_rgname}}"
-           subnet: "{{az_rgname}}{{'_net1'}}"
-           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
-           security_group: "{{az_vmname}}{{'_SecGrp'}}"
-           tags:
-             created: ansbile
-             delete: never
-             demo: "{{customer}}"
-             use: Demo
-
-
+       - include: createvnicwithpublic.yml
+         when: publicipwanted is defined
+       - include: createvnicnopublic.yml
+         when: publicipwanted is undefined
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
+           ssh_password_enabled: false
            ssh_public_keys:
-              - path: "{{'/home/'}}{{az_vmusername}}{{'/.ssh/authorized_keys'}}"
-                key_data: "{{sshpubkey}}"
+             - path: "{{'/home/'}}{{az_vmusername}}{{'/.ssh/authorized_keys'}}"
+               key_data: "{{sshpubkey}}"
+           network_interfaces: "{{az_vmname}}{{'_nic'}}"
            image:
              offer: rhel-byos
              publisher: RedHat
              sku: 'rhel-lvm77'
-             version: 7.7.20190819
-           network_interfaces: "{{az_vmname}}{{'nic'}}"
-           tags:
-             created: ansbile
-             delete: never
-             demo: "{{customer}}"
+             version: latest
+           plan:
+             name: rhel-lvm77
+             product: rhel-byos
+             publisher: redhat
