@@ -5,8 +5,8 @@
   vars:
 
   tasks:
-    - name: Disable all repo
+    - name: Disable rhel-7-server-htb-rpms repo
       yum_repository:
-        name: rhel-7-server-htb-rpms
+        name: rhel-7-server-htb-rpms/x86_64
         state: absent
       notify: yum-clean-metadata
