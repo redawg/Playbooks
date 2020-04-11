@@ -9,20 +9,12 @@
        az_vmusername: ''
        customer: ''
        sshpubkey: ''
-       publicip: ''
+       publiciptype: ''
        AZURE_CLIENT_ID: ''
        AZURE_SECRET: ''
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       - name: Check if we need to create Public IP for Server
-         vars:
-           publicipname: "{{az_vmname}}{{'_PublicIP'}}"
-         when: {{publicip}} is yes
-       - name:
-         debug:
-           msg: "{{publicipname}}"
-
        - include: createvmsecgroup.yml
        - name: Creating Vnic for {{az_vmname}}
          azure_rm_networkinterface:
@@ -32,8 +24,10 @@
            subnet: "{{az_rgname}}{{'_net1'}}"
            ip_configurations:
              - name: "{{az_vmname}}{{'_int'}}"
-               public_ip_address_name: {{publicipname}}
+               public_ip_address_name:  "{{az_vmname}}{{'_PublicIP'}}"
+               public_ip_allocation_method: "{{publiciptype}}"
                primary: yes
+
            security_group: "{{az_vmname}}{{'_SecGrp'}}"
            tags:
              created: ansbile
