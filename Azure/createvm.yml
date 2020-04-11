@@ -40,7 +40,7 @@
        AZURE_TENANT: ''
     tasks:
        - name: Show SSHKEY
-         Debug:
+         debug:
            msg: "{{subpubkey}}"
        - include: createvmsecgroup.yml
 #       - include: createpublicip.yml
