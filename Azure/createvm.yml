@@ -19,6 +19,8 @@
        - include: createvmsecgroup.yml
        - include: createvnicwithpublic.yml
          when: publicip is defined
+       - include: createvnicnopublic.ymnl
+         when: publicip is undefined
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
