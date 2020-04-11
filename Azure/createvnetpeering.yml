@@ -20,6 +20,7 @@
             name: "{{az_rgname}}"
           allow_virtual_network_access: true
           allow_forwarded_traffic: true
+      - name: Creating Peering from {{az_rgname}} Network to Ansible node
         azure_rm_virtualnetworkpeering:
           resource_group: "{{az_rgname}}"
           virtual_network: "{{az_rgname}}"
@@ -29,5 +30,4 @@
             name: ansbile_workspace-vnet
           allow_virtual_network_access: true
           allow_forwarded_traffic: true
-        debug:
-          msg: You should be able to ping now!!!!
+      
