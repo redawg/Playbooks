@@ -33,7 +33,7 @@
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
            vm_size: Basic_A1
-           admin_username: reddawg
+           admin_username: "{{az_username}}"
            ssh_password_enabled: false
            ssh_public_keys:
              - path: '/home/reddawg/.ssh/authorized_keys'
@@ -48,3 +48,6 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
+       - include: getpubip.yml
+           vars:
+             publicip: "{{az_vmname}}{{'_PublicIP'}}"
