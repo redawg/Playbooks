@@ -40,4 +40,4 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
-         loop: "{{az_vmname}}"  
+      
