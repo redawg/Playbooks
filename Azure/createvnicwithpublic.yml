@@ -1,0 +1,18 @@
+---
+  - name: Creating Vnic for {{az_vmname}}
+    azure_rm_networkinterface:
+      resource_group: "{{az_rgname}}"
+      name: "{{az_vmname}}{{'_nic'}}"
+      virtual_network: "{{az_rgname}}"
+      subnet: "{{az_rgname}}{{'_net1'}}"
+      ip_configurations:
+        - name: "{{az_vmname}}{{'_int'}}"
+          public_ip_address_name:  "{{az_vmname}}{{'_PublicIP'}}"
+          public_ip_allocation_method: "{{publiciptype}}"
+          primary: yes
+      security_group: "{{az_vmname}}{{'_SecGrp'}}"
+      tags:
+        created: ansbile
+        delete: never
+        demo: "{{customer}}"
+        use: Demo
