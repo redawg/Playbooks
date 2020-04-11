@@ -39,8 +39,9 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-       Debug:
-         msg: "{{subpubkey}}"
+       - name: Show SSHKEY
+         Debug:
+           msg: "{{subpubkey}}"
        - include: createvmsecgroup.yml
 #       - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
