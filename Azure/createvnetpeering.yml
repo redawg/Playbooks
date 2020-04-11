@@ -1,5 +1,5 @@
 ---
-  - name: Create Azure Virtual Machine
+  - name: Create Vnet Peering between Ansilbe Instance and {{az_rgname}} Vnet
     hosts: localhost
     connection: local
     gather_facts: no
