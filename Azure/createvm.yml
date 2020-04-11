@@ -41,7 +41,7 @@
     tasks:
        - name: Show SSHKEY
          debug:
-           msg: "{{subpubkey}}"
+           msg: "{{az_rgname}}"
        - include: createvmsecgroup.yml
 #       - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
