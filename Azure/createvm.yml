@@ -49,5 +49,5 @@
              product: rhel-byos
              publisher: redhat
        - include: getpubip.yml
-           vars:
-             publicip: "{{az_vmname}}{{'_PublicIP'}}"
+         vars:
+           publicip: "{{az_vmname}}{{'_PublicIP'}}"
