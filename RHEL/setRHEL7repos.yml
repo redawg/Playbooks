@@ -7,7 +7,6 @@
   tasks:
     - name: Disable all repo
       yum_repository:
-        name: *
+        name: htb
         state: absent
       notify: yum-clean-metadata
-      
