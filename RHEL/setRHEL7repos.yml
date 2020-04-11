@@ -5,7 +5,7 @@
   vars:
 
   tasks:
-    - name: Disable all Repos
+    - name: Disable rhel-7-server-htb-rpms Repos
       rhsm_repository:
-        name: '*'
+        name: rhel-7-server-htb-rpms
         state: disabled
