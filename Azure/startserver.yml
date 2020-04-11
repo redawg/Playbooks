@@ -5,10 +5,7 @@
     gather_facts: no
     vars:
         az_server: ''
-<<<<<<< HEAD:Azure/startserver.yml
         az_rgname: ''
-=======
->>>>>>> 612bcccb83a7cd11b023c33b63b278042b93a0f5:Azure/jumpup.yml
         AZURE_CLIENT_ID: ''
         AZURE_SECRET: ''
         AZURE_SUBSCRIPTION_ID: ''
