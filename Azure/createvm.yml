@@ -24,7 +24,7 @@
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
-           loop: "{{az_vmname}}"    
+         loop: "{{az_vmname}}"
            vm_size: Basic_A1
            admin_username: "{{az_vmusername}}"
            ssh_password_enabled: false
