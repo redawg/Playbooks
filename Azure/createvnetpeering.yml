@@ -17,6 +17,6 @@
           name: "{{'ansiblevnet_to_'}}{{az_rgame}}"
           remote_virtual_network:
             resource_group: "{{az_rgname}}"
-            name: "{{az_rgame}}"
+            name: "{{az_rgname}}"
           allow_virtual_network_access: true
           allow_forwarded_traffic: true
