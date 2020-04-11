@@ -5,7 +5,7 @@
     gather_facts: no
     vars:
         az_server: ''
-        azure:
+        az_rgname: ''
         AZURE_CLIENT_ID: ''
         AZURE_SECRET: ''
         AZURE_SUBSCRIPTION_ID: ''
@@ -13,7 +13,7 @@
     tasks:
       - name: Start Azure Server {{az_server}}
         azure_rm_virtualmachine:
-          resource_group: ansbile_workspace
+          resource_group: "{{az_rgname}}"
           name: "{{az_server}}"
           allocated: yes
       - include: getpubip.yml
