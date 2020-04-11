@@ -7,6 +7,6 @@
   tasks:
     - name: Disable all repo
       yum_repository:
-        name: htb
+        name: rhel-7-server-htb-rpms
         state: absent
       notify: yum-clean-metadata
