@@ -13,7 +13,6 @@
        AZURE_SUBSCRIPTION_ID: ''
        AZURE_TENANT: ''
     tasks:
-<<<<<<< HEAD
        - include: createvmsecgroup.yml
        - include: createpublicip.yml
        - name: Creating Vnic for {{az_vmname}}
@@ -29,23 +28,6 @@
              delete: never
              demo: "{{customer}}"
              use: Demo
-=======
-#       - include: createvmsecgroup.yml
-#       - include: createpublicip.yml
-#       - name: Creating Vnic for {{az_vmname}}
-#         azure_rm_networkinterface:
-#           resource_group: "{{az_rgname}}"
-#           name: "{{az_vmname}}{{'_nic'}}"
-#           virtual_network: "{{az_rgname}}"
-#           subnet: "{{az_rgname}}{{'_net1'}}"
-#           public_ip_name: "{{az_vmname}}{{'_PublicIP'}}"
-#           security_group: "{{az_vmname}}{{'_SecGrp'}}"
-#           tags:
-#             created: ansbile
-#             delete: never
-#             demo: "{{customer}}"
-#             use: Demo
->>>>>>> 77e1693671e95d87e7d2ba96009633a97a662eb9
        - name: Creating Virtual Machine {{az_vmname}} in {{az_rgname}}_net1
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
@@ -56,6 +38,7 @@
            ssh_public_keys:
              - path: '/home/reddawg/.ssh/authorized_keys'
                key_data: ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkO86PY4536QRXkOWeTbT+ljQG63lgoewETmsKJAJGPxsO7CeNcmdoFITjcWzH2FKdO/evpYEN4oHj+AhxHNhhk6naCc02Qa0lGNAzfa0aNsUatRrEIzVEsmqeGqPbC/zG6s3vi/vQY2L8YttG9c0Etzc2DXE29qF30XYCXtQwiDx5ANGe9apZT3XG8pEybxlbMRfs73qGSjWjL0Et7K+rl2RalBNI1zAwLGKH4tCKCogYytOcEfRNIAXaxHZNSre6n6hvOTmnnpiqHIIuo1afhgv6Glxa95dGUdNMq0+UAcrHRlyQUyNn4aiSnvWOU4nACzx/BlJTRxaGc7KI6Rkqw== REDDAWG-SSH-KEY
+           network_interfaces: "{{az_vmname}}{{'_nic'}}"
            image:
              offer: rhel-byos
              publisher: RedHat
