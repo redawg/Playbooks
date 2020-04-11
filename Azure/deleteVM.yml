@@ -1,0 +1,19 @@
+---
+  - name: Create Azure Virtual Machine
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       az_rgname: ''
+       az_vmname: ''
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
+    tasks:
+    - name: Remove a VM and all resources that were autocreated
+      azure_rm_virtualmachine:
+        resource_group: "{{az_rgname}}"
+        name: "{{az_vmname}}"
+        remove_on_absent: all
+        state: absent

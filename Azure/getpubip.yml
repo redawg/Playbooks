@@ -4,8 +4,6 @@
           resource_group: ansbile_workspace
           name: "{{publicip}}"
         register: output_public_ip_address
-        vars:
-          publicip: output_public_ip_address.state.ip_address
       - name: Display Public IP
         debug:
           msg: "The public IP is {{ output_public_ip_address.state.ip_address }}."
