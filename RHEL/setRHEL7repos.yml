@@ -9,3 +9,6 @@
       rhsm_repository:
         name: rhel-7-server-htb-rpms
         state: disabled
+      when:
+        - ansible_distribution == "RedHat"
+        - ansible_distribution_major_version == "5"
