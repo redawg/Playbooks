@@ -1,7 +1,7 @@
 ---
 - name: Set Default Repos for RHEL 7
   hosts: all
-  gather_facts: False
+  gather_facts: True
   vars:
 
   tasks:
@@ -19,7 +19,6 @@
           rhsm_repository:
             name: rhel-7-server-extras-rpm
             state: enable
-
       when:
         - ansible_distribution == "RedHat"
         - ansible_distribution_major_version == "7"
