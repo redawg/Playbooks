@@ -11,12 +11,12 @@
           rhsm_repository:
             name: rhel-7-server-htb-rpms
             state: disabled
-        - name: Enable Repos
-            name:
-              - rhel-7-server-rpms
-              - rhel-7-server-extras-rpms
-              - rhel-server-rhscl-7-rpms
-             state: enable        
+        - name: Enable rhel-7-server-rpms
+            name: rhel-7-server-rpms
+            state: enable
+        - name: Enable rhel-7-server-extras-rpm
+            name: rhel-7-server-extras-rpm
+            state: enable
 
       when:
         - ansible_distribution == "RedHat"
