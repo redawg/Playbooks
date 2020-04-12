@@ -12,9 +12,11 @@
             name: rhel-7-server-htb-rpms
             state: disabled
         - name: Enable rhel-7-server-rpms
+          rhsm_repository:
             name: rhel-7-server-rpms
             state: enable
         - name: Enable rhel-7-server-extras-rpm
+          rhsm_repository:
             name: rhel-7-server-extras-rpm
             state: enable
 
