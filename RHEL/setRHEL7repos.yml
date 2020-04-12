@@ -7,9 +7,9 @@
   tasks:
     - name: Rhel 7 specific Repos
       block:
-        - name: Disable rhel-7-server-htb-rpms Repos
+        - name: Disable all Repos
           rhsm_repository:
-            name: rhel-7-server-htb-rpms
+            name: '*'
             state: disabled
         - name: Enable rhel-7-server-rpms
           rhsm_repository:
