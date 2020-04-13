@@ -1,0 +1,10 @@
+---
+- name: Subscribe RHEL to Account
+  hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Subscribing to RHEL account now
+      redhat_subscription:
+        state: absent
+        
