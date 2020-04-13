@@ -7,8 +7,8 @@
      password: ''
      pool_id: ''
      systemrole: "Red Hat Enterprise Server"
-     usage: "Development/Test"
-     sla: "Self-Service"
+     usage: "Dev/Test"
+     sla: "Self-Support"
 
   tasks:
     - name: Subscribing to RHEL account now
