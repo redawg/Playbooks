@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: False
   become: yes
-  become_method: enable
+  become_method: sudo
   vars:
       package: ''
   serial: 1
