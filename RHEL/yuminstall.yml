@@ -2,8 +2,6 @@
 - name: Installing requested package
   hosts: all
   gather_facts: False
-  become: yes
-  become_method: sudo
   vars:
       package: ''
   serial: 1
