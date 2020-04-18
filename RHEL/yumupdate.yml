@@ -5,6 +5,6 @@
 
   tasks:
     - name: Upgrading all Modules to Latest
-        yum:
+      yum:
         name: '*'
         state: latest
