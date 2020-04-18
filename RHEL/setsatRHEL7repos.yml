@@ -1,0 +1,30 @@
+---
+- name: Set Default Repos for RHEL 7
+  hosts: all
+  gather_facts: True
+  vars:
+
+  tasks:
+    - name: Rhel 7 specific Repos
+      block:
+        - name: Disable all Repos
+          rhsm_repository:
+            name: '*'
+            state: disabled
+        - name: Satellite Repos needed
+          rhsm_repository:
+            name:
+             - rhel-7-server-rpms
+             - rhel-7-server-satellite-6.7-rpms
+             - rhel-server-rhscl-7-rpms
+             - rhel-7-server-satellite-maintenance-6-rpms
+             - rhel-7-server-ansible-2.9-rpms
+            state: enabled
+        - name: Yum Clean
+          command: yum clean metadata
+          args:
+            warn: no
+        
+      when:
+        - ansible_distribution == "RedHat"
+        - ansible_distribution_major_version == "7"
