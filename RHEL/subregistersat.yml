@@ -1,0 +1,26 @@
+---
+- name: Subscribe RHEL to Satellite
+  hosts: all
+  gather_facts: False
+  vars:
+     pool_id: ''
+     org: ''
+     activationkey: ''
+     server_hostname: ''
+     systemrole: "Red Hat Enterprise Server"
+     usage: "Dev/Test"
+     sla: "Self-Support"
+
+  tasks:
+    - name: Subscribing to RHEL account now
+      redhat_subscription:
+        state: present
+        server_hostname: "{{server_hostname}}"
+        org_id: "{{org}}"
+        activationkey: "{{activationkey}}"
+        pool: '^Red Hat Enterprise Server$'
+        syspurpose:
+          usage: "{{usage}}"
+          role: "{{systemrole}}"
+          service_level_agreement: "{{sla}}"
+          sync: true
