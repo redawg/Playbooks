@@ -1,4 +1,4 @@
 ---
   - name: Ping Server connection
     hosts: all
-  - ping::
+  - ping:
