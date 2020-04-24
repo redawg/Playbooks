@@ -1,5 +1,5 @@
 ---
-- name: Set
+- name: Set Login Banner
   hosts: all
   gather_facts: False
   vars:
@@ -14,4 +14,3 @@
             Everybody Loves Ansible it makes Network Jobs easier
             You should not be logging in to this device unless its emergecy please us Ansible platfrom
             string
-       state: present
