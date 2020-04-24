@@ -7,10 +7,10 @@
     ansible_network_os: ''
   tasks:
     - name: configure the login banner
-        ios_banner:
-          banner: login
-          text: |
-            Everybody Loves Ansible it makes Network Jobs easier
-            You should not be logging in to this device unless its emergecy please us Ansible platfrom
-            string
-        state: present
+      ios_banner:
+        banner: login
+        text: |
+          Everybody Loves Ansible it makes Network Jobs easier
+          You should not be logging in to this device unless its emergecy please us Ansible platfrom
+          string
+      state: present
