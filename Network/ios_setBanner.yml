@@ -11,6 +11,8 @@
        ios_banner:
          banner: login
          text: |
+            ______________________ATTENTION_______________________________
             Everybody Loves Ansible it makes Network Jobs easier
-            You should not be logging in to this device unless its emergecy please us Ansible platfrom
-            string
+            You should not be logging in to this device unless it is an
+                                  EMERGENCY
+            Please us Ansible automation platfrom and playbooks for changes 
