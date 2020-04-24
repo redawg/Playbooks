@@ -5,8 +5,6 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
-    command: ''
-
   tasks:
     - name: configure the login banner
         ios_banner:
