@@ -45,7 +45,7 @@
       run_once: true
 
     - name: Commit the changes
-      shell: "git commit -am 'Changed'"
+      shell: "git commit -am Changed"
       args:
           chdir: "{{ network_backup_dir }}"
       when: status_results.stdout is search('Changes')
