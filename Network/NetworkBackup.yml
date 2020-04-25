@@ -27,7 +27,17 @@
 
 
   - include_tasks: "{{ ansible_network_os }}-backup.yml"
+  - name: REMOVE NON CONFIG LINES
+    lineinfile:
+      path: "{{network_backup_dir}}{{inventory_hostname}}.cfg"
+      line: "Building configuration..."
+      state: absent
 
+  - name: REMOVE NON CONFIG LINES - REGEXP
+    lineinfile:
+      path: "{{network_backup_dir}}{{inventory_hostname}}.cfg"
+      regexp: 'Current configuration.*'
+      state: absent
 
   - block:
     - name: Add any new backups to the repossitory
