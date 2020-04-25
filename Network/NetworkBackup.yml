@@ -8,7 +8,8 @@
     network_backup_repository: ''
     git_name: ''
     git_email: ''
-    network_backup_dir: "{{ playbook_dir }}/backups"
+    backup_path: ''
+    network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
   tasks:
