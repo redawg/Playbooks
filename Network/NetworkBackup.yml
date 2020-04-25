@@ -1,0 +1,86 @@
+---
+- name: Start Backup of Network Devices
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    network_backup_repository: ''
+    git_name: ''
+    git_email: ''
+    network_backup_dir: "{{ playbook_dir }}/backups"
+    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
+
+
+- name: Clone the backup repo
+  git:
+    repo: "{{ network_backup_repository }}"
+    dest: "{{ network_backup_dir }}"
+    accept_hostkey: yes
+    force: yes
+  register: clone_result
+  delegate_to: localhost
+  run_once: true
+  when: network_backup_repository is defined
+
+- include_tasks: "/backuptasks/{{ ansible_network_os }}-backup.yml"
+
+- name: Copy the temp to the destination
+  copy:
+    src: "{{ temp_backup_file }}"
+    dest: "{{ network_backup_file }}"
+  register: copy_result
+  delegate_to: localhost
+
+- name: Delete the temp file
+  file:
+    path: "{{ temp_backup_file }}"
+    state: absent
+  changed_when: False
+  delegate_to: localhost
+
+- block:
+  - name: Add any new backups to the repossitory
+    shell: "git add *.cfg"
+    args:
+      chdir: "{{ network_backup_dir }}"
+    delegate_to: localhost
+    changed_when: False
+    run_once: true
+
+  - name: Get the status of the repository
+    shell: "git status"
+    args:
+      chdir: "{{ network_backup_dir }}"
+    register: status_results
+    changed_when: False
+    ignore_errors: yes
+    delegate_to: localhost
+    run_once: true
+
+  - name: Commit the changes
+    shell: "git commit -am 'Changed'"
+    args:
+      chdir: "{{ network_backup_dir }}"
+    when: status_results.stdout is search('Changes')
+    delegate_to: localhost
+    run_once: true
+    environment:
+      GIT_COMMITTER_NAME: "{{ git_name | default(omit) }}"
+      GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
+      GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
+      GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
+
+  - name: Push the changes
+    shell: "git push origin master"
+    args:
+      chdir: "{{ network_backup_dir }}"
+    run_once: true
+    when: status_results.stdout is search('Changes')
+    delegate_to: localhost
+    environment:
+      GIT_COMMITTER_NAME: "{{ git_name | default(omit) }}"
+      GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
+      GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
+      GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
+  when: network_backup_repository is defined
