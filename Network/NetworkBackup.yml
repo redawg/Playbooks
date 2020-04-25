@@ -73,8 +73,8 @@
 
     - name: Push the changes
       git:
-        repo: "{{ network_backup_repository }}"
-        dest: "{{ network_backup_dir }}"
+        repo: "{{ network_backup_dir }}"
+        dest: "{{ network_backup_repository }}"
         accept_hostkey: yes
         key_file: "{{sshkey}}"
         force: yes
