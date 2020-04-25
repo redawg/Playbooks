@@ -15,3 +15,8 @@
         dir_path: "{{backup_path}}"
         filename: "{{inventory_hostname}}.cfg"
     register: config_output
+
+  - name:
+    copy:
+       src: "{{backup_path}}/{{inventory_hostname}}.cfg"
+       dest: "/home/{{inventory_hostname}}.cfg"
