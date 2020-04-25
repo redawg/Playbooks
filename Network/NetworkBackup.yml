@@ -27,6 +27,7 @@
 
 
   - include_tasks: "{{ ansible_network_os }}-backup.yml"
+
   - name: REMOVE NON CONFIG LINES
     lineinfile:
       path: "{{network_backup_dir}}/{{inventory_hostname}}.cfg"
