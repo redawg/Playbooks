@@ -24,19 +24,6 @@
 
   - include_tasks: "{{ ansible_network_os }}-backup.yml"
 
-  - name: Copy the temp to the destination
-    copy:
-       src: "{{ temp_backup_file }}"
-       dest: "{{ network_backup_file }}"
-    register: copy_result
-    delegate_to: localhost
-
-  - name: Delete the temp file
-    file:
-      path: "{{ temp_backup_file }}"
-      state: absent
-    changed_when: False
-    delegate_to: localhost
 
   - block:
     - name: Add any new backups to the repossitory
