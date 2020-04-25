@@ -71,7 +71,7 @@
         GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
         GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
 
-   - name: Push the changes
+    - name: Push the changes
       git:
         repo: "{{ network_backup_dir }}"
         dest: "{{ network_backup_repository }}"
