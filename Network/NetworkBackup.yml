@@ -72,15 +72,13 @@
         GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
 
     - name: Push the changes
-      shell: "git push origin master"
-      args:
-        chdir: "{{ network_backup_dir }}"
-      run_once: true
-      when: status_results.stdout is search('Changes')
+      git:
+        repo: "{{ network_backup_repository }}"
+        dest: "{{ network_backup_dir }}"
+        accept_hostkey: yes
+        key_file: "{{sshkey}}"
+        force: yes
+      become: true
+      become_user: root
       delegate_to: localhost
-      environment:
-        GIT_COMMITTER_NAME: "{{ git_name | default(omit) }}"
-        GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
-        GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
-        GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
-    when: network_backup_repository is defined
+      when: network_backup_repository is defined
