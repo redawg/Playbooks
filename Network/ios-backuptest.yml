@@ -5,13 +5,13 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
-  
+
 
   tasks:
   - name: Backup the config
     ios_config:
       backup: yes
       backup_options:
-        dir_path: "~/backups"
+        dir_path: "{{backup_path}}"
         filename: "{{inventory_hostname}}.cfg"
     register: config_output
