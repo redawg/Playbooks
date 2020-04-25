@@ -6,7 +6,6 @@
     ansible_connection: ''
     ansible_network_os: ''
     backup_path: ''
-    sshkey: ''
     network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
@@ -16,7 +15,6 @@
       repo: "{{ network_backup_repository }}"
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
-      key_file: "{{sshkey}}"
       force: yes
     become: true
     become_user: root
