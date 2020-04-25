@@ -18,10 +18,12 @@
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
       force: yes
+
     register: clone_result
     run_once: true
     when: network_backup_repository is defined
-
+    delegate_to: localhost
+    
   - include_tasks: "{{ ansible_network_os }}-backup.yml"
 
 
