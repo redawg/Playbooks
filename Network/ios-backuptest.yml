@@ -20,3 +20,4 @@
     copy:
        src: "{{backup_path}}/{{inventory_hostname}}.cfg"
        dest: "/home/{{inventory_hostname}}.cfg"
+    delegate_to: localhost
