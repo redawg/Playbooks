@@ -73,9 +73,6 @@
         repo: "{{ network_backup_dir }}"
         dest: "{{ network_backup_repository }}"
         accept_hostkey: yes
-        key_file: "{{sshkey}}"
         force: yes
-      become: true
-      become_user: root
       delegate_to: localhost
       when: network_backup_repository is defined
