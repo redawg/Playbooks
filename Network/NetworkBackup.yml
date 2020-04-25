@@ -41,8 +41,8 @@
   - block:
     - name: Add any new backups to the repossitory
       shell: "git add *.cfg"
-        args:
-         chdir: "{{ network_backup_dir }}"
+      args:
+        chdir: "{{ network_backup_dir }}"
       delegate_to: localhost
       changed_when: False
       run_once: true
