@@ -1,7 +1,7 @@
 ---
 - name: Start Backup of Network Devices
   hosts: all
-  gather_facts: true
+  gather_facts: false
   vars:
     ansible_connection: ''
     ansible_network_os: ''
