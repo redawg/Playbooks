@@ -19,7 +19,6 @@
     accept_hostkey: yes
     force: yes
   register: clone_result
-  delegate_to: localhost
   run_once: true
   when: network_backup_repository is defined
 
