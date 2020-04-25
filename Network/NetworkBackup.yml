@@ -22,7 +22,7 @@
     run_once: true
     when: network_backup_repository is defined
 
-  - include_tasks: "/backuptasks/{{ ansible_network_os }}-backup.yml"
+  - include_tasks: "{{ ansible_network_os }}-backup.yml"
 
   - name: Copy the temp to the destination
     copy:
