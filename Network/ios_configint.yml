@@ -9,11 +9,11 @@
     address: ''
     secondary: ''
 
-- name: configure interface settings
+- name: Configuring {{int_name}} settings
   ios_l3_interfaces:
     config:
       - name: {{int_name}}
         ipv4:
-        - address: "{{address}}""
+        - address: "{{address}}"
           secondary: "{{secondary}}"
     state: replaced
