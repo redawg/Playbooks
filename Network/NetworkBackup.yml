@@ -73,4 +73,5 @@
       args:
          chdir: "{{ network_backup_dir }}"
       delegate_to: localhost
+      run_once: true
       when: network_backup_repository is defined
