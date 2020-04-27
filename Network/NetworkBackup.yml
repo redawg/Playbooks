@@ -69,10 +69,9 @@
         GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
 
     - name: Push the changes
-      git:
-        repo: "{{ network_backup_dir }}"
-        dest: "{{ network_backup_repository }}"
-        accept_hostkey: yes
-        force: yes
+      shell: git push
+      args:
+         chdir: “{{ network_backup_dir }}”
+      register: gitpush
       delegate_to: localhost
       when: network_backup_repository is defined
