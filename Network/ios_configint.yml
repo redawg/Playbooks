@@ -12,7 +12,7 @@
 - name: Configuring {{int_name}} settings with {{ip_address}}
   ios_l3_interfaces:
     config:
-      - name: {{int_name}}
+      - name: "{{int_name}}"
         ipv4:
         - address: "{{ip_address}}"
           secondary: "{{secondary}}"
