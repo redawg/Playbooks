@@ -11,6 +11,7 @@
      should_reboot: ''
      ansible_connection: ''
      ansible_network_os: ''
+     tftp_server: ''
 
   tasks:
     - name: GATHER SWITCH FACTS
@@ -21,7 +22,7 @@
       - name: COPY OVER IOS IMAGE
         ios_command:
            commands:
-              - command: "copy tftp://xxx.xxx.xxx.xxx/{{ new_ios_bin }} bootflash:"
+              - command: "copy tftp://{{tftp_server}}/{{ new_ios_bin }} bootflash:"
                 prompt: '[{{ new_ios_bin }}]'
                 answer: "\r"
         vars:
