@@ -5,6 +5,7 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
+    int_enabled: ''
 
   tasks:
 
@@ -13,4 +14,5 @@
       config:
         - name: "{{int_name}}"
           description: 'Configured by Ansible Tower'
+          enabled: "{{int_enabled}}"
       state: replaced
