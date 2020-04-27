@@ -1,0 +1,13 @@
+---
+- name: Set Login Banner
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+
+  tasks:
+    -  name: configure the login banner
+       ios_banner:
+         banner: login
+         state: absent
