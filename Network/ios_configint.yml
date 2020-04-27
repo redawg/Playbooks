@@ -22,14 +22,3 @@
           - address: "{{ip_address}}"
             secondary: "{{secondary}}"
       state: replaced
-  - name: Setting Description on {{int_name}}
-    ios_interfaces:
-      config:
-        - name: "{{int_name}}"
-          description: 'Configured by Ansible Tower'
-          enabled: "{{int_enabled}}"
-          mtu: "{{mtu}}"
-          speed: "{{speed}}"
-          duplex: "{{duplex}}"
-
-      state: replaced
