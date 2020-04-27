@@ -6,14 +6,14 @@
     ansible_connection: ''
     ansible_network_os: ''
     int_name: ''
-    address: ''
+    ip_address: ''
     secondary: ''
 
-- name: Configuring {{int_name}} settings
+- name: Configuring {{int_name}} settings with {{ip_address}}
   ios_l3_interfaces:
     config:
       - name: {{int_name}}
         ipv4:
-        - address: "{{address}}"
+        - address: "{{ip_address}}"
           secondary: "{{secondary}}"
     state: replaced
