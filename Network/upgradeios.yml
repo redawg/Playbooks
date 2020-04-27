@@ -23,7 +23,7 @@
            commands:
               - command: "copy tftp://xxx.xxx.xxx.xxx/{{ new_ios_bin }} bootflash:"
                 prompt: '[{{ new_ios_bin }}]'
-              answer: "\r"
+                answer: "\r"
         vars:
           ansible_command_timeout: 1800
 
