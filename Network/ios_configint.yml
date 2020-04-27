@@ -1,0 +1,19 @@
+---
+- name: Gather IOS facts
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    int_name: ''
+    address: ''
+    secondary: ''
+
+- name: configure interface settings
+  ios_l3_interfaces:
+    config:
+      - name: {{int_name}}
+        ipv4:
+        - address: "{{address}}""
+          secondary: "{{secondary}}"
+    state: replaced
