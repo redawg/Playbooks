@@ -9,6 +9,8 @@
      new_ios_bin: ''
      new_ios_md5: ''
      should_reboot: ''
+     ansible_connection: ''
+     ansible_network_os: ''
 
   tasks:
     - name: GATHER SWITCH FACTS
