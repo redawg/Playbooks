@@ -38,7 +38,7 @@
       state: absent
 
   - block:
-    - name: Add any new backups to the repossitory
+    - name: Add any new backups to the repository
       shell: "git add *.cfg"
       args:
         chdir: "{{ network_backup_dir }}"
