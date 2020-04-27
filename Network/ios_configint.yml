@@ -25,7 +25,7 @@
   - name: Setting Description on {{int_name}}
     ios_interfaces:
       config:
-        - name: {{int_name}}
+        - name: "{{int_name}}"
           description: 'Configured by Ansible Tower'
           enabled: "{{int_enabled}}"
           mtu: "{{mtu}}"
