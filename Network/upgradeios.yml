@@ -1,0 +1,79 @@
+---
+- name: Upgrade Firmware
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+  vars:
+     compliant_ios_version: ''
+     new_ios_bin: ''
+     new_ios_md5: ''
+     should_reboot: ''
+
+  tasks:
+    - name: GATHER SWITCH FACTS
+      ios_facts:
+
+    - name: UPGRADE IOS IMAGE IF NOT COMPLIANT
+      block:
+      - name: COPY OVER IOS IMAGE
+        ios_command:
+           commands:
+              - command: "copy tftp://xxx.xxx.xxx.xxx/{{ new_ios_bin }} bootflash:"
+                prompt: '[{{ new_ios_bin }}]'
+              answer: "\r"
+        vars:
+          ansible_command_timeout: 1800
+
+      - name: CHECK MD5 HASH
+        ios_command:
+           commands:
+              - command: "verify /md5 bootflash:{{ new_ios_bin }}"
+        register: md5_result
+        vars:
+          ansible_command_timeout: 300
+
+      - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
+        block:
+        - name: SETTING BOOT IMAGE
+          ios_config:
+            lines:
+            - no boot system
+            - boot system flash bootflash:{{ new_ios_bin }}
+            match: none
+            save_when: always
+
+        - name: REBOOT SWITCH IF INSTRUCTED
+          block:
+          - name: REBOOT SWITCH
+            ios_command:
+               commands:
+                  - command: "reload"
+                    prompt: '[confirm]'
+                    answer: "\r"
+            vars:
+              ansible_command_timeout: 30
+
+          - name: WAIT FOR SWITCH TO RETURN
+            wait_for:
+              host: "{{inventory_hostname}}"
+              port: 22
+              delay: 60
+              timeout: 600
+            delegate_to: localhost
+
+          - name: GATHER ROUTER FACTS FOR VERIFICATION
+            ios_facts:
+
+          - name: ASSERT THAT THE IOS VERSION IS CORRECT
+            assert:
+              that:
+                - compliant_ios_version == ansible_net_version
+              msg: "IOS version does not match compliant version. Upgrade unsuccessful."
+
+          when: should_reboot == "YES"
+
+        when: '"new_ios_md5" in md5_result.stdout[0]'
+
+      when: ansible_net_version != compliant_ios_version
+...
