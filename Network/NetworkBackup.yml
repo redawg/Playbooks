@@ -16,7 +16,6 @@
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
       force: yes
-    become: root
     delegate_to: localhost
     register: clone_result
     run_once: true
