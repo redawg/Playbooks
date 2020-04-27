@@ -71,7 +71,6 @@
     - name: Push the changes
       shell: "git push"
       args:
-         chdir: “{{ network_backup_dir }}”
-      register: gitpush
+         chdir: "{{ network_backup_dir }}"
       delegate_to: localhost
       when: network_backup_repository is defined
