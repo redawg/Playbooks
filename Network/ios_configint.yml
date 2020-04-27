@@ -8,6 +8,11 @@
     int_name: ''
     ip_address: ''
     secondary: ''
+    int_enabled: ''
+    mtu: ''
+    speed: ''
+    duplex: ''
+
   tasks:
   - name: Configuring {{int_name}} settings with {{ip_address}}
     ios_l3_interfaces:
@@ -16,4 +21,15 @@
           ipv4:
           - address: "{{ip_address}}"
             secondary: "{{secondary}}"
+      state: replaced
+  - name: Setting Description on {{int_name}}
+    ios_interfaces:
+      config:
+        - name: "{{int_name}}
+          description: 'Configured by Ansible Tower'
+          enabled: "{{int_enabled}}"
+          mtu: "{{mtu}}"
+          speed: "{{speed}}"
+          duplex: "{{duplex}}"
+
       state: replaced
