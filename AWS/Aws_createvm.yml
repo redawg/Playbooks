@@ -1,5 +1,9 @@
 ---
 - name: Configuring the EC2 Instance
+
+
+
+
   hosts: localhost
   connection: local
   vars:
@@ -13,18 +17,19 @@
                - device_name: /dev/sda1
                  volume_size: {{ volume-size }}
 
-- name: Launching an EC2 Instance
-  local_action: ec2
-  instance_type={{ instance_type}}
-  image={{ ami }}
-  region={{ region }}
-  keypair={{ pem }}
-  count={{count}}
-  instance_profile_name={{ instance_profile_name }}
-  group={{ security_group }}
-  wait=true
-  volumes={{volumes}}
-  register: ec2
+tasks:
+  - name: Launching an EC2 Instance
+    local_action: ec2
+    instance_type={{ instance_type}}
+    image={{ ami }}
+    region={{ region }}
+    keypair={{ pem }}
+    count={{count}}
+    instance_profile_name={{ instance_profile_name }}
+    group={{ security_group }}
+    wait=true
+    volumes={{volumes}}
+    register: ec2
 
 - name: Associating after allocating elastic IP
   eip:
