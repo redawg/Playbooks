@@ -1,0 +1,22 @@
+---
+  - name: Create AWS VPC
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       aws_access_key: ''
+       aws_secret_key: ''
+       vpc_name: ''
+       vpc_cidr: ''
+       region: ''
+
+    tasks:
+    - name: create VPC
+      ec2_vpc_net:
+        name: "{{ vpc_name }}"
+        cidr_block: "{{ vpc_cidr }}"
+        region: "{{ region }}"
+        state: present
+        aws_access_key: "{{ aws_access_key }}"
+        aws_secret_key: "{{ aws_secret_key }}"
+      register: vpc
