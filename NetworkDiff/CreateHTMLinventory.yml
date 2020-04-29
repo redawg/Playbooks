@@ -1,0 +1,24 @@
+
+---
+- name: build Ios inventory report
+hosts: all
+gather_facts: False
+
+vars:
+  ansible_connection: ''
+  ansible_network_os: ''
+  network_html_dir: "{{ www_dir }}"
+  network_inv_file: "{{ network_html_dir }}/gererated_report.html"
+  desired_version: ''
+
+tasks:
+  - name: gathering all IOS facts
+    ios_facts:
+    register: all_facts
+
+  - name: create HTML report
+    template:
+      src: report-ios.j2
+      dest: "{{ network_inv_file }}"
+    delegate_to: localhost
+    run_once: true
