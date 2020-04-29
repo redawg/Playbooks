@@ -14,7 +14,7 @@
     - name: GATHERING FACTS ON {{inventory_hostname}}
       ios_facts:
       debug:
-          msg: Device {{inventory_hostname}} has IOS {{ansible_net_version}}
+          msg: "Device {{inventory_hostname}} has IOS {{ansible_net_version}}"
 
     - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} CORRECT ON {{inventory_hostname}}
             assert:
