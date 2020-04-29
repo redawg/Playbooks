@@ -1,12 +1,13 @@
 
 ---
 - name: build Ios inventory report
-  hosts: all
+  hosts: iso
   gather_facts: False
 
   vars:
     ansible_connection: ''
     ansible_network_os: ''
+    www_dir: ''
     network_html_dir: "{{ www_dir }}"
     network_inv_file: "{{ network_html_dir }}/gererated_report.html"
     desired_version: ''
