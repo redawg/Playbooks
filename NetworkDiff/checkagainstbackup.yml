@@ -9,12 +9,12 @@
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
   tasks:
-  - name: Going to merge change.txt to running-config
+  - name: Compare Backupfile to running-config for {{inventory_hostname}}
     ios_config:
       diff_against: running
       src: {{network_backup_file}}
     register: test_diff
 
-  - name: the only config we need to merge is
+  - name: the only config we need to merge on {{inventory_hostname}} is
     debug:
       var: test_diff.updates
