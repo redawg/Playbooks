@@ -1,7 +1,7 @@
 
 ---
 - name: build Ios inventory report
-  hosts: iso
+  hosts: ios
   gather_facts: False
 
   vars:
