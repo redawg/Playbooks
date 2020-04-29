@@ -13,6 +13,6 @@
     - name: Gather Live facts from Device
       ios_facts:
           gather_subset: min
-      msg: "IOS version {{ansible_net_version}} is on {{inventory_hostname}}"
 
-      
+    - name: Show Version and Device
+        msg: "IOS version {{ansible_net_version}} is on {{inventory_hostname}}"
