@@ -9,9 +9,8 @@
      ansible_connection: ''
      ansible_network_os: ''
 
-
   tasks:
-    - name: GATHERING FACTS ON {{inventory_hostname}}
+    - name: GATHERING FACTS ON 
       ios_facts:
       debug:
         msg: "Device {{inventory_hostname}} has IOS {{ansible_net_version}}"
