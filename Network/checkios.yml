@@ -15,5 +15,5 @@
           gather_subset: min
 
     - name: Show Version and Device
-        debug:
+      debug:
         msg: "IOS version {{ansible_net_version}} is on {{inventory_hostname}}"
