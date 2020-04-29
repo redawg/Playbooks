@@ -7,7 +7,7 @@
     ansible_network_os: ''
 
   tasks:
-  - name: diff against the startup config
+  - name: Comparing Starup Config vs Running Config on {{inventory_hostname}}
     ios_config:
       diff_against: startup
     register: test_diff
