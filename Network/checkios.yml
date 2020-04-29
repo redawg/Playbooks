@@ -17,8 +17,7 @@
     - name: Show Version and Device
       debug:
         msg: "IOS version {{ansible_net_version}} is on {{inventory_hostname}}"
-      block:
-      - name: ASSERT THAT THE IOS VERSION IS CORRECT
+    - name:
         assert:
           that:
             - compliant_ios_version == ansible_net_version
