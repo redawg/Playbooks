@@ -5,9 +5,11 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
-    filename: {{ansible_facts['nodename']}}
+    network_backup_dir: "{{ backup_path }}"
+    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
+
   tasks:
   - name: diff the running against the intended config
     ios_config:
       diff_against: intended
-      intended_config: "{{ lookup('file', '/home/backups/{{filename}}.cfg') }}"
+      intended_config: "{{ lookup('file', '{{network_backup_file}}') }}"
