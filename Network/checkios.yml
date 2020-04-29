@@ -17,9 +17,9 @@
           msg: "Device {{inventory_hostname}} has IOS {{ansible_net_version}}"
 
     - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} CORRECT ON {{inventory_hostname}}
-            assert:
-              that:
-                - compliant_ios_version == ansible_net_version
-              msg: "IOS version does not match compliant version. Upgrade please run upgrade Playbook."
+      assert:
+        that:
+          - compliant_ios_version == ansible_net_version
+        msg: "IOS version does not match compliant version. Upgrade please run upgrade Playbook."
 
       when: ansible_net_version != compliant_ios_version
