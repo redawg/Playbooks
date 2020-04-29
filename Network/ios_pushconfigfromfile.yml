@@ -1,0 +1,15 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    network_backup_dir: "{{ backup_path }}"
+    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
+
+  tasks:
+  - name: Checking differences Between {{network_backup_file}} and current running on {{inventory_hostname}}
+    ios_config:
+      diff_against: intended
+      intended_config: "{{ lookup('file', '{{network_backup_file}}') }}"

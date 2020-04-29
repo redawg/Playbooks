@@ -1,0 +1,24 @@
+---
+- name: Check Firmware Version is Compliant
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+  vars:
+     compliant_ios_version: ''
+     new_ios_bin: ''
+     ansible_connection: ''
+     ansible_network_os: ''
+
+
+  tasks:
+    - name: GATHERING FACTS ON {{inventory_hostname}}
+      ios_facts:
+
+    - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} CORRECT ON {{inventory_hostname}}
+            assert:
+              that:
+                - compliant_ios_version == ansible_net_version
+              msg: "IOS version does not match compliant version. Upgrade please run upgrade Playbook."
+
+      when: ansible_net_version != compliant_ios_version
