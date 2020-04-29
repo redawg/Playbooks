@@ -10,10 +10,9 @@
      ansible_network_os: ''
 
   tasks:
-    - name: GATHERING FACTS ON 
+    - name: GATHERING FACTS ON
       ios_facts:
-      debug:
-        msg: "Device {{inventory_hostname}} has IOS {{ansible_net_version}}"
+      
 
     - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} CORRECT ON {{inventory_hostname}}
       assert:
