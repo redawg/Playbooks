@@ -12,7 +12,7 @@
   - name: Compare Backupfile to running-config for {{inventory_hostname}}
     ios_config:
       diff_against: running
-      src: {{network_backup_file}}
+      src: "{{network_backup_file}}"
     register: test_diff
 
   - name: the only config we need to merge on {{inventory_hostname}} is

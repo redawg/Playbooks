@@ -12,7 +12,7 @@
   - name: diff the change/merged config against the running config
     ios_config:
       diff_against: running
-      src: {{network_backup_file}}
+      src: "{{network_backup_file}}"
     register: test_diff
 
 #  - name: debug the test_diff
