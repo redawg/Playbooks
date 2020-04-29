@@ -3,15 +3,16 @@
   connection: local
   gather_facts: no
   vars:
-    provider:
-      username: "admin"
-      password: "Bullf00d"
+    ansible_connection: ''
+    ansible_network_os: ''
+    network_backup_dir: "{{ backup_path }}"
+    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
+
   tasks:
   - name: Going to merge change.txt to running-config
     ios_config:
       diff_against: running
-      provider: "{{ provider }}"
-      src: change.txt
+      src: {{network_backup_file}}
     register: test_diff
 
   - name: the only config we need to merge is
