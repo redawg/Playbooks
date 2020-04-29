@@ -6,7 +6,6 @@
 
   vars:
      compliant_ios_version: ''
-     new_ios_bin: ''
      ansible_connection: ''
      ansible_network_os: ''
 
