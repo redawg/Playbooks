@@ -10,12 +10,6 @@
      ansible_network_os: ''
 
   tasks:
-    - name: GATHERING FACTS ON
+    - name: Gather Live facts from Device
       ios_facts:
-      
-
-    - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} CORRECT ON {{inventory_hostname}}
-      assert:
-        that:
-            - compliant_ios_version == ansible_net_version
-        msg: "IOS version does not match compliant version. Upgrade please run upgrade Playbook."
+          gather_subset: hardware
