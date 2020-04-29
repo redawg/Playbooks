@@ -1,0 +1,15 @@
+---
+- name: Setting Interface Description
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+
+  tasks:
+
+  - name: Deleteing Description on {{int_name}}
+    ios_interfaces:
+      config:
+        - name: "{{int_name}}"
+      state: deleted
