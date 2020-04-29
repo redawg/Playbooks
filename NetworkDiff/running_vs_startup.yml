@@ -16,23 +16,22 @@
 #    debug:
 #      var: test_diff
 
-  - name: Take startup config and sets it to a variable called *before*
-    set_fact: before="{{ test_diff['diff']['before'].split('\n')}}"
+#  - name: Take startup config and sets it to a variable called *before*
+#    set_fact: before="{{ test_diff['diff']['before'].split('\n')}}"
 
 #  - name: debug before
 #    debug:
 #      var: before
 
-  - name: This takes the running config and sets it to a variable called *after*
-    set_fact: after="{{ test_diff['diff']['after'].split('\n')}}"
+#  - name: This takes the running config and sets it to a variable called *after*
+#    set_fact: after="{{ test_diff['diff']['after'].split('\n')}}"
 
 # - name: debug after
 #   debug:
 #     var: after
 
-  - name: Create a line-to-line diff of running-config to startup-config
-    set_fact: difference="{{ after | difference(before) }}"
-
-  - name: sanitized output "Lines added to running-config that are not present in startup-config"
-    debug:
-      var: difference
+#  - name: Create a line-to-line diff of running-config to startup-config
+#
+#  - name: sanitized output "Lines added to running-config that are not present in startup-config"
+#    debug:
+#      var: difference
