@@ -20,7 +20,5 @@
       assert:
         that:
             - compliant_ios_version == ansible_net_version
-        msg: "IOS version does not match compliant version. Please run Upgrade."
-      debug:
-        msg: "IOS version {{ansible_net_version}} is on {{inventory_hostname}}"
+        msg: "IOS version {{ansible_net_version}} does not match compliant version. Please run Upgrade."
       when: ansible_net_version != compliant_ios_version
