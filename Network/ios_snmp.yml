@@ -1,0 +1,17 @@
+---
+- name: Run CLI Command
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    command: ''
+
+
+  tasks:
+   - name: Configure SNMP
+     ios_config:
+       lines: "{{command}}"
+       before: "default snmp-server"
+       match: exact
+       replace: block
