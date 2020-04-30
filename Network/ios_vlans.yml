@@ -15,8 +15,8 @@
    - name: to devices
      ios_vlans:
        config:
-         - name: "{{vlan_name}}"
-           vlan_id: "{{vlan_id}}"
-           state: "{{vlan_state}}"
-           shutdown: "{{vlan_shutdown}}"
-       state: "{{module_state}}"
+         - name: TEST
+           vlan_id: 100
+           state: active
+           shutdown: enabled
+       state: merged
