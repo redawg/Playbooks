@@ -1,0 +1,21 @@
+---
+- name: Configure Vlans
+  hosts: ios
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    vlan_name: ''
+    vlan_id: ''
+    state: ''
+    shutdown: ''
+
+  tasks:
+   - name: {{state}} {{vlan_name}} to devices
+     ios_vlans:
+       config:
+        - name: {{vlan_name}}
+          vlan_id: "{{vlan_id}}"
+          state: "{{state}}"
+          shutdown: "{{shutdown}}"
+       state: "{{state}}"
