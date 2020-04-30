@@ -10,8 +10,9 @@
     vlan_state: ''
     vlan_shutdown: ''
     module_state: ''
+
   tasks:
-   - name: {{state}} {{vlan_name}} with {{vlan_id}} to devices
+   - name: to devices
      ios_vlans:
        config:
         - name: "{{vlan_name}}"
