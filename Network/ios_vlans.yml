@@ -8,15 +8,13 @@
     vlan_name: ''
     vlan_id: ''
     vlan_state: ''
-    vlan_shutdown: ''
-    module_state: ''
+    
+
 
   tasks:
    - name: to devices
-     ios_vlans:
+     ios_vlan:
        config:
-         - name: TEST
-           vlan_id: 100
-           state: active
-           shutdown: enabled
-       state: overridden
+           name: "{{vlan_name}}"
+           vlan_id: "{{vlan_id}}"
+           state: "{{vlan_state}}"
