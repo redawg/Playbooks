@@ -8,13 +8,12 @@
     vlan_name: ''
     vlan_id: ''
     vlan_state: ''
-    
+
 
 
   tasks:
    - name: to devices
      ios_vlan:
-       config:
-           name: "{{vlan_name}}"
-           vlan_id: "{{vlan_id}}"
-           state: "{{vlan_state}}"
+       name: "{{vlan_name}}"
+       vlan_id: "{{vlan_id}}"
+       state: "{{vlan_state}}"
