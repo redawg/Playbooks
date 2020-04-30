@@ -11,6 +11,12 @@
   tasks:
    - name: Configure SNMP
      ios_config:
-       lines: "{{command}}"
+       lines:
+         - snmp-server community cisco RO
+         - snmp-server location STH
+         - snmp-server contact NORTH
+         - snmp-server enable traps snmp linkdown linkup
+         - snmp-server host 172.16.1.3 version 2c public
+
        match: exact
        replace: block
