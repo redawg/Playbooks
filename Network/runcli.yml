@@ -9,7 +9,7 @@
 
 
   tasks:
-    - name: Run {{command}} command
+    - name: Run {{command}} command!
       cli_command:
         command: "{{command}}"
       register: command_output
