@@ -12,6 +12,5 @@
    - name: Configure SNMP
      ios_config:
        lines: "{{command}}"
-       before: "default snmp-server"
        match: exact
        replace: block
