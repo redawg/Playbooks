@@ -19,4 +19,4 @@
            vlan_id: 100
            state: active
            shutdown: enabled
-       state: replaced
+       state: overridden
