@@ -19,4 +19,4 @@
            vlan_id: "{{vlan_id}}"
            state: "{{vlan_state}}"
            shutdown: "{{vlan_shutdown}}"
-       state: "{{state}}"
+       state: "{{module_state}}"
