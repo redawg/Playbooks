@@ -19,5 +19,5 @@
          - snmp-server location "{{location}}"
          - snmp-server contact "{{contact}}"
          - snmp-server host "{{host}}" version 2c public
-       match: exact
+       match: line
        replace: block
