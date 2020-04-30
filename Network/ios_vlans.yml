@@ -7,8 +7,10 @@
     ansible_network_os: ''
     vlan_name: ''
     vlan_id: ''
-    state: ''
-    shutdown: ''
+    vlan_state: ''
+    vlan_shutdown: ''
+    module_state: ''
+
 
   tasks:
    - name: {{state}} {{vlan_name}} to devices
@@ -16,6 +18,6 @@
        config:
         - name: {{vlan_name}}
           vlan_id: "{{vlan_id}}"
-          state: "{{state}}"
-          shutdown: "{{shutdown}}"
+          state: "{{vlan_state}}"
+          shutdown: "{{vlan_shutdown}}"
        state: "{{state}}"
