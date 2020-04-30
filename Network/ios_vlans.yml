@@ -13,7 +13,7 @@
 
 
   tasks:
-   - name: {{state}} {{vlan_name}} to devices
+   - name: "{{state}}" "{{vlan_name}}" to devices
      ios_vlans:
        config:
         - name: {{vlan_name}}
