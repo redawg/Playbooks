@@ -12,5 +12,5 @@ tasks:
   - name: Stopping an EC2 Instance {{ec2_tag}}
     local_action: ec2
     instance_tags:
-         Name: '{{ec2_tag}}'
+         Name: "{{ec2_tag}}"
     state: stopped
