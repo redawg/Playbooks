@@ -2,8 +2,6 @@
 - name: Configuring the EC2 Instance
 
 
-
-
   hosts: localhost
   connection: local
   vars:
