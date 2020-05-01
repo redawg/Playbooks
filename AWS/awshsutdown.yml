@@ -1,5 +1,5 @@
 ---
-- name: Configuring the EC2 Instance
+- name: Control the EC2 Instance
 
 
   hosts: localhost
