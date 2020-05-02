@@ -23,9 +23,9 @@
         state: present
         aws_access_key: "{{ aws_access_key }}"
         aws_secret_key: "{{ aws_secret_key }}"
-          tags:
-            Name: "{{user_name}}"
-            ansible_group: "{{ec2_ansible_group}}"
-            Contact: "{{my_email_address}}"
-            DeletebBy: "{{deleteby}}"
+        tags:
+          Name: "{{user_name}}"
+          ansible_group: "{{ec2_ansible_group}}"
+          Contact: "{{my_email_address}}"
+          DeletebBy: "{{deleteby}}"
       register: vpc
