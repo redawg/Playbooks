@@ -21,10 +21,14 @@
         cidr_block: "{{ vpc_cidr }}"
         region: "{{ region }}"
         state: present
-      
+
         tags:
           Name: "{{user_name}}"
           ansible_group: "{{ec2_ansible_group}}"
           Contact: "{{my_email_address}}"
           DeletebBy: "{{deleteby}}"
-      register: vpc
+      register: my_vpc
+    - name: Get vpc infor for "{{vpc_name}}"
+      debug:
+        var: my_vpc
+      when: debug_flag is defined
