@@ -1,5 +1,5 @@
 ---
-  - name: Create AWS VPC
+  - name: Create AWS security group with icmp, 22 and port 80 open
     hosts: localhost
     connection: local
     gather_facts: no
