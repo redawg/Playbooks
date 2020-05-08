@@ -8,10 +8,10 @@
     backup_path: ''
     network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
-
+    scp_username: ''
   tasks:
     - name: Pull latest Config from Github for {{inventory_hostname}}
-      command: scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{network_backup_file}} {{inventory_hostname}}:/{{inventory_hostname}}.cfg
+      command: scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{network_backup_file}} {{scp_username}}@{{inventory_hostname}}:/{{inventory_hostname}}.cfg
     - name: CONFIG REPLACE
       ios_command:
         commands:
