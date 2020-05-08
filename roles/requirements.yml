@@ -1,2 +1,3 @@
 # - src: RedHatInsights.insights-client
 - src: ansible.kubernetes-modules
+- src: network-facts
