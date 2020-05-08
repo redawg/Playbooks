@@ -1,5 +1,5 @@
 ---
-- name: Start Backup of Network Devices
+- name: Start Restore of Network Devices
   hosts: all
   gather_facts: false
   vars:
