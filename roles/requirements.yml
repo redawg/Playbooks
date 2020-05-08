@@ -1,3 +1,5 @@
 # - src: RedHatInsights.insights-client
 - src: ansible.kubernetes-modules
-- src: network-facts
+- src: https://github.com/redawg/Playbooks/tree/master/roles/network-facts
+  version: master
+  name: network-facts
