@@ -7,6 +7,3 @@ ansible_network_os: undefined
 #  password: "{{ ansible_password }}"
 #  transport: cli
 #  timeout: 180
-
-
-
