@@ -10,7 +10,18 @@
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
     scp_username: ''
   tasks:
-    - name: Pull latest Config from Github for {{inventory_hostname}}
+    - name: Clone the backup repo
+      git:
+        repo: "{{ network_backup_repository }}"
+        dest: "{{ network_backup_dir }}"
+        accept_hostkey: yes
+        force: yes
+      delegate_to: localhost
+      register: clone_result
+      run_once: true
+      when: network_backup_repository is defined
+
+    - name: Upload latest Config from Github for {{inventory_hostname}}
       command: scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{network_backup_file}} {{scp_username}}@{{inventory_hostname}}:/{{inventory_hostname}}.cfg
     - name: CONFIG REPLACE
       ios_command:
