@@ -11,7 +11,7 @@
 
   tasks:
     - name: COPY RUNNING CONFIG TO ROUTER
-      command: scp {{network_backup_file}} {{inventory_hostname}}:/{{inventory_hostname}}.cfg
+      command: scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{network_backup_file}} {{inventory_hostname}}:/{{inventory_hostname}}.cfg
 
     - name: CONFIG REPLACE
       ios_command:
