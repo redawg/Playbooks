@@ -10,7 +10,7 @@
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
     scp_username: ''
   tasks:
-    - name: Clone the backup repo
+    - name: Pulling down latest configs from GitHub
       git:
         repo: "{{ network_backup_repository }}"
         dest: "{{ network_backup_dir }}"
