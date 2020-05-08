@@ -1,6 +1,6 @@
 ---
 - name: Start Restore of Network Devices
-  hosts: all
+  hosts: ios
   gather_facts: false
   vars:
     ansible_connection: ''
