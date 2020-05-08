@@ -4,9 +4,13 @@
   gather_facts: yes
   connection: network_cli
 
+
+
   roles:
     - role: network-facts
-
+  loop:
+    - ansible_network_os: eos
+    - ansible_network_os: ios
   tasks:
     - debug:
         msg: "Device {{ inventory_hostname }} is type {{ ansible_network_os }} running software version {{ version }}"
