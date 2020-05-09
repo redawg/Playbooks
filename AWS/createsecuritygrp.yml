@@ -1,5 +1,5 @@
 ---
-  - name: Create AWS security group with icmp, 22 and port 80 open
+  - name: Create AWS security group with icmp, {{open_ports_list}}
     hosts: localhost
     connection: local
     gather_facts: no
@@ -10,31 +10,36 @@
        vpc_cidr: ''
        region: ''
        user_name: ''
-       ec2_ansible_group: "USWEST_SSA"
+       ec2_ansible_group: "{{user_name}}"
        ec2_security_group_name: "{{ vpc_name }}_{{user_name}}_sg"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
 
     tasks:
+      - name: Getting VPC id for {{vpc_name}}
+        ec2_vpc_net_info:
+          filters:
+          "tag:Name": "{{vpc_name}}_{{user_name}}"
+
       - name: create security group "{{ ec2_security_group_name }}"
         ec2_group:
           name: "{{ ec2_security_group_name }}"
           description: security group with rule descriptions
           vpc_id: "{{ my_vpc.vpc.id }}"
-          region: "{{ ec2_region }}"
+          region: "{{ region }}"
           tags:
             Name: "{{ user_name }}"
             ansible_group: "{{ ec2_ansible_group }}"
             Contact: "{{ my_email_address }}"
             DeleteBy: "{{deleteby}}"
-        rules:
-        - proto: icmp
-          from_port: 8 # icmp type, -1 = any type
-          to_port:  -1 # icmp subtype, -1 = any subtype
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow ping
-        - proto: tcp
-          ports: "{{ open_ports_list }}"
-          cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 22,80
+          rules:
+          - proto: icmp
+            from_port: 8 # icmp type, -1 = any type
+            to_port:  -1 # icmp subtype, -1 = any subtype
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow ping
+          - proto: tcp
+            ports: "{{ open_ports_list }}"
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port {{open_ports_list}}
         register: my_security_group
