@@ -10,7 +10,7 @@
        vpc_cidr: ''
        region: ''
        user_name: ''
-       ec2_ansible_group: "USWEST_SSA"
+       ec2_ansible_group: "{{user_name}}"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
     tasks:
