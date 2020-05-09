@@ -11,8 +11,8 @@
        region: ''
        user_name: ''
        ec2_ansible_group: "{{user_name}}"
-       my_email_address: "{{user_name}}@redhat.com"
        ec2_security_group_name: "{{vpc_name}}_Secgrp"
+       my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
 
     tasks:
