@@ -39,7 +39,7 @@
         name: "{{ ec2_security_group_name }}"
         description: security group with rule descriptions
         vpc_id: "{{ my_vpc.vpc.id }}"
-        region: "{{ ec2_region }}"
+        region: "{{ region }}"
         tags:
           Name: "{{ user_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
