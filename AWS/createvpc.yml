@@ -29,7 +29,10 @@
           Contact: "{{my_email_address}}"
           DeletebBy: "{{deleteby}}"
       register: my_vpc
-    - name: Display vpc infor for "{{vpc_name}}"
+    - name: Display my_vpc.vpc info for "{{vpc_name}}"
+      debug:
+        var: my_vpc.vpc
+    - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
       debug:
         var: my_vpc.vpc
 
