@@ -29,10 +29,10 @@
           Contact: "{{my_email_address}}"
           DeletebBy: "{{deleteby}}"
       register: my_vpc
-    - name: Get vpc infor for "{{vpc_name}}"
+    - name: Display vpc infor for "{{vpc_name}}"
       debug:
-        var: my_vpc
-      
+        var: my_vpc.vpc.id
+
 
     - name: create security group {{ ec2_security_group_name }}
       ec2_group:
