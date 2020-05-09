@@ -34,8 +34,7 @@
         var: my_vpc.vpc
     - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
       debug:
-        var: my_vpc.vpc
-
+        var: my_vpc.vpc.id
 
     - name: create security group {{ ec2_security_group_name }}
       ec2_group:
