@@ -22,9 +22,9 @@
           filters:
             "tag:Name": "{{vpc_name}}_{{user_name}}"
         register: my_vpc
-      - name: Get vpc infor for {{vpc_name}}
+      - name: Display vpc infor for {{vpc_name}}
         debug:
-          var: my_vpc.vpcs.vpc_id
+          var: my_vpc
 
 
       - name: create security group {{ ec2_security_group_name }}
