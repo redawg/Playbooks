@@ -19,13 +19,13 @@
       - name: Getting VPC id for {{vpc_name}}
         ec2_vpc_net_info:
           filters:
-          "tag:Name": "{{vpc_name}}_{{user_name}}"
+            "tag:Name": "{{vpc_name}}_{{user_name}}"
         register: my_vpc
       - name: Get vpc infor for "{{vpc_name}}"
         debug:
           var: my_vpc
         when: debug_flag is defined
-        
+
       - name: create security group "{{ ec2_security_group_name }}"
         ec2_group:
           name: "{{ ec2_security_group_name }}"
