@@ -24,14 +24,14 @@
         register: my_vpc
       - name: Display vpc infor for {{vpc_name}}
         debug:
-          var: my_vpc
+          var: my_vpc.vpcs.vpc_ids
 
 
       - name: create security group {{ ec2_security_group_name }}
         ec2_group:
           name: "{{ec2_security_group_name}}"
           description: security group with rule descriptions
-          vpc_id: "{{my_vpc.vpc.id}}"
+          vpc_id: "{{my_vpc.vpcs.vpc_id}}"
           region: "{{region}}"
           tags:
             Name: "{{ user_name }}"
