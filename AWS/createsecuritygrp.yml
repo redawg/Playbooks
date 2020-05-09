@@ -27,7 +27,7 @@
           var: my_vpc.vpcs
       - name: debug next level for {{vpc_name}}
         debug:
-          var: my_vpc.vpcs.vpc_id
+          var: my_vpc.vpcs.state
 
 
       - name: create security group {{ ec2_security_group_name }}
