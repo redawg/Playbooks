@@ -24,7 +24,7 @@
         register: my_vpc
       - name: Get vpc infor for {{vpc_name}}
         debug:
-          var: my_vpc.vpc_id
+          var: my_vpc.vpcs.vpc_id
 
 
       - name: create security group {{ ec2_security_group_name }}
