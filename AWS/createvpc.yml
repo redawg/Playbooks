@@ -32,3 +32,4 @@
       debug:
         var: my_vpc
       when: debug_flag is defined
+    - include: createvmsecgroup.yml
