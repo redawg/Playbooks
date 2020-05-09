@@ -34,7 +34,7 @@
         var: my_vpc
       when: debug_flag is defined
 
-    - name: create security group "{{ ec2_security_group_name }}"
+    - name: create security group {{ ec2_security_group_name }}
       ec2_group:
         name: "{{ ec2_security_group_name }}"
         description: security group with rule descriptions
