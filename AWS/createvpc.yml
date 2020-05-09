@@ -57,4 +57,5 @@
           rule_desc: allow all on port {{open_ports_list}}
       tags:
         - createsecgrp
+        - onlyvpc
       register: my_security_group
