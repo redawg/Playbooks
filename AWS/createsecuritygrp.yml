@@ -24,10 +24,10 @@
         register: my_vpc
       - name: Display vpc infor for {{vpc_name}}
         debug:
-          var: "my_vpc.id"
+          var: "my_vpc.vpc_id"
       - name: debug next level for {{vpc_name}}
         debug:
-          var: "my_vpc.id"
+          var: "my_vpc.vpc_id"
 
 
       - name: create security group {{ ec2_security_group_name }}
