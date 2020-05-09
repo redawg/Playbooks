@@ -32,7 +32,7 @@
     - name: Get vpc infor for "{{vpc_name}}"
       debug:
         var: my_vpc
-      when: debug_flag is defined
+      
 
     - name: create security group {{ ec2_security_group_name }}
       ec2_group:
