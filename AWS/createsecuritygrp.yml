@@ -18,6 +18,7 @@
     tasks:
       - name: Getting VPC id for {{vpc_name}}
         ec2_vpc_net_info:
+          region: "{{region}}"
           filters:
             "tag:Name": "{{vpc_name}}_{{user_name}}"
         register: my_vpc
