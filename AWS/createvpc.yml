@@ -15,7 +15,7 @@
        deleteby: ''
 
     tasks:
-    - name: create VPC
+    - name: Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}
       ec2_vpc_net:
         name: "{{ vpc_name }}_{{user_name}}"
         cidr_block: "{{ vpc_cidr }}"
