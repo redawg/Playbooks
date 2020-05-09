@@ -25,6 +25,7 @@
       - name: Display vpc infor for {{vpc_name}}
         debug:
           var: my_vpc.vpcs
+        debug:
           var: my_vpc.vpcs.vpc_id
 
 
