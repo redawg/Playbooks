@@ -56,6 +56,5 @@
           cidr_ip: 0.0.0.0/0
           rule_desc: allow all on port {{open_ports_list}}
       tags:
-        - all
         - createsecgrp
       register: my_security_group
