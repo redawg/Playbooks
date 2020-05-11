@@ -104,4 +104,7 @@
         routes:
           - dest: 0.0.0.0/0
             gateway_id: "{{ my_igw.gateway_id }}"
+      tags:
+        - creatert
+        - onlyvpc
       register: my_route_table
