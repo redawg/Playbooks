@@ -12,6 +12,7 @@
        user_name: ''
        ec2_ansible_group: "{{user_name}}"
        ec2_security_group_name: "{{vpc_name}}_Secgrp"
+       ec2_igw_name: "{{vpc_name}}_IGW"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
 
@@ -61,3 +62,16 @@
         - createsecgrp
         - onlyvpc
       register: my_security_group
+    - name: create {{ ec2_igw_name }}"
+        ec2_vpc_igw:
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          state: present
+          tags:
+            Name: "{{ user_name }}"
+            ansible_group: "{{ ec2_ansible_group }}"
+            Contact: "{{ my_email_address }}"
+            DeleteBy: "{{deleteby}}"
+      tags:
+        - createigw
+        - all
+      register: my_igw
