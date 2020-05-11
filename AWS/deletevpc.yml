@@ -35,9 +35,16 @@
          var: my_vpc.vpc.id
      - name: Remove IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
        ec2_vpc_igw:
-          vpc_id: "{{ my_vpc.vpc.id }}"
-          region: "{{ region }}"
-          state: absent
+         vpc_id: "{{ my_vpc.vpc.id }}"
+         region: "{{ region }}"
+         state: absent
+     - name: Remove {{ ec2_vpc_subnet_name }} subnet
+       ec2_vpc_subnet:
+         state: absent
+         vpc_id: "{{ my_vpc.vpc.id }}"
+         cidr: "{{ vpc_cidr }}"
+         region: "{{ region }}"
+
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
