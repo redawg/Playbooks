@@ -11,7 +11,8 @@
        region: ''
        user_name: ''
        ec2_ansible_group: "{{user_name}}"
-       ec2_security_group_name: "{{vpc_name}}_Secgrp"
+       ec2_security_group_name: "{{vpc_name}}_SECGRP"
+       ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
        ec2_igw_name: "{{vpc_name}}_IGW"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
@@ -59,6 +60,22 @@
         - createsecgrp
         - onlyvpc
       register: my_security_group
+    - name: Create {{ ec2_vpc_subnet_name }} subnet
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{ my_vpc.vpc.id }}"
+        cidr: "{{ vpc_cidr }}"
+        region: "{{ region }}"
+        map_public: yes
+        tags:
+          Name: "{{ user_name }}"
+          ansible_group: "{{ ec2_ansible_group }}"
+          Contact: "{{ my_email_address }}"
+          DeleteBy: "{{deleteby}}"
+      tags:
+        - createsubnet
+        - onlyvpc
+      register: my_vpc_subnet
     - name: Create IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
       ec2_vpc_igw:
         vpc_id: "{{ my_vpc.vpc.id }}"
