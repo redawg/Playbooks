@@ -28,9 +28,12 @@
      - name: Display igw_info
        debug:
          var: igw_info.internet_gateways
+     - set_fact:
+         vpc_id: "{{ igw_info.results|map(attachments='vpc_id')|list }}"
      - name: Display igw_info
        debug:
-         var: igw_info.internet_gateways.internet_gateway_id
+         var: vpc_id
+
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
