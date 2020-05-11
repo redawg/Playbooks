@@ -33,7 +33,11 @@
      - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
        debug:
          var: my_vpc.vpc.id
-
+     - name: Create IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
+       ec2_vpc_igw:
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          region: "{{ region }}"
+          state: absent
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
