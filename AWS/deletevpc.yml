@@ -26,6 +26,7 @@
           "tag:Name": "{{ec2_igw_name}}"
        register: igw_info
      - name: Display igw_info
+       debug:
          var: igw_info
 
 
