@@ -30,7 +30,7 @@
          state: present
        check_mode: yes
        register: my_vpc
-       - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
+     - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
          debug:
            var: my_vpc.vpc.id
 
