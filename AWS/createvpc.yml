@@ -13,7 +13,7 @@
        ec2_ansible_group: "{{user_name}}"
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
-       ec2_rt_name: "{{vpc_name_Route_Table}}"
+       ec2_rt_name: "{{vpc_name}}_RT"
        ec2_igw_name: "{{vpc_name}}_IGW"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
@@ -96,7 +96,7 @@
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
         tags:
-          Name: "{{ ec2_vpc_subnet_name }}"
+          Name: "{{ ec2_rt_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
