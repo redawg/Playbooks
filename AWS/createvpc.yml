@@ -38,7 +38,7 @@
     - name: create security group {{ ec2_security_group_name }}
       ec2_group:
         name: "{{ ec2_security_group_name }}"
-        description: security group with rule descriptions
+        description: Security group with rule descriptions created by Ansible
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
         tags:
@@ -68,7 +68,7 @@
         region: "{{ region }}"
         map_public: yes
         tags:
-          Name: "{{ user_name }}"
+          Name: "{{ ec2_vpc_subnet_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
@@ -82,7 +82,7 @@
         region: "{{ region }}"
         state: present
         tags:
-          Name: "{{ user_name }}"
+          Name: "{{ ec2_igw_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
