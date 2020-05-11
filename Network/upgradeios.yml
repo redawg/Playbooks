@@ -40,7 +40,7 @@
 
       - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
         block:
-        - name: SETTING BOOT IMAGE
+        - name: SETTING BOOT IMAGE to {{ new_ios_bin }}
           ios_config:
             lines:
             - no boot system
@@ -64,7 +64,7 @@
               host: "{{inventory_hostname}}"
               port: 22
               delay: 60
-              timeout: 600
+              timeout: 900
             delegate_to: localhost
 
           - name: GATHER ROUTER FACTS FOR VERIFICATION
