@@ -27,9 +27,8 @@
        register: igw_info
      - name: Display igw_info
        debug:
-         var: igw_info.internet_gateways
-     - set_fact:
-         vpc_id: "{{ igw_info.results|map(attachments='vpc_id')|list }}"
+         var: igw_info.stdout
+     
      - name: Display igw_info
        debug:
          var: vpc_id
