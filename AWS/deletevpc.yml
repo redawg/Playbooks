@@ -46,7 +46,7 @@
          cidr: "{{ vpc_cidr }}"
          region: "{{ region }}"
      - name: Remove {{ec2_vpc_subnet_name}} Route Table..
-         ec2_vpc_route_table:
+       ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
          route_table_id: "{{ec2_rt_name}}"
