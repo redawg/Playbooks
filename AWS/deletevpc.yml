@@ -27,8 +27,8 @@
        register: igw_info
      - name: Display igw_info
        debug:
-         var: igw_info.stdout
-     
+         var: igw_info.vpc_id
+
      - name: Display igw_info
        debug:
          var: vpc_id
