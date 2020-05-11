@@ -62,7 +62,7 @@
         - createsecgrp
         - onlyvpc
       register: my_security_group
-    - name: create {{ ec2_igw_name }}"
+    - name: Create IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
         ec2_vpc_igw:
           vpc_id: "{{ my_vpc.vpc.id }}"
           state: present
