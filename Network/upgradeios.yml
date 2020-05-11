@@ -28,7 +28,7 @@
         vars:
           ansible_command_timeout: 1800
         tags:
-          - skip
+          - noxfer
 
       - name: CHECK MD5 HASH
         ios_command:
