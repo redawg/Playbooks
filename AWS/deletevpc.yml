@@ -27,7 +27,7 @@
        register: igw_info
      - name: Display igw_info
        debug:
-         var: igw_info
+         var: igw_info.internet_gateways
      - name: Display igw_info
        debug:
          var: igw_info.internet_gateways.internet_gateway_id
