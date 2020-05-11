@@ -27,6 +27,8 @@
                 answer: "\r"
         vars:
           ansible_command_timeout: 1800
+        tags:
+          - skip
 
       - name: CHECK MD5 HASH
         ios_command:
@@ -37,7 +39,7 @@
           ansible_command_timeout: 300
       - name:
         debug:
-          var: md5_result.stdout[1]
+          var: md5_result.stdout[0]
 
       - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
         block:
