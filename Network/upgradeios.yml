@@ -37,7 +37,7 @@
         register: md5_result
         vars:
           ansible_command_timeout: 300
-    
+
       - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
         block:
         - name: SETTING BOOT IMAGE
@@ -78,7 +78,7 @@
 
           when: should_reboot == "YES"
 
-        when: '"{{new_ios_md5}}" in md5_result.stdout[0]'
+        when: '"[new_ios_md5]" in md5_result.stdout[0]'
 
       when: ansible_net_version != compliant_ios_version
 ...
