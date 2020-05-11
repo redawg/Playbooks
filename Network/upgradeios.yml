@@ -37,7 +37,7 @@
           ansible_command_timeout: 300
       - name:
         debug:
-          var: md5_result.stdout[0]
+          var: md5_result.stdout[1]
 
       - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
         block:
