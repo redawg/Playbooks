@@ -94,7 +94,7 @@
     - name: Set up public subnet route table
       ec2_vpc_route_table:
         vpc_id: "{{ my_vpc.vpc.id }}"
-        region: "{{ ec2_region }}"
+        region: "{{ region }}"
         tags:
           Name: "{{ ec2_vpc_subnet_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
