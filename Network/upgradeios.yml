@@ -40,6 +40,9 @@
       - name:
         debug:
           var: md5_result.stdout[0]
+      - name:
+        debug:
+          var: md5_result
 
       - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
         block:
