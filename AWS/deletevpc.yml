@@ -30,7 +30,7 @@
          var: igw_info
      - name: Display igw_info
        debug:
-         var: igw_info.internet_gateways
+         var: igw_info.internet_gateways.attachments.vpc_id
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
