@@ -20,3 +20,7 @@
          cidr_block: "{{ vpc_cidr }}"
          region: "{{ region }}"
          state: absent
+       register: my_vpc
+     - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
+       debug:
+         var: my_vpc.vpc.id
