@@ -68,7 +68,7 @@
         region: "{{ region }}"
         map_public: yes
         tags:
-          Name: "{{ ec2_vpc_subnet_name }}"
+          Name: "{{ ec2_security_group_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
@@ -90,3 +90,18 @@
         - createigw
         - onlyvpc
       register: my_igw
+    - name: Set up public subnet route table
+      ec2_vpc_route_table:
+        vpc_id: "{{ my_vpc.vpc.id }}"
+        region: "{{ ec2_region }}"
+        tags:
+          Name: "{{ ec2_vpc_subnet_name }}"
+          ansible_group: "{{ ec2_ansible_group }}"
+          Contact: "{{ my_email_address }}"
+          DeleteBy: "{{deleteby}}"
+        subnets:
+          - "{{ my_vpc_subnet.subnet.id }}"
+        routes:
+          - dest: 0.0.0.0/0
+            gateway_id: "{{ my_igw.gateway_id }}"
+      register: my_route_table
