@@ -27,7 +27,10 @@
        register: igw_info
      - name: Display igw_info
        debug:
-         var: igw_info.vpc_id
+         var: igw_info
+     - name: Display igw_info
+       debug:
+         var: igw_info.internet_gateways
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
