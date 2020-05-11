@@ -71,5 +71,5 @@
           DeleteBy: "{{deleteby}}"
       tags:
         - createigw
-        - all
+        - onlyvpc
       register: my_igw
