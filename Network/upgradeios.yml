@@ -70,7 +70,7 @@
           - name: GATHER ROUTER FACTS FOR VERIFICATION
             ios_facts:
 
-          - name: ASSERT THAT THE IOS VERSION IS CORRECT
+          - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}}
             assert:
               that:
                 - compliant_ios_version == ansible_net_version
