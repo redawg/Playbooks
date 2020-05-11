@@ -49,7 +49,7 @@
        ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
-         route_table_id: "{{ec2_rt_name}}"
+         route_table_id: "Name:{{ec2_rt_name}}"
          lookup: tag
          state: absent
      - name: Remove security group {{ ec2_security_group_name }} from {{ vpc_name }}_{{user_name}}
