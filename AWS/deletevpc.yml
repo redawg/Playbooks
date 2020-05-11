@@ -45,13 +45,20 @@
          vpc_id: "{{ my_vpc.vpc.id }}"
          cidr: "{{ vpc_cidr }}"
          region: "{{ region }}"
-     - name: Remove {{ec2_vpc_subnet_name}} Route Table
+     - name: Remove {{ec2_vpc_subnet_name}} Route Table {{ec2_rt_name}}
        ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
          route_table_id: "{{ec2_rt_name}}"
          lookup: tag
          state: absent
+     - name: Remove security group {{ ec2_security_group_name }}
+       ec2_group:
+         name: "{{ ec2_security_group_name }}"
+         vpc_id: "{{ my_vpc.vpc.id }}"
+         region: "{{ region }}"
+         state: absent
+
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
        ec2_vpc_net:
