@@ -5,11 +5,13 @@
   vars:
     ansible_connection: ''
     ansible_network_os: ''
+    saveconfig: ''
 
   tasks:
   - name: Comparing Starup Config vs Running Config on Devices
     ios_config:
       diff_against: startup
+      save_when: "{{saveconfig}}"
     register: test_diff
 
 #  - name: debug the test_diff
