@@ -12,6 +12,7 @@
      ansible_connection: ''
      ansible_network_os: ''
      tftp_server: ''
+     sever_type: ''
 
   tasks:
     - name: Get facts of IOS devices
@@ -22,7 +23,7 @@
       - name: COPY OVER IOS {{ new_ios_bin }}
         ios_command:
            commands:
-              - command: "copy tftp://{{tftp_server}}/{{ new_ios_bin }} bootflash:"
+              - command: "copy {{server_type}}://{{tftp_server}}/{{ new_ios_bin }} bootflash:"
                 prompt: '[{{ new_ios_bin }}]'
                 answer: "\r"
         vars:
