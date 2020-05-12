@@ -58,7 +58,7 @@
                     prompt: '[confirm]'
                     answer: "\r"
             vars:
-              ansible_command_timeout: 30
+              ansible_command_timeout: 60
 
           - name: Waiting for Device to return
             wait_for:
