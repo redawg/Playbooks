@@ -19,7 +19,7 @@
 
     - name: UPGRADE IOS IMAGE IF NOT COMPLIANT
       block:
-      - name: COPY OVER IOS IMAGE
+      - name: COPY OVER IOS {{ new_ios_bin }}
         ios_command:
            commands:
               - command: "copy tftp://{{tftp_server}}/{{ new_ios_bin }} bootflash:"
@@ -30,7 +30,7 @@
         tags:
           - noxfer
 
-      - name: CHECK MD5 HASH
+      - name: CHECK MD5 HASH against {{new_ios_md5}}
         ios_command:
            commands:
               - command: "verify /md5 bootflash:{{ new_ios_bin }}"
