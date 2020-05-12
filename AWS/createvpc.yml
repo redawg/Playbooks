@@ -13,7 +13,7 @@
        ec2_ansible_group: "{{user_name}}"
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
-       ec2_rt_name: "{{vpc_name}}_RT"
+       ec2_rt_name: "{{vpc_name}}_RT_Internet"
        ec2_igw_name: "{{vpc_name}}_IGW"
        my_email_address: "{{user_name}}@redhat.com"
        deleteby: ''
@@ -102,7 +102,7 @@
     #      vpc-id: "{{ my_vpc.vpc.id }}"
     #  register: vpc_default_route
 
-    - name: Add Default route to Table "{{vpc_default_route}}"
+    - name: Create Internet route to Table "{{vpc_default_route}}"
       ec2_vpc_route_table:
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
