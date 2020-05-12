@@ -95,7 +95,7 @@
       ec2_vpc_route_table_facts:
         region: "{{ region }}"
         filters:
-          vpc-id: "{{ prod_vpc.vpc.id }}"
+          vpc-id: "{{ my_vpc.vpc.id }}"
       register: vpc_default_route
 
     - name: Add Default route to Table "{{vpc_default_route}}"
