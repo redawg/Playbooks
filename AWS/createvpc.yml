@@ -29,6 +29,7 @@
         tags:
           Name: "{{user_name}}"
           ansible_group: "{{ec2_ansible_group}}"
+          Createdby: Ansible Tower
           Contact: "{{my_email_address}}"
           DeletebBy: "{{deleteby}}"
       register: my_vpc
@@ -45,6 +46,7 @@
         tags:
           Name: "{{ user_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
+          Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
         rules:
@@ -71,6 +73,7 @@
         tags:
           Name: "{{ ec2_security_group_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
+          Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
       tags:
@@ -85,25 +88,26 @@
         tags:
           Name: "{{ ec2_igw_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
+          Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
       tags:
         - createigw
         - onlyvpc
       register: my_igw
-    - name: Gather default Route Table ID
-      ec2_vpc_route_table_info:
-        region: "{{ region }}"
-        filters:
-          vpc-id: "{{ my_vpc.vpc.id }}"
-      register: vpc_default_route
+    #- name: Gather default Route Table ID
+    #  ec2_vpc_route_table_info:
+    #    region: "{{ region }}"
+    #    filters:
+    #      vpc-id: "{{ my_vpc.vpc.id }}"
+    #  register: vpc_default_route
 
     - name: Add Default route to Table "{{vpc_default_route}}"
       ec2_vpc_route_table:
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
-        route_table_id: "{{ vpc_default_route.route_tables[0].id }}"
-        lookup: id
+        #route_table_id: "{{ vpc_default_route.route_tables[0].id }}"
+        #lookup: id
         tags:
           Name: "{{ ec2_rt_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
