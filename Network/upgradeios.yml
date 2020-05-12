@@ -14,10 +14,10 @@
      tftp_server: ''
 
   tasks:
-    - name: GATHER SWITCH FACTS
+    - name: Get facts of IOS devices
       ios_facts:
 
-    - name: UPGRADE IOS IMAGE IF NOT COMPLIANT
+    - name: Upgrade IOS image if not compliant on devices
       block:
       - name: COPY OVER IOS {{ new_ios_bin }}
         ios_command:
@@ -38,7 +38,7 @@
         vars:
           ansible_command_timeout: 300
 
-      - name: CONTINUE UPGRADE IF MD5 HASH MATCHES
+      - name: Upgrade if MD5 Hash Matches
         block:
         - name: SETTING BOOT IMAGE to {{ new_ios_bin }}
           ios_config:
@@ -50,7 +50,7 @@
 
         - name: REBOOT SWITCH IF INSTRUCTED
           block:
-          - name: REBOOT SWITCH
+          - name: Rebooting Devices
             ios_command:
                commands:
                   - command: "reload"
@@ -59,7 +59,7 @@
             vars:
               ansible_command_timeout: 30
 
-          - name: WAIT FOR SWITCH TO RETURN
+          - name: Waiting for Device to return
             wait_for:
               host: "{{inventory_hostname}}"
               port: 22
@@ -70,7 +70,7 @@
           - name: GATHER ROUTER FACTS FOR VERIFICATION
             ios_facts:
 
-          - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}}
+          - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} 
             assert:
               that:
                 - compliant_ios_version == ansible_net_version
