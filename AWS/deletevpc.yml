@@ -57,7 +57,7 @@
           var: inet_route_table
      - name:
        debug:
-          var: inet_route_table.route_tables.id
+          var: inet_route_table.route_tables[0].id
 
      - name: Remove Route Table {{ec2_rt_name}} from {{ vpc_name }}_{{user_name}}
        ec2_vpc_route_table:
