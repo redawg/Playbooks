@@ -54,12 +54,12 @@
        register: inet_route_table
      - name:
        debug:
-          var: inet_route_table
+          var: inet_route_table.id
      - name: Remove Route Table {{ec2_rt_name}} from {{ vpc_name }}_{{user_name}}
        ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
-         route_table_id: "{{inet_route_table}}"
+         route_table_id: "{{inet_route_table.id}}"
          lookup: id
          state: absent
        tags:
