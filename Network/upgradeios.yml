@@ -31,7 +31,7 @@
         tags:
           - noxfer
 
-      - name: CHECK MD5 HASH against {{new_ios_md5}}
+      - name: CHECK MD5 HASH against {{new_ios_md5}} Skip rest if fail
         ios_command:
            commands:
               - command: "verify /md5 bootflash:{{ new_ios_bin }}"
