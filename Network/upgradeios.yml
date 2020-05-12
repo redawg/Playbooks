@@ -67,10 +67,10 @@
               timeout: 900
             delegate_to: localhost
 
-          - name: GATHER ROUTER FACTS FOR VERIFICATION
+          - name: Getting updated facts of device
             ios_facts:
 
-          - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}} 
+          - name: ASSERT THAT THE IOS VERSION IS {{compliant_ios_version}}
             assert:
               that:
                 - compliant_ios_version == ansible_net_version
