@@ -96,7 +96,7 @@
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
         tags:
-          #Name: "{{ ec2_rt_name }}"
+          Name: "{{ ec2_rt_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Contact: "{{ my_email_address }}"
           DeleteBy: "{{deleteby}}"
