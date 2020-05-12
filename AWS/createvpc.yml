@@ -92,7 +92,7 @@
         - onlyvpc
       register: my_igw
     - name: Gather default Route Table ID
-      ec2_vpc_route_table_facts:
+      ec2_vpc_route_table_info:
         region: "{{ region }}"
         filters:
           vpc-id: "{{ my_vpc.vpc.id }}"
