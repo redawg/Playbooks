@@ -102,7 +102,7 @@
     #      vpc-id: "{{ my_vpc.vpc.id }}"
     #  register: vpc_default_route
 
-    - name: Create Internet route to Table "{{vpc_default_route}}"
+    - name: Create Internet route Table "{{ec2_rt_name}}"
       ec2_vpc_route_table:
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
