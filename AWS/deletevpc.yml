@@ -58,7 +58,7 @@
        ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
-         route_table_id: "{{ec2_rt_name}}"
+         route_table_id: "Name:{{ec2_rt_name}}"
          lookup: tag
          state: absent
        tags:
