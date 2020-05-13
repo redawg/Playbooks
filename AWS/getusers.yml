@@ -1,0 +1,22 @@
+- name: ec2 test
+  hosts: localhost
+  vars:
+    aws_access_key:
+    aws_secret_key:
+    aws_region: us-west-2
+    aws_group: SuperPowerUsers
+
+  tasks:
+    - block:
+      - name: "{{ aws_region }}: Build a list of users"
+        iam_user_info:
+          group: "{{ aws_group }}"
+        register: aws_users
+
+      - name: "{{ aws_region }}: Count aws_users"
+        debug:
+          msg: "Users found: {{aws_users.instances | length}}"
+
+      - name: "{{ aws_region }}: Log aws_users"
+        debug:
+          msg: "users: {{ aws_users }}"
