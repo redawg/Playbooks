@@ -13,7 +13,7 @@
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          instance-state-name: [ "running" ]
+          "tag:Name": Testserver
        register: instance_info
      - name:
        debug:
