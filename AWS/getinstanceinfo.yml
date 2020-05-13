@@ -20,4 +20,4 @@
           msg: "{{instance_info}}"
      - name:
         debug:
-          msg: "{{instance_info.instance_id}}"
+          msg: "{{instance_info.instance_id[0]}}"
