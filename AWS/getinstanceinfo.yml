@@ -6,7 +6,7 @@
     vars:
        aws_access_key: ''
        aws_secret_key: ''
-       aws_group: SuperPowerUsers
+       
 
     tasks:
      - name: Get user info instances with tag {{tag}} in {{region}}
