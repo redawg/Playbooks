@@ -6,7 +6,7 @@
     vars:
        aws_access_key: ''
        aws_secret_key: ''
-       
+
 
     tasks:
      - name: Get user info instances with tag {{tag}} in {{region}}
@@ -19,5 +19,5 @@
        debug:
           msg: "{{instance_info}}"
      - name:
-        debug:
+       debug:
           msg: "{{instance_info.instance_id[0]}}"
