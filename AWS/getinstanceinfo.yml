@@ -17,4 +17,7 @@
        register: instance_info
      - name:
        debug:
+          msg: "{{instance_info}}"
+     - name:
+        debug:
           msg: "{{instance_info.instance_id}}"
