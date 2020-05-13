@@ -15,7 +15,7 @@
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          "tag:Name": DeleteBy
+          "tag:Deleteby": Never
        register: instance_info
      - name:
        debug:
