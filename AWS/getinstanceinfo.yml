@@ -8,12 +8,15 @@
        aws_secret_key: ''
        aws_group: SuperPowerUsers
        region: us-west-2
+       tag:
 
     tasks:
-     - name: Get user info for {{aws_group}} in {{ region }}
-       iam_user_info:
-        group: "{{ aws_group }}"
-       register: aws_users
+     - name: Get user info instances with tag {{tag}} in {{ region }}
+       ec2_instance_info:
+        region: "{{region}}"
+        filters:
+          "tag:Name": DeleteBy
+       register: instance_info
      - name:
        debug:
-          msg: aws_users 
+          msg: instance_info
