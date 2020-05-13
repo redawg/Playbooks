@@ -15,7 +15,7 @@
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          "{{filter}}"
+          instance-state-name: [ "shutting-down", "stopping", "stopped" ]
        register: instance_info
      - name:
        debug:
