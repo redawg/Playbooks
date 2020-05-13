@@ -46,7 +46,7 @@
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
         tags:
-          AlwaysUp: "{{alwaysup}}"
+          AlwaysUp: "{{ alwaysup }}"
           Name: "{{ user_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
@@ -74,7 +74,7 @@
         region: "{{ region }}"
         map_public: yes
         tags:
-          AlwaysUp: "{{alwaysup}}"
+          AlwaysUp: "{{ alwaysup }}"
           Name: "{{ ec2_security_group_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
@@ -90,7 +90,7 @@
         region: "{{ region }}"
         state: present
         tags:
-          AlwaysUp: "{{alwaysup}}"
+          AlwaysUp: "{{ alwaysup }}"
           Name: "{{ ec2_igw_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
@@ -114,7 +114,7 @@
         #route_table_id: "{{ vpc_default_route.route_tables[0].id }}"
         #lookup: id
         tags:
-          AlwaysUp: "{{alwaysup}}"
+          AlwaysUp: " {{ alwaysup }} "
           Name: "{{ ec2_rt_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
