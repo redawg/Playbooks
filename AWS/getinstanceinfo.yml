@@ -13,6 +13,7 @@
     tasks:
      - name: Get user info instances with tag {{tag}} in {{ region }}
        ec2_instance_info:
+        region: {{region}}
         filters:
           instance-state-name: [ "running" ]
        register: instance_info
