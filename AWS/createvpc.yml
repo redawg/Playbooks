@@ -90,7 +90,6 @@
         region: "{{ region }}"
         state: present
         tags:
-          AlwaysUp: "{{alwaysup}}"
           Name: "{{user_name}}"
           ansible_group: "{{ec2_ansible_group}}"
           Createdby: Ansible Tower
