@@ -14,6 +14,6 @@
        iam_user_info:
         group: "{{ aws_group }}"
        register: aws_users
-     - name: {{ region }} Count aws_users
+     - name:
        debug:
-         msg: "Users found: {{aws_users.instances | length}}"
+          msg: aws_users 
