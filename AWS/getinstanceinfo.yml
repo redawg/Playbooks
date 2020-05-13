@@ -8,14 +8,14 @@
        aws_secret_key: ''
        aws_group: SuperPowerUsers
        region: us-west-2
-       tag:
+       filter: ''
 
     tasks:
      - name: Get user info instances with tag {{tag}} in {{ region }}
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          "tag:DeleteBy": NEVER
+          "{{filter}}"
        register: instance_info
      - name:
        debug:
