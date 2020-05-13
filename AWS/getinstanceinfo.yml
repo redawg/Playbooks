@@ -1,5 +1,5 @@
 ---
-  - name: Delete AWS VPC
+  - name: Get instances info
     hosts: localhost
     connection: local
     gather_facts: no
@@ -13,7 +13,7 @@
     tasks:
      - name: Get user info instances with tag {{tag}} in {{region}}
        ec2_instance_info:
-        region: "{{region}}"
+        region: us-west-2
         filters:
           instance-state-name: [ "running" ]
        register: instance_info
