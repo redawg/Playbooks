@@ -91,6 +91,7 @@
         state: present
         tags:
           Name: "{{ec2_igw_name}}"
+          ansible_group: "{{ ec2_ansible_group }}"
           AlwaysUp: "{{ alwaysup }}"
           Createdby: Ansible Tower
           Contact: "{{my_email_address}}"
