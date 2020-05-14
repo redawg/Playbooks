@@ -23,7 +23,7 @@
            "tag:Name": "{{subnet_name}}"
        register: subnet_info
        debug:
-         msg: "{{subnet_name}}"
+         msg: "{{subnet_info}}"
 
 
 
