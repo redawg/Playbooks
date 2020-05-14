@@ -25,12 +25,12 @@
         ec2_vpc_subnet_info:
           region: "{{region}}"
           filters:
-            "tag:Name": ansibleservers_Subnet
-        register: subnet_info
+            "tag:Name": "{{subnet_name}}"
+        register: subnet_id
 
       - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
         set_fact:
-          vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
+          vpc_subnet_id: "{{subnet_id.subnets[0].id}}"
       when: vpc_subnet_id is not defined
 
     - name: Show Subnet_id
