@@ -36,8 +36,8 @@
       - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
         set_fact:
           vpc_subnet_id: "{{subnet_id.subnets[0].id}}"
-      when: not vpc_subnet_id
-      
+      when: (not vpc_subnet_id) or (vpc_subnet_id|length == 0)
+
     - name: Show Subnet_id
       debug:
         msg: "{{vpc_subnet_id}}"
