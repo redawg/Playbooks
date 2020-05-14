@@ -19,7 +19,7 @@
     tasks:
     - name: Checking if vpc_subnet_id defined if not looking up by Name
       ec2_vpc_subnet_info:
-        region: {{region}}
+        region: "{{region}}"
         filters:
            "tag:Name": ansibleservers_Subnet
       register: subnet_info
