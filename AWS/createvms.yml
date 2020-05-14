@@ -17,7 +17,7 @@
        region: ''
 
     tasks:
-    - name: Checking if vpc_subnet_id defined if not looking up by Name
+    - name: Checking if 'vpc_subnet_id' defined if not looking up by name
       ec2_vpc_subnet_info:
         region: "{{region}}"
         filters:
