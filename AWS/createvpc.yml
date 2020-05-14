@@ -75,7 +75,7 @@
         map_public: yes
         tags:
           AlwaysUp: "{{alwaysup}}"
-          Name: "{{ ec2_security_group_name }}"
+          Name: "{{ ec2_vpc_subnet_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
