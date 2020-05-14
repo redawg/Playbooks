@@ -28,9 +28,6 @@
       debug:
         msg: "{{subnet_info}}"
 
-
-
-
     - name: Creating {{count}} AWS VMs in {{region}}
       ec2:
        key_name: "{{key_name}}"
