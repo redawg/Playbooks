@@ -27,7 +27,7 @@
       register: subnet_info
     - name: Debug subnet_info variable
       debug:
-        msg: "{{subnet_info}}"
+        msg: "{{subnet_info.subnets[0].id}}"
 
     - name: Creating {{count}} AWS VMs in {{region}}
       ec2:
