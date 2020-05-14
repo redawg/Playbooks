@@ -19,7 +19,7 @@
     tasks:
 
 
-    - name:
+    - name: If vpc_subnet_id doesnt exist lookup by Provided Name
       ec2_vpc_subnet_info:
         region: "{{region}}"
         filters:
@@ -39,4 +39,4 @@
        group: "{{group}}"
        count: "{{count}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
-       assign_public_ip: "{{vpc_subnet_id}}"
+       assign_public_ip: "{{assign_public_ip}}"
