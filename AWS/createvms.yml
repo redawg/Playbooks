@@ -11,7 +11,6 @@
        instance_type: ''
        image: ''
        wait: ''
-       wait_timeout: ''
        assign_public_ip: ''
        subnet_name: ''
        region: ''
@@ -48,7 +47,7 @@
        instance_type: "{{instance_type}}"
        image:  "{{image}}"
        wait: "{{wait}}"
-       wait_timeout: "{{wait_timeout}}"
+       wait_timeout: 500
        group: "{{group}}"
        count: "{{count}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
