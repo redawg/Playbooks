@@ -20,16 +20,18 @@
 
 
     - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
-      ec2_vpc_subnet_info:
-        region: "{{region}}"
-        filters:
-           "tag:Name": ansibleservers_Subnet
-      register: subnet_info
+      block:
+      - name: Looking Up Subnet_id for {{subnet_name}}
+        ec2_vpc_subnet_info:
+          region: "{{region}}"
+          filters:
+            "tag:Name": ansibleservers_Subnet
+        register: subnet_info
 
-    - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
-      set_fact:
-        vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
-
+      - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
+        set_fact:
+          vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
+      when: vpc_subnet_id is not defined
 
     - name: Show Subnet_id
       debug:
