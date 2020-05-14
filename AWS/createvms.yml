@@ -17,6 +17,9 @@
        region: ''
 
     tasks:
+
+
+    - name:
       ec2_vpc_subnet_info:
         region: "{{region}}"
         filters:
