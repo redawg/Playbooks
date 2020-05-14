@@ -25,8 +25,9 @@
         filters:
            "tag:Name": ansibleservers_Subnet
       register: subnet_info
+
     - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
-      vars:
+      set_fact:
         vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
 
 
