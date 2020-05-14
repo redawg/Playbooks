@@ -25,7 +25,8 @@
         filters:
            "tag:Name": ansibleservers_Subnet
       register: subnet_info
-    - name: Debug subnet_info variable
+      vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
+    - name: Show Subnet_id
       debug:
         msg: "{{subnet_info.subnets[0].id}}"
 
