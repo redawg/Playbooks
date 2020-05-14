@@ -22,6 +22,9 @@
 
 
     tasks:
+    - name:
+
+
 
 
     - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
@@ -36,7 +39,7 @@
       - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
         set_fact:
           vpc_subnet_id: "{{subnet_id.subnets[0].id}}"
-      when: (vpc_subnet_id|length == 0) or (vpc_subnet_id is undefined)
+      when: vpc_subnet_id is undefined
 
     - name: Show Subnet_id
       debug:
