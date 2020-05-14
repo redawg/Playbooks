@@ -14,13 +14,14 @@
        wait_timeout: ''
        assign_public_ip: ''
        subnet_name: ''
-
+       region: ''
 
     tasks:
     - name: Checking if vpc_subnet_id defined if not looking up by Name
        ec2_vpc_subnet_info:
+         region: {{region}}
          filters:
-           "tag:Name": "{{subnet_name}}"
+           "tag:Name": ansibleservers_Subnet
        register: subnet_info
        debug:
          msg: "{{subnet_info}}"
