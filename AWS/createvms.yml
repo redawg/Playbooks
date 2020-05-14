@@ -19,16 +19,20 @@
     tasks:
 
 
-    - name: If vpc_subnet_id doesnt exist lookup by Provided Name
+    - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
       ec2_vpc_subnet_info:
         region: "{{region}}"
         filters:
            "tag:Name": ansibleservers_Subnet
       register: subnet_info
-      vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
+    - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
+      set-fact:
+        vpc_subnet_id: "{{subnet_info.subnets[0].id}}"
+
+
     - name: Show Subnet_id
       debug:
-        msg: "{{subnet_info.subnets[0].id}}"
+        msg: "{{vpc_subnet_id}}"
 
     - name: Creating {{count}} AWS VMs in {{region}}
       ec2:
