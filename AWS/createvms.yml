@@ -25,6 +25,7 @@
         filters:
            "tag:Name": ansibleservers_Subnet
       register: subnet_info
+    - name: Debug subnet_info variable
       debug:
         msg: "{{subnet_info}}"
 
