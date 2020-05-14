@@ -17,7 +17,7 @@
 
 
     tasks:
-     - name: Checking if vpc_subnet_id defined if not looking up by Name
+    - name: Checking if vpc_subnet_id defined if not looking up by Name
        ec2_vpc_subnet_info:
          filters:
            "tag:Name": "{{subnet_name}}"
@@ -28,7 +28,7 @@
 
 
 
-     - name: Creating {{count}} AWS VMs in {{region}}
+    - name: Creating {{count}} AWS VMs in {{region}}
        ec2:
          key_name: "{{key_name}}"
          instance_type: "{{instance_type}}"
