@@ -14,6 +14,7 @@
        assign_public_ip: ''
        subnet_name: ''
        region: ''
+       server_pre_name: ''
        ec2_ansible_group: "{{user_name}}"
        my_email_address: "{{user_name}}@redhat.com"
        alwaysup: ''
@@ -54,7 +55,7 @@
        assign_public_ip: "{{assign_public_ip}}"
        instance_tags:
          AlwaysUp: "{{alwaysup}}"
-         Name: "{{user_name}}"
+         Name: "{{server_pre_name}}"
          ansible_group: "{{ec2_ansible_group}}"
          Createdby: Ansible Tower
          Contact: "{{my_email_address}}"
