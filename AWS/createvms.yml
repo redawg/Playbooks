@@ -17,7 +17,6 @@
        region: ''
 
     tasks:
-    - name: why is this not working 
       ec2_vpc_subnet_info:
         region: "{{region}}"
         filters:
