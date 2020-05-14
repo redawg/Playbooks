@@ -52,7 +52,7 @@
        count: "{{count}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
        assign_public_ip: "{{assign_public_ip}}"
-       tags:
+       instance_tags:
          AlwaysUp: "{{alwaysup}}"
          Name: "{{user_name}}"
          ansible_group: "{{ec2_ansible_group}}"
