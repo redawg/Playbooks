@@ -13,11 +13,11 @@
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          "tag:Name": Testserver
+          "tag:AlwaysUp": True
        register: instance_info
      - name:
        debug:
           msg: "{{instance_info}}"
      - name:
        debug:
-          msg: "{{instance_info.instances}}"
+          msg: "{{instance_info.instances.instance_id}}"
