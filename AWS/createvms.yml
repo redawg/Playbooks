@@ -22,7 +22,7 @@
 
 
     tasks:
-      - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
+    - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
         ec2_vpc_subnet_info:
