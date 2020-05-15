@@ -6,7 +6,6 @@
     vars:
        aws_access_key: ''
        aws_secret_key: ''
-       count: ''
        key_name: ''
        instance_type: ''
        image: ''
@@ -45,11 +44,10 @@
        instance_type: "{{instance_type}}"
        image:  "{{image}}"
        wait: "{{wait}}"
-       wait_timeout: 500
-       count: "{{count}}"
        region: "{{region}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
-       assign_public_ip: "{{assign_public_ip}}"
+       network:
+         assign_public_ip: "{{assign_public_ip}}"
        tags:
          AlwaysUp: "{{alwaysup}}"
          Name: "{{server_pre_name}}"
