@@ -1,4 +1,5 @@
 ---
 - name: Creating a VPC in AWS via A role Playbook
   hosts: all
-  gather_facts: False
+  roles:
+    - awscreatevpc
