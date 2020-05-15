@@ -37,7 +37,7 @@
 
     - name: create security group {{ security_group_name }}
       ec2_group:
-        name: "{{ ec2_security_group_name }}"
+        name: "{{ security_group_name }}"
         description: Security group with rule descriptions created by Ansible
         vpc_id: "{{ my_vpc.vpc.id }}"
         region: "{{ region }}"
