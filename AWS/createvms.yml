@@ -50,7 +50,7 @@
        region: "{{region}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
        assign_public_ip: "{{assign_public_ip}}"
-       instance_tags:
+       tags:
          AlwaysUp: "{{alwaysup}}"
          Name: "{{server_pre_name}}"
          ansible_group: "{{ec2_ansible_group}}"
