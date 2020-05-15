@@ -1,6 +1,6 @@
 ---
-- name: Creating a VPC in AWS via A role Playbook
-  hosts: all
+# Playbook to test new roles and tags
+- hosts: localhost
   roles:
     - role: aws_create_vpc
       tags: ['aws_create_vpc']
