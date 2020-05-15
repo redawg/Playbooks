@@ -19,4 +19,4 @@
         region: "{{region}}"
         state: stopped
         filters:
-           "tag:Name": Demo
+           "tag:Name": *Demo*
