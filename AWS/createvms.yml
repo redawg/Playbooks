@@ -20,13 +20,7 @@
        alwaysup: ''
        deleteby: ''
 
-
     tasks:
-    - name:
-
-
-
-
     - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
