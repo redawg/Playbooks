@@ -6,6 +6,7 @@
     vars:
        aws_access_key: ''
        aws_secret_key: ''
+       count: ''
        key_name: ''
        instance_type: ''
        image: ''
@@ -19,8 +20,9 @@
        alwaysup: ''
        deleteby: ''
 
+
     tasks:
-    - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
+      - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
         ec2_vpc_subnet_info:
@@ -39,16 +41,17 @@
         msg: "{{vpc_subnet_id}}"
 
     - name: Creating {{count}} AWS VMs in {{region}}
-      ec2_instance:
+      ec2:
        key_name: "{{key_name}}"
        instance_type: "{{instance_type}}"
-       image_id:  "{{image}}"
+       image:  "{{image}}"
        wait: "{{wait}}"
+       wait_timeout: 500
+       count: "{{count}}"
        region: "{{region}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
-       network:
-         assign_public_ip: "{{assign_public_ip}}"
-       tags:
+       assign_public_ip: "{{assign_public_ip}}"
+       instance_tags:
          AlwaysUp: "{{alwaysup}}"
          Name: "{{server_pre_name}}"
          ansible_group: "{{ec2_ansible_group}}"
