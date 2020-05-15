@@ -1,8 +1,4 @@
 ---
-  - name: Create AWS VPC
-    hosts: localhost
-    connection: local
-    gather_facts: no
     vars:
        aws_access_key: ''
        aws_secret_key: ''
