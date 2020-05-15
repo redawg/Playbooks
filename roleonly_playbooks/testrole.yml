@@ -1,0 +1,4 @@
+---
+- name: Configure NTP
+  hosts: all
+  gather_facts: False
