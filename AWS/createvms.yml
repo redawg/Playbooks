@@ -42,7 +42,7 @@
       ec2_instance:
        key_name: "{{key_name}}"
        instance_type: "{{instance_type}}"
-       image:  "{{image}}"
+       image_id:  "{{image}}"
        wait: "{{wait}}"
        region: "{{region}}"
        vpc_subnet_id:  "{{vpc_subnet_id}}"
