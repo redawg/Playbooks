@@ -46,7 +46,7 @@
         msg: "{{vpc_subnet_id}}"
 
     - name: Creating {{count}} AWS VMs in {{region}}
-      ec2:
+      ec2_instance:
        key_name: "{{key_name}}"
        instance_type: "{{instance_type}}"
        image:  "{{image}}"
