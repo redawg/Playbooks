@@ -1,0 +1,17 @@
+---
+  - name: Control Tiger Openshift Cluster
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       region: ''
+       state: ''
+
+
+    tasks:
+    - name: Shutting down Tiger Instances Now!!
+      ec2_instance:
+        region: "{{region}}"
+        state: "{{state}}"
+        filters:
+           "tag:ClusterID": Tigerteam
