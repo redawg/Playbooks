@@ -1,6 +1,7 @@
 ---
 # Playbook to test new roles and tags
 - hosts: localhost
+  connection: local
   roles:
     - role: aws_create_vpc
       tags: ['aws_create_vpc']
