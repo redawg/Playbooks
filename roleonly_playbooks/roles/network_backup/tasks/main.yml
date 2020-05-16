@@ -7,7 +7,7 @@
 #    network_backup_dir: "{{ backup_path }}"
 #    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
-  tasks:
+  
   - name: Clone the backup repo
     git:
       repo: "{{ network_backup_repository }}"
