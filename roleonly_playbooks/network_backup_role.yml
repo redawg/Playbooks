@@ -1,7 +1,6 @@
 ---
 # Playbook to test new roles and tags
-- hosts: localhost
-  connection: local
+- hosts: all
   roles:
     - role: network_backup
       tags: ['network_backup']
