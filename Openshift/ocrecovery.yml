@@ -4,9 +4,9 @@
   gather_facts: False
   become: no
   tasks:
-  - name: Wait 3 minutes for Nodes to settle and pods to start
-    pause:
-      minutes: 3
+#  - name: Wait 3 minutes for Nodes to settle and pods to start
+#    pause:
+#      minutes: 3
 
   - name: Get CSRs that need to be approved
     k8s_info:
