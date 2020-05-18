@@ -15,6 +15,7 @@
       host: "{{OS_host_api}}"
       username: "{{OS_username}}"
       password: "{{OS_password}}"
+      validate_certs: "{{cert_validate}}"
     register: r_csrs
 
   - when: r_csrs.resources | length > 0
