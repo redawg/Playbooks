@@ -11,6 +11,7 @@
   - name: Get CSRs that need to be approved
     k8s_info:
       api_version: v1beta1
+      name: certificates
       kind: CertificateSigningRequest
       host: "{{OS_host_api}}"
       username: "{{OS_username}}"
