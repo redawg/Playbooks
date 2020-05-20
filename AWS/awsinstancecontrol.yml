@@ -5,8 +5,8 @@
     gather_facts: no
     vars:
        region: ''
-       state: stopped
-       filter: '"tag:Contact": =aschoenf*'
+       state: ''
+       filter: '"tag:Contact": aschoenf*'
 
 
     tasks:
