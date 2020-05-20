@@ -1,17 +1,18 @@
 ---
-- name: Control the EC2 Instance
+  - name: Control AWS instances
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       region: ''
+       state: stopped
+       filter: '"tag:Contact": =aschoenf*'
 
 
-  hosts: localhost
-  connection: local
-  vars:
-    instance_id: ''
-    ec2_tag: ''
-
-tasks:
-  - name: Stopping an EC2 Instance {{ec2_tag}}
-  - local_action:
-       module: ec2
-       instance_tags:
-          Name: "{{ec2_tag}}"
-    state: running
+    tasks:
+    - name: Setting ec2 instances with {{filter}} to {{state}}
+      ec2_instance:
+        region: "{{region}}"
+        state: "{{state}}"
+        filters:
+           "{{filter}}"
