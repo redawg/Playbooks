@@ -10,9 +10,9 @@
     - name: get show interface
       ios_command:
         commands:
-            - show interface
+            - show interface brief
       register: iface_output
 
     - name: Debug iface_output
       debug:
-        var: iface_output.name
+        var: iface_output
