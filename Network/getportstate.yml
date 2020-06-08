@@ -15,4 +15,4 @@
 
     - name: Debug iface_output
       debug:
-        var: iface_output
+        var: iface_output.name
