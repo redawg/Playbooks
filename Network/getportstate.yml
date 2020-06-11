@@ -21,4 +21,4 @@
     - name: PARSE THE RAW OUTPUT
       command_parser:
         file: "parsers/show_interfaces.yaml"
-        content: "{{ iface_output.stdout[0] }}"
+        content: "{{ iface_output.stdout }}"
