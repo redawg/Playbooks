@@ -8,7 +8,7 @@
     ansible_network_os: ''
   tasks:
     - name: get show interface
-      ios_facts:
+      parse_cli:
         commands:
             - show interface
       register: iface_output
