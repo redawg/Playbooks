@@ -17,7 +17,7 @@
 
     - name: Debug iface_output
       debug:
-        var: iface_output.stdout
+        var: iface_output
     - name: PARSE THE RAW OUTPUT
       command_parser:
         file: "PARSER_interface.yml"
