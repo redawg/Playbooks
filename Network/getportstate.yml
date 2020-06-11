@@ -8,9 +8,9 @@
     ansible_network_os: ''
   tasks:
     - name: get show interface
-      ios_command:
+      ios_facts:
         commands:
-            - show interface brief
+            - show interface
       register: iface_output
 
     - name: Debug iface_output
