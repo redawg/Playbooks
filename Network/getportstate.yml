@@ -20,5 +20,5 @@
         var: iface_output.stdout
     - name: PARSE THE RAW OUTPUT
       command_parser:
-        file: "parsers/show_interfaces.yaml"
-        content: "{{ iface_output.stdout }}"
+        file: "PARSER_interface.yml"
+        content: "{{ iface_output.stdout[0] }}"
