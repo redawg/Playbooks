@@ -12,10 +12,10 @@
    - libselinux-python
 
 - name: Enable port 80 for Firewalld
-  firewalld:
-    service: http
-    permanent: yes
-    state: enabled
+  service:
+    name: firewalld
+    state: stopped
+    enabled: False
 
 - name: http service state
   service: name=httpd state=started enabled=yes
