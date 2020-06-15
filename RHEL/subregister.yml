@@ -1,7 +1,7 @@
 ---
 - name: Subscribe RHEL to Account
   hosts: all
-  gather_facts: False
+  gather_facts: true
   vars:
      username: ''
      password: ''
