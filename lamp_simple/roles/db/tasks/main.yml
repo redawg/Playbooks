@@ -16,10 +16,10 @@
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
   notify:
-  - restart mysql
+  - restart mariadb
 
-- name: Start Mysql Service
-  service: name=mysqld state=started enabled=yes
+- name: Start Mariadb Service
+  service: name=mariadb state=started enabled=yes
 
 - name: insert iptables rule
   lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ mysql_port }}"
