@@ -4,7 +4,7 @@
 - name: Install Mysql package
   yum: name={{ item }} state=installed
   with_items:
-   - mariadb-server
+   - mysql-server
    - MySQL-python
    - libselinux-python
    - libsemanage-python
@@ -16,10 +16,10 @@
 - name: Create Mysql configuration file
   template: src=my.cnf.j2 dest=/etc/my.cnf
   notify:
-  - restart mariadb
+  - restart mysql
 
-- name: Start Mariadb Service
-  service: name=mariadb state=started enabled=yes
+- name: Start Mysql Service
+  service: name=mysqld state=started enabled=yes
 
 - name: insert iptables rule
   lineinfile: dest=/etc/sysconfig/iptables state=present regexp="{{ mysql_port }}"
