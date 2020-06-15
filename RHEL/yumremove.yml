@@ -6,7 +6,7 @@
       package: ''
   serial: 1
   tasks:
-    - name: Install {{package}}
+    - name: Removing {{package}}
       yum:
         name: "{{package}}"
         state: absent
