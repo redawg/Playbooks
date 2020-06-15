@@ -3,9 +3,8 @@
   connection: local
   gather_facts: true
   tasks:
-    - name: Return OS version to registered my_release variable
-      command: cat /etc/redhat-release
-      register: my_release
-    - debug:
-        var:  my_release.stdout_lines
-      with_items: groups ['ALL']
+  - name: System details
+    debug: msg="{{ item }}"
+    with_items:
+    - "{{ ansible_distribution }}"
+    - "{{ ansible_distribution_version }}"
