@@ -41,7 +41,7 @@
         - ansible_distribution_major_version == "7"
     - name: Copy DNS Hosts file for local
       copy:
-        src: /etc/hosts
+        src: /var/www/html/hosts
         dest: /etc/hosts
         owner: root
         group: root
