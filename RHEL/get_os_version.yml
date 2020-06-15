@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: true
+  tasks:
+    - name: Return OS version to registered my_release variable
+      command: cat redhat-release:
+      register: my_release
+    - debug:
+        var:  my_release.stdout_lines
