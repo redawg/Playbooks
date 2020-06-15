@@ -1,0 +1,22 @@
+---
+- name: Ready Clean Machine for demo
+  hosts: all
+  gather_facts: true
+  vars:
+     username: ''
+     password: ''
+     pool_id: ''
+     systemrole: "Red Hat Enterprise Server"
+     usage: "Dev/Test"
+     sla: "Self-Support"
+
+  tasks:
+    - name: Subscribing to RHEL account now
+      redhat_subscription:
+        state: absent
+    - name: Running insights register
+      command: insights-client --unregister
+      register: register_output
+    - name: Display Register
+      debug:
+        msg: "{{ register_output }}"
