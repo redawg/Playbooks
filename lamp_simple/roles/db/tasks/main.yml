@@ -19,7 +19,7 @@
   - restart mariadb
 
 - name: Start Mysql Service
-  service: name=mysqld state=started enabled=yes
+  service: name=mariadb state=started enabled=yes
 
 - name: Open ports needed
   service:
