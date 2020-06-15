@@ -46,10 +46,15 @@
         owner: root
         group: root
         mode: '0644'
+    - name: Install insights Client
+      yum:
+        name: insights-client
+        state: present
     - name: Upgrading all Modules to Latest
       yum:
         name: '*'
         state: latest
+
     - name: Running insights register
       command: insights-client --register
       register: register_output
