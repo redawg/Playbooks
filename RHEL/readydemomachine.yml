@@ -50,13 +50,12 @@
         owner: root
         group: root
         mode: '0644'
-    - name: Install insights Client
+    - name: Install My packages I want (insights/net-tools/wget)
       yum:
-        name: insights-client
-        state: present
-    - name: Install net-tools
-      yum:
-        name: net-tools
+        name:
+          -  insights-client
+          -  net-tools
+          -  wget
         state: present
     - name: Upgrading all Modules to Latest
       yum:
