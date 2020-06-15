@@ -8,3 +8,4 @@
       register: my_release
     - debug:
         var:  my_release.stdout_lines
+      with_items: groups ['ALL']
