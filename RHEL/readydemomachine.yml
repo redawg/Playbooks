@@ -54,6 +54,10 @@
       yum:
         name: insights-client
         state: present
+    - name: Install net-tools
+      yum:
+        name: net-tools
+        state: present
     - name: Upgrading all Modules to Latest
       yum:
         name: '*'
