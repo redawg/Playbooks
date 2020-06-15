@@ -13,10 +13,10 @@
 
 - name: Enable port 80 for Firewalld
   firewalld:
-    port: {{ httpd_port }}
+    port: "{{ httpd_port }}"
     permanent: yes
     state: enabled
-    
+
 - name: http service state
   service: name=httpd state=started enabled=yes
 
