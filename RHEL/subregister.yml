@@ -22,3 +22,10 @@
           role: "{{systemrole}}"
           service_level_agreement: "{{sla}}"
           sync: true
+    - name: Copy file with owner and permissions
+      copy:
+        src: /ect/hosts
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0644'
