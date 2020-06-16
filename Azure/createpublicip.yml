@@ -13,6 +13,7 @@
      azure_rm_securitygroup:
        resource_group: "{{az_rgname}}"
        name: "{{az_vmname}}{{'_SecGrp'}}"
+       purge_rules: yes
        rules:
          - name: WEBTRAFFIC
            protocol: Tcp
