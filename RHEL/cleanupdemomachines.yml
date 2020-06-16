@@ -1,7 +1,7 @@
 ---
 - name: Ready Clean Machine for demo
   hosts: all
-  gather_facts: true
+  gather_facts: false
   vars:
      username: ''
      password: ''
