@@ -73,3 +73,5 @@
     - name: Display Register
       debug:
         msg: "{{ register_output }}"
+    - name: Reboot for SElinux to take effect
+      reboot:
