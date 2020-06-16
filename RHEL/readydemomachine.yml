@@ -50,7 +50,7 @@
         owner: root
         group: root
         mode: '0644'
-      ignore_errors: yes
+      when: "ansible_default_ipv4.address is search("172.16.1*")"
     - name: Disable SElinux
       selinux:
         policy: targeted
