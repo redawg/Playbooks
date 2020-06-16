@@ -11,9 +11,8 @@
      sla: "Self-Support"
 
   tasks:
+    - name: Unregistering Insights
+      command: insights-client --unregister
     - name: Unsubscribing to RHEL account now
       redhat_subscription:
         state: absent
-    - name: Unregistering Insights
-      command: insights-client --unregister
-      
