@@ -26,7 +26,7 @@
     name: firewalld
     state: stopped
     enabled: False
-
+  ignore_errors: yes
 - name: Create Application Database
   mysql_db: name={{ dbname }} state=present
 
