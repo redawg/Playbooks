@@ -40,4 +40,5 @@
              name: rhel-lvm77
              product: rhel-byos
              publisher: redhat
-      
+           tags:
+             group: "{{tag}}"
