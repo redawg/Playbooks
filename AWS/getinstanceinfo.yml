@@ -6,14 +6,16 @@
     vars:
        aws_access_key: ''
        aws_secret_key: ''
+       region: ''
+       name: ''
 
 
     tasks:
-     - name: Get user info instances with tag {{tag}} in {{region}}
+     - name: Get instances id with tag {{name}} in {{region}}
        ec2_instance_info:
         region: "{{region}}"
         filters:
-          "tag:AlwaysUp": True
+          "tag:Name": "{{name}}"
        register: instance_info
      - name:
        debug:
