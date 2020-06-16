@@ -9,20 +9,4 @@
          delete: never
          demo: "{{customer}}"
          use: Virtual Server IP
-  -  name: Add Rule to Security Group that allows HTML(S) for {{az_vmname}}
-     azure_rm_securitygroup:
-       resource_group: "{{az_rgname}}"
-       name: "{{az_vmname}}{{'_SecGrp'}}"
-       purge_rules: yes
-       rules:
-         - name: WEBTRAFFIC
-           protocol: Tcp
-           destination_port_range: 80
-           access: Allow
-           priority: 1002
-           direction: Inbound
-       tags:
-           created: ansbile
-           delete: never
-           demo: "{{customer}}"
-           use: Demo
+  
