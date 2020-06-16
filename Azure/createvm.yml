@@ -24,7 +24,7 @@
          azure_rm_virtualmachine:
            resource_group: "{{az_rgname}}"
            name: "{{az_vmname}}"
-           vm_size: Standard_D2_v2
+           vm_size: Standard_D4s_v3
            admin_username: "{{az_vmusername}}"
            ssh_password_enabled: false
            ssh_public_keys:
