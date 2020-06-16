@@ -16,8 +16,6 @@
     name: firewalld
     state: stopped
     enabled: False
-
+  ignore_errors: yes
 - name: http service state
   service: name=httpd state=started enabled=yes
-
-  
