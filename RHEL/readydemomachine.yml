@@ -50,6 +50,11 @@
         owner: root
         group: root
         mode: '0644'
+    - name: Disable SElinux
+      selinux:
+        policy: targeted
+        state: disabled
+
     - name: Install My packages I want (insights/net-tools/wget)
       yum:
         name:
