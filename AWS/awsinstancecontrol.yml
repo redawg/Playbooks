@@ -11,8 +11,8 @@
 
     tasks:
     - name: Setting ec2 instances with {{filter}} to {{state}}
-      ec2_instance:
+      ec2:
         region: "{{region}}"
         state: "{{state}}"
-        filters:
-          "{{filter}}"
+        instance_tags":
+            Name: dbserver
