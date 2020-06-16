@@ -11,4 +11,4 @@
 
 - name: Creates the index.php file
   template: src=indexazure.php.j2 dest=/var/www/html/index.php
-  when: "'Type_appservers' in group_names"
+  when: "'Type_webservers' in group_names"
