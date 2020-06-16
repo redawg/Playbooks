@@ -15,4 +15,4 @@
         region: "{{region}}"
         state: "{{state}}"
         filters:
-          "tag:Contact":
+          "{{filter}}"
