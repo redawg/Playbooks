@@ -6,7 +6,7 @@
     vars:
        region: ''
        state: ''
-       filter: '"tag:Contact": aschoenf*'
+      
 
 
     tasks:
@@ -15,4 +15,4 @@
         region: "{{region}}"
         state: "{{state}}"
         instance_tags:
-            Name: dbserver
+            Name: "{{servername}}"
