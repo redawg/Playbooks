@@ -11,12 +11,9 @@
      sla: "Self-Support"
 
   tasks:
-    - name: Subscribing to RHEL account now
+    - name: Unsubscribing to RHEL account now
       redhat_subscription:
         state: absent
-    - name: Running insights register
+    - name: Unregistering Insights
       command: insights-client --unregister
-      register: register_output
-    - name: Display Register
-      debug:
-        msg: "{{ register_output }}"
+      
