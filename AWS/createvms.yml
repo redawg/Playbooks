@@ -58,3 +58,4 @@
          Createdby: Ansible Tower
          Contact: "{{my_email_address}}"
          DeletebBy: "{{deleteby}}"
+         Type: "{{group}}"
