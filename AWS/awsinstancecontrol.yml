@@ -6,11 +6,11 @@
     vars:
        region: ''
        state: ''
-      
+
 
 
     tasks:
-    - name: Setting ec2 instances with {{filter}} to {{state}}
+    - name: Setting ec2 {{servername}} to {{state}}
       ec2:
         region: "{{region}}"
         state: "{{state}}"
