@@ -24,4 +24,4 @@
       ec2:
         region: "{{region}}"
         state: absent
-        instance_id: "{{instance_info.instances[0].instance_id}}"
+        instance_ids: "{{instance_info.instances[0].instance_id}}"
