@@ -3,21 +3,21 @@
 
 - name: apply common configuration to all nodes
   hosts: all
-  remote_user: root
+
 
   roles:
     - common
 
 - name: configure and deploy the webservers and application code
   hosts: webservers
-  remote_user: root
+
 
   roles:
     - web
 
 - name: deploy Mariadb and configure the databases
   hosts: dbservers
-  remote_user: root
+  
 
   roles:
     - db
