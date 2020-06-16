@@ -50,6 +50,7 @@
         owner: root
         group: root
         mode: '0644'
+      ignore_errors: yes
     - name: Disable SElinux
       selinux:
         policy: targeted
