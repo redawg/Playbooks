@@ -14,7 +14,7 @@
       ec2_instance_info:
        region: "{{region}}"
        filters:
-         "tag:Name": "{{name}}"
+         "tag:Name": "{{servername}}"
       register: instance_info
     - name:
       debug:
