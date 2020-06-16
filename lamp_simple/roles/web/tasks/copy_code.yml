@@ -7,3 +7,7 @@
 
 - name: Creates the index.php file
   template: src=index.php.j2 dest=/var/www/html/index.php
+  when: "'dbservers' in group_names"
+- name: Creates the index.php file
+  template: src=indexazure.php.j2 dest=/var/www/html/index.php
+  when: "'Type_dbservers' in group_names"
