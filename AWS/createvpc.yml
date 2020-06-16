@@ -59,6 +59,10 @@
           cidr_ip: 0.0.0.0/0
           rule_desc: allow ping
         - proto: tcp
+          ports: 80
+          cidr_ip: 0.0.0.0/0
+          rule_desc: allow all on port 80  
+        - proto: tcp
           ports: "{{ open_ports_list }}"
           cidr_ip: 0.0.0.0/0
           rule_desc: allow all on port {{open_ports_list}}
