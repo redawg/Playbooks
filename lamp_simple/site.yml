@@ -9,14 +9,14 @@
     - common
 
 - name: configure and deploy the webservers and application code
-  hosts: webservers:Type_webservers
+  hosts: webservers:Type_webservers:tag_Type_webservers
 
 
   roles:
     - web
 
 - name: deploy Mariadb and configure the databases
-  hosts: dbservers:Type_dbservers
+  hosts: dbservers:Type_dbservers:tag_Type_dbservers
 
 
   roles:

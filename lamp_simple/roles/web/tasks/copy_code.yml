@@ -12,3 +12,7 @@
 - name: Creates the index.php file for Type_webserver Group
   template: src=indexazure.php.j2 dest=/var/www/html/index.php
   when: "'Type_webservers' in group_names"
+
+- name: Creates the index.php file for Type_webserver Group
+  template: src=indexaws.php.j2 dest=/var/www/html/index.php
+  when: "'tag_Type_webservers' in group_names"
