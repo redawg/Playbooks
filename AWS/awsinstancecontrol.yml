@@ -11,6 +11,18 @@
 
 
     tasks:
+    - name: Get instances id with tag {{name}} in {{region}}
+      ec2_instance_info:
+       region: "{{region}}"
+       filters:
+         "tag:Name": "{{name}}"
+      when: state == "absent"
+      register: instance_info
+    - name:
+      debug:
+         msg: "{{instance_info.instances[0].instance_id}}"
+      when: state == "absent"
+      
     - name: Setting ec2 {{servername}} to {{state}}
       ec2:
         region: "{{region}}"
