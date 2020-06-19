@@ -1,8 +1,8 @@
 ---
-- name: Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}
+- name: Create VPC {{ cloud_name }}_{{user_name}} in {{ region }}
   ec2_vpc_net:
-    name: "{{ vpc_name }}_{{user_name}}"
-    cidr_block: "{{ vpc_cidr }}"
+    name: "{{ cloud_name }}_{{user_name}}"
+    cidr_block: "{{ cidr }}"
     region: "{{ region }}"
     state: present
 
@@ -14,7 +14,7 @@
       Contact: "{{ my_email_address }}"
       DeletebBy: "{{ deleteby }}"
   register: my_vpc
-- name: Display my_vpc.vpc.id info for "{{ vpc_name }}"
+- name: Display my_vpc.vpc.id info for "{{ cloud_name }}"
   debug:
     var: my_vpc.vpc.id
 
@@ -53,7 +53,7 @@
   ec2_vpc_subnet:
     state: present
     vpc_id: "{{ my_vpc.vpc.id }}"
-    cidr: "{{ vpc_cidr }}"
+    cidr: "{{ cidr }}"
     region: "{{ region }}"
     map_public: yes
     tags:
@@ -67,7 +67,7 @@
     - createsubnet
     - onlyvpc
   register: my_vpc_subnet
-- name: Create IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
+- name: Create IGW "{{ ec2_igw_name }}" for {{ cloud_name }}_{{user_name}}
   ec2_vpc_igw:
     vpc_id: "{{ my_vpc.vpc.id }}"
     region: "{{ region }}"
