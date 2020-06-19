@@ -1,10 +1,9 @@
 ---
-- name: Create a resource group {{az_rgname}}
+- name: Create a resource group {{ cloud_name }}_{{user_name}}
   azure_rm_resourcegroup:
     name: "{{ cloud_name }}_{{user_name}}"
     location: "{{ region }}"
     tags:
-      alwaysup: "{{ alwaysup }}"
       ansible_group: "{{ ansible_group }}"
       Createdby: Ansible Tower
       Contact: "{{ my_email_address }}"
