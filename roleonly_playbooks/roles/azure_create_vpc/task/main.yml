@@ -1,3 +1,4 @@
+---
 - name: Create a resource group {{az_rgname}}
   azure_rm_resourcegroup:
     name: "{{ cloud_name }}_{{user_name}}"
