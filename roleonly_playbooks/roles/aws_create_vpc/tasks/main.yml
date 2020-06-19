@@ -1,6 +1,6 @@
 ---
 - name: Create VPC {{ cloud_name }}_{{user_name}} in {{ region }}
-  vpc_net:
+  ec2_vpc_net:
     name: "{{ cloud_name }}_{{user_name}}"
     cidr_block: "{{ cidr }}"
     region: "{{ region }}"
@@ -19,7 +19,7 @@
     var: my_vpc.vpc.id
 
 - name: create security group {{ security_group_name }}
-  group:
+  ec2_group:
     name: "{{ security_group_name }}"
     description: Security group with rule descriptions created by Ansible
     vpc_id: "{{ my_vpc.vpc.id }}"
@@ -50,7 +50,7 @@
     - onlyvpc
   register: my_security_group
 - name: Create {{ vpc_subnet_name }} subnet
-  vpc_subnet:
+  ec2_vpc_subnet:
     state: present
     vpc_id: "{{ my_vpc.vpc.id }}"
     cidr: "{{ cidr }}"
@@ -68,7 +68,7 @@
     - onlyvpc
   register: my_vpc_subnet
 - name: Create IGW "{{ igw_name }}" for {{ cloud_name }}_{{user_name}}
-  vpc_igw:
+  ec2_vpc_igw:
     vpc_id: "{{ my_vpc.vpc.id }}"
     region: "{{ region }}"
     state: present
@@ -90,7 +90,7 @@
 #  register: vpc_default_route
 
 - name: Create Internet route Table "{{ rt_name }}"
-  vpc_route_table:
+  ec2_vpc_route_table:
     vpc_id: "{{ my_vpc.vpc.id }}"
     region: "{{ region }}"
     #route_table_id: "{{ vpc_default_route.route_tables[0].id }}"
