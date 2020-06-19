@@ -1,7 +1,7 @@
 - name: Create a resource group {{az_rgname}}
   azure_rm_resourcegroup:
-    name: "{{ az_rgname }}"
-    location: "{{ location }}"
+    name: "{{ cloud_name }}"
+    location: "{{ region }}"
     tags:
       created: ansbile
       delete: never
