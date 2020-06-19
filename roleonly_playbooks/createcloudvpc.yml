@@ -4,4 +4,6 @@
   connection: local
   roles:
     - role: aws_create_vpc
-      tags: ['aws_create_vpc']
+      tags: ['aws']
+    - role: azure_create_vpc
+      tags: ['azure']
