@@ -10,12 +10,12 @@
        vpc_cidr: ''
        region: ''
        user_name: ''
-       ec2_ansible_group: "{{user_name}}"
-       ec2_security_group_name: "{{vpc_name}}_SECGRP"
-       ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
-       ec2_rt_name: "{{vpc_name}}_RT_Internet"
-       ec2_igw_name: "{{vpc_name}}_IGW"
-       my_email_address: "{{user_name}}@redhat.com"
+       ec2_ansible_group: "{{ user_name }}"
+       ec2_security_group_name: "{{ vpc_name }}_SECGRP"
+       ec2_vpc_subnet_name: "{{ vpc_name }}_Subnet"
+       ec2_rt_name: "{{ vpc_name }}_RT_Internet"
+       ec2_igw_name: "{{ vpc_name }}_IGW"
+       my_email_address: "{{ user_name }}@redhat.com"
        alwaysup: ''
        deleteby: ''
 
@@ -28,14 +28,14 @@
         state: present
 
         tags:
-          AlwaysUp: "{{alwaysup}}"
-          Name: "{{user_name}}"
-          ansible_group: "{{ec2_ansible_group}}"
+          AlwaysUp: "{{ alwaysup }}"
+          Name: "{{ user_name }}"
+          ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
-          Contact: "{{my_email_address}}"
-          DeletebBy: "{{deleteby}}"
+          Contact: "{{ my_email_address }}"
+          DeletebBy: "{{ deleteby }}"
       register: my_vpc
-    - name: Display my_vpc.vpc.id info for "{{vpc_name}}"
+    - name: Display my_vpc.vpc.id info for "{{ vpc_name }}"
       debug:
         var: my_vpc.vpc.id
 
@@ -51,7 +51,7 @@
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
-          DeleteBy: "{{deleteby}}"
+          DeleteBy: "{{ deleteby }}"
         rules:
         - proto: icmp
           from_port: 8 # icmp type, -1 = any type
@@ -61,7 +61,7 @@
         - proto: tcp
           ports: 80
           cidr_ip: 0.0.0.0/0
-          rule_desc: allow all on port 80  
+          rule_desc: allow all on port 80
         - proto: tcp
           ports: "{{ open_ports_list }}"
           cidr_ip: 0.0.0.0/0
@@ -78,12 +78,12 @@
         region: "{{ region }}"
         map_public: yes
         tags:
-          AlwaysUp: "{{alwaysup}}"
+          AlwaysUp: "{{ alwaysup }}"
           Name: "{{ ec2_vpc_subnet_name }}"
           ansible_group: "{{ ec2_ansible_group }}"
           Createdby: Ansible Tower
           Contact: "{{ my_email_address }}"
-          DeleteBy: "{{deleteby}}"
+          DeleteBy: "{{ deleteby }}"
       tags:
         - createsubnet
         - onlyvpc

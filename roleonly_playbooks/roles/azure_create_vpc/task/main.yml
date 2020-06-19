@@ -1,9 +1,9 @@
 - name: Create a resource group {{az_rgname}}
   azure_rm_resourcegroup:
-    name: "{{az_rgname}}"
-    location: "{{location}}"
+    name: "{{ az_rgname }}"
+    location: "{{ location }}"
     tags:
       created: ansbile
       delete: never
-      demo: "{{customer}}"
+      demo: "{{ customer }}"
 - include: createsubnet.yml
