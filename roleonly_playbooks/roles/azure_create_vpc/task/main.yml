@@ -1,9 +1,11 @@
 - name: Create a resource group {{az_rgname}}
   azure_rm_resourcegroup:
-    name: "{{ cloud_name }}"
+    name: "{{ cloud_name }}_{{user_name}}"
     location: "{{ region }}"
     tags:
-      created: ansbile
-      delete: never
-      demo: "{{ customer }}"
+      AlwaysUp: "{{ alwaysup }}"
+      ansible_group: "{{ ansible_group }}"
+      Createdby: Ansible Tower
+      Contact: "{{ my_email_address }}"
+      DeleteBy: "{{ deleteby }}"
 - include: createsubnet.yml
