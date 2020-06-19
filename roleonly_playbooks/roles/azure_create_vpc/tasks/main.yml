@@ -1,7 +1,7 @@
 ---
-- name: Create a resource group {{ cloud_name }}_{{user_name}}
+- name: Create a resource group {{ cloud_name }}
   azure_rm_resourcegroup:
-    name: "{{ cloud_name }}_{{user_name}}"
+    name: "{{ cloud_name }}"
     location: "{{ region }}"
     tags:
       ansible_group: "{{ ansible_group }}"
