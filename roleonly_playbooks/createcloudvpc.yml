@@ -11,6 +11,10 @@
   vars:
      aws_access_key: ''  #provided by tower
      aws_secret_key: ''  #provided by tower
+     AZURE_CLIENT_ID: '' #provided by tower
+     AZURE_SECRET: ''    #provided by tower
+     AZURE_SUBSCRIPTION_ID: ''  #provided by tower
+     AZURE_TENANT: ''    #provided by tower
      vpc_name: ''
      vpc_cidr: ''
      region: ''
