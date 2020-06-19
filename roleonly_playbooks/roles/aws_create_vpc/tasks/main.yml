@@ -2,7 +2,7 @@
 - name: Create VPC {{ cloud_name }}_{{user_name}} in {{ region }}
   ec2_vpc_net:
     name: "{{ cloud_name }}_{{user_name}}"
-    cidr_block: "{{ cidr_block }}"
+    cidr_block: "{{ cidr }}"
     region: "{{ region }}"
     state: present
 
