@@ -1,0 +1,10 @@
+---
+  - name: Adding Subnet to Network {{ az_rgname }}
+    azure_rm_subnet:
+      resource_group: "{{ az_rgname }}"
+      name: "{{ az_rgname }}{{ '_net1' }}"
+      address_prefix_cidr: "10.10.10.0/25"
+      virtual_network_name: "{{ az_rgname }}"
+  - include: createpublicipsub.yml
+    vars:
+      subnetname: "{{ az_rgname }}{{ '_net1' }}"
