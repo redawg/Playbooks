@@ -15,8 +15,8 @@
      AZURE_SECRET: ''    #provided by tower
      AZURE_SUBSCRIPTION_ID: ''  #provided by tower
      AZURE_TENANT: ''    #provided by tower
-     vpc_name: ''
-     vpc_cidr: ''
+     cloud_name: ''
+     cidr: ''
      region: ''
      user_name: ''
      ansible_group: "{{user_name}}"
