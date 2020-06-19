@@ -2,6 +2,7 @@
 # Playbook to test new roles and tags
 - hosts: localhost
   connection: local
+  gather_facts: False
   roles:
     - role: aws_create_vpc
       tags: ['aws']
@@ -22,4 +23,3 @@
      my_email_address: "{{user_name}}@redhat.com"
      alwaysup: ''
      deleteby: ''
-     
