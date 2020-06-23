@@ -21,7 +21,7 @@
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
       force: yes
-    delegate_to: localhost
+    delegate_to: 127.0.0.1
     register: clone_result
     run_once: true
     when: network_backup_repository is defined
