@@ -21,7 +21,7 @@
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
       force: yes
-    connection: ssh
+    connection: local
     delegate_to: 127.0.0.1
     register: clone_result
     run_once: true
