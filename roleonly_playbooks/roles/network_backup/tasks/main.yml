@@ -7,7 +7,7 @@
 #    network_backup_dir: "{{ backup_path }}"
 #    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
-  
+
   - name: Clone the backup repo
     git:
       repo: "{{ network_backup_repository }}"
@@ -20,7 +20,7 @@
     when: network_backup_repository is defined
 
 
-  - include_tasks: "{{ ansible_network_os }}-backup.yml"
+  - include_tasks: "{{ ansible_net_system }}-backup.yml"
 
   - name: REMOVE NON CONFIG LINES
     lineinfile:
