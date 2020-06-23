@@ -22,7 +22,7 @@
       accept_hostkey: yes
       force: yes
     vars:
-      ansible_net_system: fake
+      ansible_net_system: ios
     delegate_to: 127.0.0.1
     register: clone_result
     run_once: true
