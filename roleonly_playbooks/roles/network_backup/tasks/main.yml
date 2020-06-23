@@ -20,7 +20,7 @@
     when: network_backup_repository is defined
 
 
-  - include_tasks: "{{ ansible_net_system }}-backup.yml"
+  - include_tasks: "{{ ansible_network_os }}-backup.yml"
 
   - name: REMOVE NON CONFIG LINES
     lineinfile:
