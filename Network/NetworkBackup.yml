@@ -21,6 +21,7 @@
       dest: "{{ network_backup_dir }}"
       accept_hostkey: yes
       force: yes
+    delegate_facts: False
     delegate_to: 127.0.0.1
     register: clone_result
     run_once: true

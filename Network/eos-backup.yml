@@ -2,7 +2,7 @@
 - name: Backup the config
   asa_config:
     backup: yes
+    backup_options:
+       dir_path: "{{backup_path}}"
+       filename: "{{inventory_hostname}}.cfg"
   register: config_output
-
-- set_fact:
-    temp_backup_file: "{{ config_output.backup_path }}"
