@@ -4,7 +4,7 @@
   gather_facts: True
   vars:
     ansible_connection: ''
-    ansible_network_os: "{{ ansible_facts.ansible_net_system }}"
+    network_os: "{{ ansible_facts.ansible_net_system }}"
     backup_path: ''
     network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
@@ -27,7 +27,7 @@
     when: network_backup_repository is defined
 
 
-  - include_tasks: "{{ ansible_network_os }}-backup.yml"
+  - include_tasks: "{{ network_os }}-backup.yml"
 
   - name: REMOVE NON CONFIG LINES
     lineinfile:
