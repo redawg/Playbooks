@@ -1,6 +1,6 @@
 ---
-- name: Backup the Arista Config
-  eos_config:
+- name: Backup the config
+  asa_config:
     backup: yes
   register: config_output
 
