@@ -10,6 +10,11 @@
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
   tasks:
+  - name: Debug ansible_facts
+    debug:
+      msg : "{{ ansible_net_system }}"
+
+
   - name: Clone the backup repo
     git:
       repo: "{{ network_backup_repository }}"
