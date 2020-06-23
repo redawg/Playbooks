@@ -2,7 +2,7 @@
 
 #ansible_connection: ''
 #backup_path: ''
-ansible_network_os: "{{ansible_net_system}}"
+ansible_network_os: "{{ ansible_net_system }}"
 network_backup_dir: "{{ backup_path }}"
 network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 #git_name: ''
