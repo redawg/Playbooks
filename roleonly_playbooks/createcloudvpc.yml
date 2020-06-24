@@ -54,7 +54,7 @@ tasks:
   include_role:
      name: azure_create_vpc
   tags: ['azure']
-- - name: Deploy Azure RG
+- name: Deploy Azure RG
   include_role:
      name: aws_create_vpc
   tags: ['aws']
