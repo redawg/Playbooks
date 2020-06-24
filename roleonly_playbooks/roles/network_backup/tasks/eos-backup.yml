@@ -1,6 +1,6 @@
 ---
-- name: Backup the config or inventory_hostname
-  asa_config:
+- name: Backup the Arista config with {{ansible_network_os}}
+  eos_config:
     backup: yes
     backup_options:
       dir_path: "{{backup_path}}"

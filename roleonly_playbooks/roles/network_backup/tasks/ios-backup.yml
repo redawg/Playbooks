@@ -1,5 +1,5 @@
 ---
-- name: Backup the config for {{inventory_hostname}} with {{ansible_network_os}}
+- name: Backup the device config with {{ansible_network_os}}
   ios_config:
     backup: yes
     backup_options:
