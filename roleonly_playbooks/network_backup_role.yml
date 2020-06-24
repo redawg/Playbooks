@@ -1,6 +1,7 @@
 ---
 # Playbook to test new roles and tags
 - hosts: all
+  gather_facts: False
   roles:
     - role: network_backup
       tags: ['network_backup']
