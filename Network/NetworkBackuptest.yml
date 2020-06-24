@@ -1,0 +1,88 @@
+---
+- name: Start Backup of Network Devices
+  hosts: all
+  gather_facts: False
+  vars:
+    network_backup_dir: "{{ backup_path }}"
+    network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
+
+  tasks:
+  - name: 'Preflight Varible check :: backup_path'
+    fail: msg='Please include the backup_path to the variable "backup_path"'
+    run_once: true
+    when: 'backup_path is not defined'
+  - name: 'Preflight Varible check :: git_name'
+    fail: msg='Please include the git_name to the variable "git_name"'
+    run_once: true
+    when: 'git_name is not defined'
+  - name: 'Preflight Varible check :: git_name'
+    fail: msg='Please include the git_email to the variable "git_email"'
+    run_once: true
+    when: 'git_email is not defined'
+
+
+  - name: Clone the backup repo
+    git:
+      repo: "{{ network_backup_repository }}"
+      dest: "{{ network_backup_dir }}"
+      accept_hostkey: yes
+      force: yes
+    delegate_to: 127.0.0.1
+    register: clone_result
+    run_once: true
+    when: network_backup_repository is defined
+
+
+  - include_tasks: "{{ ansible_network_os }}-backup.yml"
+
+  - name: REMOVE NON CONFIG LINES
+    lineinfile:
+      path: "{{network_backup_dir}}/{{inventory_hostname}}.cfg"
+      line: "Building configuration..."
+      state: absent
+
+  - name: REMOVE NON CONFIG LINES - REGEXP
+    lineinfile:
+      path: "{{network_backup_dir}}/{{inventory_hostname}}.cfg"
+      regexp: 'Current configuration.*'
+      state: absent
+
+  - block:
+    - name: Add any new backups to the repository
+      shell: "git add *.cfg"
+      args:
+        chdir: "{{ network_backup_dir }}"
+      delegate_to: localhost
+      changed_when: False
+      run_once: true
+
+    - name: Get the status of the repository
+      shell: "git status"
+      args:
+        chdir: "{{ network_backup_dir }}"
+      register: status_results
+      changed_when: False
+      ignore_errors: yes
+      delegate_to: localhost
+      run_once: true
+
+    - name: Commit the changes
+      shell: "git commit -am 'Changed'"
+      args:
+          chdir: "{{ network_backup_dir }}"
+      when: status_results.stdout is search('Changes')
+      delegate_to: localhost
+      run_once: true
+      environment:
+        GIT_COMMITTER_NAME: "{{ git_name | default(omit) }}"
+        GIT_COMMITTER_EMAIL: "{{ git_email | default(omit) }}"
+        GIT_AUTHOR_NAME: "{{ git_name | default(omit) }}"
+        GIT_AUTHOR_EMAIL: "{{ git_email | default(omit) }}"
+
+    - name: Push the changes
+      shell: "git push"
+      args:
+         chdir: "{{ network_backup_dir }}"
+      delegate_to: localhost
+      run_once: true
+      when: network_backup_repository is defined
