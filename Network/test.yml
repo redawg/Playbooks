@@ -3,7 +3,7 @@
   gather_facts: no
   tasks:
     - name: get config
-      cisco.ios.ios_facts:
+      ios_facts:
       register: result
     - shell: whoami
       delegate_to: localhost
