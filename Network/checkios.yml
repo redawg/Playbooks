@@ -4,10 +4,7 @@
   connection: network_cli
   gather_facts: no
 
-  vars:
-     compliant_ios_version: ''
-     ansible_connection: ''
-     ansible_network_os: ''
+
 
   tasks:
     - name: Gather Live facts from Device
