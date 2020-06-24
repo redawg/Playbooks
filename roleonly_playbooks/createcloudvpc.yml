@@ -52,10 +52,10 @@
     run_once: true
     when: 'deleteby is not defined'
   - name: Deploy Azure RG
-    include_role:
+    import_role:
        name: azure_create_vpc
     tags: ['azure']
-  - name: Deploy Azure RG
-    include_role:
+  - name: Deploy AWS RG
+    import_role:
        name: aws_create_vpc
     tags: ['aws']
