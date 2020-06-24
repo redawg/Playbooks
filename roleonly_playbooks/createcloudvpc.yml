@@ -17,7 +17,7 @@
      igw_name: "{{vpc_name}}_IGW"
      my_email_address: "{{user_name}}@redhat.com"
 
-tasks:
+ tasks:
 - name: 'Preflight Varible check :: aws_access_key'
   fail: msg='Please include the aws_access_key to the variable "aws_access_key"'
   run_once: true
