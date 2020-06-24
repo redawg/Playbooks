@@ -3,14 +3,19 @@
   hosts: all
   gather_facts: False
   vars:
-    backup_path: ''
     network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
   tasks:
-  - name: Debug ansible_facts
-    debug:
-      msg : "{{ ansible_net_system }}"
+  - name: 'Preflight :: backup_path check'
+    fail: msg='Please include the backup_path to the variable "backup_path"'
+    when: 'backup_path is not defined'
+  - name: 'Preflight :: git_name check'
+    fail: msg='Please include the git_name to the variable "git_name"'
+    when: 'git_name is not defined'
+  - name: 'Preflight :: git_name check'
+    fail: msg='Please include the git_email to the variable "git_email"'
+    when: 'git_email is not defined'
 
 
   - name: Clone the backup repo
