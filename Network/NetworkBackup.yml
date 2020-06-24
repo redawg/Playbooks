@@ -3,8 +3,6 @@
   hosts: all
   gather_facts: False
   vars:
-    ansible_connection: ''
-    ansible_network_os: "{{ ansible_net_system }}"
     backup_path: ''
     network_backup_dir: "{{ backup_path }}"
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
