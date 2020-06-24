@@ -7,15 +7,15 @@
     network_backup_file: "{{ network_backup_dir }}/{{ inventory_hostname }}.cfg"
 
   tasks:
-  - name: 'Preflight :: backup_path check'
+  - name: 'Preflight Varible check :: backup_path'
     fail: msg='Please include the backup_path to the variable "backup_path"'
     run_once: true
     when: 'backup_path is not defined'
-  - name: 'Preflight :: git_name check'
+  - name: 'Preflight Varible check :: git_name'
     fail: msg='Please include the git_name to the variable "git_name"'
     run_once: true
     when: 'git_name is not defined'
-  - name: 'Preflight :: git_name check'
+  - name: 'Preflight Varible check :: git_name'
     fail: msg='Please include the git_email to the variable "git_email"'
     run_once: true
     when: 'git_email is not defined'
