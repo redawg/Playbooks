@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - name: Show facts
+      debug:
+        msg: '{{ ansible_facts }}'
+    - name: Detect python used
+      command: which python
+    - name: List rpm
+      shell: rpm -qa | sort
+    - name: List pip
+      shell: pip freeze | sort
