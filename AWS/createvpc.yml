@@ -4,20 +4,13 @@
     connection: local
     gather_facts: no
     vars:
-       aws_access_key: ''
-       aws_secret_key: ''
-       vpc_name: ''
-       vpc_cidr: ''
-       region: ''
-       user_name: ''
        ec2_ansible_group: "{{ user_name }}"
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
        ec2_rt_name: "{{vpc_name}}_RT_Internet"
        ec2_igw_name: "{{vpc_name}}_IGW"
        my_email_address: "{{user_name}}@redhat.com"
-       alwaysup: ''
-       deleteby: ''
+
 
     tasks:
     - name: 'Preflight Varible check :: aws_access_key'
@@ -44,7 +37,14 @@
       fail: msg='Please include the user_name to the variable "user_name"'
       run_once: true
       when: 'user_name is not defined'
-
+    - name: 'Preflight Varible check :: alwaysup'
+      fail: msg='Please include the aws_access_key to the variable "alwaysup"'
+      run_once: true
+      when: 'alwaysup is not defined'
+    - name: 'Preflight Varible check :: deleteby'
+      fail: msg='Please include the user_name to the variable "deleteby"'
+      run_once: true
+      when: 'deleteby is not defined'
 
 
 
