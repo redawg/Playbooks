@@ -9,6 +9,18 @@
 
 
   tasks:
+  - name: 'Preflight Varible check :: ansible_network_os'
+    fail: msg='Please include the ansible_network_os to the variable "ansible_network_os"'
+    run_once: true
+    when: 'ansible_network_os is not defined'
+  - name: 'Preflight Varible check :: os_type'
+    fail: msg='Please include the os_type to the variable "os_type"'
+    run_once: true
+    when: 'os_type is not defined'
+  - name: 'Preflight Varible check :: ansible_connection'
+    fail: msg='Please include the ansible_connection to the variable "ansible_connection"'
+    run_once: true
+    when: 'ansible_connection is not defined'
   - name: 'Preflight Varible check :: backup_path'
     fail: msg='Please include the backup_path to the variable "backup_path"'
     run_once: true
