@@ -19,3 +19,10 @@
             - compliant_ios_version == ansible_net_version
         msg: "IOS version {{ansible_net_version}} does not match compliant version. Please run Upgrade."
       when: ansible_net_version != compliant_ios_version
+    - name: Send Alert to Slack
+      slack:
+        msg: 'IOS version {{ansible_net_version}} does not match compliant version on {{inventory_hostname}} Please run Upgrade.'
+        channel: '#toweralerts'
+        username: 'Ansible on {{ inventory_hostname }}'
+
+      delegate_to: localhost
