@@ -19,10 +19,7 @@
       fail: msg='Please include the compliant_ios_version to the variable "compliant_ios_version"'
       run_once: true
       when: 'compliant_ios_version is not defined'
-    - name: 'Preflight Varible check :: slack_token'
-      fail: msg='Please include the slack_token to the variable "slack_token"'
-      run_once: true
-      when: 'slack_token is not defined'
+    
 
     - name: Gather Live facts from Device
       ios_facts:
