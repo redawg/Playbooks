@@ -19,6 +19,10 @@
       fail: msg='Please include the compliant_ios_version to the variable "compliant_ios_version"'
       run_once: true
       when: 'compliant_ios_version is not defined'
+    - name: 'Preflight Varible check :: slack_token'
+      fail: msg='Please include the slack_token to the variable "slack_token"'
+      run_once: true
+      when: 'slack_token is not defined'
 
 
     - name: Gather Live facts from Device
@@ -33,7 +37,7 @@
       ignore_errors: True
     - name: Send Alert to Slack
       slack:
-        token: "{{ SLACK_TOKEN }}"
+        token: "{{ slack_token }}"
         msg: 'IOS version {{ansible_net_version}} does not match compliant version on {{inventory_hostname}} Please run Upgrade.'
         channel: '#toweralerts'
         username: 'Ansible on {{ inventory_hostname }}'
