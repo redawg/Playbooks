@@ -19,7 +19,7 @@
       fail: msg='Please include the compliant_ios_version to the variable "compliant_ios_version"'
       run_once: true
       when: 'compliant_ios_version is not defined'
-    
+
 
     - name: Gather Live facts from Device
       ios_facts:
@@ -33,7 +33,7 @@
       ignore_errors: True
     - name: Send Alert to Slack
       slack:
-        token: "{{ slack_token }}"
+        token: "{{ SLACK_TOKEN }}"
         msg: 'IOS version {{ansible_net_version}} does not match compliant version on {{inventory_hostname}} Please run Upgrade.'
         channel: '#toweralerts'
         username: 'Ansible on {{ inventory_hostname }}'
