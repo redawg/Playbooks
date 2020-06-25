@@ -22,6 +22,7 @@
       ignore_errors: True
     - name: Send Alert to Slack
       slack:
+        token: xoxb-130858311636-486858832470-23gF9lrxBLIAAkTGd63tamrh
         msg: 'IOS version {{ansible_net_version}} does not match compliant version on {{inventory_hostname}} Please run Upgrade.'
         channel: '#toweralerts'
         username: 'Ansible on {{ inventory_hostname }}'
