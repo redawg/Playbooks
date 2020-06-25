@@ -14,6 +14,7 @@
     - name: 'Preflight Varible check :: ansible_connection'
       fail: msg='Please include the ansible_connection to the variable "ansible_connection"'
       run_once: true
+      when: 'ansible_connection is not defined'
     - name: 'Preflight Varible check :: compliant_ios_version'
       fail: msg='Please include the compliant_ios_version to the variable "compliant_ios_version"'
       run_once: true
