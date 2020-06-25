@@ -27,3 +27,4 @@
         channel: '#toweralerts'
         username: 'Ansible on {{ inventory_hostname }}'
       delegate_to: localhost
+      when: ansible_net_version != compliant_ios_version
