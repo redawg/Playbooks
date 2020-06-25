@@ -36,21 +36,21 @@
 
 
 
-    - name: gathering all IOS facts
-      ios_facts:
-      register: all_facts
+  - name: gathering all IOS facts
+    ios_facts:
+    register: all_facts
 
-    - name: create HTML report
-      template:
-        src: report-ios.j2
-        dest: "{{ network_inv_file }}"
-      delegate_to: localhost
-      run_once: true
-    - name: Send Alert to Slack
-      slack:
-        token: "{{ slack_token }}"
-        msg: 'Please check report http://172.16.1.25/:8080/report.html'
-        channel: '#toweralerts'
-        username: 'Ansible Tower'
-      run_once: true
-      delegate_to: localhost
+  - name: create HTML report
+    template:
+      src: report-ios.j2
+      dest: "{{ network_inv_file }}"
+    delegate_to: localhost
+    run_once: true
+  - name: Send Alert to Slack
+    slack:
+      token: "{{ slack_token }}"
+      msg: 'Please check report http://172.16.1.25/:8080/report.html'
+      channel: '#toweralerts'
+      username: 'Ansible Tower'
+    run_once: true
+    delegate_to: localhost
