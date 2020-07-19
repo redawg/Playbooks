@@ -4,25 +4,55 @@
     connection: local
     gather_facts: no
     vars:
-       aws_access_key: ''
-       aws_secret_key: ''
-       count: ''
-       key_name: ''
-       instance_type: ''
-       image: ''
-       wait: ''
-       assign_public_ip: ''
-       subnet_name: ''
-       region: ''
-       server_pre_name: ''
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
        ec2_ansible_group: "{{user_name}}"
        my_email_address: "{{user_name}}@redhat.com"
-       alwaysup: ''
-       deleteby: ''
 
 
     tasks:
+    - name: 'Preflight Varible check :: subnet_name'
+      fail: msg='Please include the subnet_name to the variable "subnet_name"'
+      run_once: true
+      when: 'subnet_name is not defined'
+    - name: 'Preflight Varible check :: key_name'
+      fail: msg='Please include the key_name to the variable "key_name"'
+      run_once: true
+      when: 'key_name is not defined'
+    - name: 'Preflight Varible check :: image'
+      fail: msg='Please include the image to the variable "image"'
+      run_once: true
+      when: 'image is not defined'
+    - name: 'Preflight Varible check :: count'
+      fail: msg='Please include the count to the variable "count"'
+      run_once: true
+      when: 'count is not defined'
+    - name: 'Preflight Varible check :: region'
+      fail: msg='Please include the region to the variable "region"'
+      run_once: true
+      when: 'region is not defined'
+    - name: 'Preflight Varible check :: assign_public_ip'
+      fail: msg='Please include the assign_public_ip to the variable "assign_public_ip"'
+      run_once: true
+      when: 'assign_public_ip is not defined'
+    - name: 'Preflight Varible check :: alwaysup'
+      fail: msg='Please include the alwaysup to the variable "alwaysup"'
+      run_once: true
+      when: 'alwaysup is not defined'
+    - name: 'Preflight Varible check :: server_pre_name'
+      fail: msg='Please include the server_pre_name to the variable "server_pre_name"'
+      run_once: true
+      when: 'server_pre_name is not defined'
+    - name: 'Preflight Varible check :: deleteby'
+      fail: msg='Please include the deleteby to the variable "deleteby"'
+      run_once: true
+      when: 'deleteby is not defined'
+    - name: 'Preflight Varible check :: group'
+      fail: msg='Please include the group to the variable "group"'
+      run_once: true
+      when: 'group is not defined'  
+
+
+
     - name: If vpc_subnet_id doesnt exist lookup by {{subnet_name}}
       block:
       - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
