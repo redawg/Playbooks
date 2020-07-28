@@ -1,9 +1,7 @@
 ---
 - name: Set Login Banner
   hosts: all
-  collections:
-    - ansible_netcommon
-    - cisco.ios
+  
   gather_facts: False
 
 
