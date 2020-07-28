@@ -1,10 +1,9 @@
 ---
 - name: Set Login Banner
   hosts: all
+
   gather_facts: False
-  vars:
-    ansible_connection: ''
-    ansible_network_os: ''
+
 
   tasks:
     -  name: configure the login banner
@@ -16,4 +15,3 @@
             You should not be logging in to this device unless it is an
                                   EMERGENCY
             Please us Ansible automation platfrom and playbooks for changes
-       
