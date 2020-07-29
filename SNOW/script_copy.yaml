@@ -1,0 +1,23 @@
+---
+- name: software patch demo (httpd using yum package manager)
+  hosts: all
+  vars:
+    githubuser: 
+    githubpassword:
+
+- name: Git clone on jumphost
+  hosts: jumphost
+  git:
+    repo: "https://{{ githubuser | urlencode }}:{{ githubpassword }}@github.com/privrepo.git"
+    dest: /home/mylogin/hello
+  
+- name: copy script from jumphost
+  hosts: linux
+  fetch: 
+    src: /tmp/somefile
+    dest: /tmp/fetched
+  delegate_to: localhost
+
+- name: run script remotely
+  hosts: linux
+  script: /some/local/script.sh --some-argument 1234

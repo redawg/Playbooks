@@ -1,0 +1,25 @@
+---
+- name: Check for web based application health
+  hosts: all
+
+
+  tasks:
+   - name: Check that you can connect to a page and it returns a healthy status (200)
+     uri:
+       url: http://54.190.212.205/
+       return_content: yes
+     register: app_health
+     ignore_errors: True
+     changed_when: False
+     
+   - name: "Print status"
+     debug: 
+       var: app_health.status
+     changed_when: app_health.status != 200
+     notify: App is not running, restart HTTPD
+
+  handlers: 
+   - name: App is not running, restart HTTPD
+     service:
+      name: httpd
+      state: started

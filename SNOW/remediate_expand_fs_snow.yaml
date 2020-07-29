@@ -1,0 +1,71 @@
+- name: Unknown Error Demo (batch copy fail and expand fs remediation)
+  hosts: all
+  vars:
+    username: 
+    password:
+    instance:
+    number:
+  
+  tasks:
+    
+    - name: include vars
+      include_vars: incident_vars.yaml
+    
+    - name: Batch job - copy files remotely
+      command: cp /mnt/testdir/largedummy.iso /tmp/testdir/largedummy.iso
+      register: errorCode
+      ignore_errors: True
+      #changed_when: False
+      changed_when: errorCode.rc != 0,-9
+
+    - name: look at errorCode
+      debug:
+        var: errorCode
+
+    - name: SERVICENOW incident udated and resolved if filesystem expanded and copy succeeded
+      snow_record:
+        username: "{{username}}"
+        password: "{{password}}"
+        instance: "{{instance}}"
+        number: "{{number}}"
+        state: present
+        table: incident
+        data:
+          caller_id: "System Administrator"
+          comments: "The original error for File Copy has now succeeded on {{inventory_hostname}}. This ticket was resolved by Ansible Tower API call in a remediation playboook. \n--------\n The status code is {{errorCode.rc}}\n--------\n "
+          incident_state: 6
+      register: snow_var
+      delegate_to: localhost
+      #when: errorCode.changed
+
+    - name: DEBUG SNOW_VAR
+      debug:
+        var: snow_var.record.state
+
+    - name: CALLING APPLICATION VALIDATION PROCEDURE
+      command: cp /mnt/testdir/largedummy.iso /tmp/testdir/largedummy.iso
+      #validate: /usr/sbin/visudo -cf %s
+      register: errorCode
+      ignore_errors: True
+      #changed_when: errorCode.rc == 0
+
+
+    - name: SERVICENOW incident closed if batch job validation succeeded
+      snow_record:
+        username: "{{username}}"
+        password: "{{password}}"
+        instance: "{{instance}}"
+        number: "{{number}}"
+        state: present
+        table: incident
+        data:
+          caller_id: "System Administrator"
+          comments: "The batch job has now been validated on {{inventory_hostname}}. This ticket was closed by Ansible Tower API call in a validation playboook. \n--------\n The status code is {{errorCode.rc}}\n--------\n "
+          incident_state: 7
+      register: snow_var
+      delegate_to: localhost
+      #when: errorCode.changed
+
+    - name: DEBUG SNOW_VAR
+      debug:
+        var: snow_var.record

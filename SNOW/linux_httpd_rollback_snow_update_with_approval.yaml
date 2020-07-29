@@ -1,0 +1,89 @@
+- name: software patch demo (httpd using yum package manager) with rollback approval
+  hosts: all
+  vars:
+    username: 
+    password:
+    instance: 
+    package: httpd
+    sn_host_name:
+
+  tasks:
+
+   - name: include vars
+     include_vars: incident_vars.yaml
+     
+   - name: Patch "{{ package }}" to latest certified version
+     yum:
+       name: "{{ package }}"
+       state: latest
+     become: true
+
+   - name: SERVICENOW incident updated and resolved if patch update process succeeded
+     snow_record:
+        username: "{{username}}"
+        password: "{{password}}"
+        instance: "{{instance}}"
+        number: "{{number}}"
+        state: present
+        table: incident
+        data:
+          caller_id: "System Administrator"
+          comments: "The dependencies were installed and the software update process has now succeeded on {{sn_host_name}}, {{inventory_hostname}} for software package {{package}}. This ticket was resolved by Ansible Tower API call in an update/patching playboook. \n--------\n The application validation and verification process will now start.\n--------\n "
+          incident_state: 6
+     register: snow_var
+     delegate_to: localhost
+
+   - name: Get package version
+     yum:
+       list: "{{ package }}"
+     register: patch_version
+     become: true
+
+   - name: Verify latest certified version is installed and operational 
+     set_fact:
+       patch_version_installed: "{{ patch_version | json_query(\"results[?yumstate=='installed'].release\") }}"
+   - debug:
+       var: patch_version_installed 
+
+   - name: Validate service is started and running
+     systemd:
+       name: "{{ package }}"
+       state: started
+       enabled: yes
+     become: true
+
+   - name: Validate Web application is healthy and operational
+     uri:
+       url: "http://{{inventory_hostname}}"
+       return_content: yes
+     register: app_health
+     ignore_errors: True
+     changed_when: False   
+
+   - name: "Print status"
+     debug: 
+       var: app_health.status
+     changed_when: app_health.status != 200
+     notify: App is not running, restart HTTPD
+  
+   - name: SERVICENOW incident closed if batch job validation succeeded
+     snow_record:
+        username: "{{username}}"
+        password: "{{password}}"
+        instance: "{{instance}}"
+        number: "{{snow_var.record.number}}"
+        state: present
+        table: incident
+        data:
+          caller_id: "System Administrator"
+          comments: "The upgraded version of software and web application has now been validated on {{sn_host_name}}, {{inventory_hostname}}. The validated upgrade software version is {{patch_version_installed}} This ticket was closed by Ansible Tower API call in a validation playboook. \n--------\n The update patching process has now been completed.\n--------\n "
+          incident_state: 7
+     register: snow_var
+     delegate_to: localhost
+
+  handlers: 
+   - name: App is not running, restart HTTPD
+     systemd:
+      name: httpd
+      state: restarted
+     become: true  

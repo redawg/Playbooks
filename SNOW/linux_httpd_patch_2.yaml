@@ -1,0 +1,37 @@
+- name: software patch demo (httpd using yum package manager)
+  hosts: localhost
+  vars:
+    username: 
+    password:
+    instance: 
+<<<<<<< HEAD
+    packages:
+    - httpd
+=======
+    package: httpd
+>>>>>>> eedf92f4ce8946d34ad9e3b8d38eb033aa183324
+
+  tasks:
+   - name: Get package version
+     yum:
+<<<<<<< HEAD
+       list: "{{ packages }}"
+=======
+       list: "{{ package }}"
+>>>>>>> eedf92f4ce8946d34ad9e3b8d38eb033aa183324
+     register: software_version
+
+   - name: Read which version is installed and available
+     set_fact:
+       software_update: false
+<<<<<<< HEAD
+       software_version_installed: "{{ software_version | json_query(\"results[?yumstate=='installed'].version\") | last }}"
+       software_version_available: "{{ software_version | json_query(\"results[?yumstate=='available'].version\") }}"
+=======
+       software_version_installed: "{{ software_version | json_query(\"results[?yumstate=='installed'].release\") | last }}"
+       software_version_available: "{{ software_version | json_query(\"results[?yumstate=='available'].release\") }}"
+>>>>>>> eedf92f4ce8946d34ad9e3b8d38eb033aa183324
+   - debug:
+       var: software_version_installed
+   - debug:
+       var: software_version_available
