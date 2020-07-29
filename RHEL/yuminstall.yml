@@ -2,11 +2,19 @@
 - name: Installing requested package
   hosts: all
   gather_facts: False
-  vars:
-      package: ''
+
+
   serial: 1
   tasks:
-    - name: Install {{package}}
+    - name: Remove httpd latest
       yum:
-        name: "{{package}}"
+        name:
+          - httpd
+          - httpd-tools
+        state: absent
+
+    - name: Install old HTTPD 2.4.6-31.el7_1.1
+      yum:
+        name: httpd-2.4.6-31.el7_1.1
         state: present
+  
