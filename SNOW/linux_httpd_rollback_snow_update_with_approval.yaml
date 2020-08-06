@@ -1,8 +1,6 @@
 - name: software patch demo (httpd using yum package manager) with rollback approval
   hosts: all
   vars:
-    username: 
-    password:
     instance: 
     package: httpd
     sn_host_name:
@@ -11,7 +9,7 @@
 
    - name: include vars
      include_vars: incident_vars.yaml
-     
+
    - name: Patch "{{ package }}" to latest certified version
      yum:
        name: "{{ package }}"
@@ -39,11 +37,11 @@
      register: patch_version
      become: true
 
-   - name: Verify latest certified version is installed and operational 
+   - name: Verify latest certified version is installed and operational
      set_fact:
        patch_version_installed: "{{ patch_version | json_query(\"results[?yumstate=='installed'].release\") }}"
    - debug:
-       var: patch_version_installed 
+       var: patch_version_installed
 
    - name: Validate service is started and running
      systemd:
@@ -58,14 +56,14 @@
        return_content: yes
      register: app_health
      ignore_errors: True
-     changed_when: False   
+     changed_when: False
 
    - name: "Print status"
-     debug: 
+     debug:
        var: app_health.status
      changed_when: app_health.status != 200
      notify: App is not running, restart HTTPD
-  
+
    - name: SERVICENOW incident closed if batch job validation succeeded
      snow_record:
         username: "{{username}}"
@@ -81,9 +79,9 @@
      register: snow_var
      delegate_to: localhost
 
-  handlers: 
+  handlers:
    - name: App is not running, restart HTTPD
      systemd:
       name: httpd
       state: restarted
-     become: true  
+     become: true
