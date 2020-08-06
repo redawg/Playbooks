@@ -15,7 +15,7 @@
     fail: msg='Please include the git_name to the variable "git_name"'
     run_once: true
     when: 'git_name is not defined'
-  - name: 'Preflight Varible check :: git_name'
+  - name: 'Preflight Varible check :: git_email'
     fail: msg='Please include the git_email to the variable "git_email"'
     run_once: true
     when: 'git_email is not defined'
