@@ -38,10 +38,10 @@
   - name: Send Alert to Slack
     slack:
       token: "{{ slack_token }}"
-      msg: 'Backed up {{inventory_hostname}} now to Local repo'
+      msg: 'Backed up {{inventory_hostname}} to Local repo'
       channel: '#toweralerts'
       username: 'Ansible Tower'
-    
+
 
 
   - name: REMOVE NON CONFIG LINES
@@ -95,3 +95,12 @@
       delegate_to: localhost
       run_once: true
       when: network_backup_repository is defined
+
+    - name: Send Alert to Slack
+      slack:
+        token: "{{ slack_token }}"
+        msg: 'Updated Github Repo from Local Backup!'
+        channel: '#toweralerts'
+        username: 'Ansible Tower'
+      run_once: true
+      when: network_backup_repository is defined     
