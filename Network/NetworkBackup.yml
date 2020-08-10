@@ -41,6 +41,7 @@
       msg: 'Backed up {{inventory_hostname}} to Local repo'
       channel: '#toweralerts'
       username: 'Ansible Tower'
+    when: slack_token is defined 
 
 
 
@@ -103,4 +104,4 @@
         channel: '#toweralerts'
         username: 'Ansible Tower'
       run_once: true
-      when: network_backup_repository is defined     
+      when: slack_token is defined
