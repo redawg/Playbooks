@@ -35,6 +35,14 @@
 
   - include_tasks: "{{ ansible_network_os }}-backup.yml"
 
+  - name: Send Alert to Slack
+    slack:
+      token: "{{ slack_token }}"
+      msg: 'Backed up {{ansible_host}} now to Local repo'
+      channel: '#toweralerts'
+      username: 'Ansible Tower'
+    delegate_to: localhost
+
   - name: REMOVE NON CONFIG LINES
     lineinfile:
       path: "{{network_backup_dir}}/{{inventory_hostname}}.cfg"
