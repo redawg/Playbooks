@@ -38,7 +38,7 @@
   - name: Send Alert to Slack
     slack:
       token: "{{ slack_token }}"
-      msg: 'Backed up {{ansible_host}} now to Local repo'
+      msg: 'Backed up {{ansible_play_batch}} now to Local repo'
       channel: '#toweralerts'
       username: 'Ansible Tower'
     delegate_to: localhost
