@@ -38,10 +38,10 @@
   - name: Send Alert to Slack
     slack:
       token: "{{ slack_token }}"
-      msg: 'Backed up {{ansible_play_batch}} now to Local repo'
+      msg: 'Backed up {{inventory_hostname}} now to Local repo'
       channel: '#toweralerts'
       username: 'Ansible Tower'
-    run_once: true
+    
 
 
   - name: REMOVE NON CONFIG LINES
