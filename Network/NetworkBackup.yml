@@ -41,7 +41,8 @@
       msg: 'Backed up {{ansible_play_batch}} now to Local repo'
       channel: '#toweralerts'
       username: 'Ansible Tower'
-  
+    run_once: true
+
 
   - name: REMOVE NON CONFIG LINES
     lineinfile:
