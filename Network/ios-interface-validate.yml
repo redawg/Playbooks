@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: gather facts
+      register: iosfacts
+      ios_facts:
+        provider: "{{ provider }}"
+
+    

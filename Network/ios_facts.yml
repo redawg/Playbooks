@@ -13,6 +13,15 @@
       gather_subset: "{{ subset }}"
     register: facts_output
 
+  - name: interface description
+    ios_config:
+      provider: "{{ facts_output }}"
+      lines:
+        - description test interface
+      parents: "interface {{ item.key }}"
+    with_dict: "{{ iosfacts.ansible_facts.ansible_net_interfaces }}"
+    when: item.value.bandwidth <= 1000000
+
   - name: Print out facts
     debug:
       var: facts_output.ansible_facts.ansible_network_resources
