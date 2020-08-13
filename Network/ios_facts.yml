@@ -20,7 +20,7 @@
         - description test interface
       parents: "interface {{ item.key }}"
     with_dict: "{{ iosfacts.ansible_facts.ansible_net_interfaces }}"
-    when: item.value.bandwidth <= 1000000
+    
 
   - name: Print out facts
     debug:
