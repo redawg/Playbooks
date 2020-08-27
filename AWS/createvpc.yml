@@ -4,7 +4,7 @@
     connection: local
     gather_facts: no
     vars:
-       aws_access_key: ''  
+       aws_access_key: ''
        aws_secret_key: ''
        ec2_ansible_group: "{{ user_name }}"
        ec2_security_group_name: "{{vpc_name}}_SECGRP"
@@ -40,7 +40,7 @@
       run_once: true
       when: 'user_name is not defined'
     - name: 'Preflight Varible check :: alwaysup'
-      fail: msg='Please include the aws_access_key to the variable "alwaysup"'
+      fail: msg='Please include the alwaysup to the variable "alwaysup"'
       run_once: true
       when: 'alwaysup is not defined'
     - name: 'Preflight Varible check :: deleteby'

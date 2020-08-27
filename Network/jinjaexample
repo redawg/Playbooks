@@ -1,0 +1,32 @@
+nodes:
+  rtr1:
+    Loopback100: "192.168.100.1/24"
+  rtr2:
+    Loopback100: "192.168.100.2"
+  rtr3:
+    Loopback100: "192.168.100.3"
+  rtr4:
+    Loopback100: "192.168.100.4"
+
+
+    {% for interface,ip in nodes[inventory_hostname].items() %}
+    interface {{interface}}
+      ip address {{ip}}
+    {% endfor %}
+
+Or use the ios_l3_interface module
+
+
+- name: Set GigabitEthernet0/3 IPv4 address
+  ios_l3_interface:
+    name: GigabitEthernet0/3
+    ipv4: 192.168.0.1/24
+vars:
+  int_name: 'GigabitEthernet0/3'
+  ip_add: 192.168.0.1
+  ip_subnet: 24
+
+- name: Set GigabitEthernet0/3 IPv4 address
+  ios_l3_interface:
+    name: "{{int_name}}"
+    ipv4: "{{ip_add}}/{{ip_subnet}}"
