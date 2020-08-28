@@ -43,6 +43,31 @@
       when:
         - ansible_distribution == "RedHat"
         - ansible_distribution_major_version == "7"
+      - name: Rhel 8 specific Repos
+        block:
+          - name: Disable all Repos
+            rhsm_repository:
+              name: '*'
+              state: disabled
+          - name: Enable rhel-8-for-x86_64-baseos-rpms
+            rhsm_repository:
+              name: rhel-8-for-x86_64-baseos-rpms
+              state: enabled
+          - name: Enable rhel-8-for-x86_64-appstream-rpms
+            rhsm_repository:
+              name: rhel-8-for-x86_64-appstream-rpms
+              state: enabled
+          - name: Enable ansible-2.9-for-rhel-8-x86_64-rpms
+            rhsm_repository:
+              name: ansible-2.9-for-rhel-8-x86_64-rpms               
+              state: enabled
+          #  - name: Enable rhel-server-rhscl-7-rpms
+          #    rhsm_repository:
+          #      name: rhel-server-rhscl-7-rpms
+          #      state: enabled
+          when:
+            - ansible_distribution == "RedHat"
+            - ansible_distribution_major_version == "8"
     - name: Copy DNS Hosts file for local
       copy:
         src: /var/www/html/hosts
@@ -52,7 +77,7 @@
         mode: '0644'
       when: ansible_default_ipv4.address is search("172.16.1*")
       tags:
-        - copyhost     
+        - copyhost
     - name: Disable SElinux
       selinux:
         policy: targeted
