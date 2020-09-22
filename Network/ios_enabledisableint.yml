@@ -9,7 +9,7 @@
 
   tasks:
 
-  - name: Setting Description on {{int_name}}
+  - name: Setting Description on {{int_name}} and status {{int_enabled}}
     ios_interfaces:
       config:
         - name: "{{int_name}}"
