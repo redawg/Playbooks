@@ -96,6 +96,11 @@
           ports: "{{ open_ports_list }}"
           cidr_ip: 0.0.0.0/0
           rule_desc: allow all on port {{open_ports_list}}
+        - proto: tcp
+          ports: 3306
+          cidr_ip: 10.100.100.0/24
+          rule_desc: allow DB on port 3306
+
       tags:
         - createsecgrp
         - onlyvpc
