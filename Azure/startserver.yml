@@ -18,4 +18,4 @@
           allocated: yes
       - include: getpubip.yml
         vars:
-            publicip: "{{az_server}}{{'-ip'}}"
+            publicip: "{{az_server}}{{'-Publicip'}}"
