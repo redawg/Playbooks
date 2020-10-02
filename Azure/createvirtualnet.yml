@@ -8,13 +8,13 @@
 
     tasks:
     - name: Creating Virtual Network {{az_rgname}}
-        azure_rm_virtualnetwork:
-          resource_group: "{{az_rgname}}"
-          name: "{{az_rgname}}"
-          address_prefixes_cidr:
-             - "10.10.0.0/20"
-          tags:
-            created: ansbile
-            delete: never
-            demo: "{{customer}}"
+      azure_rm_virtualnetwork:
+        resource_group: "{{az_rgname}}"
+        name: "{{az_rgname}}"
+        address_prefixes_cidr:
+           - "10.10.0.0/20"
+        tags:
+          created: ansbile
+          delete: never
+          demo: "{{customer}}"
     - include: createsubnet.yml
