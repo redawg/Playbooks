@@ -1,0 +1,24 @@
+---
+  - name: Get Public IP for webdemo
+    hosts: localhost
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      - name: Retrieving Public IP address
+        azure_rm_publicipaddress:
+          resource_group: "{{az_rgname}}"
+          name: "{{publicip}}"
+        register: output_public_ip_address
+      - name: Display Public IP
+        debug:
+          msg: "The public IP is {{ output_public_ip_address.state.ip_address }}."
+      - name: Send Alert to Slack
+          slack:
+           token: "{{ slack_token }}"
+           msg: "The public IP is {{ output_public_ip_address.state.ip_address }}."
+           channel: "{{ channel }}"
+           username: "{{ slackuser }}"
+        run_once: true
+        delegate_to: localhost
