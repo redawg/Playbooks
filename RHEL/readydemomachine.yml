@@ -106,5 +106,4 @@
 
   handlers:
     - name: Rebooting machine
-      rebootneeded:
-        reboot:
+      reboot:
