@@ -3,9 +3,7 @@
   hosts: all
   connection: network_cli
   gather_facts: no
-  vars:
-     message: 'Network Invetory report created http://172.16.1.25:8080/report.html'
-     channel: '#toweralerts'
+  
 
   tasks:
     - name: 'Preflight Varible check :: slack_token'
@@ -17,9 +15,13 @@
       run_once: true
       when: 'message is not defined'
     - name: 'Preflight Varible check :: channel'
-      fail: msg='Please include the slack_token to the variable "channel"'
+      fail: msg='Please include the channel to the variable "channel"'
       run_once: true
       when: 'channel is not defined'
+    - name: 'Preflight Varible check :: slackuser'
+      fail: msg='Please include the slackuser to the variable "slackuser"'
+      run_once: true
+      when: 'slackuser is not defined'
 
 
     - name: Send Alert to Slack
@@ -27,6 +29,6 @@
        token: "{{ slack_token }}"
        msg: "{{ message }}"
        channel: "{{ channel }}"
-       username: 'Ansible Tower'
+       username: "{{ slackuser }}"
       run_once: true
       delegate_to: localhost
