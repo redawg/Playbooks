@@ -82,7 +82,8 @@
       selinux:
         policy: targeted
         state: disabled
-
+      notify:
+       - reboot.needed
     - name: Install My packages I want (insights/net-tools/wget)
       yum:
         name:
@@ -101,5 +102,9 @@
     - name: Display Register
       debug:
         msg: "{{ register_output }}"
-    - name: Reboot for SElinux to take effect
-      reboot:
+
+
+  handlers:
+    - name: reboot.needed
+      needreboot:
+        reboot:
