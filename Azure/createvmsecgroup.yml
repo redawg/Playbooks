@@ -10,15 +10,7 @@
           access: Allow
           priority: 1001
           direction: Inbound
-        - name: web
-          protocol: Tcp
-          destination_port_range:
-            - 80
-            - 443
-          access: Allow
-          priority: 1002
-          direction: Inbound
-
+        
       tags:
           created: ansbile
           delete: never

@@ -23,7 +23,9 @@
        rules:
          - name: WEBTRAFFIC
            protocol: Tcp
-           destination_port_range: 80
+           destination_port_range:
+             - 80
+             - 443
            access: Allow
            priority: 1002
            direction: Inbound
