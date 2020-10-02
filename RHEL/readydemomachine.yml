@@ -90,7 +90,7 @@
           -  net-tools
           -  wget
         state: present
-    - name: Upgrading all Modules to Latest
+    - name: Upgrading all Packages to Latest
       yum:
         name: '*'
         state: latest
