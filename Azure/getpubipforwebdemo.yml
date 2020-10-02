@@ -17,7 +17,7 @@
       - name: Send Alert to Slack
         slack:
           token: "{{ slack_token }}"
-          msg: "The public IP is {{ output_public_ip_address.state.ip_address }}."
+          msg: "The public IP of the Webserver is {{ output_public_ip_address.state.ip_address }}."
           channel: "{{ channel }}"
           username: "{{ slackuser }}"
         run_once: true
