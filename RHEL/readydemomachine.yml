@@ -83,7 +83,7 @@
         policy: targeted
         state: disabled
       notify:
-       - rebootneeded
+       - Reboot needed
     - name: Install My packages I want (insights/net-tools/wget)
       yum:
         name:
@@ -105,5 +105,5 @@
 
 
   handlers:
-    - name: Rebooting machine
+    - name: Reboot needed
       reboot:
