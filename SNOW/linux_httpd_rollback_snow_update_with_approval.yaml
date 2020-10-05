@@ -2,8 +2,8 @@
   hosts: all
   vars:
     instance: '{{ sn_instance }}'
-    username: "{{ sn_username }}"
-    password: "{{ sn_password }}"
+    username: '{{ sn_username }}'
+    password: '{{ sn_password }}'
     package: httpd
     sn_host_name:
 
