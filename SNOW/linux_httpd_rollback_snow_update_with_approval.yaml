@@ -3,6 +3,7 @@
   vars:
     package: httpd
     sn_host_name:
+    number:  
 
   tasks:
 
