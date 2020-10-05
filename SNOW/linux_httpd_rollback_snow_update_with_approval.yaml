@@ -6,8 +6,8 @@
 
   tasks:
 
-   - name: include vars
-     include_vars: incident_vars.yaml
+   #- name: include vars
+   # include_vars: incident_vars.yaml
 
    - name: Patch "{{ package }}" to latest certified version
      yum:
