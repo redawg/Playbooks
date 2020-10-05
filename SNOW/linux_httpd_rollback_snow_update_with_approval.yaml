@@ -1,7 +1,9 @@
 - name: software patch demo (httpd using yum package manager) with rollback approval
   hosts: all
   vars:
-    instance: 
+    instance: "{{ SN_INSTANCE }}"
+    username: "{{ SN_USERNAME }}"
+    password: "{{ SN_PASSWORD }}"  
     package: httpd
     sn_host_name:
 
