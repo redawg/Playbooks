@@ -4,7 +4,7 @@
   gather_facts: true
 
   tasks:
-    - name: Updateing IIS Web Server to {{ iis_state }}
+    - name: Updating IIS Web Server to {{ iis_state }}
       win_feature:
         name: Web-Server
         state: "{{ iis_state }}"
