@@ -2,8 +2,6 @@
 - name: Install or remove IIS
   hosts: all
   gather_facts: true
-  vars:
-    iis_state: "" # "present"=install ; "absent"=uninstall
 
   tasks:
     - name: "{{ iis_state }}" IIS Web Server
