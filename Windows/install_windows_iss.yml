@@ -1,0 +1,11 @@
+---
+- name: Install or remove IIS
+  hosts: all
+  vars:
+    iis_state: "" # "present"=install ; "absent"=uninstall
+
+  tasks:
+    - name: "{{ iis_state }}" IIS Web Server
+      win_feature:
+        name: Web-Server
+        state: "{{ iis_state }}"
