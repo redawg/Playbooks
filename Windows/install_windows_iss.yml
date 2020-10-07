@@ -1,6 +1,7 @@
 ---
 - name: Install or remove IIS
   hosts: all
+  gather_facts: true
   vars:
     iis_state: "" # "present"=install ; "absent"=uninstall
 
