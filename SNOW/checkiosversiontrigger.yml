@@ -1,0 +1,45 @@
+---
+- name: Check Firmware Version is Compliant
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+
+
+  tasks:
+    - name: 'Preflight Varible check :: ansible_network_os'
+      fail: msg='Please include the ansible_network_os to the variable "ansible_network_os"'
+      run_once: true
+      when: 'ansible_network_os is not defined'
+    - name: 'Preflight Varible check :: ansible_connection'
+      fail: msg='Please include the ansible_connection to the variable "ansible_connection"'
+      run_once: true
+      when: 'ansible_connection is not defined'
+    - name: 'Preflight Varible check :: compliant_ios_version'
+      fail: msg='Please include the compliant_ios_version to the variable "compliant_ios_version"'
+      run_once: true
+      when: 'compliant_ios_version is not defined'
+    - name: 'Preflight Varible check :: slack_token'
+      fail: msg='Please include the slack_token to the variable "slack_token"'
+      run_once: true
+      when: 'slack_token is not defined'
+
+
+    - name: Gather Live facts from Device
+      ios_facts:
+          gather_subset: min
+    - name: Checking to see if needs Upgrade
+      assert:
+        that:
+            - compliant_ios_version == ansible_net_version
+        msg: "IOS version {{ ansible_net_version }} does not match compliant version. Please run Upgrade."
+      when: ansible_net_version != compliant_ios_version
+      ignore_errors: True
+    - name: Send Alert to Slack
+      slack:
+        token: "{{ slack_token }}"
+        msg: 'IOS version {{ansible_net_version}} does not match compliant version on {{inventory_hostname}} Please run Upgrade.'
+        channel: '#toweralerts'
+        username: 'Ansible on {{ inventory_hostname }}'
+      delegate_to: localhost
+      when: ansible_net_version != compliant_ios_version
