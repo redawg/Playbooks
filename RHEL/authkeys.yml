@@ -9,4 +9,4 @@
       authorized_key:
         user: root
         state: present
-        key: "{{lookup('file', '/home/sshkey/awsrh')}}"
+        key: "{{lookup('file', '/home/sshkey/redpub')}}"
