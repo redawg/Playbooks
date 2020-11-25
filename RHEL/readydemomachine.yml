@@ -11,7 +11,7 @@
      sla: "Self-Support"
 
   tasks:
-    - name: Subscribing to RHEL account now
+    - name: Subscribing to RHEL account just for RHEL
       redhat_subscription:
         state: present
         username: "{{username}}"
@@ -24,7 +24,7 @@
           sync: true
       when: ansiblenode == "No"
 
-    - name: Add Ansible Sub to Server
+    - name: Subscribing to RHEL and Ansible subs
       redhat_subscription:
         state: present
         username: "{{username}}"
@@ -32,7 +32,7 @@
         pool_ids:
           - 8a85f99a74274534017430bc6dc26484
           - "{{pool_id}}"
-          
+
       when: ansiblenode == "Yes"
 
     - name: Rhel 7 specific Repos
