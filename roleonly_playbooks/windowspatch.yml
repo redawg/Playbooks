@@ -1,0 +1,9 @@
+---
+# Playbook to test new roles and tags
+- hosts: all
+  gather_facts: False
+  roles:
+    - role: sparknsh.patching_windows
+
+#    - role: network_compliance
+#      tags: ['netcompliance']
