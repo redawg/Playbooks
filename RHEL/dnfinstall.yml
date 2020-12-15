@@ -1,0 +1,12 @@
+---
+- name: Installing requested package
+  hosts: all
+  gather_facts: False
+  vars:
+      package: ''
+  serial: 1
+  tasks:
+    - name: Install {{package}}
+      dnf:
+        name: "{{package}}"
+        state: present
