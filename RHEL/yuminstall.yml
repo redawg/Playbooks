@@ -10,3 +10,12 @@
       yum:
         name: "{{package}}"
         state: present
+      notify: slack_alert
+  handlers:
+    - name: slack_alert
+      slack:
+        token: "{{ slack_token }}"
+        msg: '{{package}} installed on {{inventory_hostname}}'
+        channel: '#toweralerts'
+        username: 'Ansible Tower'
+      when: slack_token is defined
