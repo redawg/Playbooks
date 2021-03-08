@@ -1,0 +1,22 @@
+---
+- name: Install or remove 
+  hosts: all
+  vars:
+    feature_state: "" # "present"=install ; "absent"=uninstall 
+    win_feature: ""
+
+  tasks:
+    - name: "{{ win_feature }}" 
+      win_feature:
+        name: "{{ win_feature }}"
+        state: "{{ feature_state }}"
+# LIST All IIS FEATURES from powershell: 
+# Get-WindowsOptionalFeature -Online | where FeatureName -like 'IIS-*'
+#
+# LIST All DNS FEATURES from powershell: 
+# Get-WindowsOptionalFeature -Online | where FeatureName -like 'DNS-*'
+# 
+# Enable an optional feature from powershell
+# Enabling WSL (Windows Subsystem Linux)
+# Enable WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+#
