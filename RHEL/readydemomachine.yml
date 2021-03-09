@@ -32,7 +32,8 @@
         pool_ids:
           - 8a85f99a74274534017430bc6dc26484
           - "{{pool_id}}"
-
+      tags:
+         - subreg
       when: ansiblenode == "Yes"
 
     - name: Rhel 7 specific Repos
