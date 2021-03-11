@@ -116,7 +116,8 @@
     - name: Display Register
       debug:
         msg: "{{ register_output }}"
-
+      tags:
+        - reginsights
 
   handlers:
     - name: Reboot needed
