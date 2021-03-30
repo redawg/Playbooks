@@ -1,0 +1,5 @@
+---
+# Perform rollback to previous yum state
+
+- name: Perform rollback
+  command: yum -y history rollback "last-1"
