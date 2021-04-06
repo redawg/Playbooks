@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: true
   tasks:
-    - name: Return OS version to registered my_release variable
+    - name: Rollback Last update
       command: yum -y history rollback "last-1"
       register: my_release
     - debug:
