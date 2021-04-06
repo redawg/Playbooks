@@ -1,7 +1,7 @@
 ---
 - name: Rollback recent updates, and refresh insights
   hosts: all
-  gather_facts: False
+  gather_facts: True
 
 
   tasks: Perform rollback to previous yum state
