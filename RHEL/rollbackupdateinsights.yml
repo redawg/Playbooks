@@ -2,6 +2,8 @@
 - name: Rollback recent updates, and refresh insights
   hosts: all
   gather_facts: False
+
+
   tasks: Perform rollback to previous yum state
     - name: Perform rollback
       command: yum -y history rollback "last-1"
