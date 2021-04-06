@@ -1,0 +1,11 @@
+---
+- name: Rollback recent updates, and refresh insights
+  hosts: all
+  gather_facts: True
+
+
+  tasks: Perform rollback to previous yum state
+    - name: Yum rollback
+      command: yum -y history rollback "last-1"
+    - name: Update insights
+      command: insights-client
