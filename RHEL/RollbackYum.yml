@@ -1,11 +1,10 @@
 ---
-- name: Rollback recent updates, and refresh insights
-  hosts: all
-  gather_facts: True
-
-
-  tasks: Perform rollback to previous yum state
-    - name: Yum rollback
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: Return OS version to registered my_release variable
       command: yum -y history rollback "last-1"
-    - name: Update insights
-      command: insights-client
+      register: my_release
+    - debug:
+        var:  my_release.stdout_lines
+      with_items: groups ['ALL']
