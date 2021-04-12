@@ -7,7 +7,12 @@
 
   tasks:
 
-  - name: Getting Ios descirptions
+  - name: Getting Ios descirptions Collection
     cisco.ios.ios_interfaces:
       config:
       state: gathered
+  - name: Collect facts from Cisco IOS elements
+    cisco.ios.ios_facts:
+      gather_network_resources: interfaces
+      gather_subset: min
+    register: facts_output
