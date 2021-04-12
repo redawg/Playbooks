@@ -2,7 +2,8 @@
 - name: IOS inteface facts
   hosts: all
   gather_facts: False
-
+  collections:
+   - cisco.ios
 
   tasks:
 
