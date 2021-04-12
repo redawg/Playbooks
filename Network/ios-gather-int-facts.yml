@@ -8,6 +8,6 @@
   tasks:
 
   - name: Getting Ios descirptions
-    cisco.ios.ios_interfaces:
+    cisco.ios.ios_interface:
       config:
       state: gathered
