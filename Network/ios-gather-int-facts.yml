@@ -13,6 +13,6 @@
       state: gathered
   - name: Collect facts from Cisco IOS elements
     cisco.ios.ios_facts:
-      gather_network_resources: interfaces
-      gather_subset: interfaces
+      gather_network_resources: {{interface}}
+      gather_subset: {{subset}}
     register: facts_output
