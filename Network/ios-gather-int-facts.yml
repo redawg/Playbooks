@@ -7,6 +7,6 @@
   tasks:
 
   - name: Setting Description on {{int_name}} and status {{int_enabled}}
-    ios_interfaces:
+    cisco.ios.ios_interfaces:
       config:
       state: gathered
