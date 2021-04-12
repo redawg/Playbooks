@@ -1,0 +1,10 @@
+---
+- name: Run CLI Command
+  hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Gather listed interfaces with provided configurations
+      cisco.ios.ios_interfaces:
+        config:
+      state: gathered
