@@ -1,5 +1,5 @@
 ---
-- name: Check Firmware Version is Compliant
+- name: Slack Messages Playbook
   hosts: all
   connection: network_cli
   gather_facts: no
