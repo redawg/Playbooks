@@ -2,3 +2,4 @@
 collections:
 - name: cisco.ios
   version: 2.0.1
+- name: servicenow.itsm
