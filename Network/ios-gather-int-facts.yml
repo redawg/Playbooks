@@ -14,5 +14,5 @@
   - name: Collect facts from Cisco IOS elements
     cisco.ios.ios_facts:
       gather_network_resources: interfaces
-      gather_subset: min
+      gather_subset: interfaces
     register: facts_output
