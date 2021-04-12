@@ -6,7 +6,7 @@
 
   tasks:
 
-  - name: Getting Interface facts for devices
-    cisco.ios.ios_interfaces:
+  - name: Setting Description on {{int_name}} and status {{int_enabled}}
+    ios_interfaces:
       config:
       state: gathered
