@@ -1,9 +1,6 @@
 - name: software patch demo (httpd using yum package manager) with rollback
   hosts: all
   vars:
-    username:
-    password:
-    instance:
     package: httpd
     sn_host_name:
 
@@ -24,14 +21,12 @@
    - debug:
        var: software_version_available
 
-   - name: include vars
-     include_vars: incident_vars.yaml
-
+   
    - name: SERVICENOW incident created if Available Software Update for "{{ package }}" from Vendor detected
      snow_record:
-       username: "{{username}}"
-       password: "{{password}}"
-       instance: "{{instance}}"
+       username: "{{snow_username}}"
+       password: "{{snow_password}}"
+       instance: "{{snow_instance}}"
        state: present
        table: incident
        data:
