@@ -10,6 +10,8 @@
        list: "{{ package }}"
      register: software_version
      become: true
+  - debug:
+      var: snow_username
 
    - name: Read which version is installed and available
      set_fact:
@@ -21,7 +23,7 @@
    - debug:
        var: software_version_available
 
-   
+
    - name: SERVICENOW incident created if Available Software Update for "{{ package }}" from Vendor detected
      snow_record:
        username: "{{snow_username}}"
