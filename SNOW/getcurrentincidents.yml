@@ -1,0 +1,10 @@
+- name: Known Error Demo (batch copy fail)
+  hosts: all
+
+  tasks:
+    - name: Retrieve all incidents
+      servicenow.itsm.incident_info:
+      host: {{snow_instance}}
+      username: {{snow_username}}
+      password: {{snow_password}}
+      register: result
