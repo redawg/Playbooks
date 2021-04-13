@@ -1,9 +1,9 @@
 - name: software patch demo (httpd using yum package manager)
   hosts: all
   vars:
-    username: 
+    username:
     password:
-    instance: 
+    instance:
     package: httpd
 
   tasks:
@@ -28,9 +28,9 @@
 
    - name: SERVICENOW incident created if Available Software Update for "{{ package }}" from Vendor detected
      snow_record:
-       username: "{{username}}"
-       password: "{{password}}"
-       instance: dev71983
+       username: "{{snow_username}}"
+       password: "{{snow_password}}"
+       instance: "{{snow_instance}}"
        state: present
        table: incident
        data:
@@ -43,7 +43,7 @@
      register: snow_var
      delegate_to: localhost
      #when: errorCode.changed
-   
+
    - name: DEBUG SNOW_VAR
      debug:
        var: snow_var.record.number
@@ -76,12 +76,12 @@
      register: patch_version
      become: true
 
-   - name: Verify latest certified version is installed and operational 
+   - name: Verify latest certified version is installed and operational
      set_fact:
        patch_version_installed: "{{ patch_version | json_query(\"results[?yumstate=='installed'].release\") }}"
    - debug:
-       var: patch_version_installed   
-  
+       var: patch_version_installed
+
    - name: SERVICENOW incident closed if batch job validation succeeded
      snow_record:
         username: "{{username}}"
