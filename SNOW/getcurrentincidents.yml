@@ -3,7 +3,7 @@
   vars:
     SN_HOST: "{{ snow_instance }}"
     SN_USERNAME: "{{ snow_username }}"
-    SN_PASSWORD: "{{ snow_password }}"+
+    SN_PASSWORD: "{{ snow_password }}"
     host: "{{ snow_instance }}"
     username: "{{ snow_username }}"
     password: "{{ snow_password }}"
