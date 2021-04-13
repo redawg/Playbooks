@@ -10,10 +10,6 @@
        list: "{{ package }}"
      register: software_version
      become: true
-   - debug:
-       var: SN_USERNAME
-   - debug:
-       var: snow_username
 
    - name: Read which version is installed and available
      set_fact:

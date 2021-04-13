@@ -3,7 +3,7 @@
   vars:
     package: httpd
     sn_host_name:
-     
+
 
   tasks:
 
@@ -18,9 +18,9 @@
 
    - name: SERVICENOW incident updated and resolved if patch update process succeeded
      snow_record:
-        username: "{{username}}"
-        password: "{{password}}"
-        instance: "{{instance}}"
+        username: "{{snow_username}}"
+        password: "{{snow_password}}"
+        instance: "{{snow_instance}}"
         number: "{{number}}"
         state: present
         table: incident
@@ -66,9 +66,9 @@
 
    - name: SERVICENOW incident closed if batch job validation succeeded
      snow_record:
-        username: "{{username}}"
-        password: "{{password}}"
-        instance: "{{instance}}"
+        username: "{{snow_username}}"
+        password: "{{snow_password}}"
+        instance: "{{snow_instance}}"
         number: "{{snow_var.record.number}}"
         state: present
         table: incident
