@@ -18,9 +18,9 @@
 
    - name: SERVICENOW incident updated and resolved if patch update process succeeded
      snow_record:
-        username: "{{snow_username}}"
-        password: "{{snow_password}}"
-        instance: "{{snow_instance}}"
+        username: "{{ SN_USERNAME }}"
+        password: "{{ SN_PASSWORD }}"
+        instance: "{{ SN_INSTANCE }}"
         number: "{{number}}"
         state: present
         table: incident
@@ -66,9 +66,9 @@
 
    - name: SERVICENOW incident closed if batch job validation succeeded
      snow_record:
-        username: "{{snow_username}}"
-        password: "{{snow_password}}"
-        instance: "{{snow_instance}}"
+        username: "{{ SN_USERNAME }}"
+        password: "{{ SN_PASSWORD }}"
+        instance: "{{ SN_INSTANCE }}"
         number: "{{snow_var.record.number}}"
         state: present
         table: incident
