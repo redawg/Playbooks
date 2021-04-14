@@ -1,10 +1,7 @@
 - name: Known Error Demo (batch copy fail)
   hosts: all
   vars:
-    SN_HOST: "{{ snow_instance }}"
-    SN_USERNAME: "{{ snow_username }}"
-    SN_PASSWORD: "{{ snow_password }}"
-    host: "{{ snow_instance }}"
+    host: dev67705.service-now.com
     username: "{{ snow_username }}"
     password: "{{ snow_password }}"
 
@@ -13,7 +10,4 @@
 
     - name: Retrieve all incidents
       servicenow.itsm.incident_info:
-        host: "{{ snow_instance }}"
-        username: "{{ snow_username }}"
-        password: "{{ snow_password }}"
       register: result
