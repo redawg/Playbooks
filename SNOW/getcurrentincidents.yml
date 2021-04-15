@@ -1,10 +1,6 @@
 - name: Known Error Demo (batch copy fail)
   hosts: all
-  vars:
-    host: dev67705.service-now.com
-    username: "{{ snow_username }}"
-    password: "{{ snow_password }}"
-
+  
 
   tasks:
 
