@@ -1,6 +1,6 @@
-- name: Known Error Demo (batch copy fail)
+- name: Gather All Tickets in SNOW {{SN_HOST}}
   hosts: all
-  
+
 
   tasks:
 
