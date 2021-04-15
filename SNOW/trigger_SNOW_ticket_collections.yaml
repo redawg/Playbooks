@@ -25,7 +25,7 @@
    - name: SERVICENOW incident created if Available Software Update for "{{ package }}" from Vendor detected
      servicenow.itsm.incident:
        state: new
-       short_description: "Software Update Available on {{sn_host_name}}, {{inventory_hostname}} was found for Software Package {{ package }}. The installed version is too old."
+       short_description: "Software Update Available on {{sn_host_name}}, {{inventory_hostname}} was found for Software Package {{ package }}. The installed version is too old. (Cert Collections Ansible)"
        #priority: 5
        urgency: low
        #approval: requested

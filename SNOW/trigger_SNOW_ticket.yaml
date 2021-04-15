@@ -30,7 +30,7 @@
        state: present
        table: incident
        data:
-         short_description: "Software Update Available on {{sn_host_name}}, {{inventory_hostname}} was found for Software Package {{ package }}. The installed version is too old."
+         short_description: "Software Update Available on {{sn_host_name}}, {{inventory_hostname}} was found for Software Package {{ package }}. The installed version is too old.(Ansible)"
          severity: 1
          priority: 2
          approval: requested
