@@ -26,7 +26,7 @@
      snow_record:
        username: "{{ SN_USERNAME }}"
        password: "{{ SN_PASSWORD }}"
-       instance: "{{ SN_HOST }}"
+       instance: "{{ SN_INSTANCE }}"
        state: present
        table: incident
        data:
