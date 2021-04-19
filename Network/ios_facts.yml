@@ -19,8 +19,8 @@
       lines:
         - description test interface
       parents: "interface {{ item.key }}"
-    with_dict: "{{ iosfacts.ansible_facts.ansible_net_interfaces }}"
-    
+    with_dict: "{{ ansible_facts.ansible_net_interfaces }}"
+
 
   - name: Print out facts
     debug:
