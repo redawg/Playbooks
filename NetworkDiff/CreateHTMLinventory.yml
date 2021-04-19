@@ -44,8 +44,9 @@
     template:
       src: report-ios.j2
       dest: "{{ network_inv_file }}"
-    delegate_to: localhost
+    delegate_to: 127.0.0.1
     run_once: true
+
   - name: Send Alert to Slack
     slack:
       token: "{{ slack_token }}"
@@ -53,4 +54,4 @@
       channel: '#toweralerts'
       username: 'Ansible Tower'
     run_once: true
-    delegate_to: localhost
+    delegate_to: 127.0.0.1
