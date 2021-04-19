@@ -13,13 +13,7 @@
       gather_subset: "{{ subset }}"
     register: facts_output
 
-  - name: interface description
-    ios_config:
-      provider: "{{ facts_output }}"
-      lines:
-        - description test interface
-      parents: "interface {{ item.key }}"
-    with_dict: "{{ ansible_facts.ansible_net_interfaces }}"
+
 
 
   - name: Print out facts
