@@ -39,7 +39,7 @@
   - name: Send Alert to Slack
     slack:
       token: "{{ slack_token }}"
-      msg: 'OS Invetory report created http://172.16.1.25:8080/report.html'
+      msg: 'OS Invetory report created http://172.16.1.25:8080/osreport.html'
       channel: '#toweralerts'
       username: 'Ansible Tower'
     run_once: true
