@@ -11,6 +11,7 @@
             <th>System Type</th>
             <th>OS flavor</th>
             <th>Major Version</th>
+            <th>Full Version</th>
             <th>Type of Machine</th>
             <th>Mmgt IP</th>
         </tr>
@@ -24,7 +25,7 @@
             <td>{{hostvars[server]['ansible_distribution_major_version']}}</td>
             <td>{{hostvars[server]['ansible_distribution_version']}}</td>
             <td>{{hostvars[server]['ansible_product_name']}}</td>
-            <td>{{hostvars[server]['server']}}</td>
+            <td>{{hostvars[server]['hostname']}}</td>
         </tr>
 {% endfor %}
     </tbody>
