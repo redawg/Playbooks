@@ -7,7 +7,7 @@
   vars:
     www_dir: ''
     os_html_dir: "{{ www_dir }}"
-    os_inv_file: "{{ network_html_dir }}/osreport.html"
+    os_inv_file: "{{ os_html_dir }}/osreport.html"
 
 
   tasks:
