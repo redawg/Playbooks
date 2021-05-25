@@ -25,7 +25,7 @@
             <td>{{hostvars[server]['ansible_distribution_major_version']}}</td>
             <td>{{hostvars[server]['ansible_distribution_version']}}</td>
             <td>{{hostvars[server]['ansible_product_name']}}</td>
-            <td>{{hostvars[server]['hostname']}}</td>
+            <td>{{hostvars[server]['ansible_hostname']}}</td>
         </tr>
 {% endfor %}
     </tbody>
