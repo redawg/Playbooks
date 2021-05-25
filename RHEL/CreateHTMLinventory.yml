@@ -15,10 +15,6 @@
     fail: msg='Please include the www_dir to the variable "www_dir"'
     run_once: true
     when: 'www_dir is not defined'
-  - name: 'Preflight Varible check :: desired_version'
-    fail: msg='Please include the desired_version to the variable "desired_version"'
-    run_once: true
-    when: 'desired_version is not defined'
   - name: 'Preflight Varible check :: slack_token'
     fail: msg='Please include the slack_token to the variable "slack_token"'
     run_once: true
