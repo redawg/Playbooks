@@ -2,7 +2,7 @@
 ---
 - name: build Linux OS report
   hosts: all
-  gather_facts: True
+  gather_facts: false
 
   vars:
     www_dir: ''
@@ -20,7 +20,9 @@
     run_once: true
     when: 'slack_token is not defined'
 
-
+  - name: gathering all IOS facts
+    setup:
+    register: all_facts
 
 
   - name: create HTML report
