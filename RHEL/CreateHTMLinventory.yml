@@ -29,7 +29,7 @@
     template:
       src: report-osversion.j2
       dest: "{{ os_inv_file }}"
-    delegate_to: 127.0.0.1
+    delegate_to: localhost
     run_once: true
 
   - name: Send Alert to Slack
@@ -39,4 +39,4 @@
       channel: '#toweralerts'
       username: 'Ansible Tower'
     run_once: true
-    delegate_to: 127.0.0.1
+    delegate_to: localhost
