@@ -8,20 +8,23 @@
     <thead>
         <tr>
             <th>Hostname</th>
-            <th>OS</th>
             <th>System Type</th>
-            <th>System Vendor</th>
+            <th>OS flavor</th>
+            <th>Major Version</th>
+            <th>Type of Machine</th>
             <th>Mmgt IP</th>
         </tr>
     </thead>
     <tbody>
 {% for server in groups['all'] %}
         <tr>
-            <td>{{hostvars[server]['ansible_fqdn']}}</td>
-            <td>{{hostvars[server]['ansible_os_family']}}</td>
+            <td>{{hostvars[server]['ansible_nodename']}}</td>
             <td>{{hostvars[server]['ansible_system']}}</td>
-            <td>{{hostvars[server]['ansible_system_vendor']}}</td>
-            <td>{{hostvars[server]['ansible_hostname']}}</td>
+            <td>{{hostvars[server]['ansible_distribution_file_variety']}}</td>
+            <td>{{hostvars[server]['ansible_distribution_major_version']}}</td>
+            <td>{{hostvars[server]['ansible_distribution_version']}}</td>
+            <td>{{hostvars[server]['ansible_product_name']}}</td>
+            <td>{{hostvars[server]['server']}}</td>
         </tr>
 {% endfor %}
     </tbody>

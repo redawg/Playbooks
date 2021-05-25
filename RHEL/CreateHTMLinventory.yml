@@ -23,8 +23,6 @@
 
 
 
-
-
   - name: create HTML report
     template:
       src: report-osversion.j2
