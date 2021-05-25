@@ -20,9 +20,10 @@
     run_once: true
     when: 'slack_token is not defined'
 
-  - name: gathering all IOS facts
+  - name: gathering all OS facts
     setup:
     register: all_facts
+    ignore_errors: true
 
 
   - name: create HTML report
