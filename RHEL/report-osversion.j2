@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>Hostname</th>
+            <th>OS</th>
+            <th>System Vendor</th>
+            <th>Mgmt interface IP</th>
+#            <th>OS Version</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for server in groups['all'] %}
+        <tr>
+            <td>{{hostvars[server]['ansible_hostname']}}</td>
+            <td>{{hostvars[server]['ansible_os_family']}}</td>
+            <td>{{hostvars[server]['ansible_system']}}</td>
+            <td>{{hostvars[server]['ansible_system_vendor']}}</td>
+            <td>{{hostvars[server]['ansible_host']}}</td>
+#            <td {% if hostvars[network_switch]['ansible_net_version'] != desired_ios_version %}style="background:yellow;"{% endif %}>{{hostvars[network_switch]['ansible_net_version']}}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

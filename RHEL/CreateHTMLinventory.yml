@@ -1,0 +1,46 @@
+
+---
+- name: build Linux OS report
+  hosts: all
+  gather_facts: True
+
+  vars:
+    www_dir: ''
+    network_html_dir: "{{ www_dir }}"
+    network_inv_file: "{{ network_html_dir }}/osreport.html"
+    desired_version: ''
+
+  tasks:
+  - name: 'Preflight Varible check :: www_dir'
+    fail: msg='Please include the www_dir to the variable "www_dir"'
+    run_once: true
+    when: 'www_dir is not defined'
+  - name: 'Preflight Varible check :: desired_version'
+    fail: msg='Please include the desired_version to the variable "desired_version"'
+    run_once: true
+    when: 'desired_version is not defined'
+  - name: 'Preflight Varible check :: slack_token'
+    fail: msg='Please include the slack_token to the variable "slack_token"'
+    run_once: true
+    when: 'slack_token is not defined'
+
+
+
+
+
+
+  - name: create HTML report
+    template:
+      src: report-osversion.j2
+      dest: "{{ os_inv_file }}"
+    delegate_to: 127.0.0.1
+    run_once: true
+
+  - name: Send Alert to Slack
+    slack:
+      token: "{{ slack_token }}"
+      msg: 'OS Invetory report created http://172.16.1.25:8080/report.html'
+      channel: '#toweralerts'
+      username: 'Ansible Tower'
+    run_once: true
+    delegate_to: 127.0.0.1
