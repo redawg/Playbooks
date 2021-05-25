@@ -8,7 +8,7 @@
     www_dir: ''
     network_html_dir: "{{ www_dir }}"
     network_inv_file: "{{ network_html_dir }}/osreport.html"
-    desired_version: ''
+
 
   tasks:
   - name: 'Preflight Varible check :: www_dir'
@@ -32,7 +32,7 @@
   - name: create HTML report
     template:
       src: report-osversion.j2
-      dest: "{{ os_inv_file }}"
+      dest: "{{ network_inv_file }}"
     delegate_to: 127.0.0.1
     run_once: true
 
