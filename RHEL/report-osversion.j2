@@ -17,7 +17,7 @@
     <tbody>
 {% for server in groups['all'] %}
         <tr>
-            <td>{{hostvars[server]['ansible_hostname']}}</td>
+            <td>{{hostvars[server][ansible_hostname]}}</td>
             <td>{{hostvars[server]['ansible_os_family']}}</td>
             <td>{{hostvars[server]['ansible_system']}}</td>
             <td>{{hostvars[server]['ansible_system_vendor']}}</td>
