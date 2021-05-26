@@ -7,5 +7,4 @@
     - name: Upgrading all Modules to Latest
       yum:
         name: '*'
-        security: yes
         state: latest
