@@ -45,14 +45,19 @@
       vars:
         _query: "[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
-        aws_access_key: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
+        aws_access_key_temp: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
     - name: Searching project for AWS SECRET KEY
       vars:
         _query: "[?name ==`AWS_SECRET_ACCESS_KEY`].value"
       set_fact:
-        aws_access_secret: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
+        aws_access_secret_temp: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
+    - name: Clean up Variables
+      set_fact:
+        aws_access_key: "{{ aws_access_key_temp[0] | trim }}"
+        aws_access_secret: "{{ aws_access_secret_temp[0] | trim }}"
+
     - name: Display AWS Key and Secret
       debug:
        msg:
         - "AWS ACCESS KEY: '{{aws_access_key}}'"
-        - "AWS SECRET KEY: '{{aws_access_secret}}'"   
+        - "AWS SECRET KEY: '{{aws_access_secret}}'"
