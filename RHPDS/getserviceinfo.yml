@@ -29,7 +29,7 @@
       register: taskinformation
     - name: Task options
       debug:
-        msg: "{{taskinformation.json.options.dialong}}"
+        msg: "{{taskinformation.json.options.dialog}}"
     - name: Task URI request
       debug:
         msg: "{{taskinformation.json}}"
