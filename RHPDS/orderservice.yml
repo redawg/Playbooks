@@ -9,8 +9,6 @@
         user: "{{ rhpdsuser }}"
         password: "{{ rhpdspass }}"
         method: POST
-        body: "{"action": "order","resource": {
-        "href": "https://rhpds.redhat.com/api/v3.0.0/service_catalogs/30000000000080/service_templates/30000000000840"
-        }}"
+        body: " rhpdsawsorder "
         force_basic_auth: yes
         body_format: json
