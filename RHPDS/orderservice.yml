@@ -10,5 +10,4 @@
         password: "{{ rhpdspass }}"
         method: POST
         body: " rhpdsawsorder "
-        force_basic_auth: yes
         body_format: json
