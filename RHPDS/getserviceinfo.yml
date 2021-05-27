@@ -16,4 +16,4 @@
 
     - name: Specific Data
       debug:
-        msg: "{{serviceexpanded.json.resquest_tasks}}"
+        msg: "{{serviceexpanded.json.request_tasks}}"
