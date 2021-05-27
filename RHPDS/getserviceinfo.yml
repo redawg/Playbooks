@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: False
   tasks:
-    - name: Query Service Template for RHPDS Tasks
+    - name: Query Service Request Template for RHPDS Tasks
       uri:
         url: "{{ rhpdsurl }}/api/v3.0.0/service_requests/{{serviceid}}?expand=request_tasks"
         user: "{{ rhpdsuser }}"
@@ -20,16 +20,27 @@
     - name: Task URI request
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].href}}"
-    - name: Query Service Template for RHPDS Tasks (ServiceID)
+    - name: Query Service Template for (ServiceID)
       uri:
         url: "{{ serviceexpanded.json.request_tasks[0].href }}"
         user: "{{ rhpdsuser }}"
         password: "{{ rhpdspass }}"
         method: GET
       register: taskinformation
-    - name: Task options
-      debug:
-        msg: "{{taskinformation.json.options.dialog}}"
+    #- name: Task options
+    #  debug:
+    #    msg: "{{taskinformation.json.options.dialog}}"
     - name: Service ID
       debug:
         msg: "{{taskinformation.json.options.dialog['Service::Service']}}"
+    - name: Query Service {{taskinformation.json.options.dialog['Service::Service']}} for Custom Attributes)
+      uri:
+        url: "{{ rhpdsurl }}/api/v3.0.0/services/{{taskinformation.json.options.dialog['Service::Service']}}?attributes=custom_attributes"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: customattributes
+    - name:
+      debug:
+         msg: "{{customattributes}}"
+     
