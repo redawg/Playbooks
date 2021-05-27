@@ -2,9 +2,7 @@
 - name: Add RHPDS Sandbox Crediental to Controller
   hosts: localhost
   gather_facts: False
-  vars:
-   org: 'Random Org'
-   
+
 
   tasks:
     - name: Add RHPDS AWS Creds to Controller
@@ -13,8 +11,6 @@
         organization: "{{ org }}"
         state: present
         credential_type: Amazon Web Services
-        tower_password: r3dh2t!
-        tower_username: admin
         validate_certs: no
         inputs:
           username: "{{aws_access_key}}"
