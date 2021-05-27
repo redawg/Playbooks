@@ -17,7 +17,7 @@
     #    msg: "{{requestinfo.json.results[0].id}}"
     - name: Set fact
       set_fact:
-        serviceid: {{ requestinfo.json.results[0].id }}
+        serviceid: "{{ requestinfo.json.results[0].id }}"
     - name: Show new fact
       debug:
         msg: "{{ serviceid }}"
