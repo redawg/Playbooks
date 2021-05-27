@@ -42,7 +42,7 @@
       register: customattributes
     - name: Searching project for custom field gid
       vars:
-        _query: "msg[? name==`AWS_ACCESS_KEY_ID`].value"
+        _query: "msg[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
         aws_access_key: "{{ customattributes.json.custom_attributes|to_json|from_json|json_query(_query) }}"
     - name:
