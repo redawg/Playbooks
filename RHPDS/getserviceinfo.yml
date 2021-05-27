@@ -10,3 +10,10 @@
         password: "{{ rhpdspass }}"
         method: GET
       register: serviceexpanded
+    - name: Show all output
+      debug:
+        msg: "{{serviceexpanded}}"
+
+    - name: Specific Data
+      debug:
+        msg: "{{serviceexpanded.request_tasks.href}}"
