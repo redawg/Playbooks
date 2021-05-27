@@ -1,0 +1,42 @@
+---
+  tasks:
+    - name: Query Service Request Template for RHPDS Tasks
+      uri:
+        url: "{{ rhpdsurl }}/api/v3.0.0/service_requests/{{serviceid}}?expand=request_tasks"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: serviceexpanded
+    #- name: Show all output
+    #  debug:
+    #    msg: "{{serviceexpanded}}"
+
+    - name: Task ID
+      debug:
+        msg: "{{serviceexpanded.json.request_tasks[0].id}}"
+    - name: Task URI request
+      debug:
+        msg: "{{serviceexpanded.json.request_tasks[0].href}}"
+    - name: Query Service Template for (ServiceID)
+      uri:
+        url: "{{ serviceexpanded.json.request_tasks[0].href }}"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: taskinformation
+    #- name: Task options
+    #  debug:
+    #    msg: "{{taskinformation.json.options.dialog}}"
+    - name: Service ID
+      debug:
+        msg: "{{taskinformation.json.options.dialog['Service::Service']}}"
+    - name: Query Service {{taskinformation.json.options.dialog['Service::Service']}} for Custom Attributes)
+      uri:
+        url: "{{ rhpdsurl }}/api/v3.0.0/services/{{taskinformation.json.options.dialog['Service::Service']}}?attributes=custom_attributes"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: customattributes
+    - name:
+      debug:
+         msg: "{{customattributes.json.custom_attributes}}"

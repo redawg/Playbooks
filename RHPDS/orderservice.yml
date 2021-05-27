@@ -12,6 +12,17 @@
         body: "{{ rhpdsawsorder }}"
         body_format: json
       register: requestinfo
-    - name:
+    #- name:
+    #  debug:
+    #    msg: "{{requestinfo.json.results[0].id}}"
+    - name: Set fact
+      set_fact:
+        serviceid: {{ requestinfo.json.results[0].id }}
+    - name: Show new fact
       debug:
-        msg: "{{requestinfo.json.results[0].id}}"
+        msg: "{{ serviceid }}"
+
+    - name:  Waiting for RHPDS to finish provisioning
+      wait_for:
+        timeout: 300
+    - include: getservicecreds.yml
