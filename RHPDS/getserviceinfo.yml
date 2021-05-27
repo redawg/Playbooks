@@ -48,7 +48,7 @@
         _query: "[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
         aws_access_key_temp: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
-        aws_access_key: "{{aws_access_key_temp[0]}}"
+        
     - name: Searching project for AWS SECRET KEY
       vars:
         _query: "[?name ==`AWS_SECRET_ACCESS_KEY`].value"
