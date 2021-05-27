@@ -47,7 +47,7 @@
         aws_access_key: "{{ customattributes.json.custom_attributes|to_json|from_json|json_query(_query) }}"
     - name:
       debug:
-         msg: "{{customattributes.json.custom_attributes}}"
+         msg: "{{ customattributes.json.custom_attributes|to_json|from_json|json_query(_query) }}"
     - name:
       debug:
          msg: "{{ aws_access_key }}"
