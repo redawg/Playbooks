@@ -56,10 +56,10 @@
 
     - name: Debug Query
       debug: msg="{{moreattributes.json.custom_attributes|json_query(jquery)}}"
-      verbosity: 2
       vars:
         jquery: "[?name ==`AWS_ACCESS_KEY_ID`].value"
-
+      verbosity: 2
+      
     - name: Display AWS Key and Secret
       debug:
        msg:
