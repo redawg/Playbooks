@@ -16,6 +16,4 @@
         crediental_type: Amazon Web Services
         tower_password: r3dh2t!
         tower_username: admin
-        inputs:
-           username: "{{aws_access_key}}"
-           password: "{{aws_access_secret}}"
+        
