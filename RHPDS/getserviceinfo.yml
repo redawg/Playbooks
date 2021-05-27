@@ -20,7 +20,7 @@
     - name: Task URI request
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].href}}"
-    - name: Query Service Template for RHPDS Tasks
+    - name: Query Service Template for RHPDS Tasks (ServiceID)
       uri:
         url: "{{ serviceexpanded.json.request_tasks[0].href }}"
         user: "{{ rhpdsuser }}"
@@ -32,4 +32,4 @@
         msg: "{{taskinformation.json.options.dialog}}"
     - name: Service ID
       debug:
-        msg: "{{taskinformation.json.options.dialog.'Service::Service'}}"
+        msg: "{{taskinformation.json.options.dialog.['Service::Service']}}"
