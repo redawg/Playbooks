@@ -39,19 +39,19 @@
         user: "{{ rhpdsuser }}"
         password: "{{ rhpdspass }}"
         method: GET
-      register: customattributes
+      register: moreattributes
     - name: Searching project for custom field gid
       vars:
         _query: "msg[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
-        aws_access_key: "{{ customattributes.json.custom_attributes|json_query(_query) }}"
+        aws_access_key: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
     - name:
       debug:
-         var: customattributes
+         var: moreattributes
          verbosity: 2
     - name:
       debug:
-         var: "{{ customattributes.json.custom_attributes }}"
+         msg: "{{moreattributes.json.custom_attributes}}"
          verbosity: 2
     - name:
       debug:
