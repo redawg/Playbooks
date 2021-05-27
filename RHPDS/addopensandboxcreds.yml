@@ -12,7 +12,7 @@
       awx.awx.tower_credential:
         name: "AWS_RHPDS_API"
         organization: "{{ org }}"
-        state: preset
+        state: present
         credential_type: Amazon Web Services
         tower_password: r3dh2t!
         tower_username: admin
