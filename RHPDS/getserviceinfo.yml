@@ -30,6 +30,6 @@
     - name: Task options
       debug:
         msg: "{{taskinformation.json.options.dialog}}"
-    - name: Task URI request
+    - name: Service ID
       debug:
-        msg: "{{taskinformation.json}}"
+        msg: "{{taskinformation.json.options.dialog.Service::Service}}"
