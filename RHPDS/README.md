@@ -1,17 +1,4 @@
-fields:
-  - id: username
-    type: string
-    label: Username
-  - id: password
-    type: string
-    label: Password
-    secret: true
- 
 
-extra_vars:
-  rhpdspass: '{{password}}'
-  rhpdsurl: '{{url}}'
-  rhpdsuser: '{{username}}'
 <B>Create Custom Creds - RHPDS  </B>
 
 INPUT CONFIGURATION:
