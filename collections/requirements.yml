@@ -4,4 +4,4 @@ collections:
   version: 2.0.1
 - name: servicenow.itsm
 - name: servicenow.servicenow
-- name: awx.awx
+- name: ansible.tower

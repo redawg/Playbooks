@@ -25,7 +25,7 @@
 
     - include: getservicecreds.yml
     - name: Add RHPDS AWS Creds to Controller
-      awx.awx.tower_credential:
+      ansible.tower.tower_credential:
         name: "AWS_RHPDS_API"
         organization: "{{ org }}"
         state: present
