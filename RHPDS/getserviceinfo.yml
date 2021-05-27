@@ -19,4 +19,4 @@
         msg: "{{serviceexpanded.json.request_tasks}}"
     - name: Task URI request
       debug:
-        msg: "{{serviceexpanded.json.request_tasks.id[0]}}"
+        msg: "{{serviceexpanded.json.request_tasks[0].id}}"
