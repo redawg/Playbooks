@@ -9,5 +9,5 @@
         user: "{{ rhpdsuser }}"
         password: "{{ rhpdspass }}"
         method: POST
-        body: " rhpdsawsorder "
+        body: "{{ rhpdsawsorder }}"
         body_format: json
