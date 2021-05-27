@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: False
   tasks:
-    - name: Query Service Template from RHPDS
+    - name: Query Service Template for RHPDS Tasks
       uri:
         url: "{{ rhpdsurl }}/api/v3.0.0/service_requests/{{serviceid}}?expand=request_tasks"
         user: "{{ rhpdsuser }}"
@@ -20,3 +20,16 @@
     - name: Task URI request
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].href}}"
+    - name: Query Service Template for RHPDS Tasks
+      uri:
+        url: "{{ serviceexpanded.json.request_tasks[0].href }}"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: taskinformation
+    - name: Task options
+      debug:
+        msg: "{{taskinformation.json.options.dialong}}"
+    - name: Task URI request
+      debug:
+        msg: "{{taskinformation.json}}"
