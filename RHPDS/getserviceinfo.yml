@@ -10,9 +10,9 @@
         password: "{{ rhpdspass }}"
         method: GET
       register: serviceexpanded
-    - name: Show all output
-      debug:
-        msg: "{{serviceexpanded}}"
+    #- name: Show all output
+    #  debug:
+    #    msg: "{{serviceexpanded}}"
 
     - name: Task ID
       debug:
