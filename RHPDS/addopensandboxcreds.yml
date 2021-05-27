@@ -3,9 +3,7 @@
   hosts: localhost
   gather_facts: False
   vars:
-   org: 'Random Org'
-   aws_access_key: 'AKIASJOQCCWXRO5F56PW'
-   aws_access_secret: '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'
+  
 
   tasks:
     - name: Add RHPDS AWS Creds to Controller
