@@ -3,7 +3,8 @@
   hosts: localhost
   gather_facts: False
   vars:
-  
+   org: 'Random Org'
+   
 
   tasks:
     - name: Add RHPDS AWS Creds to Controller
