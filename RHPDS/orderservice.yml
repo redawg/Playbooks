@@ -24,5 +24,13 @@
         verbosity: 2
 
     - include: getservicecreds.yml
-
-    
+    - name: Add RHPDS AWS Creds to Controller
+      awx.awx.tower_credential:
+        name: "AWS_RHPDS_API"
+        organization: "{{ org }}"
+        state: present
+        credential_type: Amazon Web Services
+        validate_certs: no
+        inputs:
+          username: "{{aws_access_key}}"
+          password: "{{aws_access_secret}}"
