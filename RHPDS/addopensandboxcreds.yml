@@ -10,13 +10,13 @@
   tasks:
     - name: Add RHPDS AWS Creds to Controller
       tower_credential:
-        name: AWS_RHPDS_API
+        name: "AWS_RHPDS_API"
         organization: "{{ org }}"
         state: preset
         crediental_type: Amazon Web Services
         inputs:
-           access_key: "{{aws_access_key}}"
-           secret_key: "{{aws_access_secret}}"
+           username: "{{aws_access_key}}"
+           password: "{{aws_access_secret}}"
         tower_host: 172.16.1.25
         tower_password: r3dh2t!
         tower_username: admin
