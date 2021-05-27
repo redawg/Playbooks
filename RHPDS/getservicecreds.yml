@@ -7,7 +7,7 @@
         method: GET
       register: serviceexpanded
       until: serviceexpanded.json.request_state == "finished"
-      retires: 10
+      retries: 10
       delay: 30
     #- name: Show all output
     #  debug:
