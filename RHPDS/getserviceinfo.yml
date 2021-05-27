@@ -35,6 +35,7 @@
     - name: Service ID
       debug:
         msg: "{{taskinformation.json.options.dialog['Service::Service']}}"
+        verbosity: 2
     - name: Query Service {{taskinformation.json.options.dialog['Service::Service']}} for Custom Attributes)
       uri:
         url: "{{ rhpdsurl }}/api/v3.0.0/services/{{taskinformation.json.options.dialog['Service::Service']}}?attributes=custom_attributes"
