@@ -1,5 +1,4 @@
 ---
-  tasks:
     - name: Query Service Request Template for RHPDS Tasks
       uri:
         url: "{{ rhpdsurl }}/api/v3.0.0/service_requests/{{serviceid}}?expand=request_tasks"
