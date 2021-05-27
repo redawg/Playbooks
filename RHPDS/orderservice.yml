@@ -11,3 +11,7 @@
         method: POST
         body: "{{ rhpdsawsorder }}"
         body_format: json
+      register: requestinfo
+    - name:
+      debug:
+        msg: "{{requestinfo.json.results[0].id}}"
