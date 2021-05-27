@@ -14,11 +14,11 @@
     #  debug:
     #    msg: "{{serviceexpanded}}"
 
-    - name: Task ID
+    - name: Debug Task ID
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].id}}"
         verbosity: 2
-    - name: Task URI request
+    - name: Debug Task URI request
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].href}}"
         verbosity: 2
@@ -32,7 +32,7 @@
     #- name: Task options
     #  debug:
     #    msg: "{{taskinformation.json.options.dialog}}"
-    - name: Service ID
+    - name: Debug Service ID
       debug:
         msg: "{{taskinformation.json.options.dialog['Service::Service']}}"
         verbosity: 2
@@ -48,13 +48,20 @@
         _query: "[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
         aws_access_key: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
-    - name: Searching project for AWS ACCESS KEY
+    - name: Searching project for AWS SECRET KEY
       vars:
         _query: "[?name ==`AWS_SECRET_ACCESS_KEY`].value"
       set_fact:
         aws_access_secret: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
 
-    - name:
+    - name: Debug Query
       debug: msg="{{moreattributes.json.custom_attributes|json_query(jquery)}}"
+      verbosity: 2
       vars:
         jquery: "[?name ==`AWS_ACCESS_KEY_ID`].value"
+
+    - name: Display AWS Key and Secret
+      debug:
+       msg:
+        - "AWS ACCESS KEY: '{{aws_access_key}}'"
+        - "AWS SECRET KEY: '{{aws_access_secret}}'"
