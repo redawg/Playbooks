@@ -45,7 +45,15 @@
         _query: "msg[?name ==`AWS_ACCESS_KEY_ID`].value"
       set_fact:
         aws_access_key: "{{ customattributes.json.custom_attributes|json_query(_query) }}"
-
+    - name:
+      debug:
+         var: customattributes
+         verbosity: 2
+    - name:
+       debug:
+         var: "{{ customattributes.json.custom_attributes }}"
+         verbosity: 2
     - name:
       debug:
          var: aws_access_key
+         verbosity: 2
