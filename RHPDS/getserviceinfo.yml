@@ -32,4 +32,4 @@
         msg: "{{taskinformation.json.options.dialog}}"
     - name: Service ID
       debug:
-        msg: "{{taskinformation.json.options.dialog.['Service::Service']}}"
+        msg: "{{taskinformation.json.options.dialog['Service::Service']}}"
