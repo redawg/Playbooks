@@ -1,0 +1,16 @@
+---
+- name: Spinup RHPDS AWS Blank Enviornment
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Request Service Template from RHPDS
+      uri:
+        url: https://rhpds.redhat.com/api/v3.0.0/service_catalogs/30000000000080/service_templates
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: POST
+        body: "{"action": "order","resource": {
+        "href": "https://rhpds.redhat.com/api/v3.0.0/service_catalogs/30000000000080/service_templates/30000000000840"
+        }}"
+        force_basic_auth: yes
+        body_format: json
