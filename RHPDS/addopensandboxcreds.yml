@@ -17,3 +17,6 @@
         inputs:
            access_key: "{{aws_access_key}}"
            secret_key: "{{aws_access_secret}}"
+        tower_host: 172.16.1.25
+        tower_password: r3dh2t!
+        tower_username: admin
