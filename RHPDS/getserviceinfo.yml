@@ -65,3 +65,9 @@
        msg:
         - "AWS ACCESS KEY: '{{aws_access_key}}'"
         - "AWS SECRET KEY: '{{aws_access_secret}}'"
+    - name:
+      debug:
+        var: aws_access_key
+    - name:
+      debug:
+        var: aws_access_secret    
