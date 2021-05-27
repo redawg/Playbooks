@@ -50,7 +50,7 @@
          var: customattributes
          verbosity: 2
     - name:
-       debug:
+      debug:
          var: "{{ customattributes.json.custom_attributes }}"
          verbosity: 2
     - name:
