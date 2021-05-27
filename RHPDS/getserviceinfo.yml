@@ -1,0 +1,12 @@
+---
+- name: Get Service info
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Query Service Template from RHPDS
+      uri:
+        url: "{{ rhpdsurl }}/api/v3.0.0/service_requests/{{serviceid}}?expand=request_tasks"
+        user: "{{ rhpdsuser }}"
+        password: "{{ rhpdspass }}"
+        method: GET
+      register: serviceexpanded
