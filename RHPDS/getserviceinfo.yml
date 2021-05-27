@@ -53,11 +53,12 @@
         _query: "[?name ==`AWS_SECRET_ACCESS_KEY`].value"
       set_fact:
         aws_access_secret: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
+
     - name: Debug Query
       debug: msg="{{moreattributes.json.custom_attributes|json_query(jquery)}}"
       vars:
         jquery: "[?name ==`AWS_ACCESS_KEY_ID`].value"
-      
+
 
     - name: Display AWS Key and Secret
       debug:
