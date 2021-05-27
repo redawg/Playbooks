@@ -6,6 +6,7 @@
         password: "{{ rhpdspass }}"
         method: GET
       register: serviceexpanded
+      until: serviceexpanded.json.request_state == "finished"
     #- name: Show all output
     #  debug:
     #    msg: "{{serviceexpanded}}"
