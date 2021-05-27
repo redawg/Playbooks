@@ -5,7 +5,7 @@
   tasks:
     - name: Request Service Template from RHPDS
       uri:
-        url: "{{ rhpdsurl }}"/api/v3.0.0/service_catalogs/30000000000080/service_templates
+        url: "{{ rhpdsurl }}/api/v3.0.0/service_catalogs/30000000000080/service_templates"
         user: "{{ rhpdsuser }}"
         password: "{{ rhpdspass }}"
         method: POST
