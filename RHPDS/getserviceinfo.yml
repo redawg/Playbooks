@@ -17,9 +17,11 @@
     - name: Task ID
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].id}}"
+        verbosity: 2
     - name: Task URI request
       debug:
         msg: "{{serviceexpanded.json.request_tasks[0].href}}"
+        verbosity: 2
     - name: Query Service Template for (ServiceID)
       uri:
         url: "{{ serviceexpanded.json.request_tasks[0].href }}"
