@@ -42,5 +42,4 @@
       register: customattributes
     - name:
       debug:
-         msg: "{{customattributes}}"
-     
+         msg: "{{customattributes.custom_attributes}}"
