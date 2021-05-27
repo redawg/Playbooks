@@ -16,4 +16,4 @@
 
     - name: Specific Data
       debug:
-        msg: "{{serviceexpanded.approval_state}}"
+        msg: "{{serviceexpanded.json}}"
