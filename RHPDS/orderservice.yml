@@ -21,5 +21,6 @@
     - name: Show new fact
       debug:
         msg: "{{ serviceid }}"
+        verbosity: 2
 
     - include: getservicecreds.yml
