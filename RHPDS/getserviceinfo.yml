@@ -46,14 +46,6 @@
       set_fact:
         aws_access_key: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
     - name:
-      debug:
-         var: moreattributes
-         verbosity: 2
-    - name:
-      debug:
-         msg: "{{moreattributes.json.custom_attributes}}"
-         verbosity: 2
-    - name:
-      debug:
-         var: aws_access_key
-         verbosity: 2
+      debug: msg="{{moreattributes.json.custom_attributes|json_query(jquery)}}"
+      vars:
+        jquery: "[?name ==`uuid`].value"
