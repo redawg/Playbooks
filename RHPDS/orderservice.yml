@@ -21,7 +21,7 @@
       run_once: true
       when: 'catalogitem is not defined'
     - name: 'Preflight Varible check :: rhpdsorder'
-      fail: msg='Please include the rhpdsorder to the variable "rhpdorder"'
+      fail: msg='Please include the rhpdsorder to the variable "rhpdsorder"'
        #  Example '{ "action": "order", "resource": { "href":
        #    "https://rhpds.redhat.com/api/v3.0.0/service_templates/30000000000840",
        #    "check" : "t",
@@ -29,7 +29,7 @@
        #    "expiration" : "7"
        #    } }''
       run_once: true
-      when: 'rhpdorder is not defined'
+      when: 'rhpdsorder is not defined'
     - name: 'Preflight Varible check :: org'
       fail: msg='Please include the org to the variable "org"'
       run_once: true
