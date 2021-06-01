@@ -16,16 +16,18 @@
       run_once: true
       when: 'rhpdspass is not defined'
     - name: 'Preflight Varible check :: catalogitem'
-      fail: msg='Please include the catalogitem to the variable "catalogitem" Example: https://rhpds.redhat.com/api/v3.0.0/service_catalogs/'
+      fail: msg='Please include the catalogitem to the variable "catalogitem"'
+      #Example: https://rhpds.redhat.com/api/v3.0.0/service_catalogs/'
       run_once: true
       when: 'catalogitem is not defined'
     - name: 'Preflight Varible check :: rhpdsorder'
-      fail: msg='Please include the rhpdsorder to the variable "rhpdorder" Example '{ "action": "order", "resource": { "href":
-  "https://rhpds.redhat.com/api/v3.0.0/service_templates/30000000000840",
-  "check" : "t",
-  "notes" : " {{notes}} ",
-  "expiration" : "7"
-  } }''
+      fail: msg='Please include the rhpdsorder to the variable "rhpdorder"'
+       #  Example '{ "action": "order", "resource": { "href":
+       #    "https://rhpds.redhat.com/api/v3.0.0/service_templates/30000000000840",
+       #    "check" : "t",
+       #    "notes" : " {{notes}} ",
+       #    "expiration" : "7"
+       #    } }''
       run_once: true
       when: 'rhpdorder is not defined'
     - name: 'Preflight Varible check :: org'
