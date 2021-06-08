@@ -11,9 +11,14 @@
   tasks:
   - name: Install Windows Packages
     chocolatey.chocolatey.win_chocolatey:
-      name: "{{ packages }}"
+      name: "{{ item }}"
       state: "{{ state }}"
       ignore_checksums: true
+    loop:
+    - googlechrome
+    - vscode
+    - putty
+
     become_user: Administrator
     become_method: runas
   - name: Gather facts from chocolatey
