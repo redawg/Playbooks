@@ -2,23 +2,22 @@
 - hosts: all
   name: Windows application management playbook
   gather_facts: false
-  vars:
-    packages:
-      - googlechrome
-      - vscode
-      - putty
+
 
   tasks:
-  - name: Install Windows Packages
+  - name: Remove Windows Packages
     chocolatey.chocolatey.win_chocolatey:
       name: "{{ item }}"
-      state: "{{ state }}"
+      state: absent
       ignore_checksums: true
     loop:
     - googlechrome
     - putty
     - vscode
-    
+    - vscode.install
+    - putty.portable
+    - DotNet4.5.2
+
     become_user: Administrator
     become_method: runas
   - name: Gather facts from chocolatey
