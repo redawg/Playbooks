@@ -5,7 +5,6 @@
   vars:
     packages:
       - googlechrome
-      - avgantivirusfree
       - vscode
 
   tasks:
