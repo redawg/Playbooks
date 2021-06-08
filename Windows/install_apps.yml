@@ -16,8 +16,8 @@
       ignore_checksums: true
     loop:
     - googlechrome
-    - vscode
     - putty
+    - vscode
 
     become_user: Administrator
     become_method: runas
