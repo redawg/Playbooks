@@ -5,3 +5,4 @@ collections:
 - name: servicenow.itsm
 - name: servicenow.servicenow
 - name: ansible.tower
+- name: chocolatey.chocolatey

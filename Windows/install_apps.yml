@@ -9,7 +9,7 @@
 
   tasks:
   - name: Install Windows Packages
-    win_chocolatey:
+    chocolatey.chocolatey.win_chocolatey:
       name: "{{ packages }}"
       state: "{{ state }}"
       ignore_checksums: true
