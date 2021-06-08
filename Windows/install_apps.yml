@@ -6,6 +6,7 @@
     packages:
       - googlechrome
       - avgantivirusfree
+      - vscode
 
   tasks:
   - name: Install Windows Packages
