@@ -18,6 +18,9 @@
     - googlechrome
     - putty
     - vscode
+    - vscode.install
+    - putty.portable
+    - DotNet4.5.2
 
     become_user: Administrator
     become_method: runas
