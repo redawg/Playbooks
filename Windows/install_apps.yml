@@ -14,3 +14,21 @@
       ignore_checksums: true
     become_user: Administrator
     become_method: runas
+  - name: Gather facts from chocolatey
+    win_chocolatey_facts:
+
+  - name: Displays the Configuration
+    debug:
+      var: ansible_chocolatey.config
+
+  - name: Displays the Feature
+    debug:
+      var: ansible_chocolatey.feature
+
+  - name: Displays the Sources
+    debug:
+      var: ansible_chocolatey.sources
+
+  - name: Displays the Packages
+    debug:
+      var: ansible_chocolatey.packages
