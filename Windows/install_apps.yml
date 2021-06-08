@@ -2,7 +2,6 @@
 - hosts: all
   name: Windows application management playbook
   vars:
-    state: present
     packages:
       - googlechrome
       - avgantivirusfree
