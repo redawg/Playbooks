@@ -6,13 +6,13 @@
     packages:
       - googlechrome
       - vscode
+      - putty
 
   tasks:
   - name: Install Windows Packages
     chocolatey.chocolatey.win_chocolatey:
       name: "{{ packages }}"
       state: "{{ state }}"
-      remove_dependencies: yes 
       ignore_checksums: true
     become_user: Administrator
     become_method: runas
