@@ -1,0 +1,114 @@
+---
+- name: Ready Clean Machine for demo
+  hosts: all
+  gather_facts: true
+  vars:
+     username: ''
+     password: ''
+     pool_id: ''
+     systemrole: "Red Hat Enterprise Server"
+     usage: "Dev/Test"
+     sla: "Self-Support"
+
+  tasks:
+    - name: Subscribing to RHEL account just for RHEL
+      redhat_subscription:
+        state: present
+        username: "{{username}}"
+        password: "{{password}}"
+        pool_ids: "{{pool_id}}"
+        syspurpose:
+          usage: "{{usage}}"
+          role: "{{systemrole}}"
+          service_level_agreement: "{{sla}}"
+          sync: true
+      
+
+    - name: Rhel 7 specific Repos
+      block:
+        - name: Disable all Repos
+          rhsm_repository:
+            name: '*'
+            state: disabled
+        - name: Enable rhel-7-server-rpms
+          rhsm_repository:
+            name: rhel-7-server-rpms
+            state: enabled
+        - name: Enable rhel-7-server-extras-rpms
+          rhsm_repository:
+            name: rhel-7-server-extras-rpms
+            state: enabled
+      #  - name: Enable rhel-server-rhscl-7-rpms
+      #    rhsm_repository:
+      #      name: rhel-server-rhscl-7-rpms
+      #      state: enabled
+      when:
+        - ansible_distribution == "RedHat"
+        - ansible_distribution_major_version == "7"
+    - name: Rhel 8 specific Repos
+      block:
+        - name: Disable all Repos
+          rhsm_repository:
+              name: '*'
+              state: disabled
+        - name: Enable rhel-8-for-x86_64-baseos-rpms
+          rhsm_repository:
+              name: rhel-8-for-x86_64-baseos-rpms
+              state: enabled
+        - name: Enable rhel-8-for-x86_64-appstream-rpms
+          rhsm_repository:
+              name: rhel-8-for-x86_64-appstream-rpms
+              state: enabled
+        - name: Enable ansible-2.9-for-rhel-8-x86_64-rpms
+          rhsm_repository:
+              name: ansible-2.9-for-rhel-8-x86_64-rpms
+              state: enabled
+          #  - name: Enable rhel-server-rhscl-7-rpms
+          #    rhsm_repository:
+          #      name: rhel-server-rhscl-7-rpms
+          #      state: enabled
+      when:
+        - ansible_distribution == "RedHat"
+        - ansible_distribution_major_version == "8"
+    - name: Copy DNS Hosts file for local
+      copy:
+        src: /var/www/html/hosts
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: '0644'
+      when: ansible_default_ipv4.address is search("172.16.1*")
+      tags:
+        - copyhost
+    - name: Disable SElinux
+      selinux:
+        policy: targeted
+        state: disabled
+      notify:
+       - Reboot needed
+    - name: Install My packages I want (insights/net-tools/wget)
+      yum:
+        name:
+          -  insights-client
+          -  net-tools
+          -  wget
+        state: present
+    - name: Upgrading all Packages to Latest
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Running insights register
+      command: insights-client --register
+      register: register_output
+      tags:
+        - reginsights
+    - name: Display Register
+      debug:
+        msg: "{{ register_output }}"
+      tags:
+        - reginsights
+
+  handlers:
+    - name: Reboot needed
+      reboot:
