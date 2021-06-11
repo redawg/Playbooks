@@ -22,7 +22,7 @@
           role: "{{systemrole}}"
           service_level_agreement: "{{sla}}"
           sync: true
-      when: ansiblenode == "No"
+      when: ansiblenode == "false"
 
     - name: Subscribing to RHEL and Ansible subs
       redhat_subscription:
@@ -34,7 +34,7 @@
           - "{{pool_id}}"
       tags:
          - subreg
-      when: ansiblenode == "Yes"
+      when: ansiblenode == "True"
 
     - name: Rhel 7 specific Repos
       block:
