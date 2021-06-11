@@ -34,7 +34,7 @@
           - "{{pool_id}}"
       tags:
          - subreg
-      when: ansiblenode == "True"
+      when: ansiblenode == "true"
 
     - name: Rhel 7 specific Repos
       block:
