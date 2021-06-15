@@ -8,6 +8,6 @@
       tower_credential_type:
         name: Test
         description: Test cred type playbook creation
-        type: cloud
+        kind: cloud
         state: present
         validate_certs: false
