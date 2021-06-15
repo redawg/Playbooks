@@ -1,0 +1,27 @@
+---
+- name: Create Custom Cred Type in Controller
+  hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Create Cred Type
+      ansible.tower.tower_credential_type:
+        name: Test
+        description: Test cred type playbook creation
+        type: cloud
+        inputs:
+        - id: username
+          type: string
+          label: Username
+        - id: my_ssh_key
+          type: string
+          label: Private Key
+          secret: true
+          multiline: true
+        injectors:
+          extra_vars:
+            my_ssh_key_file: '{{tower.filename}}'
+          file:
+            template: '{{my_ssh_key}}'
+        state: present
+        validate_certs: false
