@@ -9,6 +9,7 @@
         name: Test
         description: Test cred type playbook creation
         type: cloud
+        tower_host: 172.16.1.25
         inputs:
         - id: username
           type: string
