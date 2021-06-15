@@ -12,7 +12,7 @@
         inputs: {"fields": [{"id": "username","type": "string","label": "Username"},{"id": "my_ssh_key","type": "string","label": "Private Key","secret": true,"multiline": true}]}
         injectors:
            extra_vars:
-             my_ssh_key_file: '{{tower.filename}}'
+             'my_ssh_key_file: '{{tower.filename}}''
            file:
              template: '{{my_ssh_key}}'
         state: present
