@@ -10,6 +10,6 @@
         description: Test cred type playbook creation
         kind: cloud
         inputs: {"fields": [{"id": "username","type": "string","label": "Username"},{"id": "my_ssh_key","type": "string","label": "Private Key","secret": true,"multiline": true}]}
-        injectors: {"extra_vars": {"my_ssh_key_file": '"{{tower.filename}}"'},"file": {"template": "{{my_ssh_key}}"}}
+        injectors: {"extra_vars": {"my_ssh_key_file": "''"{{tower.filename}}"'"},"file": {"template": "{{my_ssh_key}}"}}
         state: present
         validate_certs: false
