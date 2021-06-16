@@ -21,4 +21,5 @@
 
 
         state: present
+        run_once: true
         validate_certs: false
