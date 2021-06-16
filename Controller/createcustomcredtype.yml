@@ -1,10 +1,10 @@
 ---
-- name: Create Custom Cred Type in Controller
+- name: Create custom crediental in AAP controller for https://access.redhat.com/solutions/3938741
   hosts: all
   gather_facts: False
 
   tasks:
-    - name: Test Cred
+    - name: Additional SSH Keys
       tower_credential_type:
         name: Test
         description: Test cred type playbook creation
