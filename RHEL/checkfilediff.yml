@@ -7,7 +7,7 @@
   tasks:
     - name: Grab Repo with source file
       git:
-        repo: 'https://b18d504f239d94ceb3019fa719e5f838c5abea45@github.com/redawg/sourcefiles.git'
+        repo: "{{ sourcefilerepo }}"
         dest: /var/tmp
         accept_hostkey: yes
         force: yes
