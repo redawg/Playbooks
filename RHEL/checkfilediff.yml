@@ -16,7 +16,7 @@
 
     - name: Check for variance in File
       copy:
-        src: /var/tmp/ansible.cfg
-        dest: /etc/ansible/ansible.cfg
+        src: /var/tmp/hosts
+        dest: /etc/hosts
       check_mode: yes
-      diff: yes  
+      diff: yes
