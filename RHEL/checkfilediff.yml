@@ -20,7 +20,3 @@
         dest: /etc/passwd
       check_mode: yes
       diff: yes
-      register: changes
-    - name: debug
-      debug:
-        var: changes
