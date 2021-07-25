@@ -16,7 +16,7 @@
 
     - name: Check for variance in File
       copy:
-        src: /var/tmp/hosts
-        dest: /etc/hosts
+        src: /var/tmp/passwd
+        dest: /etc/passwd
       check_mode: yes
       diff: yes
