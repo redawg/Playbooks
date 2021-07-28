@@ -18,9 +18,18 @@
       copy:
         src: /var/tmp/passwd
         dest: /etc/passwd
+      check_mode: yes
       diff: yes
       register : filechanges
 
-    - name: Debug filechanges
+    - name: stat check_mode
+      stat:
+        path: /etc/passwd
+      register: statvar
+
+    - name: Debug stat module
+      debug:
+       var: statvar
+    - name: Debug
       debug:
        var: filechanges
