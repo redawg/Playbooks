@@ -8,7 +8,7 @@
     - name: Grab Repo with source file
       git:
         repo: "{{ sourcefilerepo }}"
-        dest: /var/tmp
+        dest: /tmp/demo
         accept_hostkey: yes
         force: yes
       delegate_to: 127.0.0.1
@@ -16,7 +16,7 @@
 
     - name: Check for variance in File
       copy:
-        src: /var/tmp/passwd
+        src: /tmp/demo/passwd
         dest: /etc/passwd
       check_mode: yes
       diff: yes
@@ -25,11 +25,11 @@
     - name: stat check_mode
       stat:
         path: /etc/passwd
+      when: filechanges.changed == true
       register: statvar
 
-    - name: Debug stat module
-      debug:
-       var: statvar
-    - name: Debug
-      debug:
-       var: filechanges
+    - name: print file data to file
+      copy:
+        content: "{{ lookup('template', './filedata.j2') }}"
+        dest: /tmp/demo/filedata.html
+
