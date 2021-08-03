@@ -28,5 +28,8 @@
       when: filechanges.changed == true
       register: statvar
 
-
-  
+    - name: print file data to file
+      copy:
+        content: "{{ lookup('template', './filedata.j2') }}"
+        dest: "{{ home_dir }}"/reports/filedata.html
+      delegate_to: "{{ container_host }}"
