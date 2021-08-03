@@ -27,6 +27,7 @@
         path: /etc/passwd
       when: filechanges.changed == true
       register: statvar
+      
 
     - name: print file data to file
       copy:
