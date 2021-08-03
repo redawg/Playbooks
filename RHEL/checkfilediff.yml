@@ -31,5 +31,5 @@
     - name: print file data to file
       copy:
         content: "{{ lookup('template', './filedata.j2') }}"
-        dest: "{{ home_dir }}/reports/{{ ansible_nodename }}.html"
+        dest: "{{ home_dir }}/reports/{{ inventory_hostname }}.html"
       delegate_to: "{{ container_host }}"
