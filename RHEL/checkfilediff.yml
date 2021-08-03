@@ -31,5 +31,6 @@
     - name: print file data to file
       copy:
         content: "{{ lookup('template', './filedata.j2') }}"
-        dest: /tmp/demo/filedata.html
-
+        dest: "{{ home_dir }}"/reports/filedata.html
+      run_once: True
+      delegate_to: "{{ container_host }}"
