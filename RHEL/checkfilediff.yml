@@ -32,4 +32,5 @@
       copy:
         content: "{{ lookup('template', './filedata.j2') }}"
         dest: "{{ home_dir }}/reports/{{ inventory_hostname }}.html"
+      ignore_errors: yes
       delegate_to: "{{ container_host }}"
