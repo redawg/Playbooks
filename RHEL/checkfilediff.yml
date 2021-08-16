@@ -28,7 +28,7 @@
       when: filechanges.changed == true
       register: statvar
 
-    - name: print file data to file
+    - name: print file data to html
       copy:
         content: "{{ lookup('template', './filedata.j2') }}"
         dest: "{{ home_dir }}/reports/{{ inventory_hostname }}.html"
