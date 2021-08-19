@@ -7,3 +7,4 @@ collections:
 - name: ansible.tower
 - name: chocolatey.chocolatey
 - name: azure.azcollection
+- name: community.docker
