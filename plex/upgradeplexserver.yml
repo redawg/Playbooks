@@ -13,5 +13,4 @@
     - name: Upgrade locast2tuner container
       docker_compose:
         project_src: /home/locast2tuner/
-        files: docker-compose
-        
+        files: docker-compose.yml
