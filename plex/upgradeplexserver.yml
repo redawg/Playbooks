@@ -2,9 +2,6 @@
 - name: Plex Maintenace
   hosts: all
   gather_facts: False
-  vars:
-      package: ''
-  serial: 1
   tasks:
     - name: Upgrade Plex Media Server Stable release
       ansible.builtin.apt:
