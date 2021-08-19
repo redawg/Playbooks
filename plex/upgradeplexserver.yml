@@ -10,3 +10,8 @@
       ansible.builtin.apt:
         name: plexmediaserver
         state: latest
+    - name: Upgrade locast2tuner container
+      docker_compose:
+        project_src: /home/locast2tuner/
+        files: docker-compose
+        
