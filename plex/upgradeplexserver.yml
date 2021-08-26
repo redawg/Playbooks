@@ -12,5 +12,5 @@
         project_src: /home/locast2tuner/
         files: docker-compose.yml
         state: present
+        restarted: yes
         pull: yes
-        
