@@ -2,6 +2,7 @@
 collections:
 - name: cisco.ios
   version: 2.0.1
+- name: cisco.asa
 - name: servicenow.itsm
 - name: servicenow.servicenow
 - name: ansible.tower
