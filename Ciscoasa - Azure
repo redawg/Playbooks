@@ -1,0 +1,34 @@
+image:
+  offer: cisco-asav
+  publisher: cisco
+  sku: asav-azure-byol
+  version: 917.0.31
+plan:
+  name: asav-azure-byol
+  product: cisco-asav
+  publisher: cisco
+
+
+az cli - accept license -- az vm image terms accept --urn cisco:cisco-asav:asav-azure-byol:917.0.31
+az vm image list --all -p cisco -f asa -o table
+
+Cisco Adaptive Security Appliance Software Version 9.17(0)31
+
+---
+- hosts: 10.97.1.4
+gather_facts: false
+connection: network_cli
+
+ collections:
+- cisco.asa
+
+ tasks:
+- name: run command expecting user confirmation
+ansible.netcommon.cli_command:
+command: enable
+prompt:
+- Enter Password
+- Repeat Password
+answer:
+- ghfj1313
+- ghfj1313
