@@ -1,7 +1,6 @@
 ---
 - name: ASA Initalize
   hosts: all
-  connection: network_cli
   gather_facts: no
 
 
