@@ -7,8 +7,8 @@
 
   tasks:
     - name: enable command
-      cisco.asa.asa_command:
-        commands:
+      cisco.asa.asa:
+        config_commands:
         - enable
         - ghfj1313
         - ghfj1313
