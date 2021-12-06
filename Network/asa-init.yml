@@ -8,10 +8,7 @@
   tasks:
     - name: enable command
       cisco.asa.asa_command:
-        command: enable
-        prompt:
-        - Password
-        - Password
-        answer:
+        commands:
+        - enable
         - ghfj1313
         - ghfj1313
