@@ -9,3 +9,12 @@
     - name: enable command
       cli_command:
         command: enable
+        sendonly: yes
+    - name: setpass
+      cli_command:
+        command: password
+        sendonly: yes
+    - name: confirm password
+      cli_command:
+        command: password
+        sendonly: yes
