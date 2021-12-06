@@ -18,4 +18,3 @@
       ansbile_netcommon.cli_command:
         command: password
         sendonly: yes
-    -
