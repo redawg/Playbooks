@@ -7,14 +7,14 @@
 
   tasks:
     - name: enable command
-      ansible_netcommon.cli_command:
+      ansible.netcommon.cli_command:
         command: enable
         sendonly: yes
     - name: setpass
-      ansible_netcommon.cli_command:
+      ansible.netcommon.cli_command:
         command: password
         sendonly: yes
     - name: confirm password
-      ansible_netcommon.cli_command:
+      ansible.netcommon.cli_command:
         command: password
         sendonly: yes
