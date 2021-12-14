@@ -104,6 +104,7 @@
           -  insights-client
           -  net-tools
           -  wget
+          -  mlocate
         state: present
     - name: Upgrading all Packages to Latest
       yum:
