@@ -4,7 +4,7 @@
   gather_facts: False
 
   tasks:
-    - name: list Python Modules
+    - name: Check for Module
       community.general.python_requirements_info:
         dependencies:
           - kubernetes
@@ -14,3 +14,7 @@
         extra_args: --upgrade
       delegate_to: localhost
       run_once: true
+- name: Re-Check for Module after installing
+  community.general.python_requirements_info:
+    dependencies:
+      - kubernetes
