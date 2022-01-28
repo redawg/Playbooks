@@ -6,7 +6,8 @@
   tasks:
     - name: list Python Modules
       community.general.python_requirements_info:
-
+        dependencies:
+          - kubernetes
     - name: add Python module
       ansible.builtin.pip:
         name: kubernetes
