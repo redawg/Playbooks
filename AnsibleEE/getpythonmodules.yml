@@ -12,7 +12,7 @@
     - name: Debug
       ansible.builtin.debug:
         var: modulecheck
-              
+
     - name: add Python module
       ansible.builtin.pip:
         name: kubernetes
@@ -23,3 +23,7 @@
       community.general.python_requirements_info:
         dependencies:
           - kubernetes
+      register: modulecheck
+    - name: Debug
+      ansible.builtin.debug:
+        var: modulecheck
