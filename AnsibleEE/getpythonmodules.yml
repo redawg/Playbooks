@@ -23,7 +23,7 @@
       community.general.python_requirements_info:
         dependencies:
           - kubernetes
-      register: modulecheck
+      register: modulecheck2
     - name: Debug
       ansible.builtin.debug:
-        var: modulecheck
+        var: modulecheck2
