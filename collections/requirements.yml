@@ -9,3 +9,4 @@ collections:
 - name: chocolatey.chocolatey
 - name: azure.azcollection
 - name: community.docker
+- name: community.general.python_requirements_info
