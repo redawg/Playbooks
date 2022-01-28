@@ -1,0 +1,11 @@
+---
+- name: Add python to EE
+  hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: add Python module
+      ansbile.builtin.pip:
+        name: kubernetes
+        extra_args: --upgrade
+      delegate_to: localhost
