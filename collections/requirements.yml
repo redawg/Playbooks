@@ -10,3 +10,4 @@ collections:
 - name: azure.azcollection
 - name: community.docker
 - name: community.general
+- name: amazon.aws
