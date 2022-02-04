@@ -53,7 +53,7 @@
         aws_access_secret_temp: "{{ moreattributes.json.custom_attributes|json_query(_query) }}"
     - name: Clean up Variables
       set_fact:
-        aws_access_key: "{{ aws_access_key_temp[:20]  }}"
+        aws_access_key: "{{ aws_access_key_temp[0] | .{0,20}$ }}"
         aws_access_secret: "{{ aws_access_secret_temp[0] | trim }}"
 
     - name: Display AWS Key and Secret
