@@ -62,7 +62,7 @@
         jquery: "[?name ==`AWS_ACCESS_KEY_ID`].value"
     - name: Clean up Variables
       set_fact:
-        aws_access_key: "{{ aws_access_key_temp[20] | trim }}"
+        aws_access_key: "{{ aws_access_key_temp[0] | truncate(20,True,"") | trim }}"
         aws_access_secret: "{{ aws_access_secret_temp[0] | trim }}"
 
     - name: Display AWS Key and Secret
