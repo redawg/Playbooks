@@ -12,3 +12,4 @@
         amazon.aws.ec2_key:
           name: aschoenf_AWSRED
           key_material: "{{ awskey }}"
+          region: "{{ aws_region }}"
