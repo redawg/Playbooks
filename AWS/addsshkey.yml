@@ -1,0 +1,14 @@
+---
+  - name: Add SSH key to AWS instance
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       aws_access_key: ''
+       aws_secret_key: ''
+
+    tasks:
+      - name: Getting VPC id for {{vpc_name}}
+        amazon.aws.ec2_key:
+          name: aschoenf_AWSRED
+          key_material: {{awskey}}
