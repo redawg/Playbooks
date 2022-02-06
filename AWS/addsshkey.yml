@@ -11,4 +11,4 @@
       - name: Getting VPC id for {{vpc_name}}
         amazon.aws.ec2_key:
           name: aschoenf_AWSRED
-          key_material: {{awskey}}
+          key_material: "{{ awskey }}"
