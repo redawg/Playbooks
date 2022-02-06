@@ -8,7 +8,7 @@
        aws_secret_key: ''
 
     tasks:
-      - name: Getting VPC id for {{vpc_name}}
+      - name: Add SSH key to {{ aws_region }}
         amazon.aws.ec2_key:
           name: aschoenf_AWSRED
           key_material: "{{ awskey }}"
