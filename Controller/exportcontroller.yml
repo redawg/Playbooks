@@ -13,7 +13,7 @@
 
     - name: Export All
       ansible.controller.export:
-        credential: 'all'
+        credentials: 'all'
         controller_host: 172.16.1.25
         controller_username: 'admin'
         controller_password: 'r3dh2t!'
