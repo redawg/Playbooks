@@ -19,6 +19,7 @@
         controller_password: 'r3dh2t!'
         validate_certs: false
       register: export_output
-    - debug:
+    - name: Show Export 
+      debug:
         var: export_output
       verbosity: 2
