@@ -5,6 +5,6 @@
 
   tasks:
     - name: Export All
-      awx.awx.export
+      awx.awx.export:
         all: True
         validate_certs: false
