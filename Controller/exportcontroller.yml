@@ -4,7 +4,17 @@
   gather_facts: False
 
   tasks:
+    - name: add Python module
+      ansible.builtin.pip:
+        name: awxkit
+        extra_args: --upgrade
+      delegate_to: localhost
+      run_once: true
+
     - name: Export All
       ansible.controller.export:
         all: True
+        controller_host: 172.16.1.25
+        controller_username: admin
+        controller_password: r3dh2t!
         validate_certs: false
