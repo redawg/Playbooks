@@ -18,3 +18,7 @@
         controller_username: 'admin'
         controller_password: 'r3dh2t!'
         validate_certs: false
+      register: export_output
+    - debug:
+        var: export_output
+      verbosity: 2
