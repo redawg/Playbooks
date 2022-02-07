@@ -19,7 +19,8 @@
         controller_password: 'r3dh2t!'
         validate_certs: false
       register: export_output
-    - name: Show Export 
+
+    - name: Show Export
       debug:
-        var: export_output
-      verbosity: 2
+        msg: "{{ export_output }}"
+        verbosity: 2
