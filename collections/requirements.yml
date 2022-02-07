@@ -6,6 +6,7 @@ collections:
 - name: servicenow.itsm
 - name: servicenow.servicenow
 - name: ansible.tower
+- name: ansible.controller
 - name: chocolatey.chocolatey
 - name: azure.azcollection
 - name: community.docker

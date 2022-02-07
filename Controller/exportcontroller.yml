@@ -5,6 +5,6 @@
 
   tasks:
     - name: Export All
-      awx.awx.export:
+      ansible.controller.export:
         all: True
         validate_certs: false
