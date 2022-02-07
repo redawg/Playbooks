@@ -1,0 +1,10 @@
+---
+- name: Export Controller data
+  hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: Export All
+      awx.awx.tower_export
+        all: True
+        validate_certs: false
