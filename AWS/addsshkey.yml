@@ -13,3 +13,5 @@
           name: aschoenf_AWSRED
           key_material: "{{ awskey }}"
           region: "{{ aws_region }}"
+          force: True
+          state: present
