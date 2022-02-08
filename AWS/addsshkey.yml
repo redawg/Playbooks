@@ -15,4 +15,3 @@
           region: "{{ aws_region }}"
           force: True
           state: present
-          validate_certs: no
