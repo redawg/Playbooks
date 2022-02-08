@@ -24,7 +24,7 @@
 
     tasks:
      - name: Get VPC_ID for {{ec2_igw_name}} from {{ vpc_name }}_{{user_name}} in {{ region }}
-       ec2_vpc_net:
+       amazon.aws.ec2_vpc_net:
          name: "{{ vpc_name }}_{{user_name}}"
          cidr_block: "{{ vpc_cidr }}"
          region: "{{ region }}"
@@ -35,26 +35,26 @@
        debug:
          var: my_vpc.vpc.id
      - name: Remove IGW "{{ ec2_igw_name }}" for {{ vpc_name }}_{{user_name}}
-       ec2_vpc_igw:
+       amazon.aws.ec2_vpc_igw:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
          state: absent
      - name: Remove "{{ ec2_vpc_subnet_name }}" subnet from {{ vpc_name }}_{{user_name}}
-       ec2_vpc_subnet:
+       amazon.aws.ec2_vpc_subnet:
          state: absent
          vpc_id: "{{ my_vpc.vpc.id }}"
          cidr: "{{ vpc_cidr }}"
          region: "{{ region }}"
      - name: Gather Route Table IDs
-       ec2_vpc_route_table_info:
+       amazon.aws.ec2_vpc_route_table_info:
         region: "{{ region }}"
         filters:
           "tag:Name": "{{ ec2_rt_name }}"
           vpc-id: "{{ my_vpc.vpc.id }}"
        register: inet_route_table
-     
+
      - name: Remove Route Table {{ec2_rt_name}} from {{ vpc_name }}_{{user_name}}
-       ec2_vpc_route_table:
+       amazon.aws.ec2_vpc_route_table:
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
          route_table_id: "{{inet_route_table.route_tables[0].id}}"
@@ -63,7 +63,7 @@
        tags:
          - rt
      - name: Remove security group {{ ec2_security_group_name }} from {{ vpc_name }}_{{user_name}}
-       ec2_group:
+       amazon.aws.ec2_group:
          name: "{{ ec2_security_group_name }}"
          vpc_id: "{{ my_vpc.vpc.id }}"
          region: "{{ region }}"
@@ -71,7 +71,7 @@
 
 
      - name: Remove VPC {{ vpc_name }}_{{user_name}} in {{ region }}
-       ec2_vpc_net:
+       amazon.aws.ec2_vpc_net:
          name: "{{ vpc_name }}_{{user_name}}"
          cidr_block: "{{ vpc_cidr }}"
          region: "{{ region }}"
