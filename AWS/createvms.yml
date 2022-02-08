@@ -49,7 +49,7 @@
     - name: 'Preflight Varible check :: group'
       fail: msg='Please include the group to the variable "group"'
       run_once: true
-      when: 'group is not defined'  
+      when: 'group is not defined'
 
 
 
@@ -85,6 +85,7 @@
        assign_public_ip: "{{assign_public_ip}}"
        instance_tags:
          AlwaysUp: "{{alwaysup}}"
+         VPC: "{{vpc_name}}"
          Name: "{{server_pre_name}}"
          ansible_group: "{{ec2_ansible_group}}"
          Createdby: Ansible Tower
