@@ -19,6 +19,7 @@
       - name: debug webserverinfo
         debug:
           msg: "{{ webserverinfo.instances[0].public_ip_address }}"
+          verbosity: 2
       - name: Send Alert to Slack
         slack:
           token: "{{ slack_token }}"
