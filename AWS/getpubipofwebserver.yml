@@ -18,11 +18,11 @@
         register: webserverinfo
       - name: debug webserverinfo
         debug:
-          msg: "{{ webserverinfo }}"
+          msg: "{{ webserverinfo.instances.public_ip_address }}"
       - name: Send Alert to Slack
         slack:
           token: "{{ slack_token }}"
-          msg: "The public IP of the Webserver is http://{{ output_public_ip_address.state.ip_address }}."
+          msg: "The public IP of the Webserver is http://{{ webserverinfo.instances.public_ip_address }}."
           channel: "{{ channel }}"
           username: "{{ slackuser }}"
         run_once: true
