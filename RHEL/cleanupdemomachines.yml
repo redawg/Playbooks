@@ -13,6 +13,7 @@
   tasks:
     - name: Unregistering Insights
       command: insights-client --unregister
+      ignore_errors: yes
     - name: Unsubscribing to RHEL account now
       redhat_subscription:
         state: absent
