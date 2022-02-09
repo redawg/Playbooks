@@ -18,7 +18,7 @@
         register: webserverinfo
       - name: debug webserverinfo
         debug:
-          msg: "{{ webserverinfo.instances.public_ip_address }}"
+          msg: "{{ webserverinfo.public_ip_address }}"
       - name: Send Alert to Slack
         slack:
           token: "{{ slack_token }}"
