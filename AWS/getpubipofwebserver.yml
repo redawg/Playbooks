@@ -13,6 +13,7 @@
         region: us-west-2
         filters:
           "tag:Name": "webserver"
+          "tag:VPC": "Demowebapp"
           instance-state-name: [ "running"]
       register: webserverinfo
     - name: debug webserverinfo
