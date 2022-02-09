@@ -16,6 +16,8 @@
        filters:
          "tag:Name": "{{servername}}"
          "tag:Contact": 'aschoenf@redhat.com'
+         instance-state-name: [ "running"]
+
 
       register: instance_info
     - name:
