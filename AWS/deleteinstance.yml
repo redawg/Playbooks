@@ -11,7 +11,7 @@
 
     tasks:
     - name: Get instances id with tag {{name}} in {{region}}
-      ec2_instance_info:
+      amazon.aws.ec2_instance_info:
        region: "{{region}}"
        filters:
          "tag:Name": "{{servername}}"
@@ -23,7 +23,7 @@
          msg: "{{instance_info.instances[0].instance_id}}"
 
     - name: Setting ec2 {{servername}} to {{state}}
-      ec2:
+      amazon.aws.ec2:
         region: "{{region}}"
         state: absent
         instance_ids: "{{instance_info.instances[0].instance_id}}"
