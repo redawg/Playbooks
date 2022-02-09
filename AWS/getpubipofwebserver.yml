@@ -17,6 +17,7 @@
             instance-state-name: [ "running"]
         register: webserverinfo
       - name: debug webserverinfo
+        debug:
           msg: "{{ webserverinfo[0] }}"
       - name: Send Alert to Slack
         slack:
