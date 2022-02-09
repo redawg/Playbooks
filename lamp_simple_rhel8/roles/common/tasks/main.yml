@@ -2,31 +2,30 @@
 # This playbook contains common plays that will be run on all nodes.
 
 - name: Install chrony
-  yum: 
-    name: chrony 
+  yum:
+    name: chrony
     state: present
   tags: chrony
 
 - name: Install common dependencies
-  yum: 
-    name: "{{ item }}" 
+  yum:
+    name:
+      - libselinux-python3
+      - libsemanage-python3
+      - firewalld
+      - chrony
     state: installed
-  with_items:
-   - libselinux-python3
-   - libsemanage-python3
-   - firewalld
-   - chrony
 
 - name: Configure chrony file
-  template: 
-    src: chrony.conf.j2 
+  template:
+    src: chrony.conf.j2
     dest: /etc/chrony.conf
   tags: chrony
   notify: restart chrony
 
 - name: Start the chronyd service
-  service: 
-    name: chronyd 
-    state: started 
+  service:
+    name: chronyd
+    state: started
     enabled: yes
   tags: chrony
