@@ -14,4 +14,14 @@
         filters:
           "tag:Name": "webserver"
           instance-state-name: [ "running"]
-      register: ec2_node_info
+      register: webserverinfo
+    - name: debug webserverinfo
+        msg: "{{ webserverinfo[0] }}"
+    - name: Send Alert to Slack
+      slack:
+        token: "{{ slack_token }}"
+        msg: "The public IP of the Webserver is http://{{ output_public_ip_address.state.ip_address }}."
+        channel: "{{ channel }}"
+        username: "{{ slackuser }}"
+      run_once: true
+      delegate_to: localhost
