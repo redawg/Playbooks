@@ -8,15 +8,15 @@
     - name: Grab oneagent from instance
       ansible.builtin.get_url:
         url: 'https://kzn34165.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default'
-        dest: "{{ installpath }}{{ file }}"
+        dest: "{{ oneagent_installpath }}{{ oneagent_version }}"
         headers:
           Authorization: Api-Token {{ oneagent_paas_token }}
     - name: Make file executable
       ansible.builtin.file:
-        path: "{{ installpath }}{{ file }}"
+        path: "{{ oneagent_installpath }}{{ oneagent_version}}"
         owner: root
         group: root
         mode: '755'
     - name: Install Dynatrace OneAgent
       ansible.builtin.command:
-        cmd: "{{ installpath }}Dynatrace-OneAgent-Linux-*.sh --set-infra-only=false --set-app-log-content-access=true"
+        cmd: "{{ oneagent_installpath }}{{ oneagent_version }} --set-infra-only=false --set-app-log-content-access=true"
