@@ -82,9 +82,9 @@
       when:
         - ansible_distribution == "RedHat"
         - ansible_distribution_major_version == "8"
-    - name: Copy DNS Hosts file for local
-      copy:
-        src: /var/www/html/hosts
+    - name: Copy DNS Hosts file for local server from http
+      ansible.builtin.get_url:
+        src: http://172.16.1.25/hosts
         dest: /etc/hosts
         owner: root
         group: root
