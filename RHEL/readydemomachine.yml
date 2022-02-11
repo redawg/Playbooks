@@ -89,6 +89,7 @@
         owner: root
         group: root
         mode: '0644'
+        validate_certs: no
       when: ansible_default_ipv4.address is search("172.16.1*")
       tags:
         - copyhost
