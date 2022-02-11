@@ -18,5 +18,6 @@
         group: root
         mode: '755'
     - name: Install Dynatrace OneAgent
-      ansible.builtin.script: 'Dynatrace-OneAgent-Linux-1.233.166.sh --set-infra-only false --set-app-log-content-access true'
+      ansible.builtin.script:
+        cmd: Dynatrace-OneAgent-Linux-1.233.166.sh
         chdir: /tmp/
