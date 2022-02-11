@@ -10,6 +10,6 @@
   when: _oneagent_ctl_state.stat.exists
 
 - name: Determine version of new installer
-  command: "{{ oneagent_installer_path }} --version"
+  command: "/bin/sh {{ oneagent_installer_path }} --version"
   register: _oneagent_new_agent_version
   changed_when: false
