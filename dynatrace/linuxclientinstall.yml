@@ -16,4 +16,4 @@
         path: "{{ installpathfile }}"
         owner: root
         group: root
-        mdoe: '755'
+        mode: '755'
