@@ -18,8 +18,5 @@
         group: root
         mode: '755'
     - name: Install Dynatrace OneAgent
-      ansible.builtin.script:
+      ansible.builtin.command:
         cmd: "{{ installpath }}Dynatrace-OneAgent-Linux-1.233.166.sh"
-        remote_src: true
-        args:
-          executable: /bin/sh
