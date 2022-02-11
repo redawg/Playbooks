@@ -10,13 +10,13 @@
         url: https://kzn34165.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default
         dest: "{{ installpath }}{{ file }}"
         headers:
-          Authorization: Api-Token dt0c01.IRXCHXCACT7DYBUFS6BLZIET.KJBREFFGZ2435RTKUPUMD6Z6J56VTA5G2NWVHXFOETVYAJB236MTZ53TJ4TWD7B6
+          Authorization: Api-Token "{{ oneagent_paas_token }}"
     - name: Make file executable
       ansible.builtin.file:
         path: "{{ installpath }}{{ file }}"
         owner: root
         group: root
         mode: '755'
-    - name: Install Dynatrace OneAgent
-      ansible.builtin.shell: "Dynatrace-OneAgent-Linux-1.233.166.sh --set-infra-only=false --set-app-log-content-access=true"
-        chdir: /tmp/
+#    - name: Install Dynatrace OneAgent
+#      ansible.builtin.shell: "Dynatrace-OneAgent-Linux-1.233.166.sh --set-infra-only=false --set-app-log-content-access=true"
+#        chdir: /tmp/
