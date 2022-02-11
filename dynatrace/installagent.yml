@@ -2,9 +2,7 @@
 - name: Download OneAgent installer in specific version to a custom
     directory with additional OneAgent install parameters. Both linux_other
     and linux_arm have different user specified by platform args parameter.
-  hosts: linux_other,linux_arm
-  collections:
-    - dynatrace.oneagent
+  hosts: all
   vars:
     oneagent_download_dir: /home/user1
     oneagent_version: 1.199.247.20200714-111723
@@ -14,4 +12,4 @@
       - --set-network-zone=my.network.zone
   tasks:
     - import_role:
-        name: oneagent
+        name: dynatrace.oneagent
