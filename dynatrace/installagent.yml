@@ -6,7 +6,7 @@
   roles:
     - role: oneagent
   vars:
-    oneagent_download_dir: /home/user1
+    oneagent_download_dir: /tmp/
     oneagent_version: 1.199.247.20200714-111723
     oneagent_install_args:
       - INSTALL_PATH=/opt/dynatrace
