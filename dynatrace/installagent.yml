@@ -3,6 +3,8 @@
     directory with additional OneAgent install parameters. Both linux_other
     and linux_arm have different user specified by platform args parameter.
   hosts: all
+  roles:
+    - role: oneagent
   vars:
     oneagent_download_dir: /home/user1
     oneagent_version: 1.199.247.20200714-111723
@@ -10,6 +12,3 @@
       - INSTALL_PATH=/opt/dynatrace
       - --set-host-group=My.HostGroup_123-456
       - --set-network-zone=my.network.zone
-  tasks:
-    - import_role:
-        name: oneagent
