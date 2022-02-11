@@ -12,4 +12,4 @@
       - --set-network-zone=my.network.zone
   tasks:
     - import_role:
-        name: dynatrace.oneagent
+        name: oneagent
