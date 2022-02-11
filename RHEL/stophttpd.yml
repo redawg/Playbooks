@@ -1,0 +1,11 @@
+---
+- name: Restarting HTTPD service
+  hosts: all
+  gather_facts: False
+
+
+  tasks:
+  - name: Start service httpd, if not started
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
