@@ -21,3 +21,5 @@
       ansible.builtin.script:
         cmd: Dynatrace-OneAgent-Linux-1.233.166.sh
         chdir: /tmp/
+        args:
+          executable: /bin/sh
