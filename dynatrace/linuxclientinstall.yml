@@ -10,4 +10,4 @@
       ansible.builtin.get_url:
         url: https://kzn34165.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default
         dest: /tmp/Dynatrace-OneAgent-Linux-1.233.166.sh
-        headers "Authorization: Api-Token dt0c01.IRXCHXCACT7DYBUFS6BLZIET.KJBREFFGZ2435RTKUPUMD6Z6J56VTA5G2NWVHXFOETVYAJB236MTZ53TJ4TWD7B6"
+        headers: "Authorization: Api-Token dt0c01.IRXCHXCACT7DYBUFS6BLZIET.KJBREFFGZ2435RTKUPUMD6Z6J56VTA5G2NWVHXFOETVYAJB236MTZ53TJ4TWD7B6"
