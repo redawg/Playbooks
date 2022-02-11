@@ -12,5 +12,4 @@ collections:
 - name: community.docker
 - name: community.general
 - name: amazon.aws
-- name: dynatrace.oneagent
-  source: http://172.16.1.25:8080/dynatrace-oneagent-ansible-1.1.0.20211006-104525.tar.gz
+- name: http://172.16.1.25:8080/dynatrace-oneagent-ansible-1.1.0.20211006-104525.tar.gz
