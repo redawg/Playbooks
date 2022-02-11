@@ -1,5 +1,5 @@
 ---
-- name: Getting authorized_key
+- name: Restarting HTTPD service
   hosts: all
   gather_facts: False
 
