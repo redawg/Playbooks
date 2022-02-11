@@ -19,4 +19,4 @@
         mode: '755'
     - name: Install Dynatrace OneAgent
       ansible.builtin.command:
-        cmd: "{{ installpath }}Dynatrace-OneAgent-Linux-1.233.166.sh --set-infra-only=false --set-app-log-content-access=true"
+        cmd: "{{ installpath }}Dynatrace-OneAgent-Linux-*.sh --set-infra-only=false --set-app-log-content-access=true"
