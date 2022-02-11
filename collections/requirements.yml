@@ -13,5 +13,5 @@ collections:
 - name: community.general
 - name: amazon.aws
 - name: dynatrace.oneagent
-  source: https://kzn34165.live.dynatrace.com/api/v1/deployment/orchestration/agent/ansible/version/0.1.0.20200925-120822
+  source: http://172.16.1.25:8080/dynatrace-oneagent-ansible-1.1.0.20211006-104525.tar.gz
   type: file
