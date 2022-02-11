@@ -18,4 +18,4 @@
   fail:
     msg: "{{ oneagent_signature_verification_failed
       | format(_oneagent_cert_verification_result.stderr) }}"
-  when: _oneagent_cert_verification_result.rc != 0
+  #when: _oneagent_cert_verification_result.rc != 0
