@@ -8,12 +8,12 @@
     - name: Grab oneagent from instance
       ansible.builtin.get_url:
         url: https://kzn34165.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default
-        dest: "{{ installpath }}{{ file }}"
+        dest: "{{ installpath }}""{{ file }}"
         headers:
-          Authorization: Api-Token "{{ oneagent_paas_token }}"
+          Authorization: Api-Token {{ oneagent_paas_token }}
     - name: Make file executable
       ansible.builtin.file:
-        path: "{{ installpath }}{{ file }}"
+        path: "{{ installpath }}""{{ file }}"
         owner: root
         group: root
         mode: '755'
