@@ -84,7 +84,7 @@
         - ansible_distribution_major_version == "8"
     - name: Copy DNS Hosts file for local server from http
       ansible.builtin.get_url:
-        url: http://172.16.1.25/hosts
+        url: http://172.16.1.25:8080/hosts
         dest: /etc/hosts
         owner: root
         group: root
