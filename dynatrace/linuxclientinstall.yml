@@ -19,6 +19,6 @@
         mode: '755'
     - name: Install Dynatrace OneAgent
       ansible.builtin.script:
-        cmd: "{{ installpath }}"Dynatrace-OneAgent-Linux-1.233.166.sh
+        cmd: "{{ installpath }}Dynatrace-OneAgent-Linux-1.233.166.sh"
         args:
           executable: /bin/sh
