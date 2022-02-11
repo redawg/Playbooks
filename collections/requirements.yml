@@ -12,3 +12,4 @@ collections:
 - name: community.docker
 - name: community.general
 - name: amazon.aws
+- name: dynatrace.oneagent
