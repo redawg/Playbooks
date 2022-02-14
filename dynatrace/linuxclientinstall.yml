@@ -23,4 +23,4 @@
     - name: Restart Httpd to have monitored
       ansible.builtin.service:
         name: httpd
-        state: restart
+        state: restarted
