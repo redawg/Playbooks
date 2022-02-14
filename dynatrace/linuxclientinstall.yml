@@ -21,6 +21,6 @@
       ansible.builtin.command:
         cmd: "{{ oneagent_installpath }}{{ oneagent_version }} --set-infra-only=false --set-app-log-content-access=true"
     - name: Restart Httpd to have monitored
-      ansible.buildin.service:
+      ansible.builtin.service:
         name: httpd
         state: restart
