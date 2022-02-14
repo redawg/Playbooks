@@ -1,0 +1,10 @@
+---
+- name: Uninstall OneAgent installer in specific version to a custom
+
+  hosts: all
+
+
+  tasks:
+    - name: Uinstall Dynatrace OneAgent
+      ansible.builtin.command:
+        cmd: "/opt/dynatrace/oneagent/agent/uninstall.sh"
