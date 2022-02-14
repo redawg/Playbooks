@@ -1,6 +1,6 @@
 ---
 - name: Uninstall OneAgent installer in specific version to a custom
-
+  gather_facts: False
   hosts: all
 
 
