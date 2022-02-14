@@ -5,6 +5,16 @@
 
 
   tasks:
-    - name: Uinstall Dynatrace OneAgent
+    - name: Uninstall Dynatrace OneAgent
       ansible.builtin.command:
         cmd: "/opt/dynatrace/oneagent/agent/uninstall.sh"
+    - name: Remove Dynatrace user
+      ansible.builtin.user:
+        name: dtuser
+        state: absent
+        remove: yes
+    - name: Remove directories of Dynatrace OneAgent logs
+      ansible.builtin.file:
+        state: absent
+        path: /var/log/dynatrace/oneagent
+    -
