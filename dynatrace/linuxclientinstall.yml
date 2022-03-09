@@ -1,5 +1,5 @@
 ---
-- name: Download OneAgent installer in specific version to a custom
+- name: Download OneAgent installer in specific version to a custom location
   gather_facts: False
   hosts: all
 
