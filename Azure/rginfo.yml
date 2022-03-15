@@ -1,0 +1,20 @@
+---
+  - name: Get info Azure Resource Group
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       az_rgname: ''
+       location: ''
+       customer: ''
+       AZURE_CLIENT_ID: ''
+       AZURE_SECRET: ''
+       AZURE_SUBSCRIPTION_ID: ''
+       AZURE_TENANT: ''
+    tasks:
+      - name: Get all resource Groups info
+        azure_rm_resourcegroup_info:
+        register: allinfo
+      - name: Print allinfo
+          msg: "{{ allinfo }}"
+          verbosity: 2
