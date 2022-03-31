@@ -17,9 +17,17 @@
          - fail:
             msg: "Cannot connect to {{ inventory_hostname }}"
        rescue:
-         - debug: msg="Cannot connect to {{ inventory_hostname }}"
-         - include: slackafailedtaskalert.yml
-           tasks_from: failure
+         - name: Send Alert to Slack
+           slack:
+            token: "{{ slack_token }}"
+            msg: "Ansible failed on *{{ ansible_hostname }} ({{ inventory_hostname }})* \n
+       *Task*: {{ ansible_failed_task.name }} \n
+       *Action*: {{ ansible_failed_task.action }} \n
+       *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}``` "
+            channel: "{{ channel }}"
+            username: "{{ slackuser }}"
+           run_once: true
+          delegate_to: localhost
 
  - name: Gather facts from running_hosts
    hosts: running_hosts
