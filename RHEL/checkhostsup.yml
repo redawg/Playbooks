@@ -14,13 +14,11 @@
          - name: add devices with connectivity to the "running_hosts" group
            group_by:
              key: "running_hosts"
-         - fail:
-            msg: "Cannot connect to {{ inventory_hostname }}"
-       rescue:
+        rescue:
          - name: Send Alert to Slack
            slack:
             token: "{{ slack_token }}"
-            msg: "Ansible failed on *{{ ansible_hostname }} ({{ inventory_hostname }})* \n
+            msg: "Ansible failed on *({{ inventory_hostname }})* \n
        *Task*: {{ ansible_failed_task.name }} \n
        *Action*: {{ ansible_failed_task.action }} \n
        *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}``` "
