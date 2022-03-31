@@ -27,7 +27,7 @@
             channel: "{{ channel }}"
             username: "{{ slackuser }}"
            run_once: true
-          delegate_to: localhost
+           delegate_to: localhost
 
  - name: Gather facts from running_hosts
    hosts: running_hosts
