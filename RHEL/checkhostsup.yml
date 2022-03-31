@@ -1,0 +1,34 @@
+---
+ - name: Checking for up hosts
+   hosts: all
+   gather_facts: False
+
+   tasks:
+     - block:
+         - name: determine hosts that are up
+           wait_for_connection:
+             timeout: 5
+           vars:
+             ansible_connection: ssh
+
+         - name: add devices with connectivity to the "running_hosts" group
+           group_by:
+             key: "running_hosts"
+         - fail:
+            msg: "Cannot connect to {{ inventory_hostname }}"
+       rescue:
+        - debug: msg="Cannot connect to {{ inventory_hostname }}"
+        - include: ../Slack/slackafailedtaskalert.yml
+          tasks_from: failure
+
+ - name: Gather facts from running_hosts
+   hosts: running_hosts
+   gather_facts: True
+
+   tasks:
+     - name: Facts
+       ansible.builtin.setup:
+       register: all_facts
+     - name: Facts Debug
+       ansible.builtin.debug:
+         var: all_facts

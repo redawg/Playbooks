@@ -1,0 +1,37 @@
+---
+- name: Slack Messages Playbook
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+
+  tasks:
+    - name: 'Preflight Varible check :: slack_token'
+      fail: msg='Please include the slack_token to the variable "slack_token"'
+      run_once: true
+      when: 'slack_token is not defined'
+    - name: 'Preflight Varible check :: message'
+      fail: msg='Please include the message to the variable "message"'
+      run_once: true
+      when: 'message is not defined'
+    - name: 'Preflight Varible check :: channel'
+      fail: msg='Please include the channel to the variable "channel"'
+      run_once: true
+      when: 'channel is not defined'
+    - name: 'Preflight Varible check :: slackuser'
+      fail: msg='Please include the slackuser to the variable "slackuser"'
+      run_once: true
+      when: 'slackuser is not defined'
+
+
+    - name: Send Alert to Slack
+      slack:
+       token: "{{ slack_token }}"
+       msg: "Ansible failed on *{{ ansible_hostname }} ({{ inventory_hostname }})* \n
+    *Task*: {{ ansible_failed_task.name }} \n
+    *Action*: {{ ansible_failed_task.action }} \n
+    *Error Message*: \n ```{{ ansible_failed_result | to_nice_json }}``` "
+       channel: "{{ channel }}"
+       username: "{{ slackuser }}"
+      run_once: true
+      delegate_to: localhost
