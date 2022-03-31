@@ -14,7 +14,7 @@
          - name: add devices with connectivity to the "running_hosts" group
            group_by:
              key: "running_hosts"
-        rescue:
+       rescue:
          - name: Send Alert to Slack
            slack:
             token: "{{ slack_token }}"
