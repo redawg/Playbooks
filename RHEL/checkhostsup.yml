@@ -18,7 +18,7 @@
             msg: "Cannot connect to {{ inventory_hostname }}"
        rescue:
         - debug: msg="Cannot connect to {{ inventory_hostname }}"
-        - include: ../Slack/slackafailedtaskalert.yml
+        - include: slackafailedtaskalert.yml
           tasks_from: failure
 
  - name: Gather facts from running_hosts
