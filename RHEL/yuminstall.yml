@@ -16,6 +16,6 @@
       slack:
         token: "{{ slack_token }}"
         msg: '{{package}} installed on {{inventory_hostname}}'
-        channel: '#toweralerts'
-        username: 'Ansible Tower'
+        channel: '#controlleralertsaap2'
+        username: 'Ansible Controller'
       when: slack_token is defined
