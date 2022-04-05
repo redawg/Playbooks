@@ -16,15 +16,15 @@
 
     - name: Check for variance in File
       copy:
-        src: /tmp/demo/"{{ file2comp }}"
-        dest: /etc/"{{ file2comp }}"
+        src: "/tmp/demo/{{ file2comp }}"
+        dest: "/etc/{{ file2comp }}"
       check_mode: yes
       diff: yes
       register : filechanges
 
     - name: stat check_mode
       stat:
-        path: /etc/"{{ file2comp }}"
+        path: "/etc/{{ file2comp }}"
       when: filechanges.changed == true
       register: statvar
 
