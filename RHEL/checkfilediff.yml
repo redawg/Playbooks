@@ -28,6 +28,10 @@
       when: filechanges.changed == true
       register: statvar
 
+    - name: debug filechanges
+      debug:
+        msg: "{{ filechanges }}"
+        
     - name: print file data to html
       copy:
         content: "{{ lookup('template', './filedata.j2') }}"
