@@ -106,6 +106,8 @@
           -  net-tools
           -  wget
           -  mlocate
+          -  nc
+          -  telnet
         state: present
     - name: Upgrading all Packages to Latest
       yum:
