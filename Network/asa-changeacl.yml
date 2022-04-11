@@ -5,7 +5,7 @@
   gather_facts: no
 
   tasks:
-   - name: Going to {{ state }} acl on {{ inventory_hostname }}
+   - name: {{ state }} acl on {{ inventory_hostname }}
      cisco.asa.asa_acls:
        config:
          acls:
