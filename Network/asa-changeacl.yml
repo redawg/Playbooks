@@ -33,7 +33,7 @@
       token: "{{ slack_token }}"
       msg: "Ansible made the following changes*({{ inventory_hostname }})* \n
    *Action*: {{ state }} \n
-   *Changes Made*: \n ```{{ ACL_Changes }}``` "
+   *Changes Made*: \n ```{{ ACL_Changes.stdout }}``` "
       channel: "{{ channel }}"
       username: "{{ slackuser }}"
      run_once: true
