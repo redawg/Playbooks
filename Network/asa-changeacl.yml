@@ -4,8 +4,6 @@
   connection: network_cli
   gather_facts: no
 
-
-
   tasks:
    - name: Going to {{ state }} acl on {{ inventory_hostname }}
      cisco.asa.asa_acls:
