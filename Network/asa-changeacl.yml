@@ -30,14 +30,14 @@
      register: ACL_Changes
    - name: debug ACL_Changes
      debug:
-       var: ACL_Changes.changed
+       var: ACL_Changes.commands
 
    - name: Send Alert to Slack
      slack:
       token: "{{ slack_token }}"
       msg: "Ansible made the following changes*({{ inventory_hostname }})* \n
    *Action*: {{ state }} \n
-   *Changes Made*: \n ```{{ ACL_Changes }}``` "
+   *Changes Made*: \n ```{{ ACL_Changes.commands }}``` "
       channel: "{{ channel }}"
       username: "{{ slackuser }}"
      run_once: true
