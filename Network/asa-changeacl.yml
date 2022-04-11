@@ -30,7 +30,7 @@
      register: ACL_Changes
    - name: debug ACL_Changes
      debug:
-       var: ACL_Changes.stdout
+       var: ACL_Changes.changed
 
    - name: Send Alert to Slack
      slack:
