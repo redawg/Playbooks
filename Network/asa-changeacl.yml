@@ -1,0 +1,31 @@
+---
+- name: Overwrite acls on ASA
+  hosts: all
+  connection: network_cli
+  gather_facts: no
+
+
+
+  tasks:
+   - name: Override device configuration of all acl with provided configuration
+     cisco.asa.asa_acls:
+       config:
+         acls:
+           - name: global_access
+             acl_type: extended
+             aces:
+             - grant: deny
+               line: 1
+               protocol_options:
+                 tcp: true
+               source:
+                 address: 192.0.4.0
+                 netmask: 255.255.255.0
+                 port_protocol:
+                   eq: telnet
+               destination:
+                 address: 192.0.5.0
+                 netmask: 255.255.255.0
+                 port_protocol:
+                   eq: www
+       state: overridden
