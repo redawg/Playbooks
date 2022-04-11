@@ -7,11 +7,11 @@
 
 
   tasks:
-   - name: Override device configuration of all acl with provided configuration
+   - name: {{state}} acl on {{inventory_hostname}}
      cisco.asa.asa_acls:
        config:
          acls:
-           - name: global_access
+           - name: "{{ acl_name }}"
              acl_type: extended
              aces:
              - grant: deny
@@ -19,13 +19,24 @@
                protocol_options:
                  tcp: true
                source:
-                 address: 192.0.4.0
+                 address: "{{ source_net }}"
                  netmask: 255.255.255.0
                  port_protocol:
-                   eq: telnet
+                   eq: "{{ source_port }}"
                destination:
-                 address: 192.0.5.0
+                 address: "{{ dest_net }}"
                  netmask: 255.255.255.0
                  port_protocol:
-                   eq: www
-       state: overridden
+                   eq: "{{ dest_port }}"
+       state: "{{ state }}"
+     register: ACL_Changes
+   - name: Send Alert to Slack
+     slack:
+      token: "{{ slack_token }}"
+      msg: "Ansible made the following changes*({{ inventory_hostname }})* \n
+   *Action*: {{ state }} \n
+   *Changes Made*: \n ```{{ ACL_Changes }}``` "
+      channel: "{{ channel }}"
+      username: "{{ slackuser }}"
+     run_once: true
+     delegate_to: localhost
