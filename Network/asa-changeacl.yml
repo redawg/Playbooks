@@ -28,12 +28,16 @@
                    eq: "{{ dest_port }}"
        state: "{{ state }}"
      register: ACL_Changes
+   - name: debug ACL_Changes
+     debug:
+       var: ACL_Changes.stdout
+
    - name: Send Alert to Slack
      slack:
       token: "{{ slack_token }}"
       msg: "Ansible made the following changes*({{ inventory_hostname }})* \n
    *Action*: {{ state }} \n
-   *Changes Made*: \n ```{{ ACL_Changes.stdout }}``` "
+   *Changes Made*: \n ```{{ ACL_Changes }}``` "
       channel: "{{ channel }}"
       username: "{{ slackuser }}"
      run_once: true
