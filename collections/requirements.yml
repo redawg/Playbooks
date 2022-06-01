@@ -12,4 +12,5 @@ collections:
 - name: community.docker
 - name: community.general
 - name: amazon.aws
+- name: infoblox.nios_modules
 #- name: http://172.16.1.25:8080/dynatrace-oneagent-ansible-1.1.0.20211006-104525.tar.gz
