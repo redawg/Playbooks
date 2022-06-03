@@ -7,7 +7,7 @@
     - name: Check for Module
       community.general.python_requirements_info:
         dependencies:
-          - kubernetes
+          - infoblox-client
       register: modulecheck
     - name: Debug
       ansible.builtin.debug:
@@ -15,14 +15,14 @@
 
     - name: add Python module
       ansible.builtin.pip:
-        name: kubernetes
+        name: infoblox-client
         extra_args: --upgrade
       delegate_to: localhost
       run_once: true
     - name: Re-Check for Module after installing
       community.general.python_requirements_info:
         dependencies:
-          - kubernetes
+          - infoblox-client
       register: modulecheck2
     - name: Debug
       ansible.builtin.debug:
