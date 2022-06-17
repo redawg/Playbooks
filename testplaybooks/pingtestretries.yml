@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ping retries test
+      ping:
+      register: result
+      until: result.ping == 'pong'
+      retries: 10
+      delay: 50
