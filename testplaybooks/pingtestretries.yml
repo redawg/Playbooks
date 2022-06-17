@@ -8,6 +8,9 @@
       until: result.ping == 'pong'
       retries: 10
       delay: 50
+- name: test connection from localhost
+  hosts: 172.16.1.10
+  tasks:
     - name: wait_for_connection
       wait_for_connection:
         delay: 30
