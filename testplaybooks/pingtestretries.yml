@@ -3,12 +3,12 @@
   gather_facts: no
   tasks:
     - name: Ping retries test
-      ping:
-      register: result
-      until: result.ping == 'pong'
-      retries: 10
-      delay: 50
-      ignore_errors: true
+      #ping:
+      #register: result
+      #until: result.ping == 'pong'
+      #retries: 10
+      #delay: 50
+      #ignore_errors: true
 - name: test connection from localhost
   hosts: 172.16.1.10
   tasks:
