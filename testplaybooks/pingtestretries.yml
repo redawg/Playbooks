@@ -8,6 +8,7 @@
       until: result.ping == 'pong'
       retries: 10
       delay: 50
+      ignore_errors: true
 - name: test connection from localhost
   hosts: 172.16.1.10
   tasks:
@@ -16,4 +17,3 @@
         delay: 30
         sleep: 10
         timeout: 600
-      delegate_to: localhost
