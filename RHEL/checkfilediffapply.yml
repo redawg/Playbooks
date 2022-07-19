@@ -14,7 +14,7 @@
       delegate_to: 127.0.0.1
       run_once: true
 
-    - name: Check for variance in File
+    - name: Check for variance in File and make changes if needed
       copy:
         src: "/tmp/demo/{{ file2comp }}"
         dest: "/etc/{{ file2comp }}"
@@ -26,11 +26,3 @@
         path: "/etc/{{ file2comp }}"
       when: filechanges.changed == true
       register: statvar
-
-
-    - name: print file data to html
-      copy:
-        content: "{{ lookup('template', './filedata.j2') }}"
-        dest: "{{ home_dir }}/reports/{{ inventory_hostname }}.html"
-      ignore_errors: yes
-      delegate_to: "{{ container_host }}"
