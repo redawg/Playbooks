@@ -1,0 +1,64 @@
+---
+  - name: Get instances info
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       ec2_security_group_name: "{{vpc_name}}_SECGRP"
+       ec2_ansible_group: "{{user_name}}"
+       my_email_address: "{{user_name}}@redhat.com"
+
+    tasks:
+
+    # Gather the start time to use in a later playbook
+    - name: Record the machine_create_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: machine_create_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture machine instance start time
+      ansible.builtin.set_stats:
+        data:
+          machine_create_time: "{{ machine_create_time_pre.stdout }}"
+
+    - name: If vpc_subnet_id doesn't exist lookup by {{subnet_name}}
+      block:
+      - name: Looking Up Subnet_id for {{subnet_name}} if vpc_subnet_id doesn't exist
+        ec2_vpc_subnet_info:
+          region: "{{region}}"
+          filters:
+            "tag:Name": "{{subnet_name}}"
+        register: subnet_id
+
+      - name: Setting vpc_subnet_id based on Lookup of {{subnet_name}}
+        set_fact:
+          vpc_subnet_id: "{{subnet_id.subnets[0].id}}"
+      when: vpc_subnet_id is undefined
+
+    - name: Show Subnet_id
+      debug:
+        msg: "{{vpc_subnet_id}}"
+
+    - name: Creating {{count}} AWS VMs in {{region}}
+      amazon.aws.ec2_instance:
+        name: "Web Server"
+        region: "{{region}}"
+        key_name: "{{ vpc_name}}-ssh-key"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        instance_type: "{{instance_type}}"
+        security_group: "{{ec2_security_group_name}}"
+        network:
+          assign_public_ip: "{{assign_public_ip}}"
+        image_id: "{{image}}"
+        tags:
+          Environment: Web Demo
+          AlwaysUp: "{{alwaysup}}"
+          Createdby: Ansible Tower
+          Contact: "{{my_email_address}}"
+          DeletebBy: "{{ec2_ansible_group}}"
+
+    - name: Pausing for 2 minutes to allow the machine to come up
+      ansible.builtin.pause:
+        minutes: 2

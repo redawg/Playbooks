@@ -1,0 +1,32 @@
+---
+- name: Making sure the insights-client is properlly configured
+  hosts: all
+  gather_facts: no
+  
+  vars:
+    status: "{{ status }}"
+  
+  tasks:
+
+    # Gather the start time to use in a later playbook
+    - name: Record the insights_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: insights_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture the insights_time
+      ansible.builtin.set_stats:
+        data:
+          insights_time: "{{ insights_time_pre.stdout }}"
+  
+    - name: "Making sure the insights-client is present on the server"
+      ansible.builtin.yum:
+        name: 
+          - insights-client
+        state: present
+  
+    - name: "Making sure the server is {{ status }} in console.redhat.com"
+      redhat.insights.insights_register:
+        state: "{{ status }}"

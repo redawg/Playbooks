@@ -11,6 +11,19 @@
      sla: "Self-Support"
 
   tasks:
+    # Gather the start time to use in a later playbook
+    - name: Record the subscription_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: subscription_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture the subscription_time
+      ansible.builtin.set_stats:
+        data:
+          subscription_time: "{{ subscription_time_pre.stdout }}"
+
     - name: Subscribing to RHEL account just for RHEL
       redhat_subscription:
         state: present
@@ -99,6 +112,67 @@
         state: disabled
       notify:
        - Reboot needed
+    # Gather the start time to use in a later playbook
+    - name: Record the post_install_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: post_install_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture the post_install_time
+      ansible.builtin.set_stats:
+        data:
+          post_install_time: "{{ post_install_time_pre.stdout }}"
+
+    - name: Copy the sshd-banner file into place
+      ansible.builtin.copy:
+        src: files/sshd-banner
+        dest: /etc/ssh/sshd-banner
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
+
+    - name: Updating the sshd_config file to show the new banner
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: '^#Banner none'
+        line: 'Banner /etc/ssh/sshd-banner'
+    - name: Copy the new /etc/motd into place
+      ansible.builtin.copy:
+        src: files/motd
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
+
+    - name: Copy the new /etc/issue into place
+      ansible.builtin.copy:
+        src: files/issue
+        dest: /etc/issue
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
+
+    - name: Get rid of the cockpit.socket message
+      ansible.builtin.file:
+        src: /dev/null
+        dest: /etc/motd.d/cockpit
+        owner: root
+        group: root
+        state: link
+      when: "ansible_distribution_release != 'Maipo'"
+
+    - name: Get rid of the insights client message
+      ansible.builtin.file:
+        src: /dev/null
+        dest: /etc/motd.d/insights-client
+        owner: root
+        group: root
+        state: link
+      when: "ansible_distribution_release != 'Maipo'"
+      
     - name: Install My packages I want (insights/net-tools/wget)
       yum:
         name:
@@ -113,7 +187,19 @@
       yum:
         name: '*'
         state: latest
+    # Gather the start time to use in a later playbook
 
+    - name: Record the insights_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: insights_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture the insights_time
+      ansible.builtin.set_stats:
+        data:
+          insights_time: "{{ insights_time_pre.stdout }}"
     - name: Running insights register
       command: insights-client --register
       register: register_output

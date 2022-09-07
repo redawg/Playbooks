@@ -1,0 +1,28 @@
+---
+  - name: Control AWS instances
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       region: ''
+       servername: ''
+
+    tasks:
+
+    - name: Get instances id with tag {{servername}} in {{region}}
+      amazon.aws.ec2_instance_info:
+       region: "{{region}}"
+       filters:
+         "tag:Name": "{{servername}}"
+         "tag:Contact": "{{my_email_address}}"
+
+      register: instance_info
+    - name:
+      debug:
+         msg: "{{instance_info.instances[0].instance_id}}"
+
+    - name: Setting ec2 {{servername}} to absent
+      amazon.aws.ec2_instance:
+        region: "{{region}}"
+        state: absent
+        instance_ids: "{{instance_info.instances[0].instance_id}}"

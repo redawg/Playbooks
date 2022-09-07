@@ -1,0 +1,148 @@
+---
+  - name: Create AWS VPC
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    vars:
+       aws_access_key: '' # passed from Ansible Controller Credentials
+       aws_secret_key: '' # passed from Ansible Controller Credentials
+       ec2_ansible_group: "{{ user_name }}"
+       ec2_security_group_name: "{{vpc_name}}_SECGRP"
+       ec2_vpc_subnet_name: "{{vpc_name}}_Subnet"
+       ec2_rt_name: "{{vpc_name}}_RT_Internet"
+       ec2_igw_name: "{{vpc_name}}_IGW"
+       my_email_address: "{{user_name}}@redhat.com"
+
+    tasks:
+
+      # Gather the start time to use in a later playbook
+      - name: Record the vpc start time 
+        ansible.builtin.command:
+          cmd: "date '+%H:%M:%S'"
+        delegate_to: 127.0.0.1
+        register: vpc_create_time_pre
+
+      # Make the start time available to other playbooks
+      - name: Capture the create vpc_create_time
+        ansible.builtin.set_stats:
+          data:
+            vpc_create_time: "{{ vpc_create_time_pre.stdout }}"
+
+      - name: "Create VPC {{ vpc_name }}_{{user_name}} in {{ region }}"
+        amazon.aws.ec2_vpc_net:
+          name: "{{ vpc_name }}_{{user_name}}"
+          cidr_block: "{{ vpc_cidr }}"
+          region: "{{ region }}"
+          state: present
+
+          tags:
+            AlwaysUp: "{{alwaysup}}"
+            Name: "{{user_name}}"
+            ansible_group: "{{ec2_ansible_group}}"
+            Createdby: Ansible Controller
+            Contact: "{{my_email_address}}"
+            DeletebBy: "{{deleteby}}"
+        register: my_vpc
+
+      - name: "Display my_vpc.vpc.id info for {{vpc_name}}"
+        ansible.builtin.debug:
+          var: my_vpc.vpc.id
+
+      - name: "create security group {{ ec2_security_group_name }}"
+        amazon.aws.ec2_group:
+          name: "{{ ec2_security_group_name }}"
+          description: Security group with rule descriptions created by Ansible
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          region: "{{ region }}"
+          tags:
+            AlwaysUp: "{{ alwaysup }}"
+            Name: "{{ user_name }}"
+            ansible_group: "{{ ec2_ansible_group }}"
+            Createdby: Ansible Controller
+            Contact: "{{ my_email_address }}"
+            DeleteBy: "{{deleteby}}"
+          rules:
+          - proto: icmp
+            from_port: 8 # icmp type, -1 = any type
+            to_port:  -1 # icmp subtype, -1 = any subtype
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow ping
+          - proto: tcp
+            ports: 22
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 22
+          - proto: tcp
+            ports: 80
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 80
+          - proto: tcp
+            ports: 443
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 443
+          - proto: tcp
+            ports: 3306
+            cidr_ip: 0.0.0.0/0
+            rule_desc: allow all on port 3306
+
+        tags:
+          - createsecgrp
+          - onlyvpc
+        register: my_security_group
+
+      - name: "Create {{ ec2_vpc_subnet_name }} subnet"
+        amazon.aws.ec2_vpc_subnet:
+          state: present
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          cidr: "{{ vpc_cidr }}"
+          region: "{{ region }}"
+          map_public: yes
+          tags:
+            AlwaysUp: "{{alwaysup}}"
+            Name: "{{ ec2_vpc_subnet_name }}"
+            ansible_group: "{{ ec2_ansible_group }}"
+            Createdby: Ansible Controller
+            Contact: "{{ my_email_address }}"
+            DeleteBy: "{{deleteby}}"
+        tags:
+          - createsubnet
+          - onlyvpc
+        register: my_vpc_subnet
+
+      - name: "Create IGW {{ ec2_igw_name }} for {{ vpc_name }}_{{user_name}}"
+        amazon.aws.ec2_vpc_igw:
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          region: "{{ region }}"
+          state: present
+          tags:
+            Name: "{{ec2_igw_name}}"
+            ansible_group: "{{ ec2_ansible_group }}"
+            Createdby: Ansible Tower
+            Contact: "{{my_email_address}}"
+            DeletebBy: "{{deleteby}}"
+        tags:
+          - createigw
+          - onlyvpc
+        register: my_igw
+
+      - name: Create Internet route Table "{{ec2_rt_name}}"
+        amazon.aws.ec2_vpc_route_table:
+          vpc_id: "{{ my_vpc.vpc.id }}"
+          region: "{{ region }}"
+        #route_table_id: "{{ vpc_default_route.route_tables[0].id }}"
+        #lookup: id
+          tags:
+            AlwaysUp: " {{alwaysup}} "
+            Name: "{{ ec2_rt_name }}"
+            ansible_group: "{{ ec2_ansible_group }}"
+            Createdby: Ansible Controller
+            Contact: "{{ my_email_address }}"
+            DeleteBy: "{{deleteby}}"
+          subnets:
+            - "{{ my_vpc_subnet.subnet.id }}"
+          routes:
+            - dest: 0.0.0.0/0
+              gateway_id: "{{ my_igw.gateway_id }}"
+        tags:
+          - creatert
+          - onlyvpc
+        register: my_route_table

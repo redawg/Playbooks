@@ -1,0 +1,69 @@
+---
+- name: Setup a LAMP Stack
+  hosts: all
+  gather_facts: false
+  
+  tasks:
+
+    # Gather the start time to use in a later playbook
+    - name: Record the lamp_time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      delegate_to: 127.0.0.1
+      register: lamp_time_pre
+
+    # Make the start time available to other playbooks
+    - name: Capture the lamp_time
+      ansible.builtin.set_stats:
+        data:
+          lamp_time: "{{ lamp_time_pre.stdout }}"
+    
+    - name: Install the latest version of Firewalld, Apache, Mariadb, php
+      ansible.builtin.dnf:
+        name: 
+          - firewalld
+          - httpd
+          - mariadb-server
+          - php
+          - php-mysqlnd
+        state: latest
+    
+    - name: Starting Firewalld
+      ansible.builtin.systemd:
+        state: started
+        name: firewalld
+        enabled: yes
+
+    - name: Starting httpd
+      ansible.builtin.systemd:
+        state: started
+        name: httpd
+        enabled: yes
+
+    - name: Starting mariadb-server
+      ansible.builtin.systemd:
+        state: started
+        name: mariadb
+        enabled: yes
+    
+    - name: Update the firewall for port 443
+      ansible.posix.firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+        immediate: yes
+        zone: public    
+
+    - name: Update the firewall for port 80
+      ansible.posix.firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+        zone: public
+    
+    - name: Tune the SELinux policy to allow Apache to make network connections to a database 
+      ansible.posix.seboolean:
+        name: httpd_can_network_connect_db
+        state: yes
+        persistent: yes

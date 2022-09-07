@@ -1,6 +1,17 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
+# Gather the start time to use in a later playbook
+- name: Record the lamp_time
+  ansible.builtin.command:
+    cmd: "date '+%H:%M:%S'"
+  delegate_to: 127.0.0.1
+  register: lamp_time_pre
 
+# Make the start time available to other playbooks
+- name: Capture the lamp_time
+  ansible.builtin.set_stats:
+    data:
+      lamp_time: "{{ lamp_time_pre.stdout }}"
 - name: Install ntp
   yum: name=ntp state=present
   tags: ntp

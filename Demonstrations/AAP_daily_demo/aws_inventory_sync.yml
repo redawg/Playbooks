@@ -1,0 +1,52 @@
+---
+  - name: Login to the AAP API and kick off a inventory sync
+    hosts: localhost
+    connection: local
+    gather_facts: no
+
+    tasks:
+
+      # Gather the start time to use in a later playbook
+      - name: Record the aws_sync_time
+        ansible.builtin.command:
+          cmd: "date '+%H:%M:%S'"
+        delegate_to: 127.0.0.1
+        register: aws_sync_time_pre
+
+      # Make the start time available to other playbooks
+      - name: Capture the aws_sync_time
+        ansible.builtin.set_stats:
+          data:
+            aws_sync_time: "{{ aws_sync_time_pre.stdout }}"
+
+      - name: Get an AAP API Token and store it as new_token
+        ansible.builtin.uri:
+          url: "https://{{ tower_url }}/api/v2/tokens/"
+          method: POST
+          user: "{{ username }}"
+          password: "{{ password }}"
+          validate_certs: no
+          force_basic_auth: yes
+          status_code: 201
+          return_content: yes       
+        register: new_token
+
+      - name: Print out the new token
+        debug: 
+          msg: "{{ new_token.json.token }}"
+
+      - name: Kick off an inventory sync
+        ansible.builtin.uri:
+          url: "https://{{ tower_url }}/api/v2/inventory_sources/{{ inventory_id }}/update/"
+          headers:
+            Authorization: "Bearer {{ new_token.json.token }}"
+            Content-Type: "application/json"
+          validate_certs: no
+          follow_redirects: all
+          return_content: no
+          method: "POST"
+          status_code: 202
+
+      - name: Pausing for 1 minutes to allow the dynamic inventory to sync
+        ansible.builtin.pause:
+          minutes: 1
