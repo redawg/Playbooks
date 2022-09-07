@@ -17,12 +17,14 @@
         cmd: "date '+%H:%M:%S'"
       delegate_to: 127.0.0.1
       register: subscription_time_pre
+      run_once: true
 
     # Make the start time available to other playbooks
     - name: Capture the subscription_time
       ansible.builtin.set_stats:
         data:
           subscription_time: "{{ subscription_time_pre.stdout }}"
+      run_once: true
 
     - name: Subscribing to RHEL account just for RHEL
       redhat_subscription:
@@ -118,12 +120,13 @@
         cmd: "date '+%H:%M:%S'"
       delegate_to: 127.0.0.1
       register: post_install_time_pre
-
+      run_once: true
     # Make the start time available to other playbooks
     - name: Capture the post_install_time
       ansible.builtin.set_stats:
         data:
           post_install_time: "{{ post_install_time_pre.stdout }}"
+      run_once: true
 
     - name: Copy the sshd-banner file into place
       ansible.builtin.copy:
@@ -172,7 +175,7 @@
         group: root
         state: link
       when: "ansible_distribution_release != 'Maipo'"
-      
+
     - name: Install My packages I want (insights/net-tools/wget)
       yum:
         name:
@@ -194,12 +197,14 @@
         cmd: "date '+%H:%M:%S'"
       delegate_to: 127.0.0.1
       register: insights_time_pre
-
+      run_once: true
     # Make the start time available to other playbooks
     - name: Capture the insights_time
       ansible.builtin.set_stats:
         data:
           insights_time: "{{ insights_time_pre.stdout }}"
+      run_once: true
+
     - name: Running insights register
       command: insights-client --register
       register: register_output
