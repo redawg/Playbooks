@@ -1,0 +1,22 @@
+---
+- name: Query API for Hosts over 90 days
+  hosts: localhost
+  gather_facts: False
+
+
+  tasks:
+    - name: Query API for hosts
+      ansible.builtin.uri:
+        url: "https://{{ controller_ip }}/api/v2/hosts"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        force_basic_auth: yes
+        return_content: yes
+        method: GET
+        validate_certs: no
+      register: json_content
+
+    - name: Hostnames and last action
+      vars:
+        _jquery: "results[*].{Name: name , Last_job_run: summary_fields.last_job.finished , InventoyID: summary_fields.inventory.id, InventoryName: summary_fields.inventory.name  }"
+      debug: msg="{{ json_content.json | json_query(_jquery)}}"
