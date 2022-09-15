@@ -7,7 +7,7 @@
   tasks:
     - name: Query API for hosts
       ansible.builtin.uri:
-        url: "https://{{ controller_ip }}/api/v2/hosts"
+        url: "https://{{ controller_ip }}/api/v2/hosts?page_size=10000"
         user: "{{ controller_username }}"
         password: "{{ controller_password }}"
         force_basic_auth: yes
