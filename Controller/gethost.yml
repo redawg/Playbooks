@@ -8,7 +8,7 @@
     - name: Query API for hosts
       ansible.builtin.uri:
         url: https://172.16.1.24/api/v2/hosts
-        user: "{{ contoller_username }}"
+        user: "{{ controller_username }}"
         password: "{{ controller_password}}"
         force_basic_auth: yes
         method: GET
@@ -19,4 +19,4 @@
     - name: Hostnames and last action
       debug: msg= "{{ jsoncontent.json | json_query(jmesquery) }}"
       vars:
-         jmesquery: "[*]. {ID: id, Name: name}"
+         jmesquery: "[*]. {Name: name}"
