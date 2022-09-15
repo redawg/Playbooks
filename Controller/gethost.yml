@@ -12,9 +12,11 @@
         password: "{{ controller_password}}"
         force_basic_auth: yes
         method: GET
-        return_content: yes
         validate_certs: no
       register: jsoncontent
+    - name: Debug raw
+      debug:
+        vars: jsoncontent
 
     - name: Hostnames and last action
       debug: msg= "{{ jsoncontent.json | json_query(jmesquery) }}"
