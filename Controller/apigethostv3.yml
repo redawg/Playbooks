@@ -7,7 +7,7 @@
     
     - name: Get an AAP API Token and store it as new_token
       ansible.builtin.uri:
-        url: "https://{{ tower_url }}/api/v2/tokens/"
+        url: "https://{{ controller_ip }}/api/v2/tokens/"
         method: POST
         user: "{{ controller_username }}"
         password: "{{ controller_password }}"
@@ -19,7 +19,7 @@
     
     - name: Query API for hosts
       ansible.builtin.uri:
-        url: "https://{{ tower_url }}/api/v2/hosts/?page_size=10000"
+        url: "https://{{ controller_ip }}/api/v2/hosts/?page_size=10000"
         headers:
           Authorization: "Bearer {{ new_token.json.token }}"
           Content-Type: "application/json"
