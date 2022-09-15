@@ -20,7 +20,7 @@
 
     - name: Add Query to Host list
       ansible.builtin.set_fact:
-        allhosts: " {{ all_hosts +
+        allhosts: " {{ allhosts +
                      [{ 'id' : hostid }] }} "
       loop: "{{ id }}"
 
