@@ -8,17 +8,15 @@
     - name: Query API for hosts
       ansible.builtin.uri:
         url: https://172.16.1.24/api/v2/hosts
-        user: "{{ controller_username }}"
-        password: "{{ controller_password}}"
+        user: 'admin'
+        password: 'r3dh2t!'
         force_basic_auth: yes
+        return_content: yes
         method: GET
         validate_certs: no
       register: json_content
-    - name: Show json_query
-      debug:
-        msg: "{{ json_content }}"
 
     - name: Hostnames and last action
-      debug: msg= "{{ json_content.json.results | json_query(_jquery) }}"
       vars:
-         _jquery: "[?name] == 'name'].value"
+        _jquery: "results[*].{Name: name , Last_job_run: summary_fields.last_job.finished , InventoyID: summary_fields.inventory.id, InventoryName: summary_fields.inventory.name  }"
+      debug: msg="{{ json_content.json | json_query(_jquery)}}"
