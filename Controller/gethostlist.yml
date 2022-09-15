@@ -1,0 +1,27 @@
+---
+- name: Query API for Hosts over 90 days
+  hosts: localhost
+  gather_facts: False
+
+  tasks:
+    - name: Query API for hosts
+      ansible.builtin.uri:
+        url: "{{ controller_host }}/api/v2/hosts"
+        user: "{{ controller_username }}"
+        password: "{{ controller_password }}"
+        method: GET
+      register: allhosts
+    - name: Debug allhost
+      ansible.builtin.debug:
+        var: allhosts
+
+
+    - name: Add Query to Host list
+      ansible.builtin.set_fact:
+        allhosts: " {{ all_hosts +
+                     [{ 'id' : hostid }] }} "
+      loop: "{{ id }}"
+
+    - name: Debug allhost
+      ansible.builtin.debug:
+        var: allhosts
