@@ -19,6 +19,6 @@
         vars: jsoncontent
 
     - name: Hostnames and last action
-      debug: msg= "{{ jsoncontent.json | json_query(jmesquery) }}"
+      debug: msg= "{{ jsoncontent.json.results | json_query(jmesquery) }}"
       vars:
          jmesquery: "[*]. {Name: name, Last_Job: summary_fields.last_job.finished}"
