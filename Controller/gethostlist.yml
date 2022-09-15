@@ -6,7 +6,7 @@
   tasks:
     - name: Query API for hosts
       ansible.builtin.uri:
-        url: "{{ controller_host }}/api/v2/hosts"
+        url: "{{ controller_hostname }}/api/v2/hosts"
         user: "{{ controller_username }}"
         password: "{{ controller_password }}"
         method: GET
