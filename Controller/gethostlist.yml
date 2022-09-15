@@ -7,23 +7,15 @@
   tasks:
     - name: Query API for hosts
       ansible.builtin.uri:
-        url: "{{ controller_hostname }}/api/v2/hosts"
-        user: "{{ controller_username }}"
-        password: "{{ controller_password }}"
+        url: https://172.16.1.24/api/v2/hosts
+        user: 'admin'
+        password: 'r3dh2t!'
+        force_basic_auth: yes
         method: GET
         validate_certs: no
-      register: allhosts
-    - name: Debug allhost
-      ansible.builtin.debug:
-        var: allhosts
+      register: jsoncontent
 
-
-    - name: Add Query to Host list
-      ansible.builtin.set_fact:
-        allhosts: " {{ allhosts +
-                     [{ 'id' : hostid }] }} "
-      loop: "{{ id }}"
-
-    - name: Debug allhost
-      ansible.builtin.debug:
-        var: allhosts
+    - name: Hostnames and last action
+      debug: msg= "{{ jsoncontent.json | json_query(jmesquery) }}"
+      vars:
+         jmesquery: "[*]. {ID: id, Name: name}"
