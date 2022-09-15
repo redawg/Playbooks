@@ -19,6 +19,6 @@
         msg: "{{ json_content }}"
 
     - name: Hostnames and last action
-      debug: msg= "{{ json_content.json.results | json_query(jmesquery) }}"
+      debug: msg= "{{ json_content.json.results | json_query(_jquery) }}"
       vars:
-         jmesquery: "[*].name"
+         _jquery: "[?name] == 'name'].value"
