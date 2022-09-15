@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: False
 
+
   tasks:
     - name: Query API for hosts
       ansible.builtin.uri:
@@ -10,6 +11,7 @@
         user: "{{ controller_username }}"
         password: "{{ controller_password }}"
         method: GET
+        validate_certs: no
       register: allhosts
     - name: Debug allhost
       ansible.builtin.debug:
