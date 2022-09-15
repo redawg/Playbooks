@@ -14,10 +14,7 @@
         method: GET
         validate_certs: no
       register: jsoncontent
-    - name: Debug raw
-      debug:
-        vars: jsoncontent
-
+    
     - name: Hostnames and last action
       debug: msg= "{{ jsoncontent.json.results | json_query(jmesquery) }}"
       vars:
