@@ -8,10 +8,11 @@
     - name: Query API for hosts
       ansible.builtin.uri:
         url: https://172.16.1.24/api/v2/hosts
-        user: 'admin'
-        password: 'r3dh2t!'
+        user: "{{ contoller_username }}"
+        password: "{{ controller_password}}"
         force_basic_auth: yes
         method: GET
+        return_content: yes
         validate_certs: no
       register: jsoncontent
 
