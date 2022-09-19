@@ -4,7 +4,7 @@
   gather_facts: False
 
   tasks:
-    
+
     - name: Get an AAP API Token and store it as new_token
       ansible.builtin.uri:
         url: "https://{{ controller_ip }}/api/v2/tokens/"
@@ -14,9 +14,9 @@
         validate_certs: no
         force_basic_auth: yes
         status_code: 201
-        return_content: yes       
+        return_content: yes
       register: new_token
-    
+
     - name: Query API for hosts
       ansible.builtin.uri:
         url: "https://{{ controller_ip }}/api/v2/hosts/?page_size=10000"
@@ -29,17 +29,19 @@
         method: "GET"
         status_code: 200
       register: json_content
-                    
+
     - name: Collect Hostname Inventory Name ID and last job run
       vars:
-        _jquery: "results[*].{Name: name , Last_job_run: summary_fields.last_job.finished , InventoryID: summary_fields.inventory.id, InventoryName: summary_fields.inventory.name  }"
+        _jquery: "results[*].{UID: id, Name: name , Last_job_run: summary_fields.last_job.finished , InventoryID: summary_fields.inventory.id, InventoryName: summary_fields.inventory.name  }"
       ansible.builtin.set_fact:
         nodedata: "{{nodedata|default({}) | combine ( {item.Name : item.Last_job_run }) }}"
       with_items: "{{ json_content.json | json_query(_jquery)}}"
 
     - name: The nodedata
-      ansible.builtin.debug: var=nodedata
-
+      ansible.builtin.debug:
+        var: nodedata
+        verbosity: 2
+        
     - name: Number of unique endpoints
       ansible.builtin.debug:
         msg: "Unique endpoints: {{ nodedata | length }}"
