@@ -1,0 +1,37 @@
+---
+- name: Deploy host
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+     ansible_python_interpreter: ''
+     esxi_server: ''
+     esxi_username: ''
+     esxi_password: ''
+  tasks:
+   - name: Deploy VM to Esxi
+     community.vmware_host_facts:
+        hostname: "{{ esxi_server }}"
+        username: "{{ esxi_username }}"
+        password: "{{ esxi_password }}"
+        validate_certs: no
+     state: present
+     folder: /DC1/vm
+     template: "{{ template }}"
+     name: "{{ vm_name }}"
+     networks:
+       - name: VM Network
+         ip: "{{ ip_address }}"
+         netmask: "{{ netmask }}"
+         gateway: "{{ gw }}"
+         start_connected: True
+     wait_for_ip_address: True
+     customization:
+       domain: "{{ guest_domain }}"
+       dns_servers:
+         - 1.1.1.1
+         - 8.8.8.8
+         - 7.8.8.9
+       dns_suffix:
+         - tehschoenfelds.dom
+       delegate_to: localhost
