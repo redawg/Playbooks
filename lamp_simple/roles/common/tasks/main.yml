@@ -14,21 +14,25 @@
     data:
       lamp_time: "{{ lamp_time_pre.stdout }}"
   run_once: true
-  
+
 - name: Install ntp
   yum: name=ntp state=present
   tags: ntp
+  ignore_error: true
 
 - name: Configure ntp file
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
   tags: ntp
   notify: restart ntp
+  ignore_error: true
 
 - name: Start the ntp service
   service: name=ntpd state=started enabled=yes
   tags: ntp
+  ignore_error: true
 
 - name: test to see if selinux is running
   command: getenforce
   register: sestatus
   changed_when: false
+  
