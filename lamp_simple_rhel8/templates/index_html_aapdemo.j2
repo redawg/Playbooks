@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ansible Automation Platform</title>
+</head>
+<body>
+
+<h1>Welcome to an Ansible Automation Platform (AAP) Demo</h1>
+<img src="aap.png" alt="">
+
+<p>This website was built using Ansible Automation Platform (AAP).<br/>
+The ansible playbooks that built this first built a Amazon Web Services (AWS)<br/>
+Virtual Private Cloud (VPC), then went on to build a Red Hat Enterprise<br/>
+Linux (RHEL) 8 machine.  Once the linux machine was on the network ansible<br/>
+playbooks were used to subscribe the machine to the Red Hat customer portal<br/>
+and register the machine with Red Hat Insights, a post install process was<br/>
+run to secure the machine and then Linux, Apache, Mariadb, PHP (LAMP) stack<br/>
+was deployed an is what is making this webpage available to you now!</p>
+
+<p>Please direct sales questions to:
+<a href="mailto:{{ sales_email_id }}@redhat.com">{{ sales_person_name }}</a></p>
+
+<p>Please direct technical questions to:
+<a href="mailto:{{ tech_email_id }}@redhat.com">{{ tech_person_name }}</a></p>
+
+<ul>
+  <li><a href="https://github.com/redawg/Ansiblewesttigers/tree/master/Demonstrations/AAP_daily_demo">Ansible playbooks for building the AAP Daily Demo.</a></li>
+  <li><a href="https://github.com/ericcames/RHSM">Ansible playbooks for interacting with the customer portal are here.</a></li>
+  <li><a href="https://github.com/ericcames/RedHatInsights">Ansible playbooks for interacting with Red Hat Insights are here.</a></li>
+  <li><a href="https://github.com/ericcames/AnsibleAutomationPlatform">Good information to have related to AAP</a></li>
+  <li><a href="https://github.com/ericcames/RHOpenSCAP">Red Hat Open Security Content Automation Protocol</a></li>
+  <li><a href="http://{{ webserverinfo }}/index.php"> Click Here to see Database running on DB server via PHP</a></li>
+</ul>
+
+<h3>Provisioning Details</h3>
+<ul>
+  <li><b>Create date:</b> {{ create_date.stdout }} </li>
+  <li><b>VPC create time:</b> {{ vpc_create_time }} </li>
+  <li><b>Instance create time:</b> {{ machine_create_time }} </li>
+  <li><b>Red Hat subscription</b> {{ subscription_time }} </li>
+  <li><b>Post install start time:</b> {{ post_install_time }} </li>
+    <ul>
+      <li>Software updates</li>
+      <li>Disable root login</li>
+      <li>Configurartion changes</li>
+      <li>Reboot the machine</li>
+    </ul>
+  <li><b>Red Hat Insights registration</b> {{ insights_time }} </li>
+  <li><b>LAMP deployment start time:</b> {{ lamp_time }} </li>
+  <li><b>Website start time: </b> {{ website_start_time.stdout }} </li>
+</ul>
+
+<p><b>Thank you for considering Ansible Automation Platform!</b><br/>Automation as a service is a journey not a project.  :-)</p>
+<p style="color:red;">The "AAP Daily Demo" will auto destruct at 01:00 hrs UTC time.</p>
+
+<p style="color:green;"><div id="current_date"></p>
+  <script>
+  document.getElementById("current_date").innerHTML = Date();
+  </script>
+
+<p><b>Ansible West Tiger Team</b></p>
+</body>
+</html>

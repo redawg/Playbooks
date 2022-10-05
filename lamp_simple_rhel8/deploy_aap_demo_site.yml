@@ -1,0 +1,56 @@
+---
+- name: Deploy the AAP Demo website
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+    - name: Get the create_date
+      ansible.builtin.command:
+        cmd: "date '+%Y-%m-%d'"
+      register: create_date
+
+    - name: Get the website start Time
+      ansible.builtin.command:
+        cmd: "date '+%H:%M:%S'"
+      register: website_start_time
+
+    - name: Debug vpc_create_time
+      ansible.builtin.debug:
+        var: vpc_create_time
+
+    - name: Debug machine_create_time
+      ansible.builtin.debug:
+        var: machine_create_time
+
+    - name: Debug post_install_time
+      ansible.builtin.debug:
+        var: post_install_time
+
+    - name: Debug lamp_time
+      ansible.builtin.debug:
+        var: lamp_time
+
+    - name: Debug subscription_time
+      ansible.builtin.debug:
+        var: subscription_time
+
+    - name: Debug insights_time
+      ansible.builtin.debug:
+        var: insights_time
+
+    - name: Copy the image file for the website
+      ansible.builtin.copy:
+        src: images/aap.png
+        dest: /var/www/html/aap.png
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
+
+    - name: Copy the index.html for the website
+      ansible.builtin.template:
+        src: index_html_aapdemo.j2
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: u+rw,g-wx,o-wx
