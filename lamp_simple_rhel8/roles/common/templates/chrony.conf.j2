@@ -1,6 +1,6 @@
 # Use public servers from the pool.chrony.org project.
 # Please consider joining the pool (http://www.pool.chrony.org/join.html).
-{% for host in groups['key_jml_test'] %}
+{% for host in groups['tag_Type_dbservers'] %}
 server {{ hostvars[host].ansible_host }} iburst xleave
 {% endfor %}
 
