@@ -3,22 +3,6 @@
 http_port: 8080
 https_port: 8443
 
-# AWS Specific Variables
-ec2_access_key:
-ec2_secret_key:
-ec2_zone:
-#ec2_keypair: ross-poc
-ec2_region: us-west-1
-#ec2_security_group: ross-poc
-#ec2_tag_name_prefix: Ross
-#ec2_image: ami-77a2a317 # RHEL-7.4 on 1/3/2018
-#ec2_image: ami-c8020fa8 # RHEL-7.4 on 1/22/2018
-#ec2_image: ami-e0e1e380 # RHEL-6.9 on 1/18/2018
-#ec2_image: ami-
-ec2_instance_type: t2.micro
-#ec2_instance_count: 3
-#ec2_tag: ross
-#ec2_hosts: all
 
 # Variables listed here are applicable to all host groups
 
