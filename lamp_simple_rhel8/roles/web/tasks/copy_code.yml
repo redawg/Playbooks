@@ -3,11 +3,16 @@
 # the version control system.
 
 - name: Copy the code from repository
-  git: 
-    repo: "{{ repository }}" 
-    dest: /var/www/html/
+  git: repo={{ repository }} dest=/var/www/html/
 
-- name: Creates the index.php file
-  template: 
-    src: index.php.j2 
-    dest: /var/www/html/index.php
+- name: Creates the index.php file for webserver Group
+  template: src=index.php.j2 dest=/var/www/html/index.php
+  when: "'webservers' in group_names"
+
+- name: Creates the index.php file for Type_webserver Group
+  template: src=indexazure.php.j2 dest=/var/www/html/index.php
+  when: "'Type_webservers' in group_names"
+
+- name: Creates the index.php file for Type_webserver Group
+  template: src=indexaws.php.j2 dest=/var/www/html/index.php
+  when: "'tag_Type_webservers' in group_names"
