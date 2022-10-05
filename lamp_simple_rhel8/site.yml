@@ -3,21 +3,21 @@
 
 - name: apply common configuration to all nodes
   hosts: all
-  remote_user: ec2-user
+  
 
   roles:
     - common
 
 - name: configure and deploy the webservers and application code
-  hosts: webservers
+  hosts: webservers:Type_webservers:tag_Type_webservers
   remote_user: ec2-user
 
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: dbservers
-  remote_user: ec2-user
+  hosts: dbservers:Type_dbservers:tag_Type_dbservers
+
 
   roles:
     - db
