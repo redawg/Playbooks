@@ -6,4 +6,4 @@
     url: "http://sync.afraid.org/u/{{ ddnstoken }}/"
     method: POST
   register: ddnsinfo
-  when: ddnstoken is undefined
+  when: ddnstoken is defined
