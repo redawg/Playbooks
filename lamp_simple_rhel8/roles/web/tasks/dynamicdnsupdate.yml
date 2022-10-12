@@ -1,0 +1,9 @@
+---
+# These tasks dynamic update my url for ansibledemo.mooo.com.
+
+- name: Afraid.org DDNS update to host ansibledemo.mooo.com
+  ansible.builtin.uri:
+    url: "http://sync.afraid.org/u/{{ ddnstoken }}/"
+    method: POST
+  register: requestinfo
+  when: ddnstoken is undefined
