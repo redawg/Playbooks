@@ -5,5 +5,5 @@
   ansible.builtin.uri:
     url: "http://sync.afraid.org/u/{{ ddnstoken }}/"
     method: POST
-  register: requestinfo
+  register: ddnsinfo
   when: ddnstoken is undefined
