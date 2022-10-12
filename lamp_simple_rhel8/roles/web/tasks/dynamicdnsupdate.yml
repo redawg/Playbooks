@@ -3,7 +3,7 @@
 
 - name: Afraid.org DDNS update to host ansibledemo.mooo.com
   ansible.builtin.uri:
-    url: "http://sync.afraid.org/u/{{ ddnstoken }}/"
+    url: "https://freedns.afraid.org/dynamic/update.php?{{ ddnstoken }}"
     method: POST
   register: ddnsinfo
   when: ddnstoken is defined
