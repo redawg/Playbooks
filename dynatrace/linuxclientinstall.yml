@@ -20,7 +20,16 @@
     - name: Install Dynatrace OneAgent
       ansible.builtin.command:
         cmd: "{{ oneagent_installpath }}{{ oneagent_version }} --set-infra-only=false --set-app-log-content-access=true"
-    - name: Restart Httpd to have monitored
+    - name: Restart Services to have monitored
       ansible.builtin.service:
-        name: httpd
+        name: "{{ item }}"
         state: restarted
+      with_items:
+        - httpd 
+        - nginx 
+        - podman 
+        - receptor 
+        - postgresql
+        - mariadb  
+      ignore_errors: true
+    
