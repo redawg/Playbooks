@@ -3,7 +3,7 @@ collections:
 - name: cisco.ios
 - name: cisco.asa
 - name: servicenow.itsm
-- name: servicenow.servicenow
+##- name: servicenow.servicenow
 - name: ansible.tower
 - name: ansible.controller
 - name: chocolatey.chocolatey
