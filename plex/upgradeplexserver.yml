@@ -14,10 +14,10 @@
   #      state: present
   #      restarted: yes
   #      pull: yes
-    - name: Check Tautulli is running and updated container
-      community.docker.docker_compose:
-        project_src: /home/locast2tuner/
-        files: docker-tautulli.yml
-        state: present
-        restarted: yes
-        pull: yes
+  # - name: Check Tautulli is running and updated container
+  #   community.docker.docker_compose:
+  #      project_src: /home/locast2tuner/
+  #      files: docker-tautulli.yml
+  #      state: present
+  #     restarted: yes
+  #     pull: yes
