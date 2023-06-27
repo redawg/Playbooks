@@ -1,7 +1,12 @@
 {
-    "ansible.python.interpreterPath": "/bin/python3",
-    "ansible.lightspeed.enabled": true,
+    "ansible.python.interpreterPath": "/bin/python3.9",
     "ansible.lightspeed.suggestions.enabled": true,
-    "ansible.validation.enabled": true,
-    "ansible.ansible.path": "~/.local/bin/ansible"
+    "ansible.validation.enabled": false,
+    "ansible.lightspeed.enabled": true,
+    "ansible.validation.lint.enabled": false,
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/execution-environment.json": "vscode-vfs://github/redawg/Playbooks/Azure/createpublicipsub.yml"
+    },
+    "ansible.executionEnvironment.enabled": true,
+    "ansible.ansible.reuseTerminal": true
 }
