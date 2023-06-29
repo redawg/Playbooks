@@ -1,0 +1,29 @@
+---
+- name: Working with cisco ios devices 
+  hosts: cisco
+  gather_facts: false
+
+  tasks:
+    #- name: enable cisco_ios interface gigabit
+
+    #- name: print all cisco_ios facts
+      
+    #- name: show running config
+  
+    #- name: create vlan on cisco_ios
+
+    #- name: change snmp community strings on cisco_ios
+
+    #- name: configure layer3 interface for ios
+
+    #- name: create a login banner on ios
+
+    #- name: backup cisco ios configuration
+
+    #- name: add an ip access list on ios
+
+    #- name: configure bgp on ios
+
+    #- name: configure bgp on ios using ios_bgp
+
+    #- name: Merge provided OSPF Interfaces configuration
