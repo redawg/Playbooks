@@ -1,6 +1,6 @@
 ---
 - name: Export Controller data
-  hosts: all
+  hosts: localhost
   gather_facts: False
 
   tasks:
