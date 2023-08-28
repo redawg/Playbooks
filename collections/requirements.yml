@@ -8,7 +8,6 @@ collections:
 - name: ansible.controller
 - name: chocolatey.chocolatey
 - name: azure.azcollection
-- name: cloud.azure_ops
 - name: community.docker
 - name: community.general
 - name: amazon.aws
