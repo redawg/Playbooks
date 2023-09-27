@@ -18,13 +18,13 @@
     - name: Set Creation Date and website start time vars
       ansible.builtin.set_stats:
         data:
-          create_date: "{{ '%F' | strftime }}"
+          create_date: "{{ '%D' | strftime }}"
           website_start_time: "{{ '%T' | strftime }}"
       run_once: true
-    - name: Debug vpc_create_time
+    - name: Debug create time
       ansible.builtin.debug:
         var: create_date
-    - name: Debug vpc_create_time
+    - name: Debug website_start_time
       ansible.builtin.debug:
         var: website_start_time
         
