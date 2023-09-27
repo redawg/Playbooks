@@ -16,10 +16,9 @@
     #  register: website_start_time
 
     - name: Set Creation Date and website start time vars
-      ansible.builtin.set_stats:
-        data:
-          create_date: "{{ '%D' | strftime }}"
-          website_start_time: "{{ '%T' | strftime }}"
+      ansible.builtin.set_fact:
+        create_date: "{{ '%D' | strftime }}"
+        website_start_time: "{{ '%T' | strftime }}"
       run_once: true
     - name: Debug create time
       ansible.builtin.debug:
