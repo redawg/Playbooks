@@ -18,8 +18,8 @@
     - name: Set Creation Date and website start time vars
       ansible.builtin.set_stats:
         data:
-          create_date: "{{ '%Y:%m:%d' | strftime }}"
-          website_start_time: "{{ '%H:%M:%S' | strftime }}"
+          create_date: "{{ '%F' | strftime }}"
+          website_start_time: "{{ '%T' | strftime }}"
       run_once: true
     - name: Debug vpc_create_time
       ansible.builtin.debug:
