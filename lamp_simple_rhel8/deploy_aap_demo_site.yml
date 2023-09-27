@@ -21,7 +21,13 @@
           create_date: "{{ '%Y:%m:%d' | strftime }}"
           website_start_time: "{{ '%H:%M:%S' | strftime }}"
       run_once: true
-      
+    - name: Debug vpc_create_time
+      ansible.builtin.debug:
+        var: create_date
+    - name: Debug vpc_create_time
+      ansible.builtin.debug:
+        var: website_start_time
+        
     - name: Debug vpc_create_time
       ansible.builtin.debug:
         var: vpc_create_time
