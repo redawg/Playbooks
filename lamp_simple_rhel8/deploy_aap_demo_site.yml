@@ -5,16 +5,23 @@
 
   tasks:
 
-    - name: Get the create_date
-      ansible.builtin.command:
-        cmd: "date '+%Y-%m-%d'"
-      register: create_date
+    #- name: Get the create_date
+    #  ansible.builtin.command:
+    #    cmd: "date '+%Y-%m-%d'"
+    #  register: create_date
 
-    - name: Get the website start Time
-      ansible.builtin.command:
-        cmd: "date '+%H:%M:%S'"
-      register: website_start_time
+    #- name: Get the website start Time
+    #  ansible.builtin.command:
+    #    cmd: "date '+%H:%M:%S'"
+    #  register: website_start_time
 
+    - name: Set Creation Date and website start time vars
+      ansible.builtin.set_stats:
+        data:
+          create_date: "{{ '%H:%M:%D' | strftime }}"
+          website_start_time: "{{ '%H:%M:%S' | strftime }}"
+      run_once: true
+      
     - name: Debug vpc_create_time
       ansible.builtin.debug:
         var: vpc_create_time
