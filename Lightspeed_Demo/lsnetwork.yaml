@@ -1,14 +1,20 @@
 ---
-- name: Working with cisco ios devices 
-  hosts: cisco
+- name: Working with cisco devices 
+  hosts: all
   gather_facts: false
 
   tasks:
-    - name: enable cisco_ios interface gigabit
+    #- name: enable cisco_ios interface gigabit
 
     #- name: print all cisco_ios facts
       
     #- name: show running config
+
+    #- name: update all packages on rhel when version is 8
+
+    #- name: debug msg of ansible_facts
+
+    #- name: add Appstream repo to rhel 8 
   
     #- name: create vlan on cisco_ios
 
@@ -25,5 +31,13 @@
     #- name: configure bgp on ios
 
     #- name: configure bgp on ios using ios_bgp
-
+     
     #- name: Merge provided OSPF Interfaces configuration
+
+    #- name: create a list of users on rhel machine based on groups
+
+
+
+
+
+
