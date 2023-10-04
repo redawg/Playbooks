@@ -4,7 +4,7 @@
   gather_facts: false
 
   tasks:
-    #- name: enable cisco_ios interface gigabit
+    - name: enable cisco_ios interface gigabit
 
     #- name: print all cisco_ios facts
       
