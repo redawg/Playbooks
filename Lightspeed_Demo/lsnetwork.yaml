@@ -1,11 +1,11 @@
 ---
-- name: Working with cisco devices 
+- name: RHEL  
   hosts: all
   gather_facts: false
 
   tasks:
     #- name: enable cisco_ios interface gigabit
-
+     
     #- name: print all cisco_ios facts
       
     #- name: show running config
@@ -14,8 +14,10 @@
 
     #- name: debug msg of ansible_facts
 
-    #- name: add Appstream repo to rhel 8 
-  
+    #- name: add Appstream repo
+    
+    #- name: add Appstream repo to rhel 8
+
     #- name: create vlan on cisco_ios
 
     #- name: change snmp community strings on cisco_ios
