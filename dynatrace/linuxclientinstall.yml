@@ -7,7 +7,7 @@
   tasks:
     - name: Grab oneagent from instance
       ansible.builtin.get_url:
-        url: 'https://zza90524.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default'
+        url: 'https://juz21888.live.dynatrace.com/api/v1/deployment/installer/agent/unix/default/latest?arch=x86&flavor=default'
         dest: "{{ oneagent_installpath }}{{ oneagent_version }}"
         headers:
           Authorization: Api-Token {{ oneagent_paas_token }}
