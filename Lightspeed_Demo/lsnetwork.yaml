@@ -6,22 +6,23 @@
   tasks:
     #- name: enable cisco_ios interface gigabit
 
-    - name: print all cisco_ios facts
-      cisco.ios.ios_facts:
-        gather_subset: all
-      register: result
+    #- name: print all cisco_ios facts
+   
+    #- name: print all cisco_ios facts with gather_subset as a {{var}}
+
+ 
+    # Install postgresql-server & run postgresql-setup command & enable postgresql-server to start at boot
 
     
-    #- name: print all cisco_ios facts with gather_subset as a {var}
-    # Install postgresql-server & run postgresql-setup command & enable postgresql-server to start at boot
     
+
+    # Setup and ec2 host xl.large with datadog package installed
  
+     
     - name: Install postgresql-server & postgresql-setup command
 
-    
     - name: Enable postgresql-server to start at boot
-
-   
+  
     #- name: show running config
 
     #- name: update all packages on rhel when version is 8
