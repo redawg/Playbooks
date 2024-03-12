@@ -12,6 +12,21 @@
 
  
     # Install postgresql-server & run postgresql-setup command & enable postgresql-server to start at boot
+    - name: Install postgresql-server
+      when: ansible_os_family == "RedHat"
+      ansible.builtin.package:
+        name: postgresql-server
+        state: present
+
+    - name: Run postgresql-setup command
+      ansible.builtin.command: postgresql-setup initdb
+      when: ansible_os_family == "RedHat"
+
+    - name: Enable postgresql-server to start at boot
+      ansible.builtin.service:
+        name: postgresql
+        enabled: true
+    
 
     
     
