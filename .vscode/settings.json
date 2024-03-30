@@ -1,5 +1,5 @@
 {
-    "ansible.python.interpreterPath": "/bin/python3.9",
+    "ansible.python.interpreterPath": "/bin/python3",
     "ansible.lightspeed.suggestions.enabled": true,
     "ansible.validation.enabled": false,
     "ansible.lightspeed.enabled": true,
