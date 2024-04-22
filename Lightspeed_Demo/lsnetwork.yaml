@@ -7,11 +7,13 @@
     #- name: enable cisco_ios interface gigabit
 
     #- name: print all cisco_ios facts
-   
+       
     #- name: print all cisco_ios facts with gather_subset as a {{var}}
 
- 
+    # Validate ansible can connect to inventory & create a new dyanmic inventory & continue to run setup
+
     # Install postgresql-server & run postgresql-setup command & enable postgresql-server to start at boot
+    # Content suggestion provided by Ansible Lightspeed
     - name: Install postgresql-server
       when: ansible_os_family == "RedHat"
       ansible.builtin.package:
@@ -26,12 +28,16 @@
       ansible.builtin.service:
         name: postgresql
         enabled: true
+
     
+   
 
     # Setup and ec2 host xl.large with datadog package installed
  
      
     - name: Install postgresql-server & postgresql-setup command
+
+    
 
     - name: Enable postgresql-server to start at boot
   
