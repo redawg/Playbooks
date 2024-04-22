@@ -28,7 +28,6 @@
       ansible.builtin.service:
         name: postgresql
         enabled: true
-
     
    
 
