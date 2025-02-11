@@ -11,10 +11,10 @@
       delegate_to: localhost
       run_once: true
 
-    - name: Export All
+    - name: Call current controller and export specific asset
       ansible.controller.export:
         export:
-           "{{ asset }}": 'all'
+           "{{ asset }}"
         controller_host: 172.16.1.24
         controller_username: 'admin'
         controller_password: 'r3dh2t!'
