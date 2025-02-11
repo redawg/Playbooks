@@ -1,0 +1,20 @@
+---
+- name: Configure
+  hosts: all
+  gather_facts: False
+  vars:
+    ansible_connection: ''
+    ansible_network_os: ''
+    server: ''
+    source: ''
+    logging: ''
+    state: ''
+
+  tasks:
+  - name: Override commands with provided configuration
+    cisco.ios.ios_logging_global:
+      config:
+        hosts:
+          - hostname: 172.16.1.1
+            filtered: true
+      state: overridden 
