@@ -13,7 +13,7 @@
 
     - name: Call current controller and export specific asset
       ansible.controller.export:
-      "{{ asset }}"
+      "{{ asset }}": 'all'
         controller_host: 172.16.1.24
         controller_username: 'admin'
         controller_password: 'r3dh2t!'
