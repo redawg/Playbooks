@@ -4,7 +4,8 @@ collections:
 ## - name: servicenow.itsm
 ## - name: servicenow.servicenow
 ## - name: ansible.tower
-## - name: ansible.controller
+- name: ansible.controller
+  version: 4.6.8
 ## - name: chocolatey.chocolatey
 ## - name: azure.azcollection
 ## - name: community.docker
