@@ -8,16 +8,16 @@
     # aap_event_stream: "https://aap.example.com/eda-event-streams/api/eda/v1/external_event_stream/b3b0a02f-*/post/"
     # aap_event_stream_token: s3cr3t0k3n
     # sys_user_id: <guid>
-    sn_business_rule_name: Zach LeBlanc - Service Catalog Requests
+    sn_business_rule_name: Andrew Schoenfeld - Service Catalog Requests
     sn_business_rule_desc: Post event to EDA when user makes any Service Catalog request
-    sn_rest_message_name: Zach LeBlanc - EDA
+    sn_rest_message_name: Andrew Schoenfeld - EDA
     sn_rest_message_fn_name: POST
 
   tasks:
     - name: Service Now | Create REST message
       tags: rest
       ansible.builtin.include_role:
-        name: zjleblanc.servicenow.records
+        name: aschoenfeld.servicenow.records
       vars:
         snow_records:
           - type: sys_rest_message
@@ -30,7 +30,7 @@
     - name: Service Now | Create REST message headers
       tags: rest
       ansible.builtin.include_role:
-        name: zjleblanc.servicenow.records
+        name: aschoenfeld.servicenow.records
       vars:
         snow_records:
           - type: sys_rest_message_headers
@@ -47,7 +47,7 @@
     - name: Service Now | Create Post Event Function
       tags: rest
       ansible.builtin.include_role:
-        name: zjleblanc.servicenow.records
+        name: aschoenfeld.servicenow.records
       vars:
         snow_records:
           - type: sys_rest_message_fn
@@ -62,7 +62,7 @@
     - name: Service Now | Create Business Rule
       tags: rest
       ansible.builtin.include_role:
-        name: zjleblanc.servicenow.records
+        name: aschoenfeld.servicenow.records
       vars:
         snow_records:
           - type: sys_script
