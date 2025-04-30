@@ -1,1 +1,80 @@
+---
+- name: Setup Service Now Business Rule for EDA
+  hosts: localhost
+  gather_facts: false
+  become: false
 
+  vars:
+    # aap_event_stream: "https://aap.example.com/eda-event-streams/api/eda/v1/external_event_stream/b3b0a02f-*/post/"
+    # aap_event_stream_token: s3cr3t0k3n
+    # sys_user_id: <guid>
+    sn_business_rule_name: Zach LeBlanc - Service Catalog Requests
+    sn_business_rule_desc: Post event to EDA when user makes any Service Catalog request
+    sn_rest_message_name: Zach LeBlanc - EDA
+    sn_rest_message_fn_name: POST
+
+  tasks:
+    - name: Service Now | Create REST message
+      tags: rest
+      ansible.builtin.include_role:
+        name: zjleblanc.servicenow.records
+      vars:
+        snow_records:
+          - type: sys_rest_message
+            data:
+              name: "{{ sn_rest_message_name }}"
+              authentication_type: no_authentication
+              rest_endpoint: "{{ aap_event_stream }}"
+              description: "Send events to AAP Event Stream"
+
+    - name: Service Now | Create REST message headers
+      tags: rest
+      ansible.builtin.include_role:
+        name: zjleblanc.servicenow.records
+      vars:
+        snow_records:
+          - type: sys_rest_message_headers
+            data:
+              rest_message: "{{ snow_records_out['sys_rest_message'][0].sys_id }}"
+              name: Authorization
+              value: "Bearer {{ aap_event_stream_token }}"
+          - type: sys_rest_message_headers
+            data:
+              rest_message: "{{ snow_records_out['sys_rest_message'][0].sys_id }}"
+              name: Content-Type
+              value: "application/json"
+
+    - name: Service Now | Create Post Event Function
+      tags: rest
+      ansible.builtin.include_role:
+        name: zjleblanc.servicenow.records
+      vars:
+        snow_records:
+          - type: sys_rest_message_fn
+            data:
+              name: "{{ sn_rest_message_fn_name }}"
+              function_name: "{{ sn_rest_message_fn_name }}"
+              http_method: post
+              rest_message: "{{ snow_records_out['sys_rest_message'][0].sys_id }}"
+              authentication_type: inherit_from_parent
+              rest_endpoint: "{{ aap_event_stream }}"
+
+    - name: Service Now | Create Business Rule
+      tags: rest
+      ansible.builtin.include_role:
+        name: zjleblanc.servicenow.records
+      vars:
+        snow_records:
+          - type: sys_script
+            data:
+              name: "{{ sn_business_rule_name }}"
+              filter_condition: "requested_for={{ sys_user_id }}^EQ"
+              when: after
+              description: "{{ sn_business_rule_desc }}"
+              collection: sc_req_item
+              active: true
+              advanced: true
+              action_insert: true
+              action_update: true
+              action_delete: true
+              script: "{{ lookup('ansible.builtin.template', playbook_dir + '/invoke_rest_message.js.j2') }}"
