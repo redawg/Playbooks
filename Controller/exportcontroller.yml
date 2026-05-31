@@ -1,9 +1,23 @@
 ---
 - name: Export Controller data
   hosts: localhost
-  gather_facts: False
+  gather_facts: false
+
+  vars:
+    # Set via environment or Ansible Vault — never hardcode controller admin credentials.
+    aap_controller_username: "{{ lookup('env', 'AAP_CONTROLLER_USERNAME') }}"
+    aap_controller_password: "{{ lookup('env', 'AAP_CONTROLLER_PASSWORD') }}"
 
   tasks:
+    - name: Require controller credentials from env or vault
+      ansible.builtin.assert:
+        that:
+          - aap_controller_username | length > 0
+          - aap_controller_password | length > 0
+        fail_msg: >-
+          Set AAP_CONTROLLER_USERNAME and AAP_CONTROLLER_PASSWORD in the environment
+          or vault before running this playbook. Do not commit credentials to git.
+
     - name: add Python module
       ansible.builtin.pip:
         name: awxkit
@@ -13,22 +27,22 @@
 
     - name: Call current controller and export specific asset
       ansible.controller.export:
-        projects: 'all'
+        projects: all
         controller_host: 172.16.1.24
-        controller_username: 'admin'
-        controller_password: 'r3dh2t!'
+        controller_username: "{{ aap_controller_username }}"
+        controller_password: "{{ aap_controller_password }}"
         validate_certs: false
       register: export_output
 
     - name: Show Export
-      debug:
+      ansible.builtin.debug:
         msg: "{{ export_output }}"
         verbosity: 2
 
     - name: Import Exported data
       ansible.controller.import:
-        assets: "{{ export_output.assets}}"
+        assets: "{{ export_output.assets }}"
         controller_host: 172.16.1.23
-        controller_username: 'admin'
-        controller_password: 'r3dh2t!'
+        controller_username: "{{ aap_controller_username }}"
+        controller_password: "{{ aap_controller_password }}"
         validate_certs: false
